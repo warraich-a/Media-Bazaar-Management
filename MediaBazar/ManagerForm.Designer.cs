@@ -61,7 +61,6 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbCategoryStat = new System.Windows.Forms.ComboBox();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.btnShowStock = new System.Windows.Forms.Button();
             this.listView5 = new System.Windows.Forms.ListView();
             this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,6 +70,10 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblFilterBy = new System.Windows.Forms.Label();
             this.mtbManager.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -90,7 +93,7 @@
             this.mtbManager.ItemSize = new System.Drawing.Size(263, 40);
             this.mtbManager.Location = new System.Drawing.Point(-4, 104);
             this.mtbManager.Name = "mtbManager";
-            this.mtbManager.SelectedIndex = 0;
+            this.mtbManager.SelectedIndex = 3;
             this.mtbManager.Size = new System.Drawing.Size(1056, 685);
             this.mtbManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mtbManager.Style = MetroFramework.MetroColorStyle.Silver;
@@ -125,12 +128,14 @@
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader9,
-            this.columnHeader17});
+            this.columnHeader17,
+            this.columnHeader10,
+            this.columnHeader14});
             this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(50, 73);
+            this.listView2.Location = new System.Drawing.Point(30, 73);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(636, 419);
+            this.listView2.Size = new System.Drawing.Size(719, 419);
             this.listView2.TabIndex = 43;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -155,14 +160,14 @@
             // columnHeader17
             // 
             this.columnHeader17.Text = "Address";
-            this.columnHeader17.Width = 190;
+            this.columnHeader17.Width = 150;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(51, 35);
+            this.label21.Location = new System.Drawing.Point(31, 35);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(87, 20);
             this.label21.TabIndex = 42;
@@ -175,7 +180,7 @@
             this.btnShowEmp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowEmp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnShowEmp.Location = new System.Drawing.Point(730, 218);
+            this.btnShowEmp.Location = new System.Drawing.Point(770, 218);
             this.btnShowEmp.Name = "btnShowEmp";
             this.btnShowEmp.Size = new System.Drawing.Size(130, 37);
             this.btnShowEmp.TabIndex = 40;
@@ -186,7 +191,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(726, 76);
+            this.label1.Location = new System.Drawing.Point(766, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 20);
             this.label1.TabIndex = 39;
@@ -195,7 +200,7 @@
             // tbEmpNameToFind
             // 
             this.tbEmpNameToFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmpNameToFind.Location = new System.Drawing.Point(730, 143);
+            this.tbEmpNameToFind.Location = new System.Drawing.Point(770, 143);
             this.tbEmpNameToFind.Name = "tbEmpNameToFind";
             this.tbEmpNameToFind.Size = new System.Drawing.Size(255, 29);
             this.tbEmpNameToFind.TabIndex = 38;
@@ -204,6 +209,7 @@
             // 
             this.metroTabPage4.BackColor = System.Drawing.SystemColors.Control;
             this.metroTabPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.metroTabPage4.Controls.Add(this.lblFilterBy);
             this.metroTabPage4.Controls.Add(this.listView1);
             this.metroTabPage4.Controls.Add(this.comboBox1);
             this.metroTabPage4.Controls.Add(this.label4);
@@ -244,7 +250,7 @@
             // 
             // columnHeader12
             // 
-            this.columnHeader12.Text = "Day";
+            this.columnHeader12.Text = "Date";
             this.columnHeader12.Width = 190;
             // 
             // columnHeader13
@@ -255,7 +261,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(661, 323);
+            this.comboBox1.Location = new System.Drawing.Point(660, 377);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(305, 28);
             this.comboBox1.TabIndex = 51;
@@ -265,7 +271,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(658, 293);
+            this.label4.Location = new System.Drawing.Point(657, 347);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 18);
             this.label4.TabIndex = 50;
@@ -274,7 +280,7 @@
             // cbNameOfEmp
             // 
             this.cbNameOfEmp.FormattingEnabled = true;
-            this.cbNameOfEmp.Location = new System.Drawing.Point(659, 148);
+            this.cbNameOfEmp.Location = new System.Drawing.Point(658, 202);
             this.cbNameOfEmp.Name = "cbNameOfEmp";
             this.cbNameOfEmp.Size = new System.Drawing.Size(305, 28);
             this.cbNameOfEmp.TabIndex = 49;
@@ -286,14 +292,14 @@
             this.cbSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSelectAll.Location = new System.Drawing.Point(659, 57);
             this.cbSelectAll.Name = "cbSelectAll";
-            this.cbSelectAll.Size = new System.Drawing.Size(160, 22);
+            this.cbSelectAll.Size = new System.Drawing.Size(156, 22);
             this.cbSelectAll.TabIndex = 48;
-            this.cbSelectAll.Text = "See Entire Schedule";
+            this.cbSelectAll.Text = "See entire schedule";
             this.cbSelectAll.UseVisualStyleBackColor = false;
             // 
             // dtpDateShedule
             // 
-            this.dtpDateShedule.Location = new System.Drawing.Point(662, 242);
+            this.dtpDateShedule.Location = new System.Drawing.Point(661, 296);
             this.dtpDateShedule.Name = "dtpDateShedule";
             this.dtpDateShedule.Size = new System.Drawing.Size(304, 26);
             this.dtpDateShedule.TabIndex = 47;
@@ -304,7 +310,7 @@
             this.btnShowSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowSchedule.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnShowSchedule.Location = new System.Drawing.Point(660, 385);
+            this.btnShowSchedule.Location = new System.Drawing.Point(659, 439);
             this.btnShowSchedule.Name = "btnShowSchedule";
             this.btnShowSchedule.Size = new System.Drawing.Size(304, 37);
             this.btnShowSchedule.TabIndex = 43;
@@ -316,7 +322,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(658, 200);
+            this.label8.Location = new System.Drawing.Point(657, 254);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 18);
             this.label8.TabIndex = 41;
@@ -327,7 +333,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(656, 116);
+            this.label9.Location = new System.Drawing.Point(655, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 18);
             this.label9.TabIndex = 39;
@@ -412,6 +418,8 @@
             // 
             this.cbCategoryStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategoryStat.FormattingEnabled = true;
+            this.cbCategoryStat.Items.AddRange(new object[] {
+            "Average number of employees working in a shift"});
             this.cbCategoryStat.Location = new System.Drawing.Point(53, 72);
             this.cbCategoryStat.Name = "cbCategoryStat";
             this.cbCategoryStat.Size = new System.Drawing.Size(651, 28);
@@ -420,7 +428,6 @@
             // metroTabPage3
             // 
             this.metroTabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTabPage3.Controls.Add(this.btnShowStock);
             this.metroTabPage3.Controls.Add(this.listView5);
             this.metroTabPage3.CustomBackground = true;
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
@@ -430,19 +437,6 @@
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Stock Info";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
-            // 
-            // btnShowStock
-            // 
-            this.btnShowStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnShowStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowStock.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnShowStock.Location = new System.Drawing.Point(40, 438);
-            this.btnShowStock.Name = "btnShowStock";
-            this.btnShowStock.Size = new System.Drawing.Size(198, 41);
-            this.btnShowStock.TabIndex = 23;
-            this.btnShowStock.Text = "Show";
-            this.btnShowStock.UseVisualStyleBackColor = false;
             // 
             // listView5
             // 
@@ -456,7 +450,7 @@
             this.listView5.HideSelection = false;
             this.listView5.Location = new System.Drawing.Point(40, 45);
             this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(954, 366);
+            this.listView5.Size = new System.Drawing.Size(954, 472);
             this.listView5.TabIndex = 20;
             this.listView5.UseCompatibleStateImageBehavior = false;
             this.listView5.View = System.Windows.Forms.View.Details;
@@ -464,29 +458,29 @@
             // col1
             // 
             this.col1.Text = "Category";
-            this.col1.Width = 199;
+            this.col1.Width = 250;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Product Name";
-            this.columnHeader2.Width = 190;
+            this.columnHeader2.Width = 250;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Quantity";
-            this.columnHeader3.Width = 164;
+            this.columnHeader3.Width = 250;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Price";
-            this.columnHeader6.Width = 149;
+            this.columnHeader6.Width = 200;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label18.Location = new System.Drawing.Point(293, 35);
+            this.label18.Location = new System.Drawing.Point(293, 61);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(97, 24);
             this.label18.TabIndex = 26;
@@ -520,12 +514,41 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::MediaBazar.Properties.Resources.user;
-            this.pictureBox4.Location = new System.Drawing.Point(243, 29);
+            this.pictureBox4.Location = new System.Drawing.Point(245, 55);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(29, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 25;
             this.pictureBox4.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label19.Location = new System.Drawing.Point(293, 21);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(199, 24);
+            this.label19.TabIndex = 54;
+            this.label19.Text = "Logged in as manager";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Hourly wage";
+            this.columnHeader10.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Role";
+            // 
+            // lblFilterBy
+            // 
+            this.lblFilterBy.AutoSize = true;
+            this.lblFilterBy.Location = new System.Drawing.Point(656, 128);
+            this.lblFilterBy.Name = "lblFilterBy";
+            this.lblFilterBy.Size = new System.Drawing.Size(64, 20);
+            this.lblFilterBy.TabIndex = 53;
+            this.lblFilterBy.Text = "Filter by";
             // 
             // ManagerForm
             // 
@@ -533,6 +556,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(213)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(1049, 705);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.mtbManager);
@@ -592,7 +616,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
-        private System.Windows.Forms.Button btnShowStock;
         private System.Windows.Forms.ListView listView5;
         private System.Windows.Forms.ColumnHeader col1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -601,5 +624,9 @@
         private System.Windows.Forms.Button btnLogout;
         private MetroFramework.Controls.MetroTabControl mtbManager;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.Label lblFilterBy;
     }
 }

@@ -35,6 +35,8 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,12 +45,14 @@
             this.lvStock = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.metroTabPage4.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -81,7 +85,7 @@
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(145, 32);
             this.btnLogIn.TabIndex = 13;
-            this.btnLogIn.Text = "Restock";
+            this.btnLogIn.Text = "Restock selected";
             this.btnLogIn.UseVisualStyleBackColor = false;
             // 
             // lvReqStock
@@ -90,7 +94,9 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader12,
+            this.columnHeader13});
             this.lvReqStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvReqStock.HideSelection = false;
             this.lvReqStock.Location = new System.Drawing.Point(32, 56);
@@ -103,22 +109,32 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Category";
-            this.columnHeader1.Width = 254;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Name";
-            this.columnHeader2.Width = 255;
+            this.columnHeader2.Width = 240;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Quantity";
-            this.columnHeader3.Width = 240;
+            this.columnHeader3.Width = 150;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Status";
-            this.columnHeader4.Width = 230;
+            this.columnHeader4.Width = 150;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "From";
+            this.columnHeader12.Width = 120;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "To";
+            this.columnHeader13.Width = 120;
             // 
             // metroTabControl1
             // 
@@ -150,7 +166,7 @@
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(1016, 608);
             this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "Stock";
+            this.metroTabPage1.Text = " Stock";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             // 
             // label1
@@ -189,8 +205,9 @@
             this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6,
+            this.columnHeader8,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader9});
             this.lvStock.HideSelection = false;
             this.lvStock.Location = new System.Drawing.Point(30, 60);
             this.lvStock.Name = "lvStock";
@@ -202,22 +219,27 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Category";
-            this.columnHeader5.Width = 254;
+            this.columnHeader5.Width = 200;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Name";
-            this.columnHeader6.Width = 255;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Quantity";
-            this.columnHeader7.Width = 240;
+            this.columnHeader6.Width = 200;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Price";
-            this.columnHeader8.Width = 251;
+            this.columnHeader8.Width = 150;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Quantity warehouse";
+            this.columnHeader7.Width = 200;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Quantity shop";
+            this.columnHeader9.Width = 200;
             // 
             // btnLogout
             // 
@@ -249,7 +271,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label18.Location = new System.Drawing.Point(292, 36);
+            this.label18.Location = new System.Drawing.Point(292, 58);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(97, 24);
             this.label18.TabIndex = 46;
@@ -258,12 +280,23 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::MediaBazar.Properties.Resources.user;
-            this.pictureBox4.Location = new System.Drawing.Point(242, 30);
+            this.pictureBox4.Location = new System.Drawing.Point(242, 52);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(29, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 45;
             this.pictureBox4.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label19.Location = new System.Drawing.Point(292, 18);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(234, 24);
+            this.label19.TabIndex = 54;
+            this.label19.Text = "Logged in as depot worker";
             // 
             // DepotWorkerForm
             // 
@@ -271,6 +304,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(213)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(1023, 702);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.pictureBox1);
@@ -311,5 +345,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
     }
 }
