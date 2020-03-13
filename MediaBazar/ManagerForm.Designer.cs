@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mtbManager = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.listView2 = new System.Windows.Forms.ListView();
@@ -35,11 +38,14 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label21 = new System.Windows.Forms.Label();
             this.btnShowEmp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbEmpNameToFind = new System.Windows.Forms.TextBox();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.lblFilterBy = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,13 +59,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lb = new System.Windows.Forms.Label();
-            this.lvStat = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cbCategoryStat = new System.Windows.Forms.ComboBox();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.listView5 = new System.Windows.Forms.ListView();
             this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,9 +70,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblFilterBy = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.chartEmployeeStatistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.btnLoadChart = new System.Windows.Forms.Button();
+            this.lb = new System.Windows.Forms.Label();
+            this.cbxCategoryStatistics = new System.Windows.Forms.ComboBox();
             this.mtbManager.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -81,19 +85,20 @@
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
             this.SuspendLayout();
             // 
             // mtbManager
             // 
             this.mtbManager.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mtbManager.Controls.Add(this.metroTabPage2);
+            this.mtbManager.Controls.Add(this.metroTabPage3);
             this.mtbManager.Controls.Add(this.metroTabPage4);
             this.mtbManager.Controls.Add(this.metroTabPage5);
-            this.mtbManager.Controls.Add(this.metroTabPage3);
             this.mtbManager.ItemSize = new System.Drawing.Size(263, 40);
             this.mtbManager.Location = new System.Drawing.Point(-4, 104);
             this.mtbManager.Name = "mtbManager";
-            this.mtbManager.SelectedIndex = 3;
+            this.mtbManager.SelectedIndex = 2;
             this.mtbManager.Size = new System.Drawing.Size(1056, 685);
             this.mtbManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mtbManager.Style = MetroFramework.MetroColorStyle.Silver;
@@ -162,6 +167,15 @@
             this.columnHeader17.Text = "Address";
             this.columnHeader17.Width = 150;
             // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Hourly wage";
+            this.columnHeader10.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Role";
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -228,6 +242,15 @@
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Schedule";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
+            // 
+            // lblFilterBy
+            // 
+            this.lblFilterBy.AutoSize = true;
+            this.lblFilterBy.Location = new System.Drawing.Point(656, 128);
+            this.lblFilterBy.Name = "lblFilterBy";
+            this.lblFilterBy.Size = new System.Drawing.Size(64, 20);
+            this.lblFilterBy.TabIndex = 53;
+            this.lblFilterBy.Text = "Filter by";
             // 
             // listView1
             // 
@@ -344,10 +367,14 @@
             this.metroTabPage5.BackColor = System.Drawing.SystemColors.Control;
             this.metroTabPage5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.metroTabPage5.CausesValidation = false;
-            this.metroTabPage5.Controls.Add(this.button1);
+            this.metroTabPage5.Controls.Add(this.label25);
+            this.metroTabPage5.Controls.Add(this.label24);
+            this.metroTabPage5.Controls.Add(this.chartEmployeeStatistics);
+            this.metroTabPage5.Controls.Add(this.dtpTo);
+            this.metroTabPage5.Controls.Add(this.dtpFrom);
+            this.metroTabPage5.Controls.Add(this.btnLoadChart);
             this.metroTabPage5.Controls.Add(this.lb);
-            this.metroTabPage5.Controls.Add(this.lvStat);
-            this.metroTabPage5.Controls.Add(this.cbCategoryStat);
+            this.metroTabPage5.Controls.Add(this.cbxCategoryStatistics);
             this.metroTabPage5.CustomBackground = true;
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 44);
@@ -356,74 +383,6 @@
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Statistics";
             this.metroTabPage5.VerticalScrollbarBarColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(761, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 41);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "Show";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lb
-            // 
-            this.lb.AutoSize = true;
-            this.lb.BackColor = System.Drawing.Color.Transparent;
-            this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb.Location = new System.Drawing.Point(49, 34);
-            this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(73, 20);
-            this.lb.TabIndex = 39;
-            this.lb.Text = "Category";
-            // 
-            // lvStat
-            // 
-            this.lvStat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lvStat.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.lvStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvStat.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvStat.HideSelection = false;
-            this.lvStat.Location = new System.Drawing.Point(53, 124);
-            this.lvStat.Name = "lvStat";
-            this.lvStat.Size = new System.Drawing.Size(906, 373);
-            this.lvStat.TabIndex = 38;
-            this.lvStat.UseCompatibleStateImageBehavior = false;
-            this.lvStat.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Shift";
-            this.columnHeader1.Width = 185;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Date";
-            this.columnHeader4.Width = 152;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "How many workers";
-            this.columnHeader5.Width = 186;
-            // 
-            // cbCategoryStat
-            // 
-            this.cbCategoryStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCategoryStat.FormattingEnabled = true;
-            this.cbCategoryStat.Items.AddRange(new object[] {
-            "Average number of employees working in a shift"});
-            this.cbCategoryStat.Location = new System.Drawing.Point(53, 72);
-            this.cbCategoryStat.Name = "cbCategoryStat";
-            this.cbCategoryStat.Size = new System.Drawing.Size(651, 28);
-            this.cbCategoryStat.TabIndex = 37;
             // 
             // metroTabPage3
             // 
@@ -532,23 +491,100 @@
             this.label19.TabIndex = 54;
             this.label19.Text = "Logged in as manager";
             // 
-            // columnHeader10
+            // label25
             // 
-            this.columnHeader10.Text = "Hourly wage";
-            this.columnHeader10.Width = 100;
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(51, 117);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(39, 16);
+            this.label25.TabIndex = 62;
+            this.label25.Text = "From";
             // 
-            // columnHeader14
+            // label24
             // 
-            this.columnHeader14.Text = "Role";
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(407, 117);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(25, 16);
+            this.label24.TabIndex = 61;
+            this.label24.Text = "To";
             // 
-            // lblFilterBy
+            // chartEmployeeStatistics
             // 
-            this.lblFilterBy.AutoSize = true;
-            this.lblFilterBy.Location = new System.Drawing.Point(656, 128);
-            this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(64, 20);
-            this.lblFilterBy.TabIndex = 53;
-            this.lblFilterBy.Text = "Filter by";
+            this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
+            this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.Area3DStyle.IsClustered = true;
+            chartArea1.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend1);
+            this.chartEmployeeStatistics.Location = new System.Drawing.Point(54, 196);
+            this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
+            this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Hourly Wage";
+            this.chartEmployeeStatistics.Series.Add(series1);
+            this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 337);
+            this.chartEmployeeStatistics.TabIndex = 60;
+            this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Location = new System.Drawing.Point(458, 117);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(238, 20);
+            this.dtpTo.TabIndex = 59;
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Location = new System.Drawing.Point(130, 117);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(239, 20);
+            this.dtpFrom.TabIndex = 58;
+            // 
+            // btnLoadChart
+            // 
+            this.btnLoadChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnLoadChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadChart.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLoadChart.Location = new System.Drawing.Point(739, 60);
+            this.btnLoadChart.Name = "btnLoadChart";
+            this.btnLoadChart.Size = new System.Drawing.Size(216, 41);
+            this.btnLoadChart.TabIndex = 57;
+            this.btnLoadChart.Text = "Load chart";
+            this.btnLoadChart.UseVisualStyleBackColor = false;
+            this.btnLoadChart.Click += new System.EventHandler(this.btnLoadChart_Click);
+            // 
+            // lb
+            // 
+            this.lb.AutoSize = true;
+            this.lb.BackColor = System.Drawing.Color.Transparent;
+            this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb.Location = new System.Drawing.Point(51, 60);
+            this.lb.Name = "lb";
+            this.lb.Size = new System.Drawing.Size(63, 16);
+            this.lb.TabIndex = 56;
+            this.lb.Text = "Category";
+            // 
+            // cbxCategoryStatistics
+            // 
+            this.cbxCategoryStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxCategoryStatistics.FormattingEnabled = true;
+            this.cbxCategoryStatistics.Items.AddRange(new object[] {
+            "Hourly wage per employee",
+            "Salary per employee",
+            "Number of employees per shift"});
+            this.cbxCategoryStatistics.Location = new System.Drawing.Point(130, 60);
+            this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
+            this.cbxCategoryStatistics.Size = new System.Drawing.Size(566, 28);
+            this.cbxCategoryStatistics.TabIndex = 55;
             // 
             // ManagerForm
             // 
@@ -576,6 +612,7 @@
             this.metroTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,12 +630,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private MetroFramework.Controls.MetroTabPage metroTabPage5;
-        private System.Windows.Forms.Label lb;
-        private System.Windows.Forms.ListView lvStat;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ComboBox cbCategoryStat;
         private System.Windows.Forms.Button btnShowEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbEmpNameToFind;
@@ -623,10 +654,17 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Button btnLogout;
         private MetroFramework.Controls.MetroTabControl mtbManager;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.Label lblFilterBy;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeeStatistics;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.Button btnLoadChart;
+        private System.Windows.Forms.Label lb;
+        private System.Windows.Forms.ComboBox cbxCategoryStatistics;
     }
 }

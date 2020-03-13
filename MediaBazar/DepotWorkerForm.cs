@@ -12,6 +12,8 @@ namespace MediaBazar
 {
     public partial class DepotWorkerForm : Form
     {
+        // Create instance of mediaBazaar or use made instance
+        MediaBazaar mediaBazaar = MediaBazaar.Instance;
         public DepotWorkerForm()
         {
             InitializeComponent();
@@ -19,8 +21,14 @@ namespace MediaBazar
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            ManagerForm a = new ManagerForm();
-            a.Show();
+            //ManagerForm a = new ManagerForm();
+            //a.Show();
+            mediaBazaar.LogOut();
+            MessageBox.Show("Logged out successfully");
+            this.Hide();
+            LogInForm formLogIn = new LogInForm();
+            formLogIn.ShowDialog();
+            this.Close();
         }
     }
 }
