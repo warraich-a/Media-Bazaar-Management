@@ -19,70 +19,78 @@ namespace MediaBazar
             InitializeComponent();
         }
 
+
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            AdministratorForm a = new AdministratorForm();
-            a.Show();
+            //AdministratorForm a = new AdministratorForm();
+            //a.Show();
 
             // Get login details
             string email = tbxEmail.Text;
             string password = tbxPassword.Text;
 
-            //MessageBox.Show(mediaBazaar.GetUserType(email));
-            if (mediaBazaar.GetUserType(email) == "Manager")
+            // if email is empty
+            if (string.IsNullOrEmpty(email))
             {
-                if (mediaBazaar.CheckCredentials(email, password))
-                {
-                    this.Hide();
-                    ManagerForm managerForm = new ManagerForm();
-
-                    managerForm.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Credentials are wrong");
-                }
+                MessageBox.Show("Please fill in your e-mail address");
             }
-            else if (mediaBazaar.GetUserType(email) == "Administrator")
+            // if password is empty
+            else if (string.IsNullOrEmpty(password))
             {
-                if (mediaBazaar.CheckCredentials(email, password))
-                {
-                    this.Hide();
-                    AdministratorForm adminForm = new AdministratorForm();
-
-                    adminForm.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Credentials are wrong");
-                }
-            }
-            else if (mediaBazaar.GetUserType(email) == "DepotWorker")
-            {
-                if (mediaBazaar.CheckCredentials(email, password))
-                {
-                    this.Hide();
-                    DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
-
-                    depotWorkerForm.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Credentials are wrong");
-                }
+                MessageBox.Show("Please fill in your password");
             }
             else
             {
-                MessageBox.Show("User does not exist");
+                if (mediaBazaar.GetUserType(email) == "Manager")
+                {
+                    if (mediaBazaar.CheckCredentials(email, password))
+                    {
+                        this.Hide();
+                        ManagerForm managerForm = new ManagerForm();
+
+                        managerForm.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credentials are wrong");
+                    }
+                }
+                else if (mediaBazaar.GetUserType(email) == "Administrator")
+                {
+                    if (mediaBazaar.CheckCredentials(email, password))
+                    {
+                        this.Hide();
+                        AdministratorForm adminForm = new AdministratorForm();
+
+                        adminForm.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credentials are wrong");
+                    }
+                }
+                else if (mediaBazaar.GetUserType(email) == "DepotWorker")
+                {
+                    if (mediaBazaar.CheckCredentials(email, password))
+                    {
+                        this.Hide();
+                        DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
+
+                        depotWorkerForm.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credentials are wrong");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(mediaBazaar.GetUserType(email));
+                }
             }
-        }
-
-        private void LogInForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void lblForgotPassword_Click(object sender, EventArgs e)

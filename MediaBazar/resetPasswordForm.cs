@@ -29,10 +29,14 @@ namespace MediaBazar
             string newPassword = tbxNewPassword.Text;
             string repeatPassword = tbxRepeatPassword.Text;
             // If passwords match
-            if (newPassword == repeatPassword)
+            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(repeatPassword))
             {
-                mediaBazaar.ResetPassword(email, newPassword);
-                MessageBox.Show("Password was successfully updated");
+                MessageBox.Show("Please fill in both fields");
+            }
+            else if (newPassword == repeatPassword)
+            {
+                string result = mediaBazaar.ResetPassword(email, newPassword);
+                MessageBox.Show(result);
 
                 // Open login
                 LogInForm loginForm = new LogInForm();

@@ -21,8 +21,6 @@ namespace MediaBazar
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            //ManagerForm a = new ManagerForm();
-            //a.Show();
             mediaBazaar.LogOut();
             MessageBox.Show("Logged out successfully");
             this.Hide();

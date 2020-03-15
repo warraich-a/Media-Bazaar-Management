@@ -44,112 +44,165 @@ namespace MediaBazar
             string dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
             string dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
 
+            // Clear graph
+            chartEmployeeStatistics.Series.Clear();
+            chartEmployeeStatistics.Titles.Clear();
+
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
             // Hourly wage per employee
             if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee")
             {
-                // Clear graph
-                chartEmployeeStatistics.Series.Clear();
-                chartEmployeeStatistics.Series.Add("Hourly Wage");
-                chartEmployeeStatistics.Titles.Clear();
-
-                // get hourly wage per employee
-                MySqlConnection conn = new MySqlConnection("server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;");
-
-                // Can fit at most nine
-                string sql = $"SELECT firstName, lastName, hourlyWage FROM person";
-
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                conn.Open();
-
-                chartEmployeeStatistics.DataSource = cmd;
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                // Made it fit all data
-                chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-
-                chartEmployeeStatistics.Titles.Add("Hourly wage per employee chart");
-                while (dr.Read())
+                try
                 {
-                    chartEmployeeStatistics.Series["Hourly Wage"].Points.AddXY(dr[0].ToString() + " " + dr[1].ToString(), dr[2]);
-                    // Displays one employee at a time
-                    Refresh();
+                    using (MySqlConnection conn = new MySqlConnection(connStr))
+                    {
+                        // Title
+                        chartEmployeeStatistics.Titles.Add("Hourly wage per employee chart");
+                        // Series
+                        chartEmployeeStatistics.Series.Add("Hourly Wage");
+
+                        string sql = "SELECT firstName, lastName, hourlyWage FROM person";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        chartEmployeeStatistics.DataSource = cmd;
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        // Made it fit all data
+                        chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                        while (dr.Read())
+                        {
+                            chartEmployeeStatistics.Series["Hourly Wage"].Points.AddXY(dr[0].ToString() + " " + dr[1].ToString(), dr[2]);
+                            // Displays one employee at a time
+                            Refresh();
+                        }
+                        conn.Close();
+                    }
                 }
-                conn.Close();
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             // salary per employee between two dates
             else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Salary per employee")
             {
-                // Clear graph
-                chartEmployeeStatistics.Series.Clear();
-                chartEmployeeStatistics.Series.Add("Salary");
-                chartEmployeeStatistics.Titles.Clear();
-
-
-                MySqlConnection conn = new MySqlConnection("server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;");
-                string sql = $"SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s INNER JOIN person p ON p.id = s.employeeId WHERE date BETWEEN '{dateFrom}' AND '{dateTo}' GROUP BY s.employeeId";
-               
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                conn.Open();
-
-                chartEmployeeStatistics.DataSource = cmd;
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                // Made it fit all data
-                chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-                chartEmployeeStatistics.Titles.Add($"Salary per employee chart between {dateFrom} and {dateTo}");
-                while (dr.Read())
+                try
                 {
-                    chartEmployeeStatistics.Series["Salary"].Points.AddXY(dr[0].ToString() + " " + dr[1].ToString(), dr[2]);
-                    // Displays one employee at a time
-                    Refresh();
-                }
+                    using (MySqlConnection conn = new MySqlConnection(connStr))
+                    {
+                        // Series
+                        chartEmployeeStatistics.Series.Add("Salary");
 
-                conn.Close();
+                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s INNER JOIN person p ON p.id = s.employeeId WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY s.employeeId";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        chartEmployeeStatistics.DataSource = cmd;
+                        // Parameters
+                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        // Made it fit all data
+                        chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+                        // Title
+                        chartEmployeeStatistics.Titles.Add($"Salary per employee chart between {dateFrom} and {dateTo}");
+
+                        while (dr.Read())
+                        {
+                            chartEmployeeStatistics.Series["Salary"].Points.AddXY(dr[0].ToString() + " " + dr[1].ToString(), dr[2]);
+                            // Displays one employee at a time
+                            Refresh();
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
-            // Number employees per shift
+            // Number employees per shift between two dates
             else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Number of employees per shift")
             {
-                // Clear graph
-                chartEmployeeStatistics.Series.Clear();
-
-                MySqlConnection conn = new MySqlConnection("server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;");
-
-                string sql = $"SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN '{dateFrom}' AND '{dateTo}' GROUP BY date, shiftType ORDER BY date;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                conn.Open();
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                chartEmployeeStatistics.Titles.Clear();
-
-                chartEmployeeStatistics.Series.Add("Morning");
-                chartEmployeeStatistics.Series.Add("Afternoon");
-                chartEmployeeStatistics.Series.Add("Evening");
-
-                while (dr.Read())
-                {
-                    if(dr[2].ToString() == "Morning")
-                    {
-                        chartEmployeeStatistics.Series["Morning"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        chartEmployeeStatistics.Series["Afternoon"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
-                    }
-                    else
-                    {
-                        chartEmployeeStatistics.Series["Evening"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
-                    }
-
-                    // Displays one employee at a time
-                   Refresh();
+                // Calculate difference between two dates (number of days)
+                TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
+                if (nrDays.Days > 15) {
+                    MessageBox.Show("You can view a maximum of 15 days");
                 }
-                // Close connection to db
-                conn.Close();
+                else
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(connStr))
+                        {
+                            string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY date, shiftType ORDER BY date;";
+                            // Create command object
+                            MySqlCommand cmd = new MySqlCommand(sql, conn);
+                            // Parameters
+                            cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                            cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                            // Open db connection
+                            conn.Open();
+                            // Excute query via command object
+
+                            MySqlDataReader dr = cmd.ExecuteReader();
+
+                            // Series
+                            chartEmployeeStatistics.Series.Add("Morning");
+                            chartEmployeeStatistics.Series.Add("Afternoon");
+                            chartEmployeeStatistics.Series.Add("Evening");
+
+                            // Title
+                            chartEmployeeStatistics.Titles.Add($"Number of employees per shift between {dateFrom} and {dateTo}");
+
+                            // Made it fit all data
+                            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                            while (dr.Read())
+                            {
+                                if (dr[2].ToString() == "Morning")
+                                {
+                                    chartEmployeeStatistics.Series["Morning"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
+                                }
+                                else if (dr[2].ToString() == "Afternoon")
+                                {
+                                    chartEmployeeStatistics.Series["Afternoon"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
+                                }
+                                else
+                                {
+                                    chartEmployeeStatistics.Series["Evening"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
+                                }
+                                Console.WriteLine(dr[0].ToString() + dr[1].ToString() + dr[2].ToString());
+                                // Displays one employee at a time
+                                Refresh();
+                            }
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
         }
     }
