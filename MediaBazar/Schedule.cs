@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using System.Net;
+using System.Net.Mail;
 
 namespace MediaBazar
 {
@@ -17,23 +20,16 @@ namespace MediaBazar
 
         public Schedule(int employeeId, Shift shiftType, DateTime dateTime)
         {
-
+            this.employeeId = employeeId;
+            this.shiftType = shiftType;
+            this.dateTime = dateTime;
         }
-        public int ScheduleId()
+        public int ScheduleId { get; set; }
+        public int EmployeeId { get; set; }
+        public ShiftStatus Status { get; set; }
+        public override string ToString()
         {
-
-        }
-        public int EmployeeId()
-        {
-
-        }
-        public ShiftStatus Status()
-        {
-
-        }
-        public string ToString()
-        {
-
+            return $"{employeeId}: {dateTime}-{shiftType}-{status}";
         }
 
     }
