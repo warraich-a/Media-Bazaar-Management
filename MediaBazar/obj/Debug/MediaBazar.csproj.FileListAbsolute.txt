@@ -1,0 +1,66 @@
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.csprojAssemblyReference.cache
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.AdministratorForm.resources
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.LogInForm.resources
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.DepotWorkerForm.resources
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.ManagerForm.resources
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.Properties.Resources.resources
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.csproj.GenerateResource.cache
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MediaBazar.exe.config
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MediaBazar.exe
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MediaBazar.pdb
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MetroFramework.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MetroFramework.Fonts.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.csproj.CopyComplete
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.exe
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.pdb
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MySql.Data.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\Google.Protobuf.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\BouncyCastle.Crypto.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\Ubiety.Dns.Core.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\Renci.SshNet.dll
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\bin\Debug\MySql.Data.xml
+D:\Semester 2\Project\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.Modify_data.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MediaBazar.exe.config
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MediaBazar.exe
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MediaBazar.pdb
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MetroFramework.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MySql.Data.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\Google.Protobuf.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\Renci.SshNet.dll
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\bin\Debug\MySql.Data.xml
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.csprojAssemblyReference.cache
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.AdministratorForm.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.LogInForm.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.DepotWorkerForm.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.ManagerForm.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.Modify_data.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.Properties.Resources.resources
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.csproj.GenerateResource.cache
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.csproj.CopyComplete
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.exe
+C:\Users\dropd\Desktop\Project\r2da-project-Anas\MediaBazar\obj\Debug\MediaBazar.pdb
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MediaBazar.exe.config
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MediaBazar.exe
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MediaBazar.pdb
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MetroFramework.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MySql.Data.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\Google.Protobuf.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\Renci.SshNet.dll
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\bin\Debug\MySql.Data.xml
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.csprojAssemblyReference.cache
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.AdministratorForm.resources
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.LogInForm.resources
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.DepotWorkerForm.resources
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.ManagerForm.resources
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.Modify_data.resources
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.Properties.Resources.resources
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.csproj.GenerateResource.cache
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.csproj.CopyComplete
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.exe
+C:\Users\dropd\Desktop\r2da-project-Denys\MediaBazar\obj\Debug\MediaBazar.pdb
