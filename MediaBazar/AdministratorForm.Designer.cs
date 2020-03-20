@@ -131,7 +131,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -606,6 +606,7 @@
             this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
             this.cbxCategoryStatistics.Size = new System.Drawing.Size(566, 28);
             this.cbxCategoryStatistics.TabIndex = 41;
+            this.cbxCategoryStatistics.SelectedIndexChanged += new System.EventHandler(this.cbxCategoryStatistics_SelectedIndexChanged);
             // 
             // metroTabPage2
             // 
@@ -1219,16 +1220,16 @@
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // label23
+            // lblUsername
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label23.Location = new System.Drawing.Point(291, 60);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(97, 24);
-            this.label23.TabIndex = 50;
-            this.label23.Text = "Username";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.lblUsername.Location = new System.Drawing.Point(291, 60);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(97, 24);
+            this.lblUsername.TabIndex = 50;
+            this.lblUsername.Text = "Username";
             // 
             // label19
             // 
@@ -1272,7 +1273,7 @@
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.label23);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.metroTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AdministratorForm";
@@ -1359,7 +1360,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbEmpShift;
         private System.Windows.Forms.DateTimePicker dtpTimeForShift;

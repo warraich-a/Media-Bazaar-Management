@@ -16,6 +16,11 @@ namespace MediaBazar
         // Current user
         private string currentUser;
 
+        public string CurrentUser
+        {
+            get { return this.currentUser; }
+        }
+
         /* Reset code variables */
         private string to;
 
@@ -93,7 +98,7 @@ namespace MediaBazar
             if (dr.Read())
             {
                 // Save current user's name
-                SaveCurrentUser(dr[0].ToString() + dr[1].ToString());
+                SaveCurrentUser(dr[0].ToString() + " " +  dr[1].ToString());
                 areCredentialsCorrect = true;
             }
             else
@@ -155,11 +160,15 @@ namespace MediaBazar
             MailMessage message = new MailMessage();
 
             // Since email's of user isn't real, I'm using my own email
-            to = "rawan.ad7@gmail.com";
+            //to = "rawan.ad7@gmail.com";
+            // For testing purposes
+            to = email;
             // Email sender
             from = "mediabazaar2@gmail.com";
             password = "Sendcode43";
-            messageBody = $"<h4>Hello {GetUserName(email)},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
+            //messageBody = $"<h4>Hello {GetUserName(email)},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
+            // For testing purposes
+            messageBody = $"<h4>Hello {GetUserName("CheyenneConway@mediabazaar.com")},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
 
             message.To.Add(to);
             message.From = new MailAddress(from);

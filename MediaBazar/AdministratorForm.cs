@@ -21,6 +21,9 @@ namespace MediaBazar
         public AdministratorForm()
         {
             InitializeComponent();
+
+            // Add user name
+            lblUsername.Text = mediaBazaar.CurrentUser;
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -41,8 +44,8 @@ namespace MediaBazar
 
         private void btnLoadChart_Click(object sender, EventArgs e)
         {
-            string dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
-            string dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
+            string dateFrom;
+            string dateTo;
 
             // Clear graph
             chartEmployeeStatistics.Series.Clear();
@@ -97,6 +100,10 @@ namespace MediaBazar
             {
                 try
                 {
+                    // Select dates
+                    dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
+                    dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
+
                     using (MySqlConnection conn = new MySqlConnection(connStr))
                     {
                         // Series
@@ -149,6 +156,10 @@ namespace MediaBazar
                 {
                     try
                     {
+                        // Select dates
+                        dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
+                        dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
+
                         using (MySqlConnection conn = new MySqlConnection(connStr))
                         {
                             string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY date, shiftType ORDER BY date;";
@@ -188,7 +199,6 @@ namespace MediaBazar
                                 {
                                     chartEmployeeStatistics.Series["Evening"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
                                 }
-                                Console.WriteLine(dr[0].ToString() + dr[1].ToString() + dr[2].ToString());
                                 // Displays one employee at a time
                                 Refresh();
                             }
@@ -203,6 +213,31 @@ namespace MediaBazar
                         MessageBox.Show(ex.Message);
                     }
                 }
+            }
+        }
+
+        private void cbxCategoryStatistics_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Hourly wage per employee
+            if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee")
+            {
+                // disable date picking
+                dtpFrom.Enabled = false;
+                dtpTo.Enabled = false;
+            }
+            // salary per employee between two dates
+            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Salary per employee")
+            {
+                // Enable date picking
+                dtpFrom.Enabled = true;
+                dtpTo.Enabled = true;
+            }
+            // Number employees per shift between two dates
+            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Number of employees per shift")
+            {
+                // Enable date picking
+                dtpFrom.Enabled = true;
+                dtpTo.Enabled = true;
             }
         }
     }
