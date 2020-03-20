@@ -8,9 +8,9 @@ namespace MediaBazar
 {
     public enum Roles
     {
-        ADMINISTRATOR,
-        MANAGER,
-        EMPLOYEE,
-        DEPOTWORKER
+        Administrator,
+        Manager,
+        DepotWorker,
+        Employee
     }
 }

@@ -93,9 +93,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.cs" />
-    <Compile Include="Schedule.cs" />
-    <Compile Include="Shift.cs" />
-    <Compile Include="ShiftStatus.cs" />
     <EmbeddedResource Include="AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
