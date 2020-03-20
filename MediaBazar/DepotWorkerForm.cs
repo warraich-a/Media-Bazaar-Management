@@ -17,6 +17,9 @@ namespace MediaBazar
         public DepotWorkerForm()
         {
             InitializeComponent();
+
+            // Add user name
+            lblUsername.Text = mediaBazaar.CurrentUser;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

@@ -45,10 +45,11 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
-                        this.Hide();
                         ManagerForm managerForm = new ManagerForm();
 
                         managerForm.ShowDialog();
+
+                        this.Hide();
                         this.Close();
                     }
                     else
@@ -60,10 +61,10 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
-                        this.Hide();
                         AdministratorForm adminForm = new AdministratorForm();
 
                         adminForm.ShowDialog();
+                        this.Hide();
                         this.Close();
                     }
                     else
@@ -75,10 +76,10 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
-                        this.Hide();
                         DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
 
                         depotWorkerForm.ShowDialog();
+                        this.Hide();
                         this.Close();
                     }
                     else
@@ -96,9 +97,10 @@ namespace MediaBazar
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
             ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
-            this.Hide();
 
             forgetPasswordForm.Show();
+
+            this.Hide();
         }
     }
 }
