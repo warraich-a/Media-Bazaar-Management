@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,19 +11,64 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 
-
 namespace MediaBazar
 {
     public partial class AdministratorForm : Form
     {
         // Create instance of mediaBazaar or use made instance
         MediaBazaar mediaBazaar = MediaBazaar.Instance;
+
+        public class ComboboxItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
+
         public AdministratorForm()
         {
+           
             InitializeComponent();
 
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
+
+            //string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            //try
+            //{
+            //    using (MySqlConnection conn = new MySqlConnection(connStr))
+            //    {
+
+            //        string sql = "SELECT * FROM person WHERE role='Employee' OR role='DepotWorker'";
+
+            //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+            //        conn.Open();
+
+            //        MySqlDataReader reader = cmd.ExecuteReader();
+
+            //        while (reader.Read())
+            //        {
+            //            ComboboxItem item = new ComboboxItem();
+            //            item.Text = reader.GetString("firstName") + " " + reader.GetString("lastName") + " - " + reader.GetString("role");
+            //            item.Value = reader.GetString("id");
+            //            cbEmpShift.Items.Add(item);
+            //        }
+
+            //        conn.Close();
+            //    }
+            //}
+            //catch (MySqlException ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -166,6 +211,7 @@ namespace MediaBazar
                             // Create command object
                             MySqlCommand cmd = new MySqlCommand(sql, conn);
                             // Parameters
+
                             cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
                             cmd.Parameters.AddWithValue("@dateTo", dateTo);
                             // Open db connection
@@ -238,6 +284,94 @@ namespace MediaBazar
                 // Enable date picking
                 dtpFrom.Enabled = true;
                 dtpTo.Enabled = true;
+            }
+        }
+
+
+        private void btnAssignShift_Click_1(object sender, EventArgs e)
+        {
+            bool writeindb = false;
+            int count = -1;
+            string shifttype = "";
+            int employeedId = -1;
+            DateTime date = DateTime.Today;
+            // MessageBox.Show((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+
+                    string sql = "SELECT MAX(id) FROM schedule;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    Object result = cmd.ExecuteScalar();
+                    if (result != null) { count = Convert.ToInt32(result) + 1; }
+                    //MessageBox.Show(count.ToString());
+                    if (cbEmpShift.SelectedItem != null)
+                    {
+                        if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+                        {
+                            employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+                            date = dtpTimeForShift.Value;
+                            if (radioButton1.Checked)
+                            {
+                                Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
+                                shifttype = "Morning";
+                            }
+                            if (radioButton2.Checked)
+                            {
+                                Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
+                                shifttype = "Afternoon";
+                            }
+                            if (radioButton3.Checked)
+                            {
+                                Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
+                                shifttype = "Evening";
+                            }
+                            writeindb = true;
+                        }
+                        else MessageBox.Show("Please select a shift type!");
+                    }
+                    else MessageBox.Show("Please select an employee!");
+                    conn.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            if (writeindb)
+            {
+                connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(connStr))
+                    {
+                        string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES (@id,@emploeeid,@shifttype,@date,@statusofshift);";
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = sql;
+                        cmd.Prepare();
+                        cmd.Parameters.AddWithValue("@id", count);
+                        cmd.Parameters.AddWithValue("@emploeeid", employeedId);
+                        cmd.Parameters.AddWithValue("@shifttype", shifttype);
+                        cmd.Parameters.AddWithValue("@date", date);
+                        cmd.Parameters.AddWithValue("@statusofshift", "Assigned");
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

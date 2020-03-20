@@ -157,7 +157,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(205, 31);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(1031, 656);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -716,6 +716,7 @@
             this.btnAssignShift.TabIndex = 55;
             this.btnAssignShift.Text = "Assign";
             this.btnAssignShift.UseVisualStyleBackColor = false;
+            this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click_1);
             // 
             // label6
             // 
