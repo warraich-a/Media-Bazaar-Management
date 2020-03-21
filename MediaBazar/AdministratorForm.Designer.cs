@@ -606,6 +606,7 @@
             this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
             this.cbxCategoryStatistics.Size = new System.Drawing.Size(566, 28);
             this.cbxCategoryStatistics.TabIndex = 41;
+            this.cbxCategoryStatistics.SelectedIndexChanged += new System.EventHandler(this.cbxCategoryStatistics_SelectedIndexChanged);
             // 
             // metroTabPage2
             // 
