@@ -17,86 +17,54 @@ namespace MediaBazar
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;";
         MySqlConnection conn;
         int id;
-        AdministratorForm form;
-        MediaBazaar mediaBazaar;
-
-        public Modify_data(int givenId, AdministratorForm f)
+       
+        public Modify_data(int givenId)
         {
             InitializeComponent();
             conn = new MySqlConnection(connectionString);
-            form = f;
             id = givenId;
             ReturnPeopleFromDB(id);
-            cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
         }
-        // a new constructor add a new employee
-        public Modify_data(MediaBazaar mediaBazaar, AdministratorForm f)
-        {
-            form = f;
-            InitializeComponent();
-            this.mediaBazaar = mediaBazaar;
-            cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
 
-        }
         private void btnAddNewEmployee_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (MessageBox.Show("Do you want to Add this person?", "Add Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    //mediaBazaar.AddPerson("Aqib", "Butt", dtpBirthDateEmp.Value, "Jannismunnestraat", 28, "5731HJ", "Geldrop", 8, cbxRole.SelectedItem.ToString());
-                    string firstName = tbFirstName.Text;
-                    string lastName = tbLastName.Text;
-                    DateTime dateOfBirth = dtpBirthDateEmp.Value;
-                    string streetName = tbxStreetName.Text;
-                    int houseNr = Convert.ToInt32(tbxHouseNr.Text);
-                    string zipcode = tbZipcode.Text;
-                    string city = tbCity.Text;
-                    double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
-                    mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
-                    form.RefreshData();
-                    
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("The person is not added");
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Have you pressed the correct button?");
-            }
-                
+            string firstName = tbFirstName.Text;
+            string lastName = tbLastName.Text;
+            DateTime dateOfBirth = dtpBirthDateEmp.Value;
+            string streetName = tbxStreetName.Text;
+            int houseNr = Convert.ToInt32(tbxHouseNr.Text);
+            string zipcode = tbZipcode.Text;
+            string city = tbCity.Text;
+            double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
+            
+            UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage);
+
+            AdministratorForm a = new AdministratorForm();
+            a.Show();
+            this.Close();
+
            
         }
 
-        public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage)
         {
 
             try
             {
-                string sql = "UPDATE person SET firstName = @firstName, lastName = @lastName, dateOfBirth = @DOB, streetName = @streetName, houseNr = @houseNr, city = @city, zipcode = @zipcode, hourlyWage = @hourlyWage, role = @role WHERE id ='" + id + "';";
+                string sql = "UPDATE person SET firstName = @firstName, lastName = @lastName, dateOfBirth = @DOB, streetName = @streetName, houseNr = @houseNr, city = @city, zipcode = @zipcode, hourlyWage = @hourlyWage WHERE id ='" + id + "';";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                if (givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0)
-                {
-                    System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@firstName", givenFirstName);
-                    cmd.Parameters.AddWithValue("@lastName", givenSecondName);
-                    cmd.Parameters.AddWithValue("@DOB", givenDOB);
-                    cmd.Parameters.AddWithValue("@streetName", givenStreetName);
-                    cmd.Parameters.AddWithValue("@houseNr", givenHouseNr);
-                    cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
-                    cmd.Parameters.AddWithValue("@city", givenCity);
-                    cmd.Parameters.AddWithValue("@role", roles);
-                    cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    System.Windows.Forms.MessageBox.Show("The information has been updated");
-                }
+                cmd.Parameters.AddWithValue("@firstName", givenFirstName);
+                cmd.Parameters.AddWithValue("@lastName", givenSecondName);
+                cmd.Parameters.AddWithValue("@DOB", givenDOB);
+                cmd.Parameters.AddWithValue("@streetName", givenStreetName);
+                cmd.Parameters.AddWithValue("@houseNr", givenHouseNr);
+                cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
+                cmd.Parameters.AddWithValue("@city", givenCity);
+                //cmd.Parameters.AddWithValue("@role", Roles.EMPLOYEE);
+                cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
             }
 
             finally
@@ -109,7 +77,7 @@ namespace MediaBazar
         {
             try
             {
-                string sql = "SELECT firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE id = @id "; // a query of what we want
+                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE id = @id "; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
@@ -118,18 +86,33 @@ namespace MediaBazar
                
                 while (dr.Read())
                 {
-                    tbFirstName.Text = dr[0].ToString();
-                    tbLastName.Text = dr[1].ToString();
-                    dtpBirthDateEmp.Value = Convert.ToDateTime(dr[2]);
-                    tbxStreetName.Text = dr[3].ToString();
-                    tbxHouseNr.Text = dr[4].ToString();
-                    tbCity.Text = dr[5].ToString();
+                    tbFirstName.Text = dr[1].ToString();
 
-                    tbZipcode.Text = dr[6].ToString();
-                    tbxHourlyWage.Text = dr[7].ToString();
-                  
-                    cbxRole.Text = dr[8].ToString();
+                    tbLastName.Text = dr[2].ToString();
+                    dtpBirthDateEmp.Value = Convert.ToDateTime(dr[3]);
+                    tbxStreetName.Text = dr[4].ToString();
+                    tbxHouseNr.Text = dr[5].ToString();
+                    tbCity.Text = dr[6].ToString();
+
+                    tbZipcode.Text = dr[7].ToString();
+                    tbxHourlyWage.Text = dr[8].ToString();
+                    cbxRole.Items.Add(dr[9].ToString());                   
                 }
+               /* foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+                {
+                    if (item.Id == id)
+                    {
+                        tbFirstName.Text = item.FirstName;
+                        tbLastName.Text = item.LastName;
+                        tbxHourlyWage.Text = item.HourlyWage.ToString(); ;
+                        tbxHouseNr.Text = item.HouseNr.ToString();
+                        tbxStreetName.Text = item.StreetName;
+                        tbZipcode.Text = item.Zipcode;
+                        tbCity.Text = item.City;
+                        dtpBirthDateEmp.Value = item.DateOfBirth;
+                        cbxRole.Items.Add(item.Role);
+                    }
+                }*/
             }
             finally
             {
@@ -139,41 +122,6 @@ namespace MediaBazar
 
         private void Modify_data_Load(object sender, EventArgs e)
         {
-           
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string firstName = tbFirstName.Text;
-                string lastName = tbLastName.Text;
-                DateTime dateOfBirth = dtpBirthDateEmp.Value;
-                string streetName = tbxStreetName.Text;
-                int houseNr = Convert.ToInt32(tbxHouseNr.Text);
-                string zipcode = tbZipcode.Text;
-                string city = tbCity.Text;
-                double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
-
-
-                if (MessageBox.Show("Are you sure", "Remove Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
-
-                    form.RefreshData();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Information is not updated");
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-
 
         }
     }

@@ -25,7 +25,7 @@ namespace MediaBazar
         {
 
         }
-        public Person(int givenId, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole)
+        public Person(int givenId, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage)
         {
             id = givenId;
             FirstName = givenFirstName;
@@ -37,7 +37,7 @@ namespace MediaBazar
             Zipcode = givenZipcode;
             hourlyWage = givenHourlyWage;
             City = givenCity;
-            role = givenRole;
+            //role = givenRole;
         }
 
         //first Name
@@ -147,8 +147,20 @@ namespace MediaBazar
         
         public string Email(string firstName, string lastName)
         {
-          return email = $"{firstName + lastName}@mediabazaar.com";
-        
+            int i = 0;
+
+            if ($"{firstName + lastName}@mediabazaar.com" != email)
+            {
+                i++;
+                email = $"{firstName + lastName}{i}@mediabazaar.com";
+
+            }
+            else
+            {
+                email = $"{firstName + lastName}@mediabazaar.com";
+            }
+            return email;
+
         }
 
         //to get the role
@@ -178,7 +190,7 @@ namespace MediaBazar
         }
         public override string ToString()
         {
-            return $"ID: {id}\r\nName:{firstName} {lastName}\r\nEmail: {email}\r\nBirthdate {dateOfBirth}\r\nADDRESS\r\nStreet {streetName} {houseNr} {zipcode} {city}\r\nHourly Wage:{hourlyWage} \r\nRole: {role}";
+            return this.firstName + " " + this.lastName; 
         }
     }
 }

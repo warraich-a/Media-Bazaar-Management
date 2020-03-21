@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazar
 {
-    public enum Roles
+    public enum ShiftStatus
     {
-        ADMINISTRATOR,
-        MANAGER,
-        EMPLOYEE,
-        DEPOTWORKER
+        ASSIGNED,
+        PROPOSED,
+        ACCEPTED,
+        REJECTED
     }
 }

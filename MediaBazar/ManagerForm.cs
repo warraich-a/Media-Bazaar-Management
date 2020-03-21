@@ -12,13 +12,15 @@ namespace MediaBazar
 {
     public partial class ManagerForm : Form
     {
-        MediaBazaar mediaBazaar = new MediaBazaar();
-        ListViewItem listB;
-        public ManagerForm()
+        MediaBazaar mediaBazaar;
+        public ManagerForm(MediaBazaar mediaBazaar)
         {
             InitializeComponent();
-            RefreshData();
+            this.mediaBazaar = mediaBazaar;
+
+
         }
+
 
         private void lvEmployeesManager_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -45,7 +47,7 @@ namespace MediaBazar
 
         }
 
-       
+        ListViewItem listB;
         public void RefreshData()
         {
 
@@ -63,8 +65,11 @@ namespace MediaBazar
                 listB.SubItems.Add(item.City);
                 listB.SubItems.Add(Convert.ToString(item.HourlyWage));
                 listB.SubItems.Add(Convert.ToString(item.Role));
+
                 LV2.Items.Add(listB);
+
             }
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -75,9 +80,12 @@ namespace MediaBazar
 
         private void btnShowEmp_Click(object sender, EventArgs e)
         {
-            string name = tbEmpNameToFind.Text;
-            MessageBox.Show($"{mediaBazaar.foundedPerson(name).ToString()}");
-           
+            RefreshData();
+        }
+
+        private void metroTabPage4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

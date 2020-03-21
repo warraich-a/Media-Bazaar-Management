@@ -47,7 +47,6 @@
             this.dtpBirthDateEmp = new System.Windows.Forms.DateTimePicker();
             this.btnAddNewEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbLastName
@@ -90,7 +89,7 @@
             this.cbxRole.Items.AddRange(new object[] {
             "Administrator",
             "Manager",
-            "DepotWorker",
+            "Depot Worker",
             "Employee"});
             this.cbxRole.Location = new System.Drawing.Point(131, 383);
             this.cbxRole.Name = "cbxRole";
@@ -207,9 +206,9 @@
             this.btnAddNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewEmployee.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddNewEmployee.Location = new System.Drawing.Point(303, 433);
+            this.btnAddNewEmployee.Location = new System.Drawing.Point(131, 433);
             this.btnAddNewEmployee.Name = "btnAddNewEmployee";
-            this.btnAddNewEmployee.Size = new System.Drawing.Size(109, 32);
+            this.btnAddNewEmployee.Size = new System.Drawing.Size(281, 32);
             this.btnAddNewEmployee.TabIndex = 47;
             this.btnAddNewEmployee.Text = "Add";
             this.btnAddNewEmployee.UseVisualStyleBackColor = false;
@@ -225,26 +224,11 @@
             this.label3.TabIndex = 46;
             this.label3.Text = "Date of Birth";
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUpdate.Location = new System.Drawing.Point(131, 433);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(101, 32);
-            this.btnUpdate.TabIndex = 65;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // Modify_data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 499);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbFirstName);
@@ -293,6 +277,5 @@
         private System.Windows.Forms.DateTimePicker dtpBirthDateEmp;
         private System.Windows.Forms.Button btnAddNewEmployee;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnUpdate;
     }
 }

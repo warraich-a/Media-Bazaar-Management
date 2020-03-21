@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MediaBazar
 {
-    public enum Roles
-    {
-        ADMINISTRATOR,
-        MANAGER,
-        EMPLOYEE,
-        DEPOTWORKER
+    public enum Shift {
+        MORNING,
+        AFTERNOON,
+        EVENING
+
     }
 }
