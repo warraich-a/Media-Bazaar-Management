@@ -180,5 +180,9 @@ namespace MediaBazar
         {
             return $"ID: {id}\r\nName:{firstName} {lastName}\r\nEmail: {email}\r\nBirthdate {dateOfBirth}\r\nADDRESS\r\nStreet {streetName} {houseNr} {zipcode} {city}\r\nHourly Wage:{hourlyWage} \r\nRole: {role}";
         }
+        public string GetFullName()
+        {
+            return this.firstName + " " + this.lastName;
+        }
     }
 }

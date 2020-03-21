@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazar
 {
-    enum ShiftStatus
+    public enum ShiftStatus
     {
         ASSIGNED, PROPOSED, ACCEPTED, REJECTED
     }
