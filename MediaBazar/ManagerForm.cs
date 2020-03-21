@@ -14,14 +14,19 @@ namespace MediaBazar
 {
     public partial class ManagerForm : Form
     {
+
         // Create instance of mediaBazaar or use made instance
         MediaBazaar mediaBazaar = MediaBazaar.Instance;
+        ListViewItem listB;
         public ManagerForm()
         {
             InitializeComponent();
 
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
+
+            RefreshData();
+
         }
 
         private void label21_Click(object sender, EventArgs e)
@@ -242,6 +247,33 @@ namespace MediaBazar
                 // Enable date picking
                 dtpFrom.Enabled = true;
                 dtpTo.Enabled = true;
+            }
+        }
+
+        private void btnShowEmp_Click(object sender, EventArgs e)
+        {
+            string name = tbEmpNameToFind.Text;
+            MessageBox.Show($"{mediaBazaar.foundedPerson(name).ToString()}");
+        }
+
+        public void RefreshData()
+        {
+
+            LV2.Items.Clear();
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+            {
+                listB = new ListViewItem(Convert.ToString(item.Id));
+                listB.SubItems.Add(item.FirstName);
+                listB.SubItems.Add(item.LastName);
+                listB.SubItems.Add(item.GetEmail);
+                listB.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                listB.SubItems.Add(item.StreetName);
+                listB.SubItems.Add(Convert.ToString(item.HouseNr));
+                listB.SubItems.Add(item.Zipcode);
+                listB.SubItems.Add(item.City);
+                listB.SubItems.Add(Convert.ToString(item.HourlyWage));
+                listB.SubItems.Add(Convert.ToString(item.Role));
+                LV2.Items.Add(listB);
             }
         }
     }

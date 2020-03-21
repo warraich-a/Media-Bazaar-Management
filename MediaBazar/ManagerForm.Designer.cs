@@ -28,18 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mtbManager = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label21 = new System.Windows.Forms.Label();
             this.btnShowEmp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,6 +71,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.LV2 = new System.Windows.Forms.ListView();
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mtbManager.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
@@ -98,7 +103,7 @@
             this.mtbManager.ItemSize = new System.Drawing.Size(263, 40);
             this.mtbManager.Location = new System.Drawing.Point(-4, 104);
             this.mtbManager.Name = "mtbManager";
-            this.mtbManager.SelectedIndex = 1;
+            this.mtbManager.SelectedIndex = 0;
             this.mtbManager.Size = new System.Drawing.Size(1056, 685);
             this.mtbManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mtbManager.Style = MetroFramework.MetroColorStyle.Silver;
@@ -111,7 +116,7 @@
             this.metroTabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.metroTabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.metroTabPage2.CausesValidation = false;
-            this.metroTabPage2.Controls.Add(this.listView2);
+            this.metroTabPage2.Controls.Add(this.LV2);
             this.metroTabPage2.Controls.Add(this.label21);
             this.metroTabPage2.Controls.Add(this.btnShowEmp);
             this.metroTabPage2.Controls.Add(this.label1);
@@ -126,55 +131,6 @@
             this.metroTabPage2.Text = "Employees";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.Click += new System.EventHandler(this.metroTabPage2_Click);
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader17,
-            this.columnHeader10,
-            this.columnHeader14});
-            this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(30, 73);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(719, 419);
-            this.listView2.TabIndex = 43;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Name";
-            this.columnHeader7.Width = 150;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.DisplayIndex = 2;
-            this.columnHeader8.Text = "Date Of Birth";
-            this.columnHeader8.Width = 120;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.DisplayIndex = 1;
-            this.columnHeader9.Text = "E-mail";
-            this.columnHeader9.Width = 150;
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Address";
-            this.columnHeader17.Width = 150;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Hourly wage";
-            this.columnHeader10.Width = 100;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Role";
             // 
             // label21
             // 
@@ -194,18 +150,19 @@
             this.btnShowEmp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowEmp.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnShowEmp.Location = new System.Drawing.Point(770, 218);
+            this.btnShowEmp.Location = new System.Drawing.Point(667, 467);
             this.btnShowEmp.Name = "btnShowEmp";
             this.btnShowEmp.Size = new System.Drawing.Size(130, 37);
             this.btnShowEmp.TabIndex = 40;
             this.btnShowEmp.Text = "Show";
             this.btnShowEmp.UseVisualStyleBackColor = false;
+            this.btnShowEmp.Click += new System.EventHandler(this.btnShowEmp_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(766, 76);
+            this.label1.Location = new System.Drawing.Point(186, 481);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 20);
             this.label1.TabIndex = 39;
@@ -214,7 +171,7 @@
             // tbEmpNameToFind
             // 
             this.tbEmpNameToFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmpNameToFind.Location = new System.Drawing.Point(770, 143);
+            this.tbEmpNameToFind.Location = new System.Drawing.Point(379, 475);
             this.tbEmpNameToFind.Name = "tbEmpNameToFind";
             this.tbEmpNameToFind.Size = new System.Drawing.Size(255, 29);
             this.tbEmpNameToFind.TabIndex = 38;
@@ -317,19 +274,19 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
+            chartArea2.Area3DStyle.Enable3D = true;
+            chartArea2.Area3DStyle.IsClustered = true;
+            chartArea2.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend2);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(54, 163);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series2);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 370);
             this.chartEmployeeStatistics.TabIndex = 60;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -587,6 +544,83 @@
             this.label19.TabIndex = 54;
             this.label19.Text = "Logged in as manager";
             // 
+            // LV2
+            // 
+            this.LV2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader22,
+            this.columnHeader7,
+            this.columnHeader19,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader20,
+            this.columnHeader17,
+            this.columnHeader21,
+            this.columnHeader23,
+            this.columnHeader16,
+            this.columnHeader18});
+            this.LV2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LV2.GridLines = true;
+            this.LV2.HideSelection = false;
+            this.LV2.Location = new System.Drawing.Point(18, 35);
+            this.LV2.Name = "LV2";
+            this.LV2.Size = new System.Drawing.Size(1019, 425);
+            this.LV2.TabIndex = 44;
+            this.LV2.UseCompatibleStateImageBehavior = false;
+            this.LV2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "ID";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "First Name";
+            this.columnHeader7.Width = 127;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "Last Name";
+            this.columnHeader19.Width = 130;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "E-mail";
+            this.columnHeader8.Width = 140;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Date Of Birth";
+            this.columnHeader9.Width = 107;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Street Name";
+            this.columnHeader20.Width = 62;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "House Nr";
+            this.columnHeader17.Width = 83;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "City";
+            this.columnHeader21.Width = 80;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Zipcode";
+            this.columnHeader23.Width = 75;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Hourly wage";
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Role";
+            this.columnHeader18.Width = 103;
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,11 +674,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private System.Windows.Forms.ListView listView5;
@@ -655,8 +684,6 @@
         private System.Windows.Forms.Button btnLogout;
         private MetroFramework.Controls.MetroTabControl mtbManager;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.Label lblFilterBy;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
@@ -666,5 +693,17 @@
         private System.Windows.Forms.Button btnLoadChart;
         private System.Windows.Forms.Label lb;
         private System.Windows.Forms.ComboBox cbxCategoryStatistics;
+        private System.Windows.Forms.ListView LV2;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
     }
 }
