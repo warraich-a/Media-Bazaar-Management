@@ -1,36 +1,84 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using System.Net;
-using System.Net.Mail;
 
 namespace MediaBazar
 {
-    class Schedule
+    public class Schedule
     {
-        private int scheduleId;
+        private int sheduleId;
         private int employeeId;
         private Shift shiftType;
         private DateTime dateTime;
         private ShiftStatus status;
-        private static int idSeeder;
 
-        public Schedule(int employeeId, Shift shiftType, DateTime dateTime)
+        public static int idSeeder;
+
+        public int SheduleId
         {
-            this.employeeId = employeeId;
-            this.shiftType = shiftType;
-            this.dateTime = dateTime;
+            get
+            {
+                return this.sheduleId;
+            }
+            private set
+            {
+                this.sheduleId = value;
+            }
         }
-        public int ScheduleId { get; set; }
-        public int EmployeeId { get; set; }
-        public ShiftStatus Status { get; set; }
-        public override string ToString()
+        public int EmployeeId
         {
-            return $"{employeeId}: {dateTime}-{shiftType}-{status}";
+            get
+            {
+                return this.employeeId;
+            }
+            private set
+            {
+                this.employeeId = value;
+            }
+        }
+        public Shift ShiftType
+        {
+            get
+            {
+                return this.shiftType;
+            }
+            private set
+            {
+                this.shiftType = value;
+            }
+        }
+        public DateTime DATETime
+        {
+            get
+            {
+                return this.dateTime;
+            }
+            private set
+            {
+                this.dateTime = value;
+            }
+        }
+        public ShiftStatus Status
+        {
+            get
+            {
+                return this.status;
+            }
+            private set
+            {
+                this.status = value;
+            }
         }
 
+        public Schedule(int sheduleID, int givenEmpId, Shift givenShiftType, DateTime givenDate, ShiftStatus givenStatus)
+        {
+            this.SheduleId = sheduleID;
+            this.EmployeeId = givenEmpId;
+            this.ShiftType = givenShiftType;
+            this.Status = givenStatus;
+            this.DATETime = givenDate;
+        }
     }
 }

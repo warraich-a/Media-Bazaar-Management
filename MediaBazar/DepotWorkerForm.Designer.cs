@@ -50,7 +50,7 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblUsername = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.metroTabPage4.SuspendLayout();
@@ -266,16 +266,16 @@
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
             // 
-            // lblUsername
+            // label18
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.lblUsername.Location = new System.Drawing.Point(292, 58);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(97, 24);
-            this.lblUsername.TabIndex = 46;
-            this.lblUsername.Text = "Username";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label18.Location = new System.Drawing.Point(292, 58);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(97, 24);
+            this.label18.TabIndex = 46;
+            this.label18.Text = "Username";
             // 
             // pictureBox4
             // 
@@ -309,7 +309,7 @@
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.label18);
             this.Name = "DepotWorkerForm";
             this.Text = "Depot Worker";
             this.metroTabPage4.ResumeLayout(false);
@@ -343,7 +343,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ColumnHeader columnHeader9;
