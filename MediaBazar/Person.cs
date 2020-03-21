@@ -57,8 +57,8 @@ namespace MediaBazar
             }
         }
 
-
         //id
+
         public int Id { get { return this.id; } }
         //second name
         public string LastName
@@ -106,8 +106,8 @@ namespace MediaBazar
                 }
             }
         }
-
         //zipcode
+
         public string Zipcode
         {
             get
@@ -138,7 +138,7 @@ namespace MediaBazar
             }
         }
 
-        // date of birth 
+        //
         public DateTime DateOfBirth { get { return this.dateOfBirth; } set { dateOfBirth = value; } }
         // to get the email
         public string GetEmail { get { return email; } }
