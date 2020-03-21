@@ -38,6 +38,7 @@ namespace MediaBazar
             cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
 
         }
+        // To add a new employee in the system
         private void btnAddNewEmployee_Click(object sender, EventArgs e)
         {
             try
@@ -67,10 +68,9 @@ namespace MediaBazar
             {
                 MessageBox.Show("Have you pressed the correct button?");
             }
-                
-           
         }
 
+        // a method to modify the data
         public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
         {
 
@@ -105,6 +105,7 @@ namespace MediaBazar
             }
         }
 
+        // getting a person's data by specific ID
         public void ReturnPeopleFromDB(int id)
         {
             try
@@ -142,6 +143,7 @@ namespace MediaBazar
            
         }
 
+        //Updating a selected person's data
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -156,7 +158,7 @@ namespace MediaBazar
                 double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
 
 
-                if (MessageBox.Show("Are you sure", "Remove Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
 
@@ -173,8 +175,6 @@ namespace MediaBazar
 
                 MessageBox.Show(ex.Message);
             }
-
-
         }
     }
 }

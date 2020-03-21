@@ -26,7 +26,6 @@ namespace MediaBazar
         // to add a person in a database
         public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
         {
-           
             string givenEmail;
             string newPassword;
             bool personExist = false;

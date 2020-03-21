@@ -43,10 +43,9 @@ namespace MediaBazar
             Add.Show();
         }
 
- 
+        // to show the data in a list view item
         public void RefreshData()
         {
-
             listView1.Items.Clear();
             foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
             {
@@ -65,6 +64,7 @@ namespace MediaBazar
             }
         }
 
+        // To remove an employee from the system
         private void btnRemoveEmp_Click(object sender, EventArgs e)
         {
            try
@@ -85,21 +85,19 @@ namespace MediaBazar
             {
                 MessageBox.Show("No employee is selected");
             }
-           
         }
-
-
         private void btnModifyStack_Click(object sender, EventArgs e)
         {
 
         }
 
+        // to modify a selected person's data
         private void btnModifyEmp_Click(object sender, EventArgs e)
         {
             try
             {
                 int id = Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text);
-                Modify_data m = new Modify_data(id, this);
+                Modify_data m = new Modify_data(id, this); // sending the id to modify data form through the parameters
                 m.Show();
             }
             catch (Exception)
