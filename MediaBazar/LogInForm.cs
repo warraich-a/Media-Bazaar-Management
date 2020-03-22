@@ -96,9 +96,9 @@ namespace MediaBazar
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
-            //orgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
+            ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
 
-            //forgetPasswordForm.Show();
+            forgetPasswordForm.Show();
 
             this.Hide();
         }

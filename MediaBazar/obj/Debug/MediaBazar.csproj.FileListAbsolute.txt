@@ -62,3 +62,35 @@ C:\Users\dropd\r2da-project\MediaBazar\obj\Debug\MediaBazar.Modify_data.resource
 C:\Users\dropd\r2da-project\MediaBazar\obj\Debug\MediaBazar.Properties.Resources.resources
 C:\Users\dropd\r2da-project\MediaBazar\obj\Debug\MediaBazar.csproj.GenerateResource.cache
 C:\Users\dropd\r2da-project\MediaBazar\obj\Debug\MediaBazar.csproj.CopyComplete
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MediaBazar.exe.config
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MediaBazar.exe
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MediaBazar.pdb
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.WinForms.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.Wpf.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MetroFramework.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MetroFramework.Fonts.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MySql.Data.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\Google.Protobuf.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\BouncyCastle.Crypto.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\Ubiety.Dns.Core.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\Renci.SshNet.dll
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.pdb
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.xml
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.WinForms.pdb
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.WinForms.xml
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.Wpf.pdb
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\LiveCharts.Wpf.xml
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\bin\Debug\MySql.Data.xml
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.csprojAssemblyReference.cache
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.AdministratorForm.resources
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.LogInForm.resources
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.DepotWorkerForm.resources
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.ManagerForm.resources
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.Modify_data.resources
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.Properties.Resources.resources
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.csproj.GenerateResource.cache
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.csproj.CopyComplete
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.exe
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.pdb
+E:\Rawan\Fontys\Courses\ICT & SOFTWARE ENGINEERING SEMESTER 2\Project\R2DA_project\r2da-project\MediaBazar\obj\Debug\MediaBazar.ResetPasswordForm.resources
