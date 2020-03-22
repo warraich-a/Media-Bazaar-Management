@@ -41,38 +41,37 @@ namespace MediaBazar
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
 
-            //string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
-            //try
-            //{
-            //    using (MySqlConnection conn = new MySqlConnection(connStr))
-            //    {
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
 
-            //        string sql = "SELECT * FROM person WHERE role='Employee' OR role='DepotWorker'";
+                    string sql = "SELECT * FROM person WHERE role='Employee' OR role='DepotWorker'";
 
-            //        MySqlCommand cmd = new MySqlCommand(sql, conn);
-            //        conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
 
-            //        MySqlDataReader reader = cmd.ExecuteReader();
+                    MySqlDataReader reader = cmd.ExecuteReader();
 
-            //        while (reader.Read())
-            //        {
-            //            ComboboxItem item = new ComboboxItem();
-            //            item.Text = reader.GetString("firstName") + " " + reader.GetString("lastName") + " - " + reader.GetString("role");
-            //            item.Value = reader.GetString("id");
-            //            cbEmpShift.Items.Add(item);
-            //        }
-
-            //        conn.Close();
-            //    }
-            //}
-            //catch (MySqlException ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                    while (reader.Read())
+                    {
+                        ComboboxItem item = new ComboboxItem();
+                        item.Text = reader.GetString("firstName") + " " + reader.GetString("lastName") + " - " + reader.GetString("role");
+                        item.Value = reader.GetString("id");
+                        cbEmpShift.Items.Add(item);
+                    }
+                    conn.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -409,6 +408,7 @@ namespace MediaBazar
                                 shifttype = "Evening";
                             }
                             writeindb = true;
+                            MessageBox.Show("You have assigned the shift!");
                         }
                         else MessageBox.Show("Please select a shift type!");
                     }
