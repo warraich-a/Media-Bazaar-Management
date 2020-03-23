@@ -49,8 +49,6 @@ namespace MediaBazar
                         nr++;
                     }
                     rdr.Close();
-
-
                 }
             }
             catch (MySqlException ex)
@@ -85,8 +83,6 @@ namespace MediaBazar
                         nr++;
                     }
                     rdr.Close();
-
-
                 }
             }
             catch (MySqlException ex)
