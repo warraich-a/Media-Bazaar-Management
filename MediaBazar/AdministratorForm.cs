@@ -212,7 +212,6 @@ namespace MediaBazar
             }
             catch (Exception)
             {
-
                 MessageBox.Show("No employee is selected");
             }
 
