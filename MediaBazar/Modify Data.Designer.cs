@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbFirstName = new System.Windows.Forms.TextBox();
@@ -49,20 +48,6 @@
             this.btnAddNewEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUpdate.Location = new System.Drawing.Point(133, 435);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(101, 32);
-            this.btnUpdate.TabIndex = 85;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // tbLastName
             // 
@@ -221,9 +206,9 @@
             this.btnAddNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewEmployee.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddNewEmployee.Location = new System.Drawing.Point(305, 435);
+            this.btnAddNewEmployee.Location = new System.Drawing.Point(133, 435);
             this.btnAddNewEmployee.Name = "btnAddNewEmployee";
-            this.btnAddNewEmployee.Size = new System.Drawing.Size(109, 32);
+            this.btnAddNewEmployee.Size = new System.Drawing.Size(281, 32);
             this.btnAddNewEmployee.TabIndex = 67;
             this.btnAddNewEmployee.Text = "Add";
             this.btnAddNewEmployee.UseVisualStyleBackColor = false;
@@ -244,7 +229,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 487);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbFirstName);
@@ -272,8 +256,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbFirstName;

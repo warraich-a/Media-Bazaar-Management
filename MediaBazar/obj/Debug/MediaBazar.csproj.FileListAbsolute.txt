@@ -1,6 +1,5 @@
 C:\Users\anasw\r2da-project\MediaBazar\obj\Debug\MediaBazar.csprojAssemblyReference.cache
 C:\Users\anasw\r2da-project\MediaBazar\obj\Debug\MediaBazar.AdministratorForm.resources
-C:\Users\anasw\r2da-project\MediaBazar\obj\Debug\MediaBazar.ForgetPasswordForm.resources
 C:\Users\anasw\r2da-project\MediaBazar\obj\Debug\MediaBazar.LogInForm.resources
 C:\Users\anasw\r2da-project\MediaBazar\obj\Debug\MediaBazar.DepotWorkerForm.resources
 C:\Users\anasw\r2da-project\MediaBazar\obj\Debug\MediaBazar.ManagerForm.resources
