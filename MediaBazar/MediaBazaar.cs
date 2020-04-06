@@ -10,7 +10,7 @@ using System.Net.Mail;
 
 namespace MediaBazar
 {
-   public  class MediaBazaar
+    public class MediaBazaar
     {
         private static MediaBazaar instance = null;
         // Current user
@@ -18,10 +18,15 @@ namespace MediaBazar
 
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
+        // Person person = new Person();
 
         Person person = new Person();
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
+
         MySqlConnection conn;
+
+        Database_handler database;
+
 
         public string CurrentUser
         {
@@ -91,6 +96,7 @@ namespace MediaBazar
             // Create connection string to db
             MySqlConnection conn = new MySqlConnection("server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none");
  
+
             string sql = $"SELECT firstName, lastName, email, password FROM person WHERE email = @email AND password = @password";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             // Parameters
@@ -101,11 +107,11 @@ namespace MediaBazar
 
             MySqlDataReader dr = cmd.ExecuteReader();
 
-            bool areCredentialsCorrect  = false;
+            bool areCredentialsCorrect = false;
             if (dr.Read())
             {
                 // Save current user's name
-                SaveCurrentUser(dr[0].ToString() + " " +  dr[1].ToString());
+                SaveCurrentUser(dr[0].ToString() + " " + dr[1].ToString());
                 areCredentialsCorrect = true;
             }
             else
@@ -277,176 +283,43 @@ namespace MediaBazar
                 return ex.Message;
             }
         }
-
-
         public MediaBazaar()
         {
+            database = new Database_handler();
             conn = new MySqlConnection(connectionString);
         }
+
         // to add a person in a database
         public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
         {
-            string givenEmail;
-            string newPassword;
-            bool personExist = false;
-            try
-            {
-                foreach (Person item in people) // to check if the Person with the same name already exists
-                {
-                    if (item.FirstName + item.LastName == givenFirstName + givenSecondName)
-                    {
-                        personExist = true;
-                    }
-                }
-
-                if (personExist == false)
-                {
-                    givenEmail = person.Email(givenFirstName, givenSecondName);
-                    newPassword = person.SetPassword();
-                    string sql = "INSERT INTO person(firstName, lastName, email, dateOfBirth, streetName, houseNr,zipcode, city, hourlyWage, password, role) VALUES(@firstName, @lastName, @email, @DOB, @streetName, @houseNr, @zipcode, @city, @hourlyWage, @password, @role)";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    if (givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0)
-                    {
-                        System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@firstName", givenFirstName);
-                        cmd.Parameters.AddWithValue("@lastName", givenSecondName);
-                        cmd.Parameters.AddWithValue("@email", givenEmail);
-                        cmd.Parameters.AddWithValue("@DOB", givenDOB);
-                        cmd.Parameters.AddWithValue("@streetName", givenStreetName);
-                        cmd.Parameters.AddWithValue("@houseNr", givenHouseNr);
-                        cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
-                        cmd.Parameters.AddWithValue("@city", givenCity);
-                        cmd.Parameters.AddWithValue("@role", roles);
-                        cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
-                        cmd.Parameters.AddWithValue("@password", newPassword);
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        System.Windows.Forms.MessageBox.Show("Person has been Added to the System");
-                    }
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("Person with the same name already exists");
-                }
-            }
-
-            finally
-            {
-                conn.Close();
-            }
+            database.AddPersonToDatabase(givenFirstName, givenSecondName, givenDOB, givenStreetName, givenHouseNr, givenZipcode, givenCity, givenHourlyWage, roles);
         }
 
         // to remove a person
         public void RemovePerson(int personId)
         {
-            string sql = "";
-            bool fkDataDeleted = false;
-            try
-            {
-                MySqlCommand cmd;
-                // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
-                if (sql != "DELETE FROM schedule WHERE employeeId = @id")
-                {
-                    sql = "DELETE FROM schedule WHERE employeeId = @id";
-                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                    cmd.Parameters.AddWithValue("@id", personId);
-                    conn.Open();  // this must be before the execution which is just under this
-                    cmd.ExecuteNonQuery();
-                    fkDataDeleted = true;
-                }
-                if (fkDataDeleted) // removing the data from the main table
-                {
-                    sql = "DELETE FROM person WHERE id = @id"; // a query of what we want
-                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                    cmd.Parameters.AddWithValue("@id", personId);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
+            database.PersonToRemoveFromDataBase(personId);
         }
+        // to search a person by name
         public Person foundedPerson(string givenName)
         {
-            Person g = null;
-            try
-            {
-                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE firstName = @name"; // Getting the person by name
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@name", givenName);
-                conn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Roles r = Roles.Employee;
-                    if (dr[9].ToString() == "Administrator")
-                    {
-                        r = Roles.Administrator;
-                    }
-                    else if (dr[9].ToString() == "Manager")
-                    {
-                        r = Roles.Manager;
-                    }
-                    else if (dr[9].ToString() == "DepotWorker")
-                    {
-                        r = Roles.DepotWorker;
-                    }
-
-                    g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r);
-                }
-                return g;
-            }
-            finally
-            {
-                conn.Close();
-            }
+            return database.foundedPersonFromDatabase(givenName);
         }
-
+        // to get the list of people from database
         public List<Person> ReturnPeopleFromDB()
         {
-            people = new List<Person>();
-            try
-            {
-                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
-                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-
-                conn.Open();  // this must be before the execution which is just under this
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Roles r = Roles.Employee;
-                    if (dr[9].ToString() == "Administrator")
-                    {
-                        r = Roles.Administrator;
-                    }
-                    else if (dr[9].ToString() == "Manager")
-                    {
-                        r = Roles.Manager;
-                    }
-                    else if (dr[9].ToString() == "DepotWorker")
-                    {
-                        r = Roles.DepotWorker;
-                    }
-                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r); // has to specify the order like this
-                    people.Add(g);
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return people;
+            return database.ReturnPeopleFromDB();
         }
-
-
-        public List<Person> GetPeople()
+        // to modify the data of an existing employee
+        public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
         {
-            return this.people;
-         }
+            database.ModifyData(id, givenFirstName, givenSecondName, givenDOB, givenStreetName, givenHouseNr, givenZipcode, givenCity, givenHourlyWage, roles);
+        }
+        // to get the existing data of an existing employee to modify
+        public Person ReturnPerson(int id)
+        {
+            return database.ReturnPersonFromList(id);
+        }
 
         public List<Schedule> VeiwSchedule()
         {
@@ -492,10 +365,6 @@ namespace MediaBazar
                     {
                         b = ShiftStatus.REJECTED;
                     }
-
-
-
-
                     Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
                     schedules.Add(g);
                 }
