@@ -20,7 +20,7 @@ namespace MediaBazar
         List<Schedule> schedules = new List<Schedule>();
 
         Person person = new Person();
-        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;";
+        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
         MySqlConnection conn;
 
         public string CurrentUser
@@ -49,7 +49,7 @@ namespace MediaBazar
         public string GetUserType(string email)
         {
             string role = "";
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -89,7 +89,7 @@ namespace MediaBazar
         public bool CheckCredentials(string email, string password)
         {
             // Create connection string to db
-            MySqlConnection conn = new MySqlConnection("server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;");
+            MySqlConnection conn = new MySqlConnection("server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none");
  
             string sql = $"SELECT firstName, lastName, email, password FROM person WHERE email = @email AND password = @password";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -131,7 +131,7 @@ namespace MediaBazar
         /* Reset password */
         public string ResetPassword(string email, string password)
         {
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -167,15 +167,15 @@ namespace MediaBazar
             MailMessage message = new MailMessage();
 
             // Since email's of user isn't real, I'm using my own email
-            //to = "rawan.ad7@gmail.com";
+            to = "rawan.ad7@gmail.com";
             // For testing purposes
-            to = email;
+            //to = email;
             // Email sender
             from = "mediabazaar2@gmail.com";
             password = "Sendcode43";
-            //messageBody = $"<h4>Hello {GetUserName(email)},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
+            messageBody = $"<h4>Hello {GetUserName(email)},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
             // For testing purposes
-            messageBody = $"<h4>Hello {GetUserName("CheyenneConway@mediabazaar.com")},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
+            //messageBody = $"<h4>Hello {GetUserName("CheyenneConway@mediabazaar.com")},</h4> <p> You recently requested to reset your password for your Media Bazaar account. <p> Here is your reset code {randomCode}</p> <p>If you did not request a password reset, please ignore this email or reply to let us know.</p> <p> Best Regards, </p> <p>Media Bazaar</p>";
 
             message.To.Add(to);
             message.From = new MailAddress(from);
@@ -206,7 +206,7 @@ namespace MediaBazar
         /* Get user name */
         public string GetUserName(string email)
         {
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -242,7 +242,7 @@ namespace MediaBazar
 
         public string DoesUserExist(string email)
         {
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
