@@ -22,10 +22,10 @@ namespace MediaBazar
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            //AdministratorForm a = new AdministratorForm();
-            //a.Show();
+           /* AdministratorForm a = new AdministratorForm();
+            a.Show();*/
 
-            // Get login details
+           // Get login details
             string email = tbxEmail.Text;
             string password = tbxPassword.Text;
 
@@ -61,10 +61,10 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
-                        this.Hide();
                         AdministratorForm adminForm = new AdministratorForm();
 
                         adminForm.ShowDialog();
+                        this.Hide();
                         this.Close();
                     }
                     else
