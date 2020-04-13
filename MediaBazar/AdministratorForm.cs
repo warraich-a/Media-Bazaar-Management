@@ -268,7 +268,6 @@ namespace MediaBazar
                             // Displays one employee at a time
                             Refresh();
                         }
-                        conn.Close();
                     }
                 }
                 catch (MySqlException ex)
@@ -279,6 +278,7 @@ namespace MediaBazar
                 {
                     MessageBox.Show(ex.Message);
                 }
+                // Add finally
             }
 
             // salary per employee between two dates
