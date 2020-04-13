@@ -5,17 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using System.Net;
-using System.Net.Mail;
+
 
 namespace MediaBazar
 {
+<<<<<<< HEAD
     public class MediaBazaar
+=======
+    public class MediaBazaar :IConvertible<MediaBazaar>
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
     {
-        private static MediaBazaar instance = null;
-        // Current user
-        private string currentUser;
+        List<Person> people = new List<Person>();
 
+        Person person = new Person();
+        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;";
+        MySqlConnection conn;
+
+<<<<<<< HEAD
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
         // Person person = new Person();
@@ -29,26 +35,31 @@ namespace MediaBazar
 
 
         public string CurrentUser
+=======
+        public MediaBazaar()
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
         {
-            get { return this.currentUser; }
+            conn = new MySqlConnection(connectionString);
+           // ReturnPeopleFromDB();
         }
 
-        /* Reset code variables */
-        private string to;
-
-        public static MediaBazaar Instance
+        // to add a person in a database
+        public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
         {
-            get
+            string givenEmail;
+            string newPassword;
+            bool personExist = false;
+            try
             {
-                if (instance == null)
+                foreach (Person item in people) // to check if the Person with the same name already exists
                 {
-                    instance = new MediaBazaar();
+                    if (item.FirstName + item.LastName == givenFirstName + givenSecondName)
+                    {  
+                        personExist = true;
+                    }
                 }
-                return instance;
-            }
-        }
 
-
+<<<<<<< HEAD
         /* Login */
         /* Get User Type */
         public string GetUserType(string email)
@@ -58,27 +69,37 @@ namespace MediaBazar
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
+=======
+                if(personExist == false)
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
                 {
-                    // Get user role
-                    string sql = $"SELECT role FROM person WHERE email = @email AND role != 'Employee'";
+                    givenEmail = person.Email(givenFirstName, givenSecondName);
+                    newPassword = person.SetPassword();
+                    string sql = "INSERT INTO person(firstName, lastName, email, dateOfBirth, streetName, houseNr,zipcode, city, hourlyWage, password, role) VALUES(@firstName, @lastName, @email, @DOB, @streetName, @houseNr, @zipcode, @city, @hourlyWage, @password, @role)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    // Parameters
-                    cmd.Parameters.AddWithValue("@email", email);
-
-                    conn.Open();
-
-                    Object result = cmd.ExecuteScalar();
-
-                    if (result != null)
+                    if(givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0 )
                     {
-                        role = result.ToString();
+                        System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
                     }
                     else
                     {
-                        role = "User does not exist";
+                        cmd.Parameters.AddWithValue("@firstName", givenFirstName);
+                        cmd.Parameters.AddWithValue("@lastName", givenSecondName);
+                        cmd.Parameters.AddWithValue("@email", givenEmail);
+                        cmd.Parameters.AddWithValue("@DOB", givenDOB);
+                        cmd.Parameters.AddWithValue("@streetName", givenStreetName);
+                        cmd.Parameters.AddWithValue("@houseNr", givenHouseNr);
+                        cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
+                        cmd.Parameters.AddWithValue("@city", givenCity);
+                        cmd.Parameters.AddWithValue("@role", roles);
+                        cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
+                        cmd.Parameters.AddWithValue("@password", newPassword);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        System.Windows.Forms.MessageBox.Show("Person has been Added to the System");
                     }
-                    return role;
                 }
+<<<<<<< HEAD
             }
             catch (MySqlException ex)
             {
@@ -115,22 +136,24 @@ namespace MediaBazar
                 areCredentialsCorrect = true;
             }
             else
+=======
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Person with the same name already exists");
+                } 
+            } 
+            
+            finally
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
             {
-                areCredentialsCorrect = false;
+                conn.Close();
             }
-            conn.Close();
-            return areCredentialsCorrect;
         }
 
-        private void SaveCurrentUser(string name)
+        // to remove a person
+        public void RemovePerson(int personId)
         {
-            this.currentUser = name;
-            Console.WriteLine(name);
-        }
-
-        /* Logout */
-        public void LogOut()
-        {
+<<<<<<< HEAD
             this.currentUser = null;
         }
 
@@ -138,22 +161,32 @@ namespace MediaBazar
         public string ResetPassword(string email, string password)
         {
             string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
+=======
+            string sql = "";
+            bool fkDataDeleted = false;
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
+                MySqlCommand cmd;
+                // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
+                if (sql != "DELETE FROM schedule WHERE employeeId = @id") 
                 {
-                    string sql = "UPDATE person SET password= @password WHERE email = @email;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    // Parameters
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@password", password);
-
-                    conn.Open();
-
+                    sql = "DELETE FROM schedule WHERE employeeId = @id";
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", personId);
+                    conn.Open();  // this must be before the execution which is just under this
                     cmd.ExecuteNonQuery();
-                    return "Password was successfully updated";
+                    fkDataDeleted = true;
+                }
+                if (fkDataDeleted) // removing the data from the main table
+                {
+                    sql = "DELETE FROM person WHERE id = @id"; // a query of what we want
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", personId);
+                    cmd.ExecuteNonQuery();
                 }
             }
+<<<<<<< HEAD
             catch (MySqlException ex)
             {
                 return ex.Message;
@@ -204,84 +237,97 @@ namespace MediaBazar
                 return "code sent successfully";
             }
             catch (Exception ex)
+=======
+            finally
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
             {
-                return ex.Message;
+                conn.Close();
+            }
+        }
+        public Person foundedPerson(string givenName)
+        {
+<<<<<<< HEAD
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
+=======
+            Person g = null;
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
+            try
+            {
+                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE firstName = @name"; // Getting the person by name
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", givenName);
+                conn.Open();  
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Roles r = Roles.Employee;
+                    if(dr[9].ToString() == "Administrator")
+                    {
+                        r = Roles.Administrator;
+                    }
+                    else if(dr[9].ToString() == "Manager")
+                    {
+                        r = Roles.Manager;
+                    }
+                    else if(dr[9].ToString() == "DepotWorker")
+                    {
+                        r = Roles.DepotWorker;
+                    }
+
+                    g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r);
+                }
+                return g;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 
-        /* Get user name */
-        public string GetUserName(string email)
+        public List<Person> ReturnPeopleFromDB()
         {
+<<<<<<< HEAD
             string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
+=======
+            people = new List<Person>();
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
+                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    // Get user name
-                    string sql = $"SELECT firstName FROM person WHERE email = @email";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    // Parameters
-                    cmd.Parameters.AddWithValue("@email", email);
-
-                    conn.Open();
-
-                    object result = cmd.ExecuteScalar();
-
-                    string username = "";
-
-                    if (result != null)
+                    Roles r = Roles.Employee;
+                    if (dr[9].ToString() == "Administrator")
                     {
-                        username = result.ToString();
+                        r = Roles.Administrator;
                     }
-                    return username;
+                    else if (dr[9].ToString() == "Manager")
+                    {
+                        r = Roles.Manager;
+                    }
+                    else if (dr[9].ToString() == "DepotWorker")
+                    {
+                        r = Roles.DepotWorker;
+                    }
+                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r); // has to specify the order like this
+                    people.Add(g);
                 }
             }
-            catch (MySqlException ex)
+            finally
             {
-                return ex.Message;
+                conn.Close();
             }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            return people;
         }
 
-        public string DoesUserExist(string email)
+     
+        public List<Person> GetPeople()
         {
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;SslMode=none";
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-                    // Get user name
-                    string sql = "SELECT email FROM person WHERE email = @email && role != 'Employee'";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    // Parameters
-                    cmd.Parameters.AddWithValue("@email", email);
-
-                    conn.Open();
-
-                    object result = cmd.ExecuteScalar();
-
-                    // if result is empty so user doesn't exists
-                    if (result != null)
-                    {
-                        return "User found";
-                    }
-                    else
-                    {
-                        return "User not found";
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                return ex.Message;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            return this.people;
         }
         public MediaBazaar()
         {

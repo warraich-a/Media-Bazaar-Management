@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data;
-using MySql.Data.MySqlClient;
-
 
 namespace MediaBazar
 {
     public partial class AdministratorForm : Form
     {
+<<<<<<< HEAD
 
         // Create instance of mediaBazaar or use made instance
         MediaBazaar mediaBazaar = MediaBazaar.Instance;
@@ -96,10 +94,14 @@ namespace MediaBazar
             return nr;
         }
 
+=======
+        MediaBazaar mediaBazaar = new MediaBazaar();
+        ListViewItem list;
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
         public AdministratorForm()
         {
-           
             InitializeComponent();
+<<<<<<< HEAD
 
             RefreshData();
 
@@ -138,7 +140,11 @@ namespace MediaBazar
             {
                 MessageBox.Show(ex.Message);
             }
+=======
+            RefreshData();
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
         }
+        
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
@@ -217,51 +223,20 @@ namespace MediaBazar
 
         }
 
-
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void metroTabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mediaBazaar.LogOut();
-            MessageBox.Show("Logged out successfully");
-            this.Hide();
-            LogInForm formLogIn = new LogInForm();
-            formLogIn.ShowDialog();
-            this.Close();
+
         }
 
-        private void btnLoadChart_Click(object sender, EventArgs e)
+        private void metroTabPage2_Click(object sender, EventArgs e)
         {
-            string dateFrom;
-            string dateTo;
 
-            // Clear graph
-            chartEmployeeStatistics.Series.Clear();
-            chartEmployeeStatistics.Titles.Clear();
+        }
 
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
-            // Hourly wage per employee
-            if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee")
-            {
-                try
-                {
-                    using (MySqlConnection conn = new MySqlConnection(connStr))
-                    {
-                        // Title
-                        chartEmployeeStatistics.Titles.Add("Hourly wage per employee chart");
-                        // Series
-                        chartEmployeeStatistics.Series.Add("Hourly Wage");
+        private void btnAddNewEmployee_Click(object sender, EventArgs e)
+        {
 
-                        string sql = "SELECT firstName, lastName, hourlyWage FROM person";
-
-                        MySqlCommand cmd = new MySqlCommand(sql, conn);
-                        conn.Open();
-
-                        chartEmployeeStatistics.DataSource = cmd;
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        // Made it fit all data
-                        chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-
+<<<<<<< HEAD
                         while (dr.Read())
                         {
                             chartEmployeeStatistics.Series["Hourly Wage"].Points.AddXY(dr[0].ToString() + " " + dr[1].ToString(), dr[2]);
@@ -280,166 +255,66 @@ namespace MediaBazar
                 }
                 // Add finally
             }
+=======
+            Modify_data Add = new Modify_data(mediaBazaar, this);
+            Add.Show();
+        }
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
 
-            // salary per employee between two dates
-            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Salary per employee")
+        // to show the data in a list view item
+        public void RefreshData()
+        {
+            listView1.Items.Clear();
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
             {
-                try
-                {
-                    // Select dates
-                    dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
-                    dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
-
-                    using (MySqlConnection conn = new MySqlConnection(connStr))
-                    {
-                        // Series
-                        chartEmployeeStatistics.Series.Add("Salary");
-
-                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s INNER JOIN person p ON p.id = s.employeeId WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY s.employeeId";
-
-                        MySqlCommand cmd = new MySqlCommand(sql, conn);
-                        conn.Open();
-
-                        chartEmployeeStatistics.DataSource = cmd;
-                        // Parameters
-                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
-                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        // Made it fit all data
-                        chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-                        // Title
-                        chartEmployeeStatistics.Titles.Add($"Salary per employee chart between {dateFrom} and {dateTo}");
-
-                        while (dr.Read())
-                        {
-                            chartEmployeeStatistics.Series["Salary"].Points.AddXY(dr[0].ToString() + " " + dr[1].ToString(), dr[2]);
-                            // Displays one employee at a time
-                            Refresh();
-                        }
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                list = new ListViewItem(Convert.ToString(item.Id));
+                list.SubItems.Add(item.FirstName);
+                list.SubItems.Add(item.LastName);
+                list.SubItems.Add(item.GetEmail);
+                list.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                list.SubItems.Add(item.StreetName);
+                list.SubItems.Add(Convert.ToString(item.HouseNr));
+                list.SubItems.Add(item.Zipcode);
+                list.SubItems.Add(item.City);
+                list.SubItems.Add(Convert.ToString(item.HourlyWage));
+                list.SubItems.Add(Convert.ToString(item.Role));
+                listView1.Items.Add(list);
             }
+        }
 
-            // Number employees per shift between two dates
-            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Number of employees per shift")
+        // To remove an employee from the system
+        private void btnRemoveEmp_Click(object sender, EventArgs e)
+        {
+           try
             {
-                // Calculate difference between two dates (number of days)
-                TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
-                if (nrDays.Days > 15) {
-                    MessageBox.Show("You can view a maximum of 15 days");
+                int id = Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text);
+                if (MessageBox.Show("Do you want to remove this person?", "Remove Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    mediaBazaar.RemovePerson(Convert.ToInt32(id));
+                    MessageBox.Show("Person is removed");
+                    RefreshData();
                 }
                 else
                 {
-                    try
-                    {
-                        // Select dates
-                        dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
-                        dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
-
-                        using (MySqlConnection conn = new MySqlConnection(connStr))
-                        {
-                            string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY date, shiftType ORDER BY date;";
-                            // Create command object
-                            MySqlCommand cmd = new MySqlCommand(sql, conn);
-                            // Parameters
-
-                            cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
-                            cmd.Parameters.AddWithValue("@dateTo", dateTo);
-                            // Open db connection
-                            conn.Open();
-                            // Excute query via command object
-
-                            MySqlDataReader dr = cmd.ExecuteReader();
-
-                            // Series
-                            chartEmployeeStatistics.Series.Add("Morning");
-                            chartEmployeeStatistics.Series.Add("Afternoon");
-                            chartEmployeeStatistics.Series.Add("Evening");
-
-                            // Title
-                            chartEmployeeStatistics.Titles.Add($"Number of employees per shift between {dateFrom} and {dateTo}");
-
-                            // Made it fit all data
-                            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-
-                            while (dr.Read())
-                            {
-                                if (dr[2].ToString() == "Morning")
-                                {
-                                    chartEmployeeStatistics.Series["Morning"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
-                                }
-                                else if (dr[2].ToString() == "Afternoon")
-                                {
-                                    chartEmployeeStatistics.Series["Afternoon"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
-                                }
-                                else
-                                {
-                                    chartEmployeeStatistics.Series["Evening"].Points.AddXY((dr[1]), Convert.ToInt32(dr[0]));
-                                }
-                                // Displays one employee at a time
-                                Refresh();
-                            }
-                        }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    MessageBox.Show("Person is not removed");
                 }
             }
-        }
-
-        private void cbxCategoryStatistics_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Hourly wage per employee
-            if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee")
+            catch (Exception ex)
             {
-                // disable date picking
-                dtpFrom.Enabled = false;
-                dtpTo.Enabled = false;
-            }
-            // salary per employee between two dates
-            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Salary per employee")
-            {
-                // Enable date picking
-                dtpFrom.Enabled = true;
-                dtpTo.Enabled = true;
-            }
-            // Number employees per shift between two dates
-            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Number of employees per shift")
-            {
-                // Enable date picking
-                dtpFrom.Enabled = true;
-                dtpTo.Enabled = true;
+                MessageBox.Show("No employee is selected");
             }
         }
-
-
-        private void btnAssignShift_Click_1(object sender, EventArgs e)
+        private void btnModifyStack_Click(object sender, EventArgs e)
         {
-            bool writeindb = false;
-            int count = -1;
-            string shifttype = "";
-            int employeedId = -1;
-            DateTime date = DateTime.Today;
-            // MessageBox.Show((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+
+        }
+
+        // to modify a selected person's data
+        private void btnModifyEmp_Click(object sender, EventArgs e)
+        {
             try
             {
+<<<<<<< HEAD
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
 
@@ -487,9 +362,15 @@ namespace MediaBazar
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+=======
+                int id = Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text);
+                Modify_data m = new Modify_data(id, this); // sending the id to modify data form through the parameters
+                m.Show();
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
             }
-            if (writeindb)
+            catch (Exception)
             {
+<<<<<<< HEAD
                 DateTime dayonly = date.Date;
                 // checknrshift - check for less than 5 employees on one shift
                 // checknrperson - check for one employee shifts in one day
@@ -592,7 +473,12 @@ namespace MediaBazar
                     list.SubItems.Add(Convert.ToString(item.ShiftType));
                     lvSchedule.Items.Add(list);
                 }
+=======
+
+                MessageBox.Show("No employee is selected");
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
             }
+                  
         }
 
         private void cbNameOfEmp_Click(object sender, EventArgs e)
