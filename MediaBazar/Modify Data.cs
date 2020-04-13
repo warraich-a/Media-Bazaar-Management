@@ -21,7 +21,7 @@ namespace MediaBazar
         public Modify_data(int givenId, AdministratorForm f, MediaBazaar mediaBazaar)
         {
             InitializeComponent();
-            conn = new MySqlConnection(connectionString);
+           
             form = f;
             id = givenId;
             this.mediaBazaar = mediaBazaar;
