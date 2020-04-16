@@ -47,41 +47,40 @@
             this.dtpBirthDateEmp = new System.Windows.Forms.DateTimePicker();
             this.btnAddNewEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(131, 67);
+            this.tbLastName.Location = new System.Drawing.Point(133, 69);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(281, 20);
-            this.tbLastName.TabIndex = 64;
+            this.tbLastName.TabIndex = 84;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(12, 70);
+            this.label7.Location = new System.Drawing.Point(14, 72);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 63;
+            this.label7.TabIndex = 83;
             this.label7.Text = "Last Name";
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(131, 20);
+            this.tbFirstName.Location = new System.Drawing.Point(133, 22);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(281, 20);
-            this.tbFirstName.TabIndex = 62;
+            this.tbFirstName.TabIndex = 82;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(14, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 61;
+            this.label1.TabIndex = 81;
             this.label1.Text = "First Name";
             // 
             // cbxRole
@@ -92,113 +91,113 @@
             "Manager",
             "DepotWorker",
             "Employee"});
-            this.cbxRole.Location = new System.Drawing.Point(131, 383);
+            this.cbxRole.Location = new System.Drawing.Point(133, 385);
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(281, 21);
-            this.cbxRole.TabIndex = 60;
+            this.cbxRole.TabIndex = 80;
             // 
             // tbxHourlyWage
             // 
-            this.tbxHourlyWage.Location = new System.Drawing.Point(131, 331);
+            this.tbxHourlyWage.Location = new System.Drawing.Point(133, 333);
             this.tbxHourlyWage.Name = "tbxHourlyWage";
             this.tbxHourlyWage.Size = new System.Drawing.Size(281, 20);
-            this.tbxHourlyWage.TabIndex = 59;
+            this.tbxHourlyWage.TabIndex = 79;
             // 
             // lblHourlywage
             // 
             this.lblHourlywage.AutoSize = true;
             this.lblHourlywage.BackColor = System.Drawing.Color.Transparent;
-            this.lblHourlywage.Location = new System.Drawing.Point(10, 337);
+            this.lblHourlywage.Location = new System.Drawing.Point(12, 339);
             this.lblHourlywage.Name = "lblHourlywage";
             this.lblHourlywage.Size = new System.Drawing.Size(66, 13);
-            this.lblHourlywage.TabIndex = 58;
+            this.lblHourlywage.TabIndex = 78;
             this.lblHourlywage.Text = "Hourly wage";
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
             this.lblRole.BackColor = System.Drawing.Color.Transparent;
-            this.lblRole.Location = new System.Drawing.Point(12, 386);
+            this.lblRole.Location = new System.Drawing.Point(14, 388);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(29, 13);
-            this.lblRole.TabIndex = 57;
+            this.lblRole.TabIndex = 77;
             this.lblRole.Text = "Role";
             // 
             // tbCity
             // 
-            this.tbCity.Location = new System.Drawing.Point(131, 284);
+            this.tbCity.Location = new System.Drawing.Point(133, 286);
             this.tbCity.Name = "tbCity";
             this.tbCity.Size = new System.Drawing.Size(281, 20);
-            this.tbCity.TabIndex = 56;
+            this.tbCity.TabIndex = 76;
             // 
             // lblCity
             // 
             this.lblCity.AutoSize = true;
             this.lblCity.BackColor = System.Drawing.Color.Transparent;
-            this.lblCity.Location = new System.Drawing.Point(12, 290);
+            this.lblCity.Location = new System.Drawing.Point(14, 292);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(24, 13);
-            this.lblCity.TabIndex = 55;
+            this.lblCity.TabIndex = 75;
             this.lblCity.Text = "City";
             // 
             // tbZipcode
             // 
-            this.tbZipcode.Location = new System.Drawing.Point(131, 241);
+            this.tbZipcode.Location = new System.Drawing.Point(133, 243);
             this.tbZipcode.Name = "tbZipcode";
             this.tbZipcode.Size = new System.Drawing.Size(281, 20);
-            this.tbZipcode.TabIndex = 54;
+            this.tbZipcode.TabIndex = 74;
             // 
             // lblZipcode
             // 
             this.lblZipcode.AutoSize = true;
             this.lblZipcode.BackColor = System.Drawing.Color.Transparent;
-            this.lblZipcode.Location = new System.Drawing.Point(12, 247);
+            this.lblZipcode.Location = new System.Drawing.Point(14, 249);
             this.lblZipcode.Name = "lblZipcode";
             this.lblZipcode.Size = new System.Drawing.Size(46, 13);
-            this.lblZipcode.TabIndex = 53;
+            this.lblZipcode.TabIndex = 73;
             this.lblZipcode.Text = "Zipcode";
             // 
             // tbxHouseNr
             // 
-            this.tbxHouseNr.Location = new System.Drawing.Point(131, 198);
+            this.tbxHouseNr.Location = new System.Drawing.Point(133, 200);
             this.tbxHouseNr.Name = "tbxHouseNr";
             this.tbxHouseNr.Size = new System.Drawing.Size(281, 20);
-            this.tbxHouseNr.TabIndex = 52;
+            this.tbxHouseNr.TabIndex = 72;
             // 
             // lblHouseNr
             // 
             this.lblHouseNr.AutoSize = true;
             this.lblHouseNr.BackColor = System.Drawing.Color.Transparent;
-            this.lblHouseNr.Location = new System.Drawing.Point(12, 204);
+            this.lblHouseNr.Location = new System.Drawing.Point(14, 206);
             this.lblHouseNr.Name = "lblHouseNr";
             this.lblHouseNr.Size = new System.Drawing.Size(76, 13);
-            this.lblHouseNr.TabIndex = 51;
+            this.lblHouseNr.TabIndex = 71;
             this.lblHouseNr.Text = "House number";
             // 
             // tbxStreetName
             // 
-            this.tbxStreetName.Location = new System.Drawing.Point(131, 156);
+            this.tbxStreetName.Location = new System.Drawing.Point(133, 158);
             this.tbxStreetName.Name = "tbxStreetName";
             this.tbxStreetName.Size = new System.Drawing.Size(281, 20);
-            this.tbxStreetName.TabIndex = 50;
+            this.tbxStreetName.TabIndex = 70;
             // 
             // lblStreetName
             // 
             this.lblStreetName.AutoSize = true;
             this.lblStreetName.BackColor = System.Drawing.Color.Transparent;
-            this.lblStreetName.Location = new System.Drawing.Point(12, 162);
+            this.lblStreetName.Location = new System.Drawing.Point(14, 164);
             this.lblStreetName.Name = "lblStreetName";
             this.lblStreetName.Size = new System.Drawing.Size(64, 13);
-            this.lblStreetName.TabIndex = 49;
+            this.lblStreetName.TabIndex = 69;
             this.lblStreetName.Text = "Street name";
             // 
             // dtpBirthDateEmp
             // 
             this.dtpBirthDateEmp.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBirthDateEmp.Location = new System.Drawing.Point(131, 113);
+            this.dtpBirthDateEmp.Location = new System.Drawing.Point(133, 115);
             this.dtpBirthDateEmp.Name = "dtpBirthDateEmp";
             this.dtpBirthDateEmp.Size = new System.Drawing.Size(281, 20);
-            this.dtpBirthDateEmp.TabIndex = 48;
+            this.dtpBirthDateEmp.TabIndex = 68;
             this.dtpBirthDateEmp.Value = new System.DateTime(2020, 3, 9, 0, 0, 0, 0);
             // 
             // btnAddNewEmployee
@@ -207,10 +206,10 @@
             this.btnAddNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewEmployee.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddNewEmployee.Location = new System.Drawing.Point(303, 433);
+            this.btnAddNewEmployee.Location = new System.Drawing.Point(133, 435);
             this.btnAddNewEmployee.Name = "btnAddNewEmployee";
-            this.btnAddNewEmployee.Size = new System.Drawing.Size(109, 32);
-            this.btnAddNewEmployee.TabIndex = 47;
+            this.btnAddNewEmployee.Size = new System.Drawing.Size(281, 32);
+            this.btnAddNewEmployee.TabIndex = 67;
             this.btnAddNewEmployee.Text = "Add";
             this.btnAddNewEmployee.UseVisualStyleBackColor = false;
             this.btnAddNewEmployee.Click += new System.EventHandler(this.btnAddNewEmployee_Click);
@@ -219,32 +218,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(10, 119);
+            this.label3.Location = new System.Drawing.Point(12, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 46;
+            this.label3.TabIndex = 66;
             this.label3.Text = "Date of Birth";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUpdate.Location = new System.Drawing.Point(131, 433);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(101, 32);
-            this.btnUpdate.TabIndex = 65;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // Modify_data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 499);
-            this.Controls.Add(this.btnUpdate);
+            this.ClientSize = new System.Drawing.Size(443, 487);
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbFirstName);
@@ -265,15 +249,13 @@
             this.Controls.Add(this.btnAddNewEmployee);
             this.Controls.Add(this.label3);
             this.Name = "Modify_data";
-            this.Text = "Mofigy_data";
-            this.Load += new System.EventHandler(this.Modify_data_Load);
+            this.Text = "Modify_Data";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbFirstName;
@@ -293,6 +275,5 @@
         private System.Windows.Forms.DateTimePicker dtpBirthDateEmp;
         private System.Windows.Forms.Button btnAddNewEmployee;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnUpdate;
     }
 }
