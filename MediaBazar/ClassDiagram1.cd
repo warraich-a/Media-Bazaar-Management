@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MediaBazar.Person">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAEAACCBAAACsEACACBAAgAAQAAAIAAABiwAAA4k=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.AdministratorForm" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/wgCAgFghCwDELQckCKIQAD+C1ADkcBisADkwKhCODI=</HashCode>
+      <FileName>AdministratorForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.DepotWorkerForm" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAgAAAGABAJBAAACIAAD+E0AAAAAAAACEACBAACA=</HashCode>
+      <FileName>DepotWorkerForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.ForgetPasswordForm" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAABCABSAAABAAIACAgAgCAAAAAAAAAAAEAABAACA=</HashCode>
+      <FileName>forgetPasswordForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.LogInForm" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAABAAACAAABAAIACAAAAKAAAAAgAAACAEQABAAAA=</HashCode>
+      <FileName>LogInForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.ManagerForm" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>owgAAgAggCwDEJQYgCKAgID+CVABAEAgMAHFYOhAICA=</HashCode>
+      <FileName>ManagerForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.MediaBazaar" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCjAAAAIACAAiQAwAAAAwAQATAAEBAQAEBEECAAFA=</HashCode>
+      <FileName>MediaBazaar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.Modify_data" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAkoAAVKBAABgQQACAAAACQAQBAIAAAAKEBAEAEgA=</HashCode>
+      <FileName>Modify Data.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.Program" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.ResetPasswordForm" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAAAgAAKAAAASAAAAAABAQAAEAABAAAg=</HashCode>
+      <FileName>resetPasswordForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.Schedule" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAEAAAAQAAEFAAABAAEAEIAAAACAAA=</HashCode>
+      <FileName>Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAEAQAAAAAABEAQAAQAACAACAGAAAAAgAYA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaBazar.Properties.Settings" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MediaBazar.Roles">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAACAEABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Roles.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MediaBazar.Shift">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Shift.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MediaBazar.ShiftStatus">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>ShiftStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
