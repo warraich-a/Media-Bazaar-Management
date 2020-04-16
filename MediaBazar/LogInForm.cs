@@ -12,6 +12,8 @@ namespace MediaBazar
 {
     public partial class LogInForm : Form
     {
+        // Create instance of mediaBazaar or use made instance
+        MediaBazaar mediaBazaar = MediaBazaar.Instance;
         public LogInForm()
         {
             InitializeComponent();
@@ -20,7 +22,6 @@ namespace MediaBazar
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
            /* AdministratorForm a = new AdministratorForm();
             a.Show();*/
 
@@ -91,15 +92,15 @@ namespace MediaBazar
                     MessageBox.Show(mediaBazaar.GetUserType(email));
                 }
             }
-=======
-            ManagerForm a = new ManagerForm();
-            a.Show();
->>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
         }
 
-        private void LogInForm_Load(object sender, EventArgs e)
+        private void lblForgotPassword_Click(object sender, EventArgs e)
         {
+            ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
 
+            forgetPasswordForm.Show();
+
+            this.Hide();
         }
     }
 }
