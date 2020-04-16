@@ -163,16 +163,8 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
-            lvSchedule.Items.Clear();
-            foreach (Schedule item in mediaBazaar.VeiwSchedule())
-            {
-
-                list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
-
-                list.SubItems.Add(Convert.ToString(item.DATETime));
-                list.SubItems.Add(Convert.ToString(item.ShiftType));
-                lvSchedule.Items.Add(list);
-            }
+            
+            mediaBazaar.ReadSchedule();
         }
 
         // To remove an employee from the system
@@ -471,72 +463,211 @@ namespace MediaBazar
 
         }
 
-        private void btnRemoveShift_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the shift?", "Delete Shift", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                mediaBazaar.RemoveSchedule(mediaBazaar.GetSchedule(lvSchedule.SelectedItems[0].SubItems[0].Text, lvSchedule.SelectedItems[0].SubItems[1].Text, lvSchedule.SelectedItems[0].SubItems[2].Text));
-                RefreshData();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                RefreshData();
-            }
-        }
+        
 
-        private void btnShowSchedule_Click(object sender, EventArgs e)
+
+        private void btnShowSchedule_Click_1(object sender, EventArgs e)
         {
-            lvSchedule.Items.Clear();
-            string shift = "";
+            mediaBazaar.ReadSchedule();
+            List<FlowLayoutPanel> schedulesPanels = new List<FlowLayoutPanel>();
+            Shift shift = Shift.MORNING;
+
             if (comboBox1.Text == "AFTERNOON")
             {
-                shift = "Afternoon";
+                shift = Shift.AFTERNOON;
             }
             else if (comboBox1.Text == "EVENING")
             {
-                shift = "Evening";
+                shift = Shift.EVENING;
             }
-            else if (comboBox1.Text == "MORNING")
+
+
+
+            int x = 20;
+            int y = 20;
+
+            pnlSchedule.Controls.Clear();
+            int c = 0;
+            for (int j = 0; j < 6; j++)
             {
-                shift = "Morning";
-            }
-            if (cbSelectAll.Checked)
-            {
-                RefreshData();
-            }
-            else if (cbNameOfEmp.SelectedIndex != -1 && dtpDateShedule.Checked)
-            {
-                foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule1(mediaBazaar.GetPersonIdByName(cbNameOfEmp.Text), dtpDateShedule.Value.Date))
+                x = 20;
+                for (int i = 0; i < 7; i++)
                 {
+                    FlowLayoutPanel p = new FlowLayoutPanel();
+                    p.Name = $"pDay{c}";
+                    p.Size = new Size(135, 150);
+                    p.Location = new Point(x, y);
 
-                    list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
+                    p.BorderStyle = BorderStyle.FixedSingle;
+                    pnlSchedule.Controls.Add(p);
+                    schedulesPanels.Add(p);
+                    x += 150;
+                    c++;
+                }
+                y += 165;
+            }
+            DateTime date = new DateTime(DateTime.Now.Year, cbScheduleMonth.SelectedIndex + 1, 1);
+            int d = 0;
+            if (date.ToString("dddd") == "Monday")
+            {
+                d = 1;
+            }
+            else if (date.ToString("dddd") == "Tuesday")
+            {
+                d = 2;
+            }
+            else if (date.ToString("dddd") == "Wednesday")
+            {
+                d = 3;
+            }
+            else if (date.ToString("dddd") == "Thursday")
+            {
+                d = 4;
+            }
+            else if (date.ToString("dddd") == "Friday")
+            {
+                d = 5;
+            }
+            else if (date.ToString("dddd") == "Saturday")
+            {
+                d = 6;
+            }
+            int dayN = 1;
+            if (cbAllSchedule.Checked)
+            {
+                List<Schedule> schedules = mediaBazaar.GetSchedule();
 
-                    list.SubItems.Add(Convert.ToString(item.DATETime));
-                    list.SubItems.Add(Convert.ToString(item.ShiftType));
-                    lvSchedule.Items.Add(list);
+
+                for (int i = d; i < DateTime.DaysInMonth(date.Year, date.Month) + d; i++)
+                {
+                    Label l = new Label();
+                    l.Name = $"lblDay{dayN}";
+                    l.AutoSize = false;
+                    l.TextAlign = ContentAlignment.MiddleRight;
+                    l.Size = new Size(130, 30);
+                    l.Text = dayN.ToString();
+                    schedulesPanels[i].Controls.Add(l);
+                    foreach (Schedule s in schedules)
+                    {
+                        if (s.DATETime.Day == dayN && s.DATETime.Month == date.Month)
+                        {
+                            Label lblSchedule = new Label();
+                            lblSchedule.Name = $"lblWorker{dayN}";
+                            lblSchedule.Location = new Point(5, 35);
+                            lblSchedule.AutoSize = false;
+                            lblSchedule.Size = new Size(170, 24);
+                            String text = $"{mediaBazaar.GetPersonNameById(s.EmployeeId)}({s.ShiftType.ToString()})";
+                            lblSchedule.Text = text;
+                            schedulesPanels[i].Controls.Add(lblSchedule);
+
+                        }
+                    }
+
+                    dayN++;
                 }
             }
-            else if (dtpDateShedule.Checked && comboBox1.SelectedIndex != -1)
+            else
             {
-                foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule2(dtpDateShedule.Value.Date, shift))
+                if (cbScheduleMonth.SelectedIndex != -1)
                 {
+                    if (comboBox1.SelectedIndex != -1 && cbNameOfEmp.SelectedIndex == -1)
+                    {
+                        List<Schedule> schedules = mediaBazaar.GetScheduleByShift(shift);
 
-                    list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
 
-                    list.SubItems.Add(Convert.ToString(item.DATETime));
-                    list.SubItems.Add(Convert.ToString(item.ShiftType));
-                    lvSchedule.Items.Add(list);
+                        for (int i = d; i < DateTime.DaysInMonth(date.Year, date.Month) + d; i++)
+                        {
+                            Label l = new Label();
+                            l.Name = $"lblDay{dayN}";
+                            l.AutoSize = false;
+                            l.TextAlign = ContentAlignment.MiddleRight;
+                            l.Size = new Size(130, 30);
+                            l.Text = dayN.ToString();
+                            schedulesPanels[i].Controls.Add(l);
+                            foreach (Schedule s in schedules)
+                            {
+                                if (s.DATETime.Day == dayN && s.DATETime.Month == date.Month)
+                                {
+                                    Label lblSchedule = new Label();
+                                    lblSchedule.Name = $"lblWorker{dayN}";
+                                    lblSchedule.Location = new Point(5, 35);
+                                    lblSchedule.Text = mediaBazaar.GetPersonNameById(s.EmployeeId);
+                                    schedulesPanels[i].Controls.Add(lblSchedule);
+                                }
+                            }
+
+                            dayN++;
+                        }
+                    }
+                    else if (comboBox1.SelectedIndex == -1 && cbNameOfEmp.SelectedIndex != -1)
+                    {
+                        List<Schedule> schedules = mediaBazaar.GetScheduleByName(cbNameOfEmp.Text);
+
+
+                        for (int i = d; i < DateTime.DaysInMonth(date.Year, date.Month) + d; i++)
+                        {
+                            Label l = new Label();
+                            l.Name = $"lblDay{dayN}";
+                            l.AutoSize = false;
+                            l.TextAlign = ContentAlignment.MiddleRight;
+                            l.Size = new Size(130, 30);
+                            l.Text = dayN.ToString();
+                            schedulesPanels[i].Controls.Add(l);
+                            foreach (Schedule s in schedules)
+                            {
+                                if (s.DATETime.Day == dayN && s.DATETime.Month == date.Month)
+                                {
+                                    Label lblSchedule = new Label();
+                                    lblSchedule.Name = $"lblWorker{dayN}";
+                                    lblSchedule.Location = new Point(5, 35);
+                                    lblSchedule.Text = mediaBazaar.GetPersonNameById(s.EmployeeId);
+                                    schedulesPanels[i].Controls.Add(lblSchedule);
+                                    Label lblShift = new Label();
+                                    lblShift.Name = $"lblShift{dayN}";
+                                    lblShift.Location = new Point(5, 70);
+                                    lblShift.Text = s.ShiftType.ToString();
+                                    schedulesPanels[i].Controls.Add(lblShift);
+
+                                }
+                            }
+
+                            dayN++;
+                        }
+                    }
+                    else if (comboBox1.SelectedIndex != -1 && cbNameOfEmp.SelectedIndex != -1)
+                    {
+                        List<Schedule> schedules = mediaBazaar.GetScheduleByNameAndShift(cbNameOfEmp.Text, shift);
+
+
+                        for (int i = d; i < DateTime.DaysInMonth(date.Year, date.Month) + d; i++)
+                        {
+                            Label l = new Label();
+                            l.Name = $"lblDay{dayN}";
+                            l.AutoSize = false;
+                            l.TextAlign = ContentAlignment.MiddleRight;
+                            l.Size = new Size(130, 30);
+                            l.Text = dayN.ToString();
+                            schedulesPanels[i].Controls.Add(l);
+                            foreach (Schedule s in schedules)
+                            {
+                                if (s.DATETime.Day == dayN && s.DATETime.Month == date.Month)
+                                {
+                                    Label lblSchedule = new Label();
+                                    lblSchedule.Name = $"lblWorker{dayN}";
+                                    lblSchedule.Location = new Point(5, 35);
+                                    lblSchedule.Text = mediaBazaar.GetPersonNameById(s.EmployeeId);
+                                    schedulesPanels[i].Controls.Add(lblSchedule);
+                                }
+                            }
+
+                            dayN++;
+                        }
+                    }
                 }
-            }
-        }
-
-        private void cbNameOfEmp_Click(object sender, EventArgs e)
-        {
-            cbNameOfEmp.Items.Clear();
-            foreach (Person p in mediaBazaar.GetPeopleList())
-            {
-                cbNameOfEmp.Items.Add(p.GetFullName());
+                else
+                {
+                    MessageBox.Show("Please choose the month first!");
+                }
             }
         }
 
@@ -546,6 +677,15 @@ namespace MediaBazar
             comboBox1.Items.Add(Shift.AFTERNOON);
             comboBox1.Items.Add(Shift.EVENING);
             comboBox1.Items.Add(Shift.MORNING);
+        }
+
+        private void cbNameOfEmp_Click(object sender, EventArgs e)
+        {
+            cbNameOfEmp.Items.Clear();
+            foreach (Person p in mediaBazaar.GetPeopleList())
+            {
+                cbNameOfEmp.Items.Add(p.GetFullName());
+            }
         }
     }
 }

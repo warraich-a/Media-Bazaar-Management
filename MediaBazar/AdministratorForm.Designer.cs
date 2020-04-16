@@ -31,7 +31,10 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+<<<<<<< HEAD
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministratorForm));
+=======
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.label20 = new System.Windows.Forms.Label();
@@ -52,6 +55,7 @@
             this.btnModifyEmp = new System.Windows.Forms.Button();
             this.btnRemoveEmp = new System.Windows.Forms.Button();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+<<<<<<< HEAD
             this.lblFilterBy = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -66,6 +70,24 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+=======
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbScheduleMonth = new System.Windows.Forms.ComboBox();
+            this.lblFilterBy = new System.Windows.Forms.Label();
+            this.btnShowSchedule = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbNameOfEmp = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pnlSchedule = new System.Windows.Forms.Panel();
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -121,6 +143,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.cbAllSchedule = new System.Windows.Forms.CheckBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -135,8 +158,12 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
+            this.metroTabControl1.Controls.Add(this.metroTabPage2);
+<<<<<<< HEAD
+            this.metroTabControl1.Controls.Add(this.metroTabPage4);
+=======
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabControl1.Controls.Add(this.metroTabPage5);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.HotTrack = true;
@@ -144,8 +171,13 @@
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 126);
             this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabControl1.Name = "metroTabControl1";
+<<<<<<< HEAD
             this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(1380, 842);
+=======
+            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.Size = new System.Drawing.Size(1035, 587);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroTabControl1.TabIndex = 3;
@@ -168,7 +200,11 @@
             this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage1.Margin = new System.Windows.Forms.Padding(133, 4, 133, 4);
             this.metroTabPage1.Name = "metroTabPage1";
+<<<<<<< HEAD
             this.metroTabPage1.Size = new System.Drawing.Size(1372, 803);
+=======
+            this.metroTabPage1.Size = new System.Drawing.Size(1027, 548);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Employee Administration";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -179,8 +215,12 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label20.Location = new System.Drawing.Point(1072, 687);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+            this.label20.Location = new System.Drawing.Point(564, 501);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(236, 29);
             this.label20.TabIndex = 48;
@@ -192,10 +232,16 @@
             this.btnAddNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewEmployee.ForeColor = System.Drawing.SystemColors.Control;
+<<<<<<< HEAD
             this.btnAddNewEmployee.Location = new System.Drawing.Point(1039, 743);
             this.btnAddNewEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddNewEmployee.Name = "btnAddNewEmployee";
             this.btnAddNewEmployee.Size = new System.Drawing.Size(316, 39);
+=======
+            this.btnAddNewEmployee.Location = new System.Drawing.Point(754, 494);
+            this.btnAddNewEmployee.Name = "btnAddNewEmployee";
+            this.btnAddNewEmployee.Size = new System.Drawing.Size(110, 32);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.btnAddNewEmployee.TabIndex = 47;
             this.btnAddNewEmployee.Text = "Add";
             this.btnAddNewEmployee.UseVisualStyleBackColor = false;
@@ -319,6 +365,7 @@
             // 
             // metroTabPage4
             // 
+<<<<<<< HEAD
             this.metroTabPage4.BackColor = System.Drawing.SystemColors.Control;
             this.metroTabPage4.Controls.Add(this.lblFilterBy);
             this.metroTabPage4.Controls.Add(this.comboBox1);
@@ -345,10 +392,77 @@
             this.metroTabPage4.VerticalScrollbarSize = 13;
             this.metroTabPage4.Click += new System.EventHandler(this.metroTabPage4_Click);
             // 
+=======
+            this.metroTabPage4.AutoScroll = true;
+            this.metroTabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage4.Controls.Add(this.cbAllSchedule);
+            this.metroTabPage4.Controls.Add(this.label9);
+            this.metroTabPage4.Controls.Add(this.cbScheduleMonth);
+            this.metroTabPage4.Controls.Add(this.lblFilterBy);
+            this.metroTabPage4.Controls.Add(this.btnShowSchedule);
+            this.metroTabPage4.Controls.Add(this.label7);
+            this.metroTabPage4.Controls.Add(this.label2);
+            this.metroTabPage4.Controls.Add(this.label3);
+            this.metroTabPage4.Controls.Add(this.label1);
+            this.metroTabPage4.Controls.Add(this.label4);
+            this.metroTabPage4.Controls.Add(this.cbNameOfEmp);
+            this.metroTabPage4.Controls.Add(this.label23);
+            this.metroTabPage4.Controls.Add(this.label8);
+            this.metroTabPage4.Controls.Add(this.label26);
+            this.metroTabPage4.Controls.Add(this.comboBox1);
+            this.metroTabPage4.Controls.Add(this.label27);
+            this.metroTabPage4.Controls.Add(this.pnlSchedule);
+            this.metroTabPage4.CustomBackground = true;
+            this.metroTabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.metroTabPage4.HorizontalScrollbar = true;
+            this.metroTabPage4.HorizontalScrollbarBarColor = true;
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage4.Name = "metroTabPage4";
+            this.metroTabPage4.Size = new System.Drawing.Size(1027, 548);
+            this.metroTabPage4.TabIndex = 3;
+            this.metroTabPage4.Text = "Schedule";
+            this.metroTabPage4.VerticalScrollbar = true;
+            this.metroTabPage4.VerticalScrollbarBarColor = true;
+            this.metroTabPage4.Click += new System.EventHandler(this.metroTabPage4_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(254, 173);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(75, 24);
+            this.label9.TabIndex = 98;
+            this.label9.Text = "Month *";
+            // 
+            // cbScheduleMonth
+            // 
+            this.cbScheduleMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbScheduleMonth.FormattingEnabled = true;
+            this.cbScheduleMonth.Items.AddRange(new object[] {
+            "January ",
+            "February ",
+            "March ",
+            "April ",
+            "May ",
+            "June ",
+            "July",
+            "August ",
+            "September ",
+            "October ",
+            "November ",
+            "December "});
+            this.cbScheduleMonth.Location = new System.Drawing.Point(369, 170);
+            this.cbScheduleMonth.Name = "cbScheduleMonth";
+            this.cbScheduleMonth.Size = new System.Drawing.Size(305, 28);
+            this.cbScheduleMonth.TabIndex = 97;
+            // 
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             // lblFilterBy
             // 
             this.lblFilterBy.AutoSize = true;
             this.lblFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.lblFilterBy.Location = new System.Drawing.Point(901, 121);
             this.lblFilterBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFilterBy.Name = "lblFilterBy";
@@ -366,10 +480,73 @@
             this.comboBox1.Size = new System.Drawing.Size(405, 33);
             this.comboBox1.TabIndex = 62;
             this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
+=======
+            this.lblFilterBy.Location = new System.Drawing.Point(-2, 24);
+            this.lblFilterBy.Name = "lblFilterBy";
+            this.lblFilterBy.Size = new System.Drawing.Size(76, 24);
+            this.lblFilterBy.TabIndex = 89;
+            this.lblFilterBy.Text = "Filter by";
+            // 
+            // btnShowSchedule
+            // 
+            this.btnShowSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnShowSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowSchedule.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnShowSchedule.Location = new System.Drawing.Point(692, 106);
+            this.btnShowSchedule.Name = "btnShowSchedule";
+            this.btnShowSchedule.Size = new System.Drawing.Size(304, 32);
+            this.btnShowSchedule.TabIndex = 85;
+            this.btnShowSchedule.Text = "Show shifts";
+            this.btnShowSchedule.UseVisualStyleBackColor = false;
+            this.btnShowSchedule.Click += new System.EventHandler(this.btnShowSchedule_Click_1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(899, 214);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 21);
+            this.label7.TabIndex = 96;
+            this.label7.Text = "Saturday";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(768, 214);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 21);
+            this.label2.TabIndex = 95;
+            this.label2.Text = "Friday";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(623, 214);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 21);
+            this.label3.TabIndex = 94;
+            this.label3.Text = "Thursday";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 84;
+            this.label1.Text = "Name";
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+<<<<<<< HEAD
             this.label4.BackColor = System.Drawing.SystemColors.Control;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(899, 402);
@@ -378,11 +555,20 @@
             this.label4.Size = new System.Drawing.Size(51, 25);
             this.label4.TabIndex = 61;
             this.label4.Text = "Shift";
+=======
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(467, 214);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 21);
+            this.label4.TabIndex = 93;
+            this.label4.Text = "Wednesday";
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             // 
             // cbNameOfEmp
             // 
             this.cbNameOfEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNameOfEmp.FormattingEnabled = true;
+<<<<<<< HEAD
             this.cbNameOfEmp.Location = new System.Drawing.Point(904, 208);
             this.cbNameOfEmp.Margin = new System.Windows.Forms.Padding(4);
             this.cbNameOfEmp.Name = "cbNameOfEmp";
@@ -426,12 +612,30 @@
             this.btnShowSchedule.Text = "Show shifts";
             this.btnShowSchedule.UseVisualStyleBackColor = false;
             this.btnShowSchedule.Click += new System.EventHandler(this.btnShowSchedule_Click);
+=======
+            this.cbNameOfEmp.Location = new System.Drawing.Point(25, 110);
+            this.cbNameOfEmp.Name = "cbNameOfEmp";
+            this.cbNameOfEmp.Size = new System.Drawing.Size(305, 28);
+            this.cbNameOfEmp.TabIndex = 86;
+            this.cbNameOfEmp.Click += new System.EventHandler(this.cbNameOfEmp_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(326, 214);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(72, 21);
+            this.label23.TabIndex = 92;
+            this.label23.Text = "Tuesday";
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.Control;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.label8.Location = new System.Drawing.Point(900, 282);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
@@ -496,6 +700,52 @@
             // 
             this.columnHeader10.Text = "Shift";
             this.columnHeader10.Width = 164;
+=======
+            this.label8.Location = new System.Drawing.Point(364, 69);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 20);
+            this.label8.TabIndex = 87;
+            this.label8.Text = "Shift";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(168, 214);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(73, 21);
+            this.label26.TabIndex = 91;
+            this.label26.Text = "Monday";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(369, 110);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(305, 28);
+            this.comboBox1.TabIndex = 88;
+            this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(19, 214);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(66, 21);
+            this.label27.TabIndex = 90;
+            this.label27.Text = "Sunday";
+            // 
+            // pnlSchedule
+            // 
+            this.pnlSchedule.AutoScroll = true;
+            this.pnlSchedule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSchedule.Location = new System.Drawing.Point(-11, 261);
+            this.pnlSchedule.Name = "pnlSchedule";
+            this.pnlSchedule.Size = new System.Drawing.Size(1032, 526);
+            this.pnlSchedule.TabIndex = 83;
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             // 
             // metroTabPage2
             // 
@@ -520,7 +770,11 @@
             this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabPage2.Name = "metroTabPage2";
+<<<<<<< HEAD
             this.metroTabPage2.Size = new System.Drawing.Size(1372, 803);
+=======
+            this.metroTabPage2.Size = new System.Drawing.Size(1027, 548);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Assign Shift";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -718,7 +972,11 @@
             this.metroTabPage5.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabPage5.Name = "metroTabPage5";
+<<<<<<< HEAD
             this.metroTabPage5.Size = new System.Drawing.Size(1372, 803);
+=======
+            this.metroTabPage5.Size = new System.Drawing.Size(1027, 548);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Statistics";
             this.metroTabPage5.VerticalScrollbarBarColor = true;
@@ -758,15 +1016,23 @@
             this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartEmployeeStatistics.Legends.Add(legend1);
+<<<<<<< HEAD
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(59, 231);
             this.chartEmployeeStatistics.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.chartEmployeeStatistics.Location = new System.Drawing.Point(44, 188);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartEmployeeStatistics.Series.Add(series1);
+<<<<<<< HEAD
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(1259, 432);
+=======
+            this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 351);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.chartEmployeeStatistics.TabIndex = 52;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
             // 
@@ -855,7 +1121,11 @@
             this.metroTabPage3.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabPage3.Name = "metroTabPage3";
+<<<<<<< HEAD
             this.metroTabPage3.Size = new System.Drawing.Size(1372, 803);
+=======
+            this.metroTabPage3.Size = new System.Drawing.Size(1027, 548);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Stock Info";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
@@ -1161,12 +1431,27 @@
             this.pictureBox5.TabIndex = 49;
             this.pictureBox5.TabStop = false;
             // 
+            // cbAllSchedule
+            // 
+            this.cbAllSchedule.AutoSize = true;
+            this.cbAllSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAllSchedule.Location = new System.Drawing.Point(27, 176);
+            this.cbAllSchedule.Name = "cbAllSchedule";
+            this.cbAllSchedule.Size = new System.Drawing.Size(156, 22);
+            this.cbAllSchedule.TabIndex = 100;
+            this.cbAllSchedule.Text = "See entire schedule";
+            this.cbAllSchedule.UseVisualStyleBackColor = true;
+            // 
             // AdministratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(213)))), ((int)(((byte)(203)))));
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1373, 966);
+=======
+            this.ClientSize = new System.Drawing.Size(1030, 679);
+>>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pictureBox1);
@@ -1232,12 +1517,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ListView lvSchedule;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnRemoveShift;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -1247,14 +1527,6 @@
         private System.Windows.Forms.DateTimePicker dtpTimeForShift;
         private System.Windows.Forms.Button btnAssignShift;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbNameOfEmp;
-        private System.Windows.Forms.CheckBox cbSelectAll;
-        private System.Windows.Forms.DateTimePicker dtpDateShedule;
-        private System.Windows.Forms.Button btnShowSchedule;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -1265,7 +1537,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbxRequiredQuantity;
-        private System.Windows.Forms.Label lblFilterBy;
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeeStatistics;
@@ -1286,5 +1557,22 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.Button btnRemoveEmp;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbScheduleMonth;
+        private System.Windows.Forms.Label lblFilterBy;
+        private System.Windows.Forms.Button btnShowSchedule;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbNameOfEmp;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Panel pnlSchedule;
+        private System.Windows.Forms.CheckBox cbAllSchedule;
     }
 }
