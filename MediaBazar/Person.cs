@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazar
 {
+<<<<<<< HEAD
     public class Person
+=======
+    public class Person 
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
     {
         private int id;
         protected string firstName;
@@ -144,11 +148,19 @@ namespace MediaBazar
         public string GetEmail { get { return email; } }
         // email 
 
+<<<<<<< HEAD
 
         public string Email(string firstName, string lastName)
         {
             return email = $"{firstName + lastName}@mediabazaar.com";
 
+=======
+        
+        public string Email(string firstName, string lastName)
+        {
+          return email = $"{firstName + lastName}@mediabazaar.com";
+        
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
         }
 
         //to get the role
@@ -180,9 +192,12 @@ namespace MediaBazar
         {
             return $"ID: {id}\r\nName:{firstName} {lastName}\r\nEmail: {email}\r\nBirthdate {dateOfBirth}\r\nADDRESS\r\nStreet {streetName} {houseNr} {zipcode} {city}\r\nHourly Wage:{hourlyWage} \r\nRole: {role}";
         }
+<<<<<<< HEAD
         public string GetFullName()
         {
             return this.firstName + " " + this.lastName;
         }
+=======
+>>>>>>> 92028dc98b336a33c170e6b273dd3288b14d4af9
     }
 }
