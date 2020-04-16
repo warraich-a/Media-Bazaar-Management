@@ -17,7 +17,6 @@ namespace MediaBazar
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
         MySqlConnection conn;
 
-        List<Schedule> schedules = new List<Schedule>();
         Person person = new Person();
         List<Person> people = new List<Person>();
 
@@ -397,7 +396,7 @@ namespace MediaBazar
                         return statistics;
 
                     }
-                        //return statistics;
+                    //return statistics;
                     //}
                 }
                 catch (MySqlException ex)
@@ -558,66 +557,6 @@ namespace MediaBazar
             {
                 return ex.Message;
             }
-        }
-
-
-        public List<Schedule> ReadSchedule()
-        {
-            this.schedules = new List<Schedule>();
-            try
-            {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule`";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                conn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
-
-                    ShiftStatus b = ShiftStatus.ASSIGNED;
-                    if (dr[4].ToString() == "Assigned")
-                    {
-                        b = ShiftStatus.ASSIGNED;
-                    }
-                    else if (dr[4].ToString() == "Proposed")
-                    {
-                        b = ShiftStatus.PROPOSED;
-                    }
-                    else if (dr[4].ToString() == "Accepted")
-                    {
-                        b = ShiftStatus.ACCEPTED;
-                    }
-                    else if (dr[4].ToString() == "Rejected")
-                    {
-                        b = ShiftStatus.REJECTED;
-                    }
-
-
-
-
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    schedules.Add(g);
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return schedules;
         }
     }
 }

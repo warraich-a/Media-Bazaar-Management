@@ -37,7 +37,6 @@ namespace MediaBazar
                 string userExistsResult = (mediaBazaar.DoesUserExist(tbxEmail.Text));
                 // For testing purposes
                 //string userExistsResult = (mediaBazaar.DoesUserExist("CheyenneConway@mediabazaar.com"));
-
                 // If user doesn't exist
                 if (userExistsResult == "User not found")
                 {
@@ -73,10 +72,9 @@ namespace MediaBazar
             {
                 // Pass user email to reset password form (used to update his/her acccount)
                 to = tbxEmail.Text;
-
+                
                 // For testing purposes
                 //to = "CheyenneConway@mediabazaar.com";
-
                 ResetPasswordForm resetPasswordForm = new ResetPasswordForm(to);
                 resetPasswordForm.Show();
 

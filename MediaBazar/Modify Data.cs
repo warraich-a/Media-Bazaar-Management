@@ -21,11 +21,7 @@ namespace MediaBazar
         public Modify_data(int givenId, AdministratorForm f, MediaBazaar mediaBazaar)
         {
             InitializeComponent();
-<<<<<<< HEAD
-            //conn = new MySqlConnection(connectionString);
-=======
            
->>>>>>> 9d3888fbb0930e3558b5df01165770a7b9079fe4
             form = f;
             id = givenId;
             this.mediaBazaar = mediaBazaar;

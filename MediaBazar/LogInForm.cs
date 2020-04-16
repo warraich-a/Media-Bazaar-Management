@@ -79,7 +79,6 @@ namespace MediaBazar
                         DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
 
                         depotWorkerForm.ShowDialog();
-
                         this.Hide();
                         this.Close();
                     }
