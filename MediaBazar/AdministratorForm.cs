@@ -163,16 +163,7 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
-            lvSchedule.Items.Clear();
-            foreach (Schedule item in mediaBazaar.VeiwSchedule())
-            {
-
-                list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
-
-                list.SubItems.Add(Convert.ToString(item.DATETime));
-                list.SubItems.Add(Convert.ToString(item.ShiftType));
-                lvSchedule.Items.Add(list);
-            }
+           
         }
 
         // To remove an employee from the system
@@ -471,81 +462,8 @@ namespace MediaBazar
 
         }
 
-        private void btnRemoveShift_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the shift?", "Delete Shift", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                mediaBazaar.RemoveSchedule(mediaBazaar.GetSchedule(lvSchedule.SelectedItems[0].SubItems[0].Text, lvSchedule.SelectedItems[0].SubItems[1].Text, lvSchedule.SelectedItems[0].SubItems[2].Text));
-                RefreshData();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                RefreshData();
-            }
-        }
+       
 
-        private void btnShowSchedule_Click(object sender, EventArgs e)
-        {
-            lvSchedule.Items.Clear();
-            string shift = "";
-            if (comboBox1.Text == "AFTERNOON")
-            {
-                shift = "Afternoon";
-            }
-            else if (comboBox1.Text == "EVENING")
-            {
-                shift = "Evening";
-            }
-            else if (comboBox1.Text == "MORNING")
-            {
-                shift = "Morning";
-            }
-            if (cbSelectAll.Checked)
-            {
-                RefreshData();
-            }
-            else if (cbNameOfEmp.SelectedIndex != -1 && dtpDateShedule.Checked)
-            {
-                foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule1(mediaBazaar.GetPersonIdByName(cbNameOfEmp.Text), dtpDateShedule.Value.Date))
-                {
-
-                    list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
-
-                    list.SubItems.Add(Convert.ToString(item.DATETime));
-                    list.SubItems.Add(Convert.ToString(item.ShiftType));
-                    lvSchedule.Items.Add(list);
-                }
-            }
-            else if (dtpDateShedule.Checked && comboBox1.SelectedIndex != -1)
-            {
-                foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule2(dtpDateShedule.Value.Date, shift))
-                {
-
-                    list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
-
-                    list.SubItems.Add(Convert.ToString(item.DATETime));
-                    list.SubItems.Add(Convert.ToString(item.ShiftType));
-                    lvSchedule.Items.Add(list);
-                }
-            }
-        }
-
-        private void cbNameOfEmp_Click(object sender, EventArgs e)
-        {
-            cbNameOfEmp.Items.Clear();
-            foreach (Person p in mediaBazaar.GetPeopleList())
-            {
-                cbNameOfEmp.Items.Add(p.GetFullName());
-            }
-        }
-
-        private void comboBox1_Click(object sender, EventArgs e)
-        {
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add(Shift.AFTERNOON);
-            comboBox1.Items.Add(Shift.EVENING);
-            comboBox1.Items.Add(Shift.MORNING);
-        }
+        
     }
 }

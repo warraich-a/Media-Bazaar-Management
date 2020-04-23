@@ -50,6 +50,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnModifyEmp = new System.Windows.Forms.Button();
             this.btnRemoveEmp = new System.Windows.Forms.Button();
+            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -76,21 +77,6 @@
             this.btnLoadChart = new System.Windows.Forms.Button();
             this.lb = new System.Windows.Forms.Label();
             this.cbxCategoryStatistics = new System.Windows.Forms.ComboBox();
-            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.lblFilterBy = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbNameOfEmp = new System.Windows.Forms.ComboBox();
-            this.cbSelectAll = new System.Windows.Forms.CheckBox();
-            this.dtpDateShedule = new System.Windows.Forms.DateTimePicker();
-            this.btnShowSchedule = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnRemoveShift = new System.Windows.Forms.Button();
-            this.lvSchedule = new System.Windows.Forms.ListView();
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.label22 = new System.Windows.Forms.Label();
             this.tbxRequiredQuantity = new System.Windows.Forms.TextBox();
@@ -125,7 +111,6 @@
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
-            this.metroTabPage4.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -142,7 +127,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(205, 31);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1035, 684);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -306,6 +291,20 @@
             this.btnRemoveEmp.Text = "Remove";
             this.btnRemoveEmp.UseVisualStyleBackColor = false;
             this.btnRemoveEmp.Click += new System.EventHandler(this.btnRemoveEmp_Click);
+            // 
+            // metroTabPage4
+            // 
+            this.metroTabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage4.CustomBackground = true;
+            this.metroTabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.metroTabPage4.HorizontalScrollbarBarColor = true;
+            this.metroTabPage4.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage4.Name = "metroTabPage4";
+            this.metroTabPage4.Size = new System.Drawing.Size(1027, 645);
+            this.metroTabPage4.TabIndex = 3;
+            this.metroTabPage4.Text = "Schedule";
+            this.metroTabPage4.VerticalScrollbarBarColor = true;
+            this.metroTabPage4.Click += new System.EventHandler(this.metroTabPage4_Click);
             // 
             // metroTabPage2
             // 
@@ -610,172 +609,6 @@
             this.cbxCategoryStatistics.Size = new System.Drawing.Size(566, 28);
             this.cbxCategoryStatistics.TabIndex = 41;
             this.cbxCategoryStatistics.SelectedIndexChanged += new System.EventHandler(this.cbxCategoryStatistics_SelectedIndexChanged);
-            // 
-            // metroTabPage4
-            // 
-            this.metroTabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTabPage4.Controls.Add(this.lblFilterBy);
-            this.metroTabPage4.Controls.Add(this.comboBox1);
-            this.metroTabPage4.Controls.Add(this.label4);
-            this.metroTabPage4.Controls.Add(this.cbNameOfEmp);
-            this.metroTabPage4.Controls.Add(this.cbSelectAll);
-            this.metroTabPage4.Controls.Add(this.dtpDateShedule);
-            this.metroTabPage4.Controls.Add(this.btnShowSchedule);
-            this.metroTabPage4.Controls.Add(this.label8);
-            this.metroTabPage4.Controls.Add(this.label9);
-            this.metroTabPage4.Controls.Add(this.btnRemoveShift);
-            this.metroTabPage4.Controls.Add(this.lvSchedule);
-            this.metroTabPage4.CustomBackground = true;
-            this.metroTabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.metroTabPage4.HorizontalScrollbarBarColor = true;
-            this.metroTabPage4.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1027, 645);
-            this.metroTabPage4.TabIndex = 3;
-            this.metroTabPage4.Text = "Schedule";
-            this.metroTabPage4.VerticalScrollbarBarColor = true;
-            this.metroTabPage4.Click += new System.EventHandler(this.metroTabPage4_Click);
-            // 
-            // lblFilterBy
-            // 
-            this.lblFilterBy.AutoSize = true;
-            this.lblFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilterBy.Location = new System.Drawing.Point(676, 98);
-            this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(76, 24);
-            this.lblFilterBy.TabIndex = 63;
-            this.lblFilterBy.Text = "Filter by";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(679, 368);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(305, 28);
-            this.comboBox1.TabIndex = 62;
-            this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(674, 327);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 20);
-            this.label4.TabIndex = 61;
-            this.label4.Text = "Shift";
-            // 
-            // cbNameOfEmp
-            // 
-            this.cbNameOfEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNameOfEmp.FormattingEnabled = true;
-            this.cbNameOfEmp.Location = new System.Drawing.Point(678, 169);
-            this.cbNameOfEmp.Name = "cbNameOfEmp";
-            this.cbNameOfEmp.Size = new System.Drawing.Size(305, 28);
-            this.cbNameOfEmp.TabIndex = 60;
-            this.cbNameOfEmp.Click += new System.EventHandler(this.cbNameOfEmp_Click);
-            // 
-            // cbSelectAll
-            // 
-            this.cbSelectAll.AutoSize = true;
-            this.cbSelectAll.BackColor = System.Drawing.SystemColors.Control;
-            this.cbSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSelectAll.Location = new System.Drawing.Point(678, 42);
-            this.cbSelectAll.Name = "cbSelectAll";
-            this.cbSelectAll.Size = new System.Drawing.Size(169, 24);
-            this.cbSelectAll.TabIndex = 59;
-            this.cbSelectAll.Text = "See entire schedule";
-            this.cbSelectAll.UseVisualStyleBackColor = false;
-            // 
-            // dtpDateShedule
-            // 
-            this.dtpDateShedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateShedule.Location = new System.Drawing.Point(679, 271);
-            this.dtpDateShedule.Name = "dtpDateShedule";
-            this.dtpDateShedule.Size = new System.Drawing.Size(304, 26);
-            this.dtpDateShedule.TabIndex = 58;
-            // 
-            // btnShowSchedule
-            // 
-            this.btnShowSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnShowSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowSchedule.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnShowSchedule.Location = new System.Drawing.Point(679, 427);
-            this.btnShowSchedule.Name = "btnShowSchedule";
-            this.btnShowSchedule.Size = new System.Drawing.Size(304, 32);
-            this.btnShowSchedule.TabIndex = 57;
-            this.btnShowSchedule.Text = "Show shifts";
-            this.btnShowSchedule.UseVisualStyleBackColor = false;
-            this.btnShowSchedule.Click += new System.EventHandler(this.btnShowSchedule_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.Control;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(675, 229);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 20);
-            this.label8.TabIndex = 56;
-            this.label8.Text = "Date";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.SystemColors.Control;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(676, 127);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 20);
-            this.label9.TabIndex = 55;
-            this.label9.Text = "Name";
-            // 
-            // btnRemoveShift
-            // 
-            this.btnRemoveShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnRemoveShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveShift.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRemoveShift.Location = new System.Drawing.Point(42, 490);
-            this.btnRemoveShift.Name = "btnRemoveShift";
-            this.btnRemoveShift.Size = new System.Drawing.Size(304, 32);
-            this.btnRemoveShift.TabIndex = 54;
-            this.btnRemoveShift.Text = "Remove selected shift";
-            this.btnRemoveShift.UseVisualStyleBackColor = false;
-            this.btnRemoveShift.Click += new System.EventHandler(this.btnRemoveShift_Click);
-            // 
-            // lvSchedule
-            // 
-            this.lvSchedule.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader11,
-            this.columnHeader9,
-            this.columnHeader10});
-            this.lvSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvSchedule.HideSelection = false;
-            this.lvSchedule.Location = new System.Drawing.Point(42, 42);
-            this.lvSchedule.Name = "lvSchedule";
-            this.lvSchedule.Size = new System.Drawing.Size(550, 417);
-            this.lvSchedule.TabIndex = 53;
-            this.lvSchedule.UseCompatibleStateImageBehavior = false;
-            this.lvSchedule.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Name";
-            this.columnHeader11.Width = 199;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Day";
-            this.columnHeader9.Width = 129;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Shift";
-            this.columnHeader10.Width = 164;
             // 
             // metroTabPage3
             // 
@@ -1107,8 +940,6 @@
             this.metroTabPage5.ResumeLayout(false);
             this.metroTabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
-            this.metroTabPage4.ResumeLayout(false);
-            this.metroTabPage4.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
             this.metroTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1154,12 +985,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ListView lvSchedule;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnRemoveShift;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -1169,14 +995,6 @@
         private System.Windows.Forms.DateTimePicker dtpTimeForShift;
         private System.Windows.Forms.Button btnAssignShift;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbNameOfEmp;
-        private System.Windows.Forms.CheckBox cbSelectAll;
-        private System.Windows.Forms.DateTimePicker dtpDateShedule;
-        private System.Windows.Forms.Button btnShowSchedule;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -1187,7 +1005,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbxRequiredQuantity;
-        private System.Windows.Forms.Label lblFilterBy;
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeeStatistics;

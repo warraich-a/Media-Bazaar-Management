@@ -276,5 +276,10 @@ namespace MediaBazar
                 LV2.Items.Add(listB);
             }
         }
+
+        private void metroTabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
