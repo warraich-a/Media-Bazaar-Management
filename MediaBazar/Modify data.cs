@@ -109,5 +109,95 @@ namespace MediaBazar
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxHourlyWage_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHourlywage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRole_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbCity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCity_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbZipcode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblZipcode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxHouseNr_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHouseNr_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxStreetName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStreetName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpBirthDateEmp_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

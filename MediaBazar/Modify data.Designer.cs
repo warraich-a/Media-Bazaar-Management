@@ -55,6 +55,7 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(281, 20);
             this.tbLastName.TabIndex = 84;
+            this.tbLastName.TextChanged += new System.EventHandler(this.tbLastName_TextChanged);
             // 
             // label7
             // 
@@ -65,6 +66,7 @@
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 83;
             this.label7.Text = "Last Name";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // tbFirstName
             // 
@@ -72,6 +74,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(281, 20);
             this.tbFirstName.TabIndex = 82;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // label1
             // 
@@ -82,6 +85,7 @@
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 81;
             this.label1.Text = "First Name";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cbxRole
             // 
@@ -95,6 +99,7 @@
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(281, 21);
             this.cbxRole.TabIndex = 80;
+            this.cbxRole.SelectedIndexChanged += new System.EventHandler(this.cbxRole_SelectedIndexChanged);
             // 
             // tbxHourlyWage
             // 
@@ -102,6 +107,7 @@
             this.tbxHourlyWage.Name = "tbxHourlyWage";
             this.tbxHourlyWage.Size = new System.Drawing.Size(281, 20);
             this.tbxHourlyWage.TabIndex = 79;
+            this.tbxHourlyWage.TextChanged += new System.EventHandler(this.tbxHourlyWage_TextChanged);
             // 
             // lblHourlywage
             // 
@@ -112,6 +118,7 @@
             this.lblHourlywage.Size = new System.Drawing.Size(66, 13);
             this.lblHourlywage.TabIndex = 78;
             this.lblHourlywage.Text = "Hourly wage";
+            this.lblHourlywage.Click += new System.EventHandler(this.lblHourlywage_Click);
             // 
             // lblRole
             // 
@@ -122,6 +129,7 @@
             this.lblRole.Size = new System.Drawing.Size(29, 13);
             this.lblRole.TabIndex = 77;
             this.lblRole.Text = "Role";
+            this.lblRole.Click += new System.EventHandler(this.lblRole_Click);
             // 
             // tbCity
             // 
@@ -129,6 +137,7 @@
             this.tbCity.Name = "tbCity";
             this.tbCity.Size = new System.Drawing.Size(281, 20);
             this.tbCity.TabIndex = 76;
+            this.tbCity.TextChanged += new System.EventHandler(this.tbCity_TextChanged);
             // 
             // lblCity
             // 
@@ -139,6 +148,7 @@
             this.lblCity.Size = new System.Drawing.Size(24, 13);
             this.lblCity.TabIndex = 75;
             this.lblCity.Text = "City";
+            this.lblCity.Click += new System.EventHandler(this.lblCity_Click);
             // 
             // tbZipcode
             // 
@@ -146,6 +156,7 @@
             this.tbZipcode.Name = "tbZipcode";
             this.tbZipcode.Size = new System.Drawing.Size(281, 20);
             this.tbZipcode.TabIndex = 74;
+            this.tbZipcode.TextChanged += new System.EventHandler(this.tbZipcode_TextChanged);
             // 
             // lblZipcode
             // 
@@ -156,6 +167,7 @@
             this.lblZipcode.Size = new System.Drawing.Size(46, 13);
             this.lblZipcode.TabIndex = 73;
             this.lblZipcode.Text = "Zipcode";
+            this.lblZipcode.Click += new System.EventHandler(this.lblZipcode_Click);
             // 
             // tbxHouseNr
             // 
@@ -163,6 +175,7 @@
             this.tbxHouseNr.Name = "tbxHouseNr";
             this.tbxHouseNr.Size = new System.Drawing.Size(281, 20);
             this.tbxHouseNr.TabIndex = 72;
+            this.tbxHouseNr.TextChanged += new System.EventHandler(this.tbxHouseNr_TextChanged);
             // 
             // lblHouseNr
             // 
@@ -173,6 +186,7 @@
             this.lblHouseNr.Size = new System.Drawing.Size(76, 13);
             this.lblHouseNr.TabIndex = 71;
             this.lblHouseNr.Text = "House number";
+            this.lblHouseNr.Click += new System.EventHandler(this.lblHouseNr_Click);
             // 
             // tbxStreetName
             // 
@@ -180,6 +194,7 @@
             this.tbxStreetName.Name = "tbxStreetName";
             this.tbxStreetName.Size = new System.Drawing.Size(281, 20);
             this.tbxStreetName.TabIndex = 70;
+            this.tbxStreetName.TextChanged += new System.EventHandler(this.tbxStreetName_TextChanged);
             // 
             // lblStreetName
             // 
@@ -190,6 +205,7 @@
             this.lblStreetName.Size = new System.Drawing.Size(64, 13);
             this.lblStreetName.TabIndex = 69;
             this.lblStreetName.Text = "Street name";
+            this.lblStreetName.Click += new System.EventHandler(this.lblStreetName_Click);
             // 
             // dtpBirthDateEmp
             // 
@@ -199,6 +215,7 @@
             this.dtpBirthDateEmp.Size = new System.Drawing.Size(281, 20);
             this.dtpBirthDateEmp.TabIndex = 68;
             this.dtpBirthDateEmp.Value = new System.DateTime(2020, 3, 9, 0, 0, 0, 0);
+            this.dtpBirthDateEmp.ValueChanged += new System.EventHandler(this.dtpBirthDateEmp_ValueChanged);
             // 
             // btnAddNewEmployee
             // 
@@ -223,6 +240,7 @@
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 66;
             this.label3.Text = "Date of Birth";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Modify_data
             // 

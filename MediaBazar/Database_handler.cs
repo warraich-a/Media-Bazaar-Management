@@ -19,6 +19,9 @@ namespace MediaBazar
         List<Schedule> schedules = new List<Schedule>();
         Person person = new Person();
         List<Person> people = new List<Person>();
+        List<string> departments = new List<string>();
+        List<Product> products;
+
 
         public Database_handler()
         {
@@ -303,8 +306,212 @@ namespace MediaBazar
             }
             return foundPerson;
         }
+        /// <summary>
+        /// PRODUCT
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        //to get the departments
+        public List<string> GetDepartments()
+        {
+            
+            try
+            {
+                string sql = "SELECT name FROM department"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                   departments.Add(dr[0].ToString());
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return departments;
+        }
 
 
+        // to add the products
+
+        public void AddProduct(int departmentId, string name, double price)
+        {
+            bool productExist = false;
+            try
+            {
+                foreach (Product item in products) // to check if the Person with the same name already exists
+                {
+                    if (item.Name == name)
+                    {
+                        productExist = true;
+                    }
+                }
+                if (!productExist)
+                {
+                    string sql = "INSERT INTO product(departmentId, productName, price) VALUES(@departmentId, @productName, @productPrice)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    if (departmentId == 0 || name == "" || price == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@departmentId", departmentId);
+                        cmd.Parameters.AddWithValue("@productName", name);
+                        cmd.Parameters.AddWithValue("@productPrice", price);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        System.Windows.Forms.MessageBox.Show("Product has been Added to the System");
+                    }
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Product Exists");
+                }
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Product> GetProducts()
+        {
+            products = new List<Product>();
+            try
+            {
+                string sql = "SELECT productId, departmentId, productName, price FROM product"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+                
+                while (dr.Read())
+                {
+                    string department = "";
+                   
+                    if (Convert.ToInt32(dr[1]) == 1)
+                    {
+                        department = "Household";
+                    }
+                    else if (Convert.ToInt32(dr[1]) == 2)
+                    {
+                        department = "Computer";
+                    }
+                    else if (Convert.ToInt32(dr[1]) == 3)
+                    {
+                        department = "Kitchen";
+                    }
+                    else if (Convert.ToInt32(dr[1]) == 4)
+                    {
+                        department = "Photo and Video";
+                    }
+                    Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                    products.Add(g);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return products;
+        }
+
+        public void ModifyProduct(int id, string givenProductName, double givenProductPrice)
+        {
+            try
+            {
+                 string sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + id + "';";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    if (givenProductName == "" || givenProductPrice == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@productName", givenProductName);
+                        cmd.Parameters.AddWithValue("@productPrice", givenProductPrice);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        System.Windows.Forms.MessageBox.Show("The information has been updated");
+                    } 
+               
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public Product ReturnExistingProduct(int id)
+        {
+            Product foundProduct = null;
+            foreach (Product item in products)
+            {
+                if (item.ProductId == id)
+                {
+                    foundProduct = item;
+                }
+            }
+            return foundProduct;
+        }
+        public void ProductToRemove(int productId)
+        {
+            string sql = "";
+            bool fkStock = false;
+            bool fkProductDelete = false;
+            try
+            {
+                MySqlCommand cmd;
+                // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
+                if (sql != "DELETE FROM stock WHERE productId = @id")
+                {
+                    sql = "DELETE FROM stock WHERE productId = @id";
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", productId);
+                    conn.Open();  // this must be before the execution which is just under this
+                    cmd.ExecuteNonQuery();
+                    fkStock = true;
+                }
+                if (fkStock)
+                {
+                    sql = "DELETE FROM stock_request WHERE productId = @id";
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", productId);
+                    cmd.ExecuteNonQuery();
+
+                    fkProductDelete = true;
+                }
+                if (fkProductDelete) // removing the data from the main table
+                {
+                    sql = "DELETE FROM product WHERE productId = @id"; // a query of what we want
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", productId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public Product GetProductByName(string givenName)
+        {
+            Product foundProduct = null;
+            foreach (Product p in products)
+            {
+                if(p.Name.Contains(givenName))
+                {
+                    foundProduct = p;
+                }
+            }
+            return foundProduct;
+        }
 
         /* LOGIN */
         /* Check users credentials */

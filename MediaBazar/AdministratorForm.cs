@@ -20,6 +20,7 @@ namespace MediaBazar
         // Create instance of mediaBazaar or use made instance
         MediaBazaar mediaBazaar = MediaBazaar.Instance;
         ListViewItem list;
+        ListViewItem listOfProducts;
         public class ComboboxItem
         {
             public string Text { get; set; }
@@ -163,7 +164,20 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
-           
+            foreach (string d in mediaBazaar.GetDepartments())
+            {
+                cmbDepartmentStack.Items.Add(d);
+            }
+
+            listViewProducts.Items.Clear();
+            foreach (Product p in mediaBazaar.GetProducts())
+            {
+                listOfProducts = new ListViewItem(p.ProductId.ToString());
+                listOfProducts.SubItems.Add(Convert.ToString(p.DepartmentName));
+                listOfProducts.SubItems.Add(p.Name);
+                listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                listViewProducts.Items.Add(listOfProducts);
+            }
         }
 
         // To remove an employee from the system
@@ -696,6 +710,57 @@ namespace MediaBazar
             {
                 cbNameOfEmp.Items.Add(p.GetFullName());
             }
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            string productName = tbProductName.Text;
+            double productPrice = Convert.ToDouble(tbProductPrice.Text);
+            int departmentId = cmbDepartmentStack.SelectedIndex + 1;
+            mediaBazaar.AddProduct(departmentId, productName, productPrice);
+        }
+
+        private void btnModifyProduct_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(listViewProducts.SelectedItems[0].SubItems[0].Text);
+                ModifyProduct m = new ModifyProduct(id, this, mediaBazaar); // sending the id to modify data form through the parameters
+                m.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No employee is selected");
+            }
+        }
+
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(listViewProducts.SelectedItems[0].SubItems[0].Text);
+                if (MessageBox.Show("Do you want to remove this product?", "Remove Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    mediaBazaar.ProductToRemove(Convert.ToInt32(id));
+                    MessageBox.Show("Product is removed");
+                    RefreshData();
+                    Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Product is not removed");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No Product is selected");
+            }
+        }
+
+        private void btnSearchProduct_Click(object sender, EventArgs e)
+        {
+            string productName = tbProductToSearch.Text;
+            MessageBox.Show($"{mediaBazaar.ProductToSearch(productName).ToString()}");
         }
     }
 }
