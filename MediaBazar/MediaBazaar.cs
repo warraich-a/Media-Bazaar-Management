@@ -55,7 +55,7 @@ namespace MediaBazar
         }
 
 
-        /* Login */
+        /* LOGIN */
         /* Get User Type */
         public string GetUserType(string email)
         {
@@ -69,6 +69,14 @@ namespace MediaBazar
         {
             bool areCredentialsCorrect = database.CheckCredentials(email, password);
 
+            // Save user name
+            if (areCredentialsCorrect)
+            {
+                string name = GetUserName(email);
+
+                SaveCurrentUser(name);
+            }
+
             return areCredentialsCorrect;
         }
 
@@ -78,13 +86,13 @@ namespace MediaBazar
             Console.WriteLine(name);
         }
 
-        /* Logout */
+        /* LOGOUT */
         public void LogOut()
         {
             this.currentUser = null;
         }
 
-        /* Reset password */
+        /* RESET PASSWORD */
         public string ResetPassword(string email, string password)
         {
             string result = database.ResetPassword(email, password);
@@ -147,6 +155,7 @@ namespace MediaBazar
             return userName;
         }
 
+        /* Check if user exists */
         public string DoesUserExist(string email)
         {
             string doesUserExist = database.DoesUserExist(email);
@@ -162,6 +171,13 @@ namespace MediaBazar
             return statistics;
         }
 
+        public ArrayList GetStatistics(string dateFrom, string type)
+        {
+            ArrayList statistics = database.GetStatistics(dateFrom, type);
+
+            return statistics;
+        }
+
         public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
         {
             ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type);
@@ -169,12 +185,14 @@ namespace MediaBazar
             return statistics;
         }
 
-        //public ArrayList GetStatisticsNrEmployeesPerShift(string dateFrom, string dateTo, string type)
-        //{
-        //    ArrayList rowList = database.GetStatistics(dateFrom, dateTo, type);
+        /* GET EMPLOYEE FOR SHIFT, STATISTICS */
+        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        {
+            string employees = database.GetEmployeesPerShift(date, shiftType);
+            return employees;
+        }
 
-        //    return rowList;
-        //}
+
 
 
         // to add a person in a database

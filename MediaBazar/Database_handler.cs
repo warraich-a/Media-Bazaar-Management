@@ -310,7 +310,8 @@ namespace MediaBazar
         /* Check users credentials */
         public bool CheckCredentials(string email, string password)
         {
-            string sql = $"SELECT firstName, lastName, email, password FROM person WHERE email = @email AND password = @password";
+            string sql = $"SELECT firstName, lastName, email, password " +
+                $"FROM person WHERE email = @email AND password = @password";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             // Parameters
             cmd.Parameters.AddWithValue("@email", email);
@@ -324,7 +325,6 @@ namespace MediaBazar
             if (dr.Read())
             {
                 // Save current user's name
-                //SaveCurrentUser(dr[0].ToString() + " " + dr[1].ToString());
                 areCredentialsCorrect = true;
             }
             else
@@ -376,10 +376,6 @@ namespace MediaBazar
 
 
 
-        /* LOGOUT */
-
-
-
         /* STATISTICS */
         public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
         {
@@ -391,7 +387,11 @@ namespace MediaBazar
 
                     using (conn)
                     {
-                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s INNER JOIN person p ON p.id = s.employeeId WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY s.employeeId";
+                        // TOOLTIP
+                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s " +
+                            "INNER JOIN person p ON p.id = s.employeeId " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                            "GROUP BY s.employeeId";
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         conn.Open();
@@ -400,15 +400,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
                         cmd.Parameters.AddWithValue("@dateTo", dateTo);
 
-                        ArrayList statistics = new ArrayList();
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            object[] values = new object[dr.FieldCount];
-                            dr.GetValues(values);
-                            statistics.Add(values);
-                        }
+                        ArrayList statistics = GatherStatisticData(cmd);
 
                         return statistics;
                     }
@@ -430,7 +422,9 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY date, shiftType ORDER BY date;";
+                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                            "GROUP BY date, shiftType ORDER BY date;";
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         // Parameters
@@ -440,21 +434,47 @@ namespace MediaBazar
                         // Open db connection
                         conn.Open();
 
-                        ArrayList statistics = new ArrayList();
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            object[] values = new object[dr.FieldCount];
-                            dr.GetValues(values);
-                            statistics.Add(values);
-                        }
+                        ArrayList statistics = GatherStatisticData(cmd);
 
                         return statistics;
-
                     }
-                    //return statistics;
-                    //}
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            //The items get stock request the most(for a specific timeslot)
+            else if (type == "Most Restocked Items")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        // Find how many times per month an item has been restocked
+                        string sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId " +
+                            "WHERE requestDate BETWEEN @dateFrom AND @dateTo " +
+                            "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        // SELECT sr.productId, p.productName,SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr INNER JOIN product AS p ON p.productId = sr.productId GROUP BY sr.productId ORDER BY totalQuantity DESC
+
+                        // Create command object
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        // Parameters
+
+                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        // Open db connection
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
                 }
                 catch (MySqlException ex)
                 {
@@ -483,15 +503,37 @@ namespace MediaBazar
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         conn.Open();
 
-                        ArrayList statistics = new ArrayList();
+                        ArrayList statistics = GatherStatisticData(cmd);
 
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            object[] values = new object[dr.FieldCount];
-                            dr.GetValues(values);
-                            statistics.Add(values);
-                        }
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+
+            // Profit per year (stock requests)
+            else if (type == "Yearly profit")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "GROUP BY YEAR(sr.requestDate)";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
 
                         return statistics;
                     }
@@ -508,6 +550,98 @@ namespace MediaBazar
             }
 
             return null;
+        }
+
+        public ArrayList GetStatistics(string date, string type)
+        {
+            // Restocked Items Per Date
+            if (type == "Restocked Items On Date")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId " +
+                            "WHERE requestDate = @date " +
+                            "GROUP BY sr.productId ORDER BY totalQuantity";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                        cmd.Parameters.AddWithValue("@date", date);
+
+
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            return null;
+        }
+
+        private ArrayList GatherStatisticData(MySqlCommand cmd)
+        {
+            ArrayList statistics = new ArrayList();
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                object[] values = new object[dr.FieldCount];
+                dr.GetValues(values);
+                statistics.Add(values);
+            }
+
+            return statistics;
+        }
+
+
+        /* GET EMPLOYEES PER SHIFT PER DAY */
+        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        {
+            string employees = "";
+            try
+            {
+                using (conn)
+                {
+                    string sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
+                        $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
+                        $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    conn.Open();
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        employees += $"{dr[0]} {dr[1]} {Environment.NewLine}";
+                    }
+                }
+                return employees;
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return "";
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return "";
+            }
+
         }
 
 
