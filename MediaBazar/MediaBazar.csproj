@@ -113,7 +113,14 @@
     <Compile Include="Modify Data.Designer.cs">
       <DependentUpon>Modify Data.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModifyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyProduct.Designer.cs">
+      <DependentUpon>ModifyProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resetPasswordForm.cs">
@@ -140,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modify Data.resx">
       <DependentUpon>Modify Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyProduct.resx">
+      <DependentUpon>ModifyProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
