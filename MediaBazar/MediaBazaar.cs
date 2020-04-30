@@ -213,46 +213,6 @@ namespace MediaBazar
             return database.ReturnPersonFromList(id);
         }
 
-        //to get the departments from the db
-        public List<string> GetDepartments()
-        {
-            return database.GetDepartments();
-        }
-
-        // to add a new product in the system
-        public void AddProduct(int departmentId, string productName, double productPrice)
-        {
-            database.AddProduct(departmentId, productName, productPrice);
-        }
-        //to get the products
-        public List<Product> GetProducts()
-        {
-            return database.GetProducts();
-        }
-
-        //to modify the existing product
-        public void ModifyProduct(int id, string productName, double productPrice)
-        {
-            database.ModifyProduct(id, productName, productPrice);
-        }
-
-        //to get the exisitng product in order to modify
-        public Product ReturnExistingProduct(int id)
-        {
-            return database.ReturnExistingProduct(id);
-        }
-
-        //to remove a product from the database
-        public void ProductToRemove(int id)
-        {
-            database.ProductToRemove(id);
-        }
-
-        // to search a product by name 
-        public Product ProductToSearch(string givenName)
-        {
-            return database.GetProductByName(givenName);
-        }
         /* SCHEDULE */
         public void ReadSchedule()
         {
@@ -363,7 +323,46 @@ namespace MediaBazar
             return i;
         }
 
+        //to get the departments from the db
+        public List<string> GetDepartments()
+        {
+            return database.GetDepartments();
+        }
 
+        // to add a new product in the system
+        public void AddProduct(int departmentId, string productName, double productPrice)
+        {
+            database.AddProduct(departmentId, productName, productPrice);
+        }
+        //to get the products
+        public List<Product> GetProducts()
+        {
+            return database.GetProducts();
+        }
+
+        //to modify the existing product
+        public void ModifyProduct(int id, string productName, double productPrice)
+        {
+            database.ModifyProduct(id, productName, productPrice);
+        }
+
+        //to get the exisitng product in order to modify
+        public Product ReturnExistingProduct(int id)
+        {
+            return database.ReturnExistingProduct(id);
+        }
+
+        //to remove a product from the database
+        public void ProductToRemove(int id)
+        {
+            database.ProductToRemove(id);
+        }
+
+        // to search a product by name 
+        public Product ProductToSearch(string givenName)
+        {
+            return database.GetProductByName(givenName);
+        }
 
 
 
