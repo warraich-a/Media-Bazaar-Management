@@ -21,11 +21,11 @@ namespace MediaBazar
 
 
         private void btnLogIn_Click(object sender, EventArgs e)
-        {
+        {/*
             AdministratorForm a = new AdministratorForm();
-            a.Show();
+            a.Show();*/
 
-          /*  // Get login details
+            // Get login details
             string email = tbxEmail.Text;
             string password = tbxPassword.Text;
 
@@ -91,7 +91,7 @@ namespace MediaBazar
                 {
                     MessageBox.Show(mediaBazaar.GetUserType(email));
                 }
-            }*/
+            }
         }
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
