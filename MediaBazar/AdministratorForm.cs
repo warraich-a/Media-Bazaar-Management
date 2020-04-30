@@ -574,13 +574,9 @@ namespace MediaBazar
                             count += 1;
                         }
                     }
-                    if (count >= 5)
+                    if (count >= 15)
                     {
                         schedulesPanels[i].BackColor = Color.Red;
-                    }
-                    else if (count == 4)
-                    {
-                        schedulesPanels[i].BackColor = Color.Yellow;
                     }
                     else if (count > 0)
                     {
@@ -608,6 +604,7 @@ namespace MediaBazar
                             l.Size = new Size(130, 30);
                             l.Text = dayN.ToString();
                             schedulesPanels[i].Controls.Add(l);
+                            count = 0;
                             foreach (Schedule s in schedules)
                             {
                                 if (s.DATETime.Day == dayN && s.DATETime.Month == date.Month)
@@ -617,7 +614,16 @@ namespace MediaBazar
                                     lblSchedule.Location = new Point(5, 35);
                                     lblSchedule.Text = mediaBazaar.GetPersonNameById(s.EmployeeId);
                                     schedulesPanels[i].Controls.Add(lblSchedule);
+                                    count++;
                                 }
+                            }
+                            if (count >= 5)
+                            {
+                                schedulesPanels[i].BackColor = Color.Red;
+                            }
+                            else if (count > 0)
+                            {
+                                schedulesPanels[i].BackColor = Color.LightGreen;
                             }
 
                             dayN++;
@@ -653,6 +659,7 @@ namespace MediaBazar
                                     schedulesPanels[i].Controls.Add(lblShift);
 
                                 }
+
                             }
 
                             dayN++;
