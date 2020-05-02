@@ -162,6 +162,13 @@ namespace MediaBazar
             return statistics;
         }
 
+        public ArrayList GetStatistics(string dateFrom, string type)
+        {
+            ArrayList statistics = database.GetStatistics(dateFrom, type);
+
+            return statistics;
+        }
+
         public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
         {
             ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type);
@@ -169,12 +176,12 @@ namespace MediaBazar
             return statistics;
         }
 
-        //public ArrayList GetStatisticsNrEmployeesPerShift(string dateFrom, string dateTo, string type)
-        //{
-        //    ArrayList rowList = database.GetStatistics(dateFrom, dateTo, type);
-
-        //    return rowList;
-        //}
+        /* GET EMPLOYEE FOR SHIFT, STATISTICS */
+        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        {
+            string employees = database.GetEmployeesPerShift(date, shiftType);
+            return employees;
+        }
 
 
         // to add a person in a database
