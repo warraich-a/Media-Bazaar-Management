@@ -682,7 +682,7 @@
             this.tbProductToSearch.Name = "tbProductToSearch";
             this.tbProductToSearch.Size = new System.Drawing.Size(404, 26);
             this.tbProductToSearch.TabIndex = 46;
-            this.tbProductToSearch.TextChanged += new System.EventHandler(this.tbProductToSearch_TextChanged_1);
+            this.tbProductToSearch.TextChanged += new System.EventHandler(this.tbProductToSearch_TextChanged);
             // 
             // label14
             // 

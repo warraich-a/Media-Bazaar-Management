@@ -757,13 +757,9 @@ namespace MediaBazar
             }
         }
 
-       
-        private void tbProductToSearch_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
+      
 
-        private void tbProductToSearch_TextChanged_1(object sender, EventArgs e)
+        private void tbProductToSearch_TextChanged(object sender, EventArgs e)
         {
             List<ListViewItem> items = new List<ListViewItem>();
             string productName = tbProductToSearch.Text;
