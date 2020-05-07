@@ -17,6 +17,7 @@ namespace MediaBazar
 {
     public partial class AdministratorForm : Form
     {
+
         // Create instance of mediaBazaar or use made instance
         MediaBazaar mediaBazaar = MediaBazaar.Instance;
         ListViewItem list;
@@ -30,17 +31,92 @@ namespace MediaBazar
                 return Text;
             }
         }
+        public int checknrshift(string shifttype, string date)
+        {
+            int nr = 0;
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    string sql = "SELECT * FROM schedule WHERE (shiftType='" + shifttype + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+
+        public int checknrperson(int employeeid, string date)
+        {
+            int nr = 0;
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+
+                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
 
         public AdministratorForm()
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             InitializeComponent();
 
             RefreshData();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
             Database_handler connection = new Database_handler();
 
+<<<<<<< HEAD
             string sql = "SELECT * FROM person WHERE (role='Employee' OR role='DepotWorker');";
             DataSet rdr = connection.ExecuteDataSet(sql);
 
@@ -52,6 +128,39 @@ namespace MediaBazar
                     item.Value = dr["id"];
                     cbEmpShift.Items.Add(item);
                 }
+=======
+            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+
+                    string sql = "SELECT * FROM person WHERE (role='Employee' OR role='DepotWorker');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        ComboboxItem item = new ComboboxItem();
+                        item.Text = rdr.GetString("firstName") + " " + rdr.GetString("lastName") + " - " + rdr.GetString("role");
+                        item.Value = rdr.GetString("id");
+                        cbEmpShift.Items.Add(item);
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+>>>>>>> master
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -159,12 +268,21 @@ namespace MediaBazar
                 chartEmployeeStatistics.Titles.Add("Hourly wage per employee chart");
                 // Series
                 chartEmployeeStatistics.Series.Add("Hourly Wage");
+<<<<<<< HEAD
 
                 // Made it fit all data
                 chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
                 ArrayList statistics = mediaBazaar.GetStatistics(type);
 
+=======
+
+                // Made it fit all data
+                chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+                ArrayList statistics = mediaBazaar.GetStatistics(type);
+
+>>>>>>> master
                 foreach (object[] statistic in statistics)
                 {
                     chartEmployeeStatistics.Series["Hourly Wage"].Points.AddXY(statistic[0].ToString() + " " + statistic[1].ToString(), statistic[2]);
@@ -333,6 +451,7 @@ namespace MediaBazar
                 DateTime dayonly = date.Date;
                 // checknrshift - check for less than 5 employees on one shift
                 // checknrperson - check for one employee shifts in one day
+<<<<<<< HEAD
                 if ((connection.checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (connection.checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
                 {
                     //MessageBox.Show($"{date.ToString("yyyy-MM-dd")}");
@@ -342,6 +461,36 @@ namespace MediaBazar
                     else MessageBox.Show("Error Writing to database! Please contact Administrator!");
                 }
                 else MessageBox.Show("Shift is not possible due to a shift rule(s)!");
+=======
+                if ((checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
+                {
+                    connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(connStr))
+                        {
+                            //all rules are ok
+                            string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES (@id,@emploeeid,@shifttype,@date,@statusofshift);";
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = sql;
+                            cmd.Prepare();
+                            cmd.Parameters.AddWithValue("@id", count);
+                            cmd.Parameters.AddWithValue("@emploeeid", employeedId);
+                            cmd.Parameters.AddWithValue("@shifttype", shifttype);
+                            cmd.Parameters.AddWithValue("@date", date);
+                            cmd.Parameters.AddWithValue("@statusofshift", "Assigned");
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                else MessageBox.Show("Shift not possible!");
+>>>>>>> master
             }
         }
 
@@ -393,6 +542,8 @@ namespace MediaBazar
             else if (cbNameOfEmp.SelectedIndex != -1 && dtpDateShedule.Checked)
             {
                 foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule1(mediaBazaar.GetPersonIdByName(cbNameOfEmp.Text), dtpDateShedule.Value.Date))
+<<<<<<< HEAD
+=======
                 {
 
                     list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
@@ -405,6 +556,7 @@ namespace MediaBazar
             else if (dtpDateShedule.Checked && comboBox1.SelectedIndex != -1)
             {
                 foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule2(dtpDateShedule.Value.Date, shift))
+>>>>>>> master
                 {
 
                     list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
@@ -412,6 +564,21 @@ namespace MediaBazar
                     list.SubItems.Add(Convert.ToString(item.DATETime));
                     list.SubItems.Add(Convert.ToString(item.ShiftType));
                     lvSchedule.Items.Add(list);
+<<<<<<< HEAD
+                }
+            }
+            else if (dtpDateShedule.Checked && comboBox1.SelectedIndex != -1)
+            {
+                foreach (Schedule item in mediaBazaar.VeiwSpecificSchedule2(dtpDateShedule.Value.Date, shift))
+                {
+
+                    list = new ListViewItem(Convert.ToString(mediaBazaar.GetPersonNameById(item.EmployeeId)));
+
+                    list.SubItems.Add(Convert.ToString(item.DATETime));
+                    list.SubItems.Add(Convert.ToString(item.ShiftType));
+                    lvSchedule.Items.Add(list);
+=======
+>>>>>>> master
                 }
             }
         }

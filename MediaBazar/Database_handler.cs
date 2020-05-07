@@ -8,8 +8,11 @@ using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Collections;
+<<<<<<< HEAD
 using System.Windows.Forms;
 using System.Data;
+=======
+>>>>>>> master
 
 namespace MediaBazar
 {
@@ -560,6 +563,7 @@ namespace MediaBazar
                 return ex.Message;
             }
         }
+<<<<<<< HEAD
 
         //Read data from Database as object
         public Object ExecuteScalar(string sql)
@@ -711,5 +715,7 @@ namespace MediaBazar
             }
             return nr;
         }
+=======
+>>>>>>> master
     }
 }
