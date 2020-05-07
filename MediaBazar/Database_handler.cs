@@ -7,24 +7,29 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
+using System.Collections;
+using System.Windows.Forms;
+using System.Data;
 
 namespace MediaBazar
 {
     class Database_handler
     {
 
-        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;";
+        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
         MySqlConnection conn;
-        List<Schedule> schedules = new List<Schedule>();
+
         Person person = new Person();
         List<Person> people = new List<Person>();
-        
+
         public Database_handler()
         {
             conn = new MySqlConnection(connectionString);
         }
 
 
+
+        /* EMPLOYEE MANAGEMENT */
         public void AddPersonToDatabase(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
         {
             string givenEmail;
@@ -243,64 +248,468 @@ namespace MediaBazar
             }
             return foundPerson;
         }
-        public List<Schedule> ReadSchedule()
+
+
+
+        /* LOGIN */
+        /* Check users credentials */
+        public bool CheckCredentials(string email, string password)
         {
-            this.schedules = new List<Schedule>();
+            string sql = $"SELECT firstName, lastName, email, password FROM person WHERE email = @email AND password = @password";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            // Parameters
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", password);
+
+            conn.Open();
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            bool areCredentialsCorrect = false;
+            if (dr.Read())
+            {
+                // Save current user's name
+                //SaveCurrentUser(dr[0].ToString() + " " + dr[1].ToString());
+                areCredentialsCorrect = true;
+            }
+            else
+            {
+                areCredentialsCorrect = false;
+            }
+            conn.Close();
+            return areCredentialsCorrect;
+        }
+
+        /* Get User Type */
+        public string GetUserType(string email)
+        {
+            string role = "";
             try
             {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule`";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                conn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                using (conn)
                 {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
+                    // Get user role
+                    string sql = $"SELECT role FROM person WHERE email = @email AND role != 'Employee'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    // Parameters
+                    cmd.Parameters.AddWithValue("@email", email);
 
-                    ShiftStatus b = ShiftStatus.ASSIGNED;
-                    if (dr[4].ToString() == "Assigned")
-                    {
-                        b = ShiftStatus.ASSIGNED;
-                    }
-                    else if (dr[4].ToString() == "Proposed")
-                    {
-                        b = ShiftStatus.PROPOSED;
-                    }
-                    else if (dr[4].ToString() == "Accepted")
-                    {
-                        b = ShiftStatus.ACCEPTED;
-                    }
-                    else if (dr[4].ToString() == "Rejected")
-                    {
-                        b = ShiftStatus.REJECTED;
-                    }
+                    conn.Open();
 
+                    Object result = cmd.ExecuteScalar();
 
-
-
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    schedules.Add(g);
+                    if (result != null)
+                    {
+                        role = result.ToString();
+                    }
+                    else
+                    {
+                        role = "User does not exist";
+                    }
+                    return role;
                 }
             }
-            finally
+            catch (MySqlException ex)
             {
-                conn.Close();
+                return ex.Message;
             }
-            return schedules;
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+
+        /* LOGOUT */
+
+
+
+        /* STATISTICS */
+        public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
+        {
+            // Salary per employee between two dates
+            if (type == "Salary per employee")
+            {
+                try
+                {
+
+                    using (conn)
+                    {
+                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s INNER JOIN person p ON p.id = s.employeeId WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY s.employeeId";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        // Parameters
+                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
+
+                        ArrayList statistics = new ArrayList();
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            object[] values = new object[dr.FieldCount];
+                            dr.GetValues(values);
+                            statistics.Add(values);
+                        }
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+
+            // Number employees per shift between two dates
+            else if (type == "Number of employees per shift")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY date, shiftType ORDER BY date;";
+                        // Create command object
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        // Parameters
+
+                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        // Open db connection
+                        conn.Open();
+
+                        ArrayList statistics = new ArrayList();
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            object[] values = new object[dr.FieldCount];
+                            dr.GetValues(values);
+                            statistics.Add(values);
+                        }
+
+                        return statistics;
+
+                    }
+                    //return statistics;
+                    //}
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            return null;
+        }
+
+
+        public ArrayList GetStatistics(string type)
+        {
+            // Hourly wage per employee
+            if (type == "Hourly wage per employee")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT firstName, lastName, hourlyWage FROM person";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        ArrayList statistics = new ArrayList();
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            object[] values = new object[dr.FieldCount];
+                            dr.GetValues(values);
+                            statistics.Add(values);
+                        }
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+
+            return null;
+        }
+
+
+
+        /* RESET PASSWORD */
+        public string ResetPassword(string email, string password)
+        {
+            try
+            {
+                using (conn)
+                {
+                    string sql = "UPDATE person SET password= @password WHERE email = @email;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    // Parameters
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                    return "Password was successfully updated";
+                }
+            }
+            catch (MySqlException ex)
+            {
+                return ex.Message;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+        /* Get user name */
+        public string GetUserName(string email)
+        {
+            try
+            {
+                using (conn)
+                {
+                    // Get user name
+                    string sql = $"SELECT firstName FROM person WHERE email = @email";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    // Parameters
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    conn.Open();
+
+                    object result = cmd.ExecuteScalar();
+
+                    string username = "";
+
+                    if (result != null)
+                    {
+                        username = result.ToString();
+                    }
+                    return username;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                return ex.Message;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        // Check if user exists
+        public string DoesUserExist(string email)
+        {
+            try
+            {
+                using (conn)
+                {
+                    // Get user name
+                    string sql = "SELECT email FROM person WHERE email = @email && role != 'Employee'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    // Parameters
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    conn.Open();
+
+                    object result = cmd.ExecuteScalar();
+
+                    // if result is empty so user doesn't exists
+                    if (result != null)
+                    {
+                        return "User found";
+                    }
+                    else
+                    {
+                        return "User not found";
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                return ex.Message;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        //Read data from Database as object
+        public Object ExecuteScalar(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    Object reader;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    reader = cmd.ExecuteScalar();
+                    conn.Close();
+                    return reader;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        public DataSet ExecuteDataSet(string sql)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                da.Fill(ds, "result");
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        //Read data from Database as reader
+        public MySqlDataReader ExecuteReader(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    reader = cmd.ExecuteReader();
+                    conn.Close();
+                    return reader;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        //
+        public int ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    int affected;
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = sql;
+                    conn.Open();
+                    affected = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return affected;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return -1;
+        }
+
+        //Check the number of shifts in one day
+        public int checknrshift(string shifttype, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+                    string sql = "SELECT * FROM schedule WHERE (shiftType='" + shifttype + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+
+        //Check the number of shift in a day for an employee
+        public int checknrperson(int employeeid, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+
+                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
         }
     }
-    
 }
