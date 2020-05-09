@@ -278,9 +278,9 @@ namespace MediaBazar
                 GenerateStatisticsRestockedItemsOnDate(type);
             }
             // Profit per year (stock requests)
-            else if (type == "Yearly profit")
+            else if (type == "Yearly stock requests")
             {
-                GenerateStatisticsYearlyProfit(type);
+                GenerateStatisticsYearlyStockRequests(type);
             }
         }
 
@@ -389,7 +389,6 @@ namespace MediaBazar
 
                     // Add tooltip, Employees working that day that shift
                     chartEmployeeStatistics.Series["Evening"].Points[indexEvening].ToolTip = $"{employees}";
-
                     indexEvening++;
                 }
 
@@ -460,10 +459,10 @@ namespace MediaBazar
             }
         }
 
-        private void GenerateStatisticsYearlyProfit(string type)
-        {
-            chartEmployeeStatistics.Series.Add("Total restock requests");
 
+        private void GenerateStatisticsYearlyStockRequests(string type)
+        {
+            chartEmployeeStatistics.Series.Add("Total stock requests");
 
             chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
 
@@ -481,7 +480,7 @@ namespace MediaBazar
 
             foreach (object[] statistic in statistics)
             {
-                chartEmployeeStatistics.Series["Total restock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
+                chartEmployeeStatistics.Series["Total stock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
 
                 // Displays one employee at a time
                 Refresh();
@@ -499,8 +498,8 @@ namespace MediaBazar
                 dtpTo.Enabled = false;
             }
             // Hourly wage per employee OR Yearly profit
-            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee" ||
-                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly profit")
+            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee" || 
+                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly stock requests")
             {
                 // Disable date picking
                 dtpFrom.Enabled = false;
@@ -514,7 +513,6 @@ namespace MediaBazar
                 dtpTo.Enabled = true;
             }
         }
-
 
 
         private void btnAssignShift_Click_1(object sender, EventArgs e)
