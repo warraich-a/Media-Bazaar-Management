@@ -183,6 +183,8 @@ namespace MediaBazar
                 listOfProducts.SubItems.Add(Convert.ToString(p.DepartmentName));
                 listOfProducts.SubItems.Add(p.Name);
                 listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                listOfProducts.SubItems.Add(Convert.ToString(p.Exist));
+
                 listViewProducts.Items.Add(listOfProducts);
             }
         }
@@ -789,7 +791,7 @@ namespace MediaBazar
             RefreshData();
             for (int i = 0; i < listViewProducts.Items.Count; i++)
             {
-                if (listViewProducts.Items[i].SubItems[2].Text.Contains(productName))
+                if (listViewProducts.Items[i].SubItems[2].Text.Contains(productName.ToLower()) || listViewProducts.Items[i].SubItems[2].Text.Contains(productName.ToUpper()))
                 {
                     items.Add(listViewProducts.Items[i]);
                 }

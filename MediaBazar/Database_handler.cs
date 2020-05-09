@@ -698,7 +698,7 @@ namespace MediaBazar
             products = new List<Product>();
             try
             {
-                string sql = "SELECT productId, departmentId, productName, price FROM product"; // a query of what we want
+                string sql = "SELECT productId, departmentId, productName, price, exist FROM product"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
@@ -724,7 +724,7 @@ namespace MediaBazar
                     {
                         department = "Photo and Video";
                     }
-                    Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                    Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department, Convert.ToBoolean(dr[4])); // has to specify the order like this
                     products.Add(g);
                 }
             }
@@ -782,18 +782,25 @@ namespace MediaBazar
         {
             string sql = "";
             bool fkStock = false;
-            bool fkProductDelete = false;
+           // bool fkProductDelete = true;
             try
             {
                 MySqlCommand cmd;
+                //sql = "DELETE FROM stock WHERE productId = @id";
+                sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
+                cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                cmd.Parameters.AddWithValue("@exist", fkStock);
+                conn.Open();  // this must be before the execution which is just under this
+                cmd.ExecuteNonQuery();
+
                 // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
-                if (sql != "DELETE FROM stock WHERE productId = @id")
+             /*   if (sql != "DELETE FROM stock WHERE productId = @id")
                 {
 
-                    sql = "DELETE FROM stock WHERE productId = @id";
-                    /*  sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + productId + "';";*/
+                    //sql = "DELETE FROM stock WHERE productId = @id";
+                    sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
                     cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                    cmd.Parameters.AddWithValue("@id", productId);
+                    cmd.Parameters.AddWithValue("@exist", fkStock);
                     conn.Open();  // this must be before the execution which is just under this
                     cmd.ExecuteNonQuery();
                     fkStock = true;
@@ -813,7 +820,7 @@ namespace MediaBazar
                     cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
                     cmd.Parameters.AddWithValue("@id", productId);
                     cmd.ExecuteNonQuery();
-                }
+                }*/
             }
             finally
             {
