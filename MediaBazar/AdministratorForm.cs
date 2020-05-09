@@ -909,10 +909,31 @@ namespace MediaBazar
             }
         }
 
-        private void btnSearchProduct_Click(object sender, EventArgs e)
+       
+
+        private void tbProductToSearch_TextChanged(object sender, EventArgs e)
         {
+            List<ListViewItem> items = new List<ListViewItem>();
             string productName = tbProductToSearch.Text;
-            MessageBox.Show($"{mediaBazaar.ProductToSearch(productName).ToString()}");
+            RefreshData();
+            for (int i = 0; i < listViewProducts.Items.Count; i++)
+            {
+                if (listViewProducts.Items[i].SubItems[2].Text.Contains(productName))
+                {
+                    items.Add(listViewProducts.Items[i]);
+                }
+            }
+            listViewProducts.Items.Clear();
+            foreach (ListViewItem lvi in items)
+            {
+                listViewProducts.Items.Add(lvi);
+            }
+
+            if (tbProductToSearch.Text == "")
+            {
+                RefreshData();
+            }
         }
+
     }
 }
