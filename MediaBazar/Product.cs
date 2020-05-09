@@ -9,10 +9,13 @@ namespace MediaBazar
         public class Product
         {
             public string Name { get; set; }
-            public double Price { get; set; }
+            private int productId;
+            private int departmentId;
+            private string productName;
+            private double price;
 
-            public int ProductId { get; set; }
-            public string DepartmentName { get; set; }
+
+        public string DepartmentName { get; set; }
 
             public Product(int givenProductId, string givenName, double givenPrice, string givenDepartmentName)
             {
@@ -21,9 +24,61 @@ namespace MediaBazar
                 Price = givenPrice;
                 DepartmentName = givenDepartmentName;
             }
-            public override string ToString()
+        public Product(int givenId, int givenDId, string givenName, double givenPrice)
+        {
+            ProductId = givenId;
+            DapartmentId = givenDId;
+            ProductName = givenName;
+            Price = givenPrice;
+        }
+        public override string ToString()
             {
                 return $"Product Id {ProductId}\r\nProduct Id:{Name}\r\nProduct Price:{Price}\r\nDepartment Name:{DepartmentName} ";
             }
+
+        public int ProductId
+        {
+            get
+            {
+                return this.productId;
+            }
+            private set
+            {
+                this.productId = value;
+            }
         }
+        public int DapartmentId
+        {
+            get
+            {
+                return this.departmentId;
+            }
+            private set
+            {
+                this.departmentId = value;
+            }
+        }
+        public string ProductName
+        {
+            get
+            {
+                return this.productName;
+            }
+            private set
+            {
+                this.productName = value;
+            }
+        }
+        public double Price
+        {
+            get
+            {
+                return this.price;
+            }
+            private set
+            {
+                this.price = value;
+            }
+        }
+    }
 }

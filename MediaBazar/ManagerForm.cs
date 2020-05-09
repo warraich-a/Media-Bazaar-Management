@@ -362,6 +362,27 @@ namespace MediaBazar
                 listB.SubItems.Add(Convert.ToString(item.Role));
                 LV2.Items.Add(listB);
             }
+            lvProductList.Items.Clear();
+            mediaBazaar.ReadProducts();
+            mediaBazaar.ReadDepartment();
+            mediaBazaar.ReadStocks();
+            foreach (Product p in mediaBazaar.GetProductsList())
+            {
+                ListViewItem l = new ListViewItem(p.ProductId.ToString());
+                l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
+                l.SubItems.Add(p.ProductName);
+                l.SubItems.Add(p.Price.ToString());
+                foreach (Stock s in mediaBazaar.GetStockList())
+                {
+                    if (s.ProductId == p.ProductId)
+                    {
+                        l.SubItems.Add(s.Quantity.ToString());
+                    }
+                }
+
+
+                lvProductList.Items.Add(l);
+            }
         }
 
         private void metroTabPage4_Click(object sender, EventArgs e)
@@ -603,6 +624,79 @@ namespace MediaBazar
             {
                 cbNameOfEmp.Items.Add(p.GetFullName());
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(tbProductName.Text))
+            {
+                List<ListViewItem> items = new List<ListViewItem>();
+                string productName = tbProductName.Text;
+                RefreshData();
+                for (int i = 0; i < lvProductList.Items.Count; i++)
+                {
+                    if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
+                    {
+                        items.Add(lvProductList.Items[i]);
+                    }
+                }
+                lvProductList.Items.Clear();
+                foreach (ListViewItem lvi in items)
+                {
+                    lvProductList.Items.Add(lvi);
+                }
+            }
+        }
+
+        private void btnClearList_Click(object sender, EventArgs e)
+        {
+            lvProductList.Items.Clear();
+            mediaBazaar.ReadProducts();
+            mediaBazaar.ReadDepartment();
+            foreach (Product p in mediaBazaar.GetProductsList())
+            {
+                ListViewItem l = new ListViewItem(p.ProductId.ToString());
+                l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
+                l.SubItems.Add(p.ProductName);
+                l.SubItems.Add(p.Price.ToString());
+                lvProductList.Items.Add(l);
+            }
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbProductName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbQuantity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (lvProductList.SelectedItems.Count > 0)
+            {
+                if (!String.IsNullOrWhiteSpace(tbQuantity.Text) && Convert.ToInt32(tbQuantity.Text) > 0)
+                {
+                    mediaBazaar.SendManagerRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                }
+            }
+        }
+
+        private void lvProductList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
