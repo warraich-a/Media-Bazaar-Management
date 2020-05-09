@@ -95,6 +95,7 @@
             this.Controls.Add(this.btnModifyProduct);
             this.Name = "ModifyProduct";
             this.Text = "ModifyProduct";
+            this.Load += new System.EventHandler(this.ModifyProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

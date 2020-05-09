@@ -181,6 +181,17 @@ namespace MediaBazar
               
                 listViewProducts.Items.Add(listOfProducts);
             }
+            mediaBazaar.ReadRequests();
+            lvRequests.Items.Clear();
+            foreach (Request item in mediaBazaar.GetRequestsList())
+            {
+                list = new ListViewItem(Convert.ToString(item.Id));
+                list.SubItems.Add(mediaBazaar.GetProductNameById(item.ProductId));
+                list.SubItems.Add(item.Quantity.ToString());
+                list.SubItems.Add(item.Status);
+                list.SubItems.Add(item.RequestedBy);
+                lvRequests.Items.Add(list);
+            }
         }
 
         // To remove an employee from the system
@@ -873,10 +884,23 @@ namespace MediaBazar
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            string productName = tbProductName.Text;
-            double productPrice = Convert.ToDouble(tbProductPrice.Text);
-            int departmentId = cmbDepartmentStack.SelectedIndex + 1;
-            mediaBazaar.AddProduct(departmentId, productName, productPrice);
+            try
+            {
+                string productName = tbProductName.Text;
+                double productPrice = Convert.ToDouble(tbProductPrice.Text);
+                int departmentId = cmbDepartmentStack.SelectedIndex + 1;
+                mediaBazaar.AddProduct(departmentId, productName, productPrice);
+                RefreshData();
+                Refresh();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Price Cannot be Null");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("None of the above field should be empty");
+            }
         }
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
@@ -942,5 +966,13 @@ namespace MediaBazar
             }
         }
 
+        private void btnSendRequest_Click(object sender, EventArgs e)
+        {
+            if (lvRequests.SelectedItems.Count > 0)
+            {
+                mediaBazaar.ApproveRequest(Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[0].Text), mediaBazaar.GetProductIntByName(lvRequests.SelectedItems[0].SubItems[1].Text), Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[2].Text));
+                RefreshData();
+            }
+        }
     }
 }

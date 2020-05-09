@@ -53,7 +53,7 @@ namespace MediaBazar
             try
             {
                 Product foundProduct = mediaBazaar.ReturnExistingProduct(id); // to give the correct id through parameters
-                tbProductName.Text = foundProduct.Name;
+                tbProductName.Text = foundProduct.ProductName;
                 tbProductPrice.Text = foundProduct.Price.ToString();
                 
             }
@@ -61,6 +61,11 @@ namespace MediaBazar
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ModifyProduct_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

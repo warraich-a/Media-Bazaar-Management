@@ -22,7 +22,7 @@ namespace MediaBazar
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            AdministratorForm a = new AdministratorForm();
+            DepotWorkerForm a = new DepotWorkerForm();
             a.Show();
 
 

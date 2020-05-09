@@ -37,21 +37,34 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.lvProductList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbProductName = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.metroTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
+            this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.metroTabControl1.CustomBackground = true;
             this.metroTabControl1.ItemSize = new System.Drawing.Size(510, 40);
@@ -111,14 +124,14 @@
             this.btnOrder.TabIndex = 14;
             this.btnOrder.Text = "Send Restock Request";
             this.btnOrder.UseVisualStyleBackColor = false;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // lvStock
             // 
             this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader8,
-            this.columnHeader7});
+            this.columnHeader8});
             this.lvStock.HideSelection = false;
             this.lvStock.Location = new System.Drawing.Point(30, 60);
             this.lvStock.Name = "lvStock";
@@ -129,7 +142,7 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Department";
+            this.columnHeader5.Text = "Id";
             this.columnHeader5.Width = 200;
             // 
             // columnHeader6
@@ -139,13 +152,8 @@
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Price";
+            this.columnHeader8.Text = "Quantity";
             this.columnHeader8.Width = 150;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Quantity ";
-            this.columnHeader7.Width = 200;
             // 
             // btnLogout
             // 
@@ -204,6 +212,113 @@
             this.label19.TabIndex = 54;
             this.label19.Text = "Logged in as depot worker";
             // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.Controls.Add(this.lvProductList);
+            this.metroTabPage2.Controls.Add(this.label22);
+            this.metroTabPage2.Controls.Add(this.tbProductName);
+            this.metroTabPage2.Controls.Add(this.label14);
+            this.metroTabPage2.Controls.Add(this.textBox1);
+            this.metroTabPage2.Controls.Add(this.button1);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 44);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(1016, 608);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Products";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            // 
+            // lvProductList
+            // 
+            this.lvProductList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader26,
+            this.columnHeader27,
+            this.columnHeader29,
+            this.columnHeader4});
+            this.lvProductList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvProductList.GridLines = true;
+            this.lvProductList.HideSelection = false;
+            this.lvProductList.Location = new System.Drawing.Point(39, 95);
+            this.lvProductList.Name = "lvProductList";
+            this.lvProductList.Size = new System.Drawing.Size(955, 389);
+            this.lvProductList.TabIndex = 76;
+            this.lvProductList.UseCompatibleStateImageBehavior = false;
+            this.lvProductList.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
+            // columnHeader26
+            // 
+            this.columnHeader26.Text = "Category";
+            this.columnHeader26.Width = 129;
+            // 
+            // columnHeader27
+            // 
+            this.columnHeader27.Text = "Product Name";
+            this.columnHeader27.Width = 184;
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Price";
+            this.columnHeader29.Width = 115;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Quantity";
+            this.columnHeader4.Width = 138;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.SystemColors.Control;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(31, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(182, 20);
+            this.label22.TabIndex = 73;
+            this.label22.Text = "Search product by name";
+            // 
+            // tbProductName
+            // 
+            this.tbProductName.Location = new System.Drawing.Point(35, 52);
+            this.tbProductName.Name = "tbProductName";
+            this.tbProductName.Size = new System.Drawing.Size(304, 20);
+            this.tbProductName.TabIndex = 72;
+            this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(31, 510);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.TabIndex = 71;
+            this.label14.Text = "Quantity";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(130, 504);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(209, 20);
+            this.textBox1.TabIndex = 70;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(399, 504);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 32);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Send Restock Request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DepotWorkerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +338,8 @@
             this.metroTabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,7 +351,6 @@
         private System.Windows.Forms.ListView lvStock;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Label label1;
@@ -244,5 +360,17 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label19;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private System.Windows.Forms.ListView lvProductList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader26;
+        private System.Windows.Forms.ColumnHeader columnHeader27;
+        private System.Windows.Forms.ColumnHeader columnHeader29;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tbProductName;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
