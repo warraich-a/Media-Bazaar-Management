@@ -183,8 +183,7 @@ namespace MediaBazar
                 listOfProducts.SubItems.Add(Convert.ToString(p.DepartmentName));
                 listOfProducts.SubItems.Add(p.Name);
                 listOfProducts.SubItems.Add(Convert.ToString(p.Price));
-                listOfProducts.SubItems.Add(Convert.ToString(p.Exist));
-
+              
                 listViewProducts.Items.Add(listOfProducts);
             }
         }

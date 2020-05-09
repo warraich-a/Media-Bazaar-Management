@@ -708,24 +708,27 @@ namespace MediaBazar
                 {
                     string department = "";
 
-                    if (Convert.ToInt32(dr[1]) == 1)
+                    if (Convert.ToBoolean(dr[4]))
                     {
-                        department = "Household";
+                        if (Convert.ToInt32(dr[1]) == 1)
+                        {
+                            department = "Household";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 2)
+                        {
+                            department = "Computer";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 3)
+                        {
+                            department = "Kitchen";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 4)
+                        {
+                            department = "Photo and Video";
+                        }
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                        products.Add(g);
                     }
-                    else if (Convert.ToInt32(dr[1]) == 2)
-                    {
-                        department = "Computer";
-                    }
-                    else if (Convert.ToInt32(dr[1]) == 3)
-                    {
-                        department = "Kitchen";
-                    }
-                    else if (Convert.ToInt32(dr[1]) == 4)
-                    {
-                        department = "Photo and Video";
-                    }
-                    Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department, Convert.ToBoolean(dr[4])); // has to specify the order like this
-                    products.Add(g);
                 }
             }
             finally

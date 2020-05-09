@@ -15,13 +15,13 @@ namespace MediaBazar
         public string DepartmentName { get; set; }
         public bool Exist { get; set; }
 
-        public Product(int givenProductId, string givenName, double givenPrice, string givenDepartmentName, bool itemExist)
+        public Product(int givenProductId, string givenName, double givenPrice, string givenDepartmentName)
         {
             ProductId = givenProductId;
             Name = givenName;
             Price = givenPrice;
             DepartmentName = givenDepartmentName;
-            Exist = itemExist;
+           
         }
         public override string ToString()
         {
