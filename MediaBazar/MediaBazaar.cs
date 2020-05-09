@@ -20,10 +20,6 @@ namespace MediaBazar
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
         // Person person = new Person();
-        List<Department> departments = new List<Department>();
-        List<Request> requests = new List<Request>();
-        List<Stock> stocks = new List<Stock>();
-        List<Product> products = new List<Product>();
 
         Person person = new Person();
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
@@ -384,96 +380,7 @@ namespace MediaBazar
             return database.GetProductByName(givenName);
         }
 
-        public void ReadProducts()
-        {
-            this.products = database.ReadProduct();
-        }
-        public List<Product> GetProductsList()
-        {
-            return this.products;
-        }
-        public List<Product> GetProductsListByName(string name)
-        {
-            List<Product> newProducts = new List<Product>();
-            foreach (Product p in products)
-            {
-                if (p.ProductName == name)
-                {
-                    newProducts.Add(p);
-                }
-            }
-            return newProducts;
-        }
-        public void SendDepoRequest(int productId, int quantity)
-        {
-            database.SendStockRequest(productId, quantity, Roles.DepotWorker);
-        }
-        public void SendManagerRequest(int productId, int quantity)
-        {
-            database.SendStockRequest(productId, quantity, Roles.Manager);
-        }
-        public void ReadDepartment()
-        {
-            this.departments = database.ReadDepartments();
-        }
-        public string GetDepartmentNameById(int id)
-        {
-            string name = "";
-            foreach (Department d in departments)
-            {
-                if (d.Id == id)
-                {
-                    name = d.Name;
-                }
-            }
-            return name;
-        }
-        public string GetProductNameById(int id)
-        {
-            ReadProducts();
-            string name = "";
-            foreach (Product d in products)
-            {
-                if (d.ProductId == id)
-                {
-                    name = d.ProductName;
-                }
-            }
-            return name;
-        }
-        public int GetProductIntByName(string name)
-        {
-            ReadProducts();
-            int id = 0;
-            foreach (Product d in products)
-            {
-                if (d.ProductName == name)
-                {
-                    id = d.ProductId;
-                }
-            }
-            return id;
-        }
-        public void ReadRequests()
-        {
-            this.requests = database.ReadRequests();
-        }
-        public void ReadStocks()
-        {
-            this.stocks = database.ReadStock();
-        }
-        public List<Stock> GetStockList()
-        {
-            return this.stocks;
-        }
-        public List<Request> GetRequestsList()
-        {
-            return this.requests;
-        }
-        public void ApproveRequest(int id, int productId, int quantity)
-        {
-            database.ApproveRequest(id, productId, quantity);
-        }
+
 
 
     }

@@ -86,7 +86,6 @@
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database_handler.cs" />
-    <Compile Include="Departments.cs" />
     <Compile Include="forgetPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,7 +127,6 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request.cs" />
     <Compile Include="resetPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,7 +137,6 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="Shift.cs" />
     <Compile Include="ShiftStatus.cs" />
-    <Compile Include="Stock.cs" />
     <EmbeddedResource Include="AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
