@@ -104,6 +104,7 @@ namespace MediaBazar
             InitializeComponent();
 
             RefreshData();
+            Departments();
 
 
             // Add user name
@@ -146,6 +147,15 @@ namespace MediaBazar
         {
 
         }
+
+        public void Departments()
+        {
+            cmbDepartmentStack.Items.Clear();
+            foreach (string d in mediaBazaar.GetDepartments())
+            {
+                cmbDepartmentStack.Items.Add(d);
+            }
+        }
         public void RefreshData()
         {
             listView1.Items.Clear();
@@ -164,10 +174,7 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
-            foreach (string d in mediaBazaar.GetDepartments())
-            {
-                cmbDepartmentStack.Items.Add(d);
-            }
+           
 
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
@@ -714,10 +721,25 @@ namespace MediaBazar
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            string productName = tbProductName.Text;
-            double productPrice = Convert.ToDouble(tbProductPrice.Text);
-            int departmentId = cmbDepartmentStack.SelectedIndex + 1;
-            mediaBazaar.AddProduct(departmentId, productName, productPrice);
+            try
+            {
+                string productName = tbProductName.Text;
+                double productPrice = Convert.ToDouble(tbProductPrice.Text);
+                int departmentId = cmbDepartmentStack.SelectedIndex + 1;
+                mediaBazaar.AddProduct(departmentId, productName, productPrice);
+                RefreshData();
+                Refresh();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Price Cannot be Null");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("None of the above field should be empty");
+            }
+           
+           
         }
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
@@ -763,6 +785,7 @@ namespace MediaBazar
         {
             List<ListViewItem> items = new List<ListViewItem>();
             string productName = tbProductToSearch.Text;
+           
             RefreshData();
             for (int i = 0; i < listViewProducts.Items.Count; i++)
             {
@@ -779,7 +802,7 @@ namespace MediaBazar
 
             if (tbProductToSearch.Text == "")
             {
-                RefreshData();
+                
             }
         }
 
