@@ -386,7 +386,7 @@
             this.label25.Location = new System.Drawing.Point(55, 151);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(39, 16);
+            this.label25.Size = new System.Drawing.Size(48, 20);
             this.label25.TabIndex = 54;
             this.label25.Text = "From";
             // 
@@ -398,7 +398,7 @@
             this.label24.Location = new System.Drawing.Point(529, 151);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(25, 16);
+            this.label24.Size = new System.Drawing.Size(28, 20);
             this.label24.TabIndex = 53;
             this.label24.Text = "To";
             // 
@@ -463,7 +463,8 @@
             this.lb.Location = new System.Drawing.Point(55, 81);
             this.lb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(63, 16);
+            this.lb.Size = new System.Drawing.Size(76, 20);
+
             this.lb.TabIndex = 43;
             this.lb.Text = "Category";
             // 
@@ -477,7 +478,12 @@
             "Number of employees per shift",
             "Most Restocked Items",
             "Restocked Items On Date",
-            "Yearly profit"});
+            "Yearly stock requests"});
+            this.cbxCategoryStatistics.Location = new System.Drawing.Point(160, 81);
+            this.cbxCategoryStatistics.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
+            this.cbxCategoryStatistics.Size = new System.Drawing.Size(753, 33);
+
             this.cbxCategoryStatistics.Location = new System.Drawing.Point(160, 81);
             this.cbxCategoryStatistics.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
@@ -521,6 +527,7 @@
             this.tabPage1.Controls.Add(this.tbQuantity);
             this.tabPage1.Controls.Add(this.btnOrder);
             this.tabPage1.Controls.Add(this.listView5);
+
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
@@ -629,6 +636,7 @@
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.btnAddProduct);
+
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";

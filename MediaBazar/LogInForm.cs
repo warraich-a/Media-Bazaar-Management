@@ -25,73 +25,74 @@ namespace MediaBazar
             AdministratorForm a = new AdministratorForm();
             a.Show();
 
-           /* // Get login details
-            string email = tbxEmail.Text;
-            string password = tbxPassword.Text;
 
-            // if email is empty
-            if (string.IsNullOrEmpty(email))
-            {
-                MessageBox.Show("Please fill in your e-mail address");
-            }
-            // if password is empty
-            else if (string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please fill in your password");
-            }
-            else
-            {
-                if (mediaBazaar.GetUserType(email) == "Manager")
-                {
-                    if (mediaBazaar.CheckCredentials(email, password))
-                    {
-                        ManagerForm managerForm = new ManagerForm();
+            //// Get login details
+            //string email = tbxEmail.Text;
+            //string password = tbxPassword.Text;
 
-                        managerForm.ShowDialog();
+            //// if email is empty
+            //if (string.IsNullOrEmpty(email))
+            //{
+            //    MessageBox.Show("Please fill in your e-mail address");
+            //}
+            //// if password is empty
+            //else if (string.IsNullOrEmpty(password))
+            //{
+            //    MessageBox.Show("Please fill in your password");
+            //}
+            //else
+            //{
+            //    if (mediaBazaar.GetUserType(email) == "Manager")
+            //    {
+            //        if (mediaBazaar.CheckCredentials(email, password))
+            //        {
+            //            ManagerForm managerForm = new ManagerForm();
 
-                        this.Hide();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Credentials are wrong");
-                    }
-                }
-                else if (mediaBazaar.GetUserType(email) == "Administrator")
-                {
-                    if (mediaBazaar.CheckCredentials(email, password))
-                    {
-                        AdministratorForm adminForm = new AdministratorForm();
+            //            managerForm.ShowDialog();
 
-                        adminForm.ShowDialog();
-                        this.Hide();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Credentials are wrong");
-                    }
-                }
-                else if (mediaBazaar.GetUserType(email) == "DepotWorker")
-                {
-                    if (mediaBazaar.CheckCredentials(email, password))
-                    {
-                        DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
+            //            this.Hide();
+            //            this.Close();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Credentials are wrong");
+            //        }
+            //    }
+            //    else if (mediaBazaar.GetUserType(email) == "Administrator")
+            //    {
+            //        if (mediaBazaar.CheckCredentials(email, password))
+            //        {
+            //            AdministratorForm adminForm = new AdministratorForm();
 
-                        depotWorkerForm.ShowDialog();
-                        this.Hide();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Credentials are wrong");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(mediaBazaar.GetUserType(email));
-                }
-            }*/
+            //            adminForm.ShowDialog();
+            //            this.Hide();
+            //            this.Close();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Credentials are wrong");
+            //        }
+            //    }
+            //    else if (mediaBazaar.GetUserType(email) == "DepotWorker")
+            //    {
+            //        if (mediaBazaar.CheckCredentials(email, password))
+            //        {
+            //            DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
+
+            //            depotWorkerForm.ShowDialog();
+            //            this.Hide();
+            //            this.Close();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Credentials are wrong");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(mediaBazaar.GetUserType(email));
+            //    }
+            //}
         }
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
