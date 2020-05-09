@@ -104,6 +104,7 @@ namespace MediaBazar
             InitializeComponent();
 
             RefreshData();
+            Departments();
 
 
             // Add user name
@@ -142,6 +143,14 @@ namespace MediaBazar
             }
         }
 
+        public void Departments()
+        {
+            cmbDepartmentStack.Items.Clear();
+            foreach (string d in mediaBazaar.GetDepartments())
+            {
+                cmbDepartmentStack.Items.Add(d);
+            }
+        }
         public void RefreshData()
         {
             listView1.Items.Clear();
@@ -160,10 +169,7 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
-            foreach (string d in mediaBazaar.GetDepartments())
-            {
-                cmbDepartmentStack.Items.Add(d);
-            }
+            
 
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
