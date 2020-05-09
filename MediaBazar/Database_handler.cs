@@ -781,7 +781,6 @@ namespace MediaBazar
 
 
         // to add the products
-
         public void AddProduct(int departmentId, string name, double price)
         {
             bool productExist = false;
@@ -798,9 +797,13 @@ namespace MediaBazar
                 {
                     string sql = "INSERT INTO product(departmentId, productName, price) VALUES(@departmentId, @productName, @productPrice)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    if (departmentId == 0 || name == "" || price == 0)
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(name, "[^0-9]"))
                     {
-                        System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
+                        System.Windows.Forms.MessageBox.Show("Name Cannot be in Numbers");
+                    }
+                    else if(price <= 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Price Cannot be 0 or Less than 0");
                     }
                     else
                     {
@@ -872,9 +875,13 @@ namespace MediaBazar
             {
                 string sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + id + "';";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                if (givenProductName == "" || givenProductPrice == 0)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(givenProductName, "[^0-9]"))
                 {
                     System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
+                }
+                else if(givenProductPrice <= 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Price Cannot Be 0 or Negative");
                 }
                 else
                 {
@@ -916,7 +923,9 @@ namespace MediaBazar
                 // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
                 if (sql != "DELETE FROM stock WHERE productId = @id")
                 {
+
                     sql = "DELETE FROM stock WHERE productId = @id";
+                    /*  sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + productId + "';";*/
                     cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
                     cmd.Parameters.AddWithValue("@id", productId);
                     conn.Open();  // this must be before the execution which is just under this
