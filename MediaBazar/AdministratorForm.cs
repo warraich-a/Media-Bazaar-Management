@@ -265,9 +265,9 @@ namespace MediaBazar
                 GenerateStatisticsRestockedItemsOnDate(type);
             }
             // Profit per year (stock requests)
-            else if (type == "Yearly profit")
+            else if (type == "Yearly stock requests")
             {
-                GenerateStatisticsYearlyProfit(type);
+                GenerateStatisticsYearlyStockRequests(type);
             }
         }
 
@@ -447,9 +447,9 @@ namespace MediaBazar
             }
         }
 
-        private void GenerateStatisticsYearlyProfit(string type)
+        private void GenerateStatisticsYearlyStockRequests(string type)
         {
-            chartEmployeeStatistics.Series.Add("Total restock requests");
+            chartEmployeeStatistics.Series.Add("Total stock requests");
 
 
             chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -460,7 +460,7 @@ namespace MediaBazar
             chartEmployeeStatistics.Series[0].BorderWidth = 3;
 
             // Title
-            chartEmployeeStatistics.Titles.Add($"Total restock requests per year");
+            chartEmployeeStatistics.Titles.Add($"Total stock requests per year");
 
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
@@ -468,7 +468,7 @@ namespace MediaBazar
 
             foreach (object[] statistic in statistics)
             {
-                chartEmployeeStatistics.Series["Total restock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
+                chartEmployeeStatistics.Series["Total stock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
 
                 // Displays one employee at a time
                 Refresh();
@@ -487,7 +487,7 @@ namespace MediaBazar
             }
             // Hourly wage per employee OR Yearly profit
             else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee" || 
-                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly profit")
+                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly stock requests")
             {
                 // Disable date picking
                 dtpFrom.Enabled = false;

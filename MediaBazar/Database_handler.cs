@@ -310,29 +310,44 @@ namespace MediaBazar
         /* Check users credentials */
         public bool CheckCredentials(string email, string password)
         {
-            string sql = $"SELECT firstName, lastName, email, password " +
-                $"FROM person WHERE email = @email AND password = @password";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            // Parameters
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@password", password);
-
-            conn.Open();
-
-            MySqlDataReader dr = cmd.ExecuteReader();
-
-            bool areCredentialsCorrect = false;
-            if (dr.Read())
+            try
             {
-                // Save current user's name
-                areCredentialsCorrect = true;
+                using (conn)
+                {
+                    string sql = $"SELECT firstName, lastName, email, password " +
+                        $"FROM person WHERE email = @email AND password = @password";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    // Parameters
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    conn.Open();
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+                    bool areCredentialsCorrect = false;
+                    if (dr.Read())
+                    {
+                        // Save current user's name
+                        areCredentialsCorrect = true;
+                    }
+                    else
+                    {
+                        areCredentialsCorrect = false;
+                    }
+                    return areCredentialsCorrect;
+                }
             }
-            else
+            catch (MySqlException ex)
             {
-                areCredentialsCorrect = false;
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return false;
             }
-            conn.Close();
-            return areCredentialsCorrect;
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         /* Get User Type */
@@ -520,7 +535,7 @@ namespace MediaBazar
             }
 
             // Profit per year (stock requests)
-            else if (type == "Yearly profit")
+            else if (type == "Yearly stock requests")
             {
                 try
                 {

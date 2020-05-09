@@ -100,9 +100,9 @@ namespace MediaBazar
                 GenerateStatisticsRestockedItemsOnDate(type);
             }
             // Profit per year (stock requests)
-            else if (type == "Yearly profit")
+            else if (type == "Yearly stock requests")
             {
-                GenerateStatisticsYearlyProfit(type);
+                GenerateStatisticsYearlyStockRequests(type);
             }
         }
 
@@ -280,7 +280,7 @@ namespace MediaBazar
             }
         }
 
-        private void GenerateStatisticsYearlyProfit(string type)
+        private void GenerateStatisticsYearlyStockRequests(string type)
         {
             chartEmployeeStatistics.Series.Add("Total restock requests");
 
@@ -319,7 +319,7 @@ namespace MediaBazar
             }
             // Hourly wage per employee OR Yearly profit
             else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee" ||
-                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly profit")
+                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly stock requests")
             {
                 // Disable date picking
                 dtpFrom.Enabled = false;
