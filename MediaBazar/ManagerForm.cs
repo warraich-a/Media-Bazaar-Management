@@ -344,7 +344,18 @@ namespace MediaBazar
         }
 
         public void RefreshData()
-        {
+        { 
+            mediaBazaar.ReadStocks();
+            mediaBazaar.ReadProducts();
+            lvStock.Items.Clear();
+            foreach (Stock p in mediaBazaar.GetStockList())
+            {
+                ListViewItem l = new ListViewItem(p.ProductId.ToString());
+                l.SubItems.Add(mediaBazaar.GetProductNameById(p.ProductId));
+                l.SubItems.Add(p.Quantity.ToString());
+
+                lvStock.Items.Add(l);
+            }
 
             LV2.Items.Clear();
             foreach (Person item in mediaBazaar.ReturnPeopleFromDB())

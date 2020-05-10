@@ -8,6 +8,8 @@ using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Collections;
+using System.Windows.Forms;
+using System.Data;
 
 namespace MediaBazar
 {
@@ -185,14 +187,13 @@ namespace MediaBazar
         {
             try
             {
-
-
-
-
-
                 string sql = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 string status = "Pending";
+                if (role == Roles.Administrator)
+                {
+                    status = "Approved";
+                }
                 cmd.Parameters.AddWithValue("@pId", productId);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@status", status);
@@ -201,8 +202,6 @@ namespace MediaBazar
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 System.Windows.Forms.MessageBox.Show("Request has been sent");
-
-
             }
             finally
             {
@@ -1211,5 +1210,155 @@ namespace MediaBazar
             return foundProduct;
         }
 
-    }
+        //Read data from Database as object
+        public Object ExecuteScalar(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    Object reader;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    reader = cmd.ExecuteScalar();
+                    conn.Close();
+                    return reader;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        public DataSet ExecuteDataSet(string sql)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                da.Fill(ds, "result");
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        //Read data from Database as reader
+        public MySqlDataReader ExecuteReader(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    reader = cmd.ExecuteReader();
+                    conn.Close();
+                    return reader;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        //
+        public int ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    int affected;
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = sql;
+                    conn.Open();
+                    affected = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return affected;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return -1;
+        }
+
+        //Check the number of shifts in one day
+        public int checknrshift(string shifttype, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+                    string sql = "SELECT * FROM schedule WHERE (shiftType='" + shifttype + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+
+        //Check the number of shift in a day for an employee
+        public int checknrperson(int employeeid, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+
+                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+        }
 }
