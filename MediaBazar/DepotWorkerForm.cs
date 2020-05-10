@@ -20,6 +20,7 @@ namespace MediaBazar
 
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
+            RefreshData();
         }
 
         public void RefreshData()
@@ -70,6 +71,17 @@ namespace MediaBazar
             this.Close();
         }
 
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if (lvStock.SelectedItems.Count > 0)
+            {
+                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
+                {
+                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                }
+            }
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrWhiteSpace(tbProductName.Text))
@@ -92,24 +104,10 @@ namespace MediaBazar
             }
         }
 
-        private void label22_Click(object sender, EventArgs e)
+        private void btnClearList_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tbProductName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbQuantity_TextChanged(object sender, EventArgs e)
-        {
-
+            lvProductList.Items.Clear();
+            RefreshData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -127,25 +125,30 @@ namespace MediaBazar
             }
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
+        private void tbProductName_TextChanged(object sender, EventArgs e)
         {
-            if (lvStock.SelectedItems.Count > 0)
+            if(!String.IsNullOrWhiteSpace(tbProductName.Text))
             {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
-                {
-                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                }
-            }
-        }
-
-        private void btnClearList_Click(object sender, EventArgs e)
-        {
-            if (lvProductList.SelectedItems.Count > 0)
+                    List<ListViewItem> items = new List<ListViewItem>();
+                    string productName = tbProductName.Text;
+                    RefreshData();
+                    for (int i = 0; i < lvProductList.Items.Count; i++)
+                    {
+                        if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
+                        {
+                            items.Add(lvProductList.Items[i]);
+                        }
+                    }
+                    lvProductList.Items.Clear();
+                    foreach (ListViewItem lvi in items)
+                    {
+                        lvProductList.Items.Add(lvi);
+                    }
+                
+            } else
             {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text) && Convert.ToInt32(tbQuantity.Text) > 0)
-                {
-                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                }
+                lvProductList.Items.Clear();
+                RefreshData();
             }
         }
     }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.label20 = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tbQuantity = new System.Windows.Forms.TextBox();
             this.btnOrder = new System.Windows.Forms.Button();
-            this.listView5 = new System.Windows.Forms.ListView();
+            this.lvStock = new System.Windows.Forms.ListView();
             this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -85,7 +85,6 @@
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbDepartmentStack = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tbProductName = new System.Windows.Forms.TextBox();
@@ -99,7 +98,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSendRequest = new System.Windows.Forms.Button();
@@ -171,8 +169,8 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage5);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
+            this.metroTabControl1.Controls.Add(this.metroTabPage5);
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.HotTrack = true;
@@ -393,19 +391,19 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
+            chartArea2.Area3DStyle.Enable3D = true;
+            chartArea2.Area3DStyle.IsClustered = true;
+            chartArea2.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend2);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(44, 188);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series2);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 351);
             this.chartEmployeeStatistics.TabIndex = 52;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -497,7 +495,7 @@
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.tbQuantity);
             this.tabPage1.Controls.Add(this.btnOrder);
-            this.tabPage1.Controls.Add(this.listView5);
+            this.tabPage1.Controls.Add(this.lvStock);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -544,22 +542,23 @@
             this.btnOrder.TabIndex = 21;
             this.btnOrder.Text = "Restock";
             this.btnOrder.UseVisualStyleBackColor = false;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
-            // listView5
+            // lvStock
             // 
-            this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader15});
-            this.listView5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(26, 11);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(949, 477);
-            this.listView5.TabIndex = 20;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            this.listView5.View = System.Windows.Forms.View.Details;
+            this.lvStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvStock.HideSelection = false;
+            this.lvStock.Location = new System.Drawing.Point(26, 11);
+            this.lvStock.Name = "lvStock";
+            this.lvStock.Size = new System.Drawing.Size(949, 477);
+            this.lvStock.TabIndex = 20;
+            this.lvStock.UseCompatibleStateImageBehavior = false;
+            this.lvStock.View = System.Windows.Forms.View.Details;
             // 
             // col1
             // 
@@ -703,8 +702,7 @@
             this.columnHeader9,
             this.columnHeader26,
             this.columnHeader27,
-            this.columnHeader29,
-            this.columnHeader10});
+            this.columnHeader29});
             this.listViewProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewProducts.GridLines = true;
             this.listViewProducts.HideSelection = false;
@@ -733,10 +731,6 @@
             // 
             this.columnHeader29.Text = "Price";
             this.columnHeader29.Width = 115;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Exist";
             // 
             // cmbDepartmentStack
             // 
@@ -836,10 +830,10 @@
             this.columnHeader1,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader24,
             this.columnHeader25,
             this.columnHeader28});
             this.lvRequests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvRequests.GridLines = true;
             this.lvRequests.HideSelection = false;
             this.lvRequests.Location = new System.Drawing.Point(15, 27);
             this.lvRequests.Name = "lvRequests";
@@ -850,8 +844,8 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Category";
-            this.columnHeader1.Width = 129;
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 104;
             // 
             // columnHeader4
             // 
@@ -862,11 +856,6 @@
             // 
             this.columnHeader5.Text = "Quantity";
             this.columnHeader5.Width = 143;
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "Price";
-            this.columnHeader24.Width = 115;
             // 
             // columnHeader25
             // 
@@ -1573,7 +1562,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbQuantity;
         private System.Windows.Forms.Button btnOrder;
-        private System.Windows.Forms.ListView listView5;
+        private System.Windows.Forms.ListView lvStock;
         private System.Windows.Forms.ColumnHeader col1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -1603,7 +1592,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.ColumnHeader columnHeader25;
         private System.Windows.Forms.ColumnHeader columnHeader28;
         private System.Windows.Forms.Button btnSendRequest;
@@ -1618,6 +1606,5 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.Button btnSearchProduct;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
     }
 }

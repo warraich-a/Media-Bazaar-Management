@@ -8,6 +8,8 @@ using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Collections;
+using System.Windows.Forms;
+using System.Data;
 
 namespace MediaBazar
 {
@@ -98,7 +100,7 @@ namespace MediaBazar
             this.products = new List<Product>();
             try
             {
-                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product`";
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product` WHERE Exist = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
@@ -185,14 +187,13 @@ namespace MediaBazar
         {
             try
             {
-
-
-
-
-
                 string sql = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 string status = "Pending";
+                if (role == Roles.Administrator)
+                {
+                    status = "Approved";
+                }
                 cmd.Parameters.AddWithValue("@pId", productId);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@status", status);
@@ -201,8 +202,6 @@ namespace MediaBazar
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 System.Windows.Forms.MessageBox.Show("Request has been sent");
-
-
             }
             finally
             {
@@ -212,6 +211,7 @@ namespace MediaBazar
         public void ApproveRequest(int id, int productId, int quantity)
         {
             int StockId = 0;
+            bool itemInStock = true;
             try
             {
                 string Status = "Approved";
@@ -241,14 +241,30 @@ namespace MediaBazar
                         StockId = s.Id;
                     }
                 }
+                if (StockId == 0)
+                {
 
-                string sql = "UPDATE stock SET quantity = @Quantity WHERE id = @Id";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    string sql = "INSERT INTO stock(quantity, productId) VALUES( @quantity, @productid)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cmd.Parameters.AddWithValue("@productid", productId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
 
-                cmd.Parameters.AddWithValue("@Quantity", x);
-                cmd.Parameters.AddWithValue("@Id", StockId);
-                conn.Open();
-                cmd.ExecuteNonQuery();
+                }
+                else
+                {
+
+
+
+                    string sql = "UPDATE stock SET quantity = @Quantity WHERE id = @Id";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@Quantity", x);
+                    cmd.Parameters.AddWithValue("@Id", StockId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
 
 
             }
@@ -1059,24 +1075,27 @@ namespace MediaBazar
                 {
                     string department = "";
 
-                    if (Convert.ToInt32(dr[1]) == 1)
+                    if (Convert.ToBoolean(dr[4]))
                     {
-                        department = "Household";
+                        if (Convert.ToInt32(dr[1]) == 1)
+                        {
+                            department = "Household";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 2)
+                        {
+                            department = "Computer";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 3)
+                        {
+                            department = "Kitchen";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 4)
+                        {
+                            department = "Photo and Video";
+                        }
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                        products.Add(g);
                     }
-                    else if (Convert.ToInt32(dr[1]) == 2)
-                    {
-                        department = "Computer";
-                    }
-                    else if (Convert.ToInt32(dr[1]) == 3)
-                    {
-                        department = "Kitchen";
-                    }
-                    else if (Convert.ToInt32(dr[1]) == 4)
-                    {
-                        department = "Photo and Video";
-                    }
-                    Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department, Convert.ToBoolean(dr[4])); // has to specify the order like this
-                    products.Add(g);
                 }
             }
             finally
@@ -1191,5 +1210,155 @@ namespace MediaBazar
             return foundProduct;
         }
 
-    }
+        //Read data from Database as object
+        public Object ExecuteScalar(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    Object reader;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    reader = cmd.ExecuteScalar();
+                    conn.Close();
+                    return reader;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        public DataSet ExecuteDataSet(string sql)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                da.Fill(ds, "result");
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        //Read data from Database as reader
+        public MySqlDataReader ExecuteReader(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+                    reader = cmd.ExecuteReader();
+                    conn.Close();
+                    return reader;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
+
+        //
+        public int ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                using (conn)
+                {
+                    int affected;
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = sql;
+                    conn.Open();
+                    affected = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return affected;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return -1;
+        }
+
+        //Check the number of shifts in one day
+        public int checknrshift(string shifttype, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+                    string sql = "SELECT * FROM schedule WHERE (shiftType='" + shifttype + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+
+        //Check the number of shift in a day for an employee
+        public int checknrperson(int employeeid, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+
+                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+        }
 }

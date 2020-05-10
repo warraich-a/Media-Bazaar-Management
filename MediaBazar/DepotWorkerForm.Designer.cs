@@ -37,26 +37,23 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.btnClearList = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.tbProductName = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.lvProductList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbProductName = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,7 +70,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(510, 40);
             this.metroTabControl1.Location = new System.Drawing.Point(-2, 100);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1024, 656);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -134,8 +131,7 @@
             this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader8,
-            this.columnHeader7});
+            this.columnHeader8});
             this.lvStock.HideSelection = false;
             this.lvStock.Location = new System.Drawing.Point(30, 60);
             this.lvStock.Name = "lvStock";
@@ -146,7 +142,7 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Department";
+            this.columnHeader5.Text = "Id";
             this.columnHeader5.Width = 200;
             // 
             // columnHeader6
@@ -156,13 +152,8 @@
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Price";
+            this.columnHeader8.Text = "Quantity";
             this.columnHeader8.Width = 150;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Quantity ";
-            this.columnHeader7.Width = 200;
             // 
             // btnLogout
             // 
@@ -223,14 +214,12 @@
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.btnClearList);
-            this.metroTabPage2.Controls.Add(this.btnSearch);
+            this.metroTabPage2.Controls.Add(this.lvProductList);
             this.metroTabPage2.Controls.Add(this.label22);
             this.metroTabPage2.Controls.Add(this.tbProductName);
             this.metroTabPage2.Controls.Add(this.label14);
             this.metroTabPage2.Controls.Add(this.textBox1);
             this.metroTabPage2.Controls.Add(this.button1);
-            this.metroTabPage2.Controls.Add(this.lvProductList);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 44);
             this.metroTabPage2.Name = "metroTabPage2";
@@ -238,80 +227,6 @@
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Products";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
-            // 
-            // btnClearList
-            // 
-            this.btnClearList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnClearList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearList.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnClearList.Location = new System.Drawing.Point(784, 50);
-            this.btnClearList.Name = "btnClearList";
-            this.btnClearList.Size = new System.Drawing.Size(193, 32);
-            this.btnClearList.TabIndex = 73;
-            this.btnClearList.Text = "Clear List";
-            this.btnClearList.UseVisualStyleBackColor = false;
-            this.btnClearList.Click += new System.EventHandler(this.btnClearList_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSearch.Location = new System.Drawing.Point(354, 50);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(193, 32);
-            this.btnSearch.TabIndex = 72;
-            this.btnSearch.Text = "Find";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.SystemColors.Control;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(18, 24);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(182, 20);
-            this.label22.TabIndex = 71;
-            this.label22.Text = "Search product by name";
-            // 
-            // tbProductName
-            // 
-            this.tbProductName.Location = new System.Drawing.Point(22, 56);
-            this.tbProductName.Name = "tbProductName";
-            this.tbProductName.Size = new System.Drawing.Size(304, 20);
-            this.tbProductName.TabIndex = 70;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 514);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 13);
-            this.label14.TabIndex = 69;
-            this.label14.Text = "Quantity";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(117, 508);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(209, 20);
-            this.textBox1.TabIndex = 68;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(354, 508);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 32);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "Send Restock Request";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // lvProductList
             // 
@@ -322,11 +237,12 @@
             this.columnHeader29,
             this.columnHeader4});
             this.lvProductList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvProductList.GridLines = true;
             this.lvProductList.HideSelection = false;
-            this.lvProductList.Location = new System.Drawing.Point(22, 103);
+            this.lvProductList.Location = new System.Drawing.Point(39, 95);
             this.lvProductList.Name = "lvProductList";
             this.lvProductList.Size = new System.Drawing.Size(955, 389);
-            this.lvProductList.TabIndex = 66;
+            this.lvProductList.TabIndex = 76;
             this.lvProductList.UseCompatibleStateImageBehavior = false;
             this.lvProductList.View = System.Windows.Forms.View.Details;
             // 
@@ -353,6 +269,55 @@
             // 
             this.columnHeader4.Text = "Quantity";
             this.columnHeader4.Width = 138;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.SystemColors.Control;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(31, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(182, 20);
+            this.label22.TabIndex = 73;
+            this.label22.Text = "Search product by name";
+            // 
+            // tbProductName
+            // 
+            this.tbProductName.Location = new System.Drawing.Point(35, 52);
+            this.tbProductName.Name = "tbProductName";
+            this.tbProductName.Size = new System.Drawing.Size(304, 20);
+            this.tbProductName.TabIndex = 72;
+            this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(31, 510);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.TabIndex = 71;
+            this.label14.Text = "Quantity";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(130, 504);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(209, 20);
+            this.textBox1.TabIndex = 70;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(399, 504);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 32);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Send Restock Request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DepotWorkerForm
             // 
@@ -386,7 +351,6 @@
         private System.Windows.Forms.ListView lvStock;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Label label1;
@@ -397,18 +361,16 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label19;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
-        private System.Windows.Forms.Button btnClearList;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox tbProductName;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView lvProductList;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.ColumnHeader columnHeader27;
         private System.Windows.Forms.ColumnHeader columnHeader29;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tbProductName;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

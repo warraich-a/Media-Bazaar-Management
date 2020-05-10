@@ -367,7 +367,18 @@ namespace MediaBazar
         }
 
         public void RefreshData()
-        {
+        { 
+            mediaBazaar.ReadStocks();
+            mediaBazaar.ReadProducts();
+            lvStock.Items.Clear();
+            foreach (Stock p in mediaBazaar.GetStockList())
+            {
+                ListViewItem l = new ListViewItem(p.ProductId.ToString());
+                l.SubItems.Add(mediaBazaar.GetProductNameById(p.ProductId));
+                l.SubItems.Add(p.Quantity.ToString());
+
+                lvStock.Items.Add(l);
+            }
 
             LV2.Items.Clear();
             foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
@@ -694,6 +705,34 @@ namespace MediaBazar
                 {
                     mediaBazaar.SendManagerRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
                 }
+            }
+        }
+
+        private void tbProductName_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(tbProductName.Text))
+            {
+                List<ListViewItem> items = new List<ListViewItem>();
+                string productName = tbProductName.Text;
+                RefreshData();
+                for (int i = 0; i < lvProductList.Items.Count; i++)
+                {
+                    if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
+                    {
+                        items.Add(lvProductList.Items[i]);
+                    }
+                }
+                lvProductList.Items.Clear();
+                foreach (ListViewItem lvi in items)
+                {
+                    lvProductList.Items.Add(lvi);
+                }
+
+            }
+            else
+            {
+                lvProductList.Items.Clear();
+                RefreshData();
             }
         }
     }

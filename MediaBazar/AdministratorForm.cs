@@ -31,72 +31,7 @@ namespace MediaBazar
                 return Text;
             }
         }
-        public int checknrshift(string shifttype, string date)
-        {
-            int nr = 0;
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-                    string sql = "SELECT * FROM schedule WHERE (shiftType='" + shifttype + "' AND date='" + date + "');";
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
-                    {
-                        nr++;
-                    }
-                    rdr.Close();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return nr;
-        }
-
-        public int checknrperson(int employeeid, string date)
-        {
-            int nr = 0;
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-
-                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "');";
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
-                    {
-                        nr++;
-                    }
-                    rdr.Close();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return nr;
-        }
+        
 
         public AdministratorForm()
         {
@@ -169,7 +104,18 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
-            
+
+            mediaBazaar.ReadStocks();
+            mediaBazaar.ReadProducts();
+            lvStock.Items.Clear();
+            foreach (Stock p in mediaBazaar.GetStockList())
+            {
+                ListViewItem l = new ListViewItem(p.ProductId.ToString());
+                l.SubItems.Add(mediaBazaar.GetProductNameById(p.ProductId));
+                l.SubItems.Add(p.Quantity.ToString());
+
+                lvStock.Items.Add(l);
+            }
 
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
@@ -178,8 +124,7 @@ namespace MediaBazar
                 listOfProducts.SubItems.Add(Convert.ToString(p.DepartmentName));
                 listOfProducts.SubItems.Add(p.Name);
                 listOfProducts.SubItems.Add(Convert.ToString(p.Price));
-                listOfProducts.SubItems.Add(Convert.ToString(p.Exist));
-
+              
                 listViewProducts.Items.Add(listOfProducts);
             }
             mediaBazaar.ReadRequests();
@@ -565,48 +510,39 @@ namespace MediaBazar
             int employeedId = -1;
             DateTime date = DateTime.Today;
             // MessageBox.Show((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
+            Database_handler connection = new Database_handler();
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
+                string sql = "SELECT MAX(id) FROM schedule;";
+                Object result = connection.ExecuteScalar(sql);
+                if (result != null) { count = Convert.ToInt32(result) + 1; }
+                //MessageBox.Show(count.ToString());
+                if (cbEmpShift.SelectedItem != null)
                 {
-
-                    string sql = "SELECT MAX(id) FROM schedule;";
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    Object result = cmd.ExecuteScalar();
-                    if (result != null) { count = Convert.ToInt32(result) + 1; }
-                    //MessageBox.Show(count.ToString());
-                    if (cbEmpShift.SelectedItem != null)
+                    if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
                     {
-                        if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+                        employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+                        date = dtpTimeForShift.Value.Date;
+                        if (radioButton1.Checked)
                         {
-                            employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
-                            date = dtpTimeForShift.Value;
-                            if (radioButton1.Checked)
-                            {
-                                Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
-                                shifttype = "Morning";
-                            }
-                            if (radioButton2.Checked)
-                            {
-                                Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
-                                shifttype = "Afternoon";
-                            }
-                            if (radioButton3.Checked)
-                            {
-                                Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
-                                shifttype = "Evening";
-                            }
-                            writeindb = true;
+                            Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
+                            shifttype = "Morning";
                         }
-                        else MessageBox.Show("Please select a shift type!");
+                        if (radioButton2.Checked)
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
+                            shifttype = "Afternoon";
+                        }
+                        if (radioButton3.Checked)
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
+                            shifttype = "Evening";
+                        }
+                        writeindb = true;
                     }
-                    else MessageBox.Show("Please select an employee!");
-                    conn.Close();
+                    else MessageBox.Show("Please select a shift type!");
                 }
+                else MessageBox.Show("Please select an employee!");
             }
             catch (MySqlException ex)
             {
@@ -621,34 +557,15 @@ namespace MediaBazar
                 DateTime dayonly = date.Date;
                 // checknrshift - check for less than 5 employees on one shift
                 // checknrperson - check for one employee shifts in one day
-                if ((checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
+                if ((connection.checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (connection.checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
                 {
-                    connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
-                    try
-                    {
-                        using (MySqlConnection conn = new MySqlConnection(connStr))
-                        {
-                            //all rules are ok
-                            string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES (@id,@emploeeid,@shifttype,@date,@statusofshift);";
-                            conn.Open();
-                            MySqlCommand cmd = new MySqlCommand();
-                            cmd.Connection = conn;
-                            cmd.CommandText = sql;
-                            cmd.Prepare();
-                            cmd.Parameters.AddWithValue("@id", count);
-                            cmd.Parameters.AddWithValue("@emploeeid", employeedId);
-                            cmd.Parameters.AddWithValue("@shifttype", shifttype);
-                            cmd.Parameters.AddWithValue("@date", date);
-                            cmd.Parameters.AddWithValue("@statusofshift", "Assigned");
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    //MessageBox.Show($"{date.ToString("yyyy-MM-dd")}");
+                    string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES ('" + count + "','" + employeedId + "','" + shifttype + "','" + date.ToString("yyyy-MM-dd") + "','Assigned');";
+
+                    if (connection.ExecuteNonQuery(sql) >= 0) MessageBox.Show("Shift has been assigned!");
+                    else MessageBox.Show("Error Writing to database! Please contact Administrator!");
                 }
-                else MessageBox.Show("Shift not possible!");
+                else MessageBox.Show("Shift is not possible due to a shift rule(s)!");
             }
         }
 
@@ -908,10 +825,23 @@ namespace MediaBazar
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            string productName = tbProductName.Text;
-            double productPrice = Convert.ToDouble(tbProductPrice.Text);
-            int departmentId = cmbDepartmentStack.SelectedIndex + 1;
-            mediaBazaar.AddProduct(departmentId, productName, productPrice);
+            try
+            {
+                string productName = tbProductName.Text;
+                double productPrice = Convert.ToDouble(tbProductPrice.Text);
+                int departmentId = cmbDepartmentStack.SelectedIndex + 1;
+                mediaBazaar.AddProduct(departmentId, productName, productPrice);
+                RefreshData();
+                Refresh();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Price Cannot be Null");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("None of the above field should be empty");
+            }
         }
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
@@ -983,6 +913,19 @@ namespace MediaBazar
             {
                 mediaBazaar.ApproveRequest(Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[0].Text), mediaBazaar.GetProductIntByName(lvRequests.SelectedItems[0].SubItems[1].Text), Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[2].Text));
                 RefreshData();
+            }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if (lvStock.SelectedItems.Count > 0)
+            {
+                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
+                {
+                    mediaBazaar.SendAdminRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                    RefreshData();
+                    tbQuantity.Clear();
+                }
             }
         }
     }

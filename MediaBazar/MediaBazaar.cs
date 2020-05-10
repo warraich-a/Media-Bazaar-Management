@@ -300,7 +300,7 @@ namespace MediaBazar
         }
 
 
-       
+
 
         public int GetPersonIdByName(string name)
         {
@@ -411,6 +411,10 @@ namespace MediaBazar
         public void SendManagerRequest(int productId, int quantity)
         {
             database.SendStockRequest(productId, quantity, Roles.Manager);
+        }
+        public void SendAdminRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Administrator);
         }
         public void ReadDepartment()
         {
