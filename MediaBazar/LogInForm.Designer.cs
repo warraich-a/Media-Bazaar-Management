@@ -82,6 +82,7 @@
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(226, 15);
             this.tbxEmail.TabIndex = 5;
+            this.tbxEmail.Text = "NolaLindsay@mediabazaar.com";
             // 
             // btnLogIn
             // 
@@ -113,7 +114,7 @@
             // 
             this.pictureBox2.Image = global::MediaBazar.Properties.Resources.logo1;
             this.pictureBox2.Location = new System.Drawing.Point(-2, -1);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(392, 262);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,6 +149,7 @@
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(226, 15);
             this.tbxPassword.TabIndex = 13;
+            this.tbxPassword.Text = "sdsdjhhsaS1";
             // 
             // LogInForm
             // 
@@ -168,6 +170,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LogInForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LogIn";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

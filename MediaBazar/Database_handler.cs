@@ -8,11 +8,8 @@ using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
 using System.Collections;
-<<<<<<< HEAD
 using System.Windows.Forms;
 using System.Data;
-=======
->>>>>>> master
 
 namespace MediaBazar
 {
@@ -21,16 +18,262 @@ namespace MediaBazar
 
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
         MySqlConnection conn;
-
+        List<Schedule> schedules = new List<Schedule>();
         Person person = new Person();
         List<Person> people = new List<Person>();
+        List<string> departments = new List<string>();
+        List<Product> products;
+        List<Department> newDepartments = new List<Department>();
+
+
+
+        List<Request> requests = new List<Request>();
+        List<Stock> stocks = new List<Stock>();
+
 
         public Database_handler()
         {
             conn = new MySqlConnection(connectionString);
         }
 
+        public List<Schedule> ReadSchedule()
+        {
+            this.schedules = new List<Schedule>();
+            try
+            {
+                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Shift a = Shift.MORNING;
+                    if (dr[2].ToString() == "Morning")
+                    {
+                        a = Shift.MORNING;
+                    }
+                    else if (dr[2].ToString() == "Afternoon")
+                    {
+                        a = Shift.AFTERNOON;
+                    }
+                    else if (dr[2].ToString() == "Evening")
+                    {
+                        a = Shift.EVENING;
+                    }
+
+                    ShiftStatus b = ShiftStatus.ASSIGNED;
+                    if (dr[4].ToString() == "Assigned")
+                    {
+                        b = ShiftStatus.ASSIGNED;
+                    }
+                    else if (dr[4].ToString() == "Proposed")
+                    {
+                        b = ShiftStatus.PROPOSED;
+                    }
+                    else if (dr[4].ToString() == "Accepted")
+                    {
+                        b = ShiftStatus.ACCEPTED;
+                    }
+                    else if (dr[4].ToString() == "Rejected")
+                    {
+                        b = ShiftStatus.REJECTED;
+                    }
+
+
+
+
+                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+                    schedules.Add(g);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return schedules;
+        }
+
+        public List<Product> ReadProduct()
+        {
+            this.products = new List<Product>();
+            try
+            {
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product` WHERE Exist = 1";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]));
+                    products.Add(product);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return products;
+        }
+        public List<Department> ReadDepartments()
+        {
+            this.newDepartments = new List<Department>();
+            try
+            {
+                string sql = "SELECT `id`, `name`, `personId`, `minEmployees` FROM `department`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Department department = new Department(Convert.ToInt32(dr[0]), Convert.ToString(dr[1]), Convert.ToInt32(1), Convert.ToInt32(1));
+                    newDepartments.Add(department);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return newDepartments;
+        }
+        public List<Request> ReadRequests()
+        {
+            this.requests = new List<Request>();
+            try
+            {
+                string sql = "SELECT `id`, `productId`, `quantity`, `status`, `requestedBy` FROM `stock_request`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]));
+                    requests.Add(request);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return requests;
+        }
+        public List<Stock> ReadStock()
+        {
+            this.stocks = new List<Stock>();
+            try
+            {
+                string sql = "SELECT `id`, `quantity`, `productId` FROM `stock`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Stock stock = new Stock(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]));
+                    stocks.Add(stock);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return stocks;
+        }
+        public void SendStockRequest(int productId, int quantity, Roles role)
+        {
+            try
+            {
+                string sql = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                string status = "Pending";
+                if (role == Roles.Administrator)
+                {
+                    status = "Approved";
+                }
+                cmd.Parameters.AddWithValue("@pId", productId);
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@rBy", role.ToString());
+                cmd.Parameters.AddWithValue("@rDate", DateTime.Now.Date);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                System.Windows.Forms.MessageBox.Show("Request has been sent");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public void ApproveRequest(int id, int productId, int quantity)
+        {
+            int StockId = 0;
+            bool itemInStock = true;
+            try
+            {
+                string Status = "Approved";
+                string sql = "UPDATE stock_request SET status = @Status WHERE id ='" + id + "';";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@Status", Status);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                System.Windows.Forms.MessageBox.Show("Request has been approved!");
+
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+            try
+            {
+                int x = 0;
+                ReadStock();
+                foreach (Stock s in stocks)
+                {
+                    if (s.ProductId == productId)
+                    {
+                        x = s.Quantity + quantity;
+                        StockId = s.Id;
+                    }
+                }
+                if (StockId == 0)
+                {
+
+                    string sql = "INSERT INTO stock(quantity, productId) VALUES( @quantity, @productid)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cmd.Parameters.AddWithValue("@productid", productId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                }
+                else
+                {
+
+
+
+                    string sql = "UPDATE stock SET quantity = @Quantity WHERE id = @Id";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@Quantity", x);
+                    cmd.Parameters.AddWithValue("@Id", StockId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         /* EMPLOYEE MANAGEMENT */
         public void AddPersonToDatabase(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
@@ -252,35 +495,48 @@ namespace MediaBazar
             return foundPerson;
         }
 
-
-
         /* LOGIN */
         /* Check users credentials */
         public bool CheckCredentials(string email, string password)
         {
-            string sql = $"SELECT firstName, lastName, email, password FROM person WHERE email = @email AND password = @password";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            // Parameters
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@password", password);
-
-            conn.Open();
-
-            MySqlDataReader dr = cmd.ExecuteReader();
-
-            bool areCredentialsCorrect = false;
-            if (dr.Read())
+            try
             {
-                // Save current user's name
-                //SaveCurrentUser(dr[0].ToString() + " " + dr[1].ToString());
-                areCredentialsCorrect = true;
+                using (conn)
+                {
+                    string sql = $"SELECT firstName, lastName, email, password " +
+                        $"FROM person WHERE email = @email AND password = @password";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    // Parameters
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    conn.Open();
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+                    bool areCredentialsCorrect = false;
+                    if (dr.Read())
+                    {
+                        // Save current user's name
+                        areCredentialsCorrect = true;
+                    }
+                    else
+                    {
+                        areCredentialsCorrect = false;
+                    }
+                    return areCredentialsCorrect;
+                }
             }
-            else
+            catch (MySqlException ex)
             {
-                areCredentialsCorrect = false;
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return false;
             }
-            conn.Close();
-            return areCredentialsCorrect;
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         /* Get User Type */
@@ -324,10 +580,6 @@ namespace MediaBazar
 
 
 
-        /* LOGOUT */
-
-
-
         /* STATISTICS */
         public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
         {
@@ -339,7 +591,11 @@ namespace MediaBazar
 
                     using (conn)
                     {
-                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s INNER JOIN person p ON p.id = s.employeeId WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY s.employeeId";
+                        // TOOLTIP
+                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s " +
+                            "INNER JOIN person p ON p.id = s.employeeId " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                            "GROUP BY s.employeeId";
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         conn.Open();
@@ -348,15 +604,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
                         cmd.Parameters.AddWithValue("@dateTo", dateTo);
 
-                        ArrayList statistics = new ArrayList();
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            object[] values = new object[dr.FieldCount];
-                            dr.GetValues(values);
-                            statistics.Add(values);
-                        }
+                        ArrayList statistics = GatherStatisticData(cmd);
 
                         return statistics;
                     }
@@ -378,7 +626,9 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule WHERE date BETWEEN @dateFrom AND @dateTo GROUP BY date, shiftType ORDER BY date;";
+                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                            "GROUP BY date, shiftType ORDER BY date;";
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         // Parameters
@@ -388,21 +638,47 @@ namespace MediaBazar
                         // Open db connection
                         conn.Open();
 
-                        ArrayList statistics = new ArrayList();
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            object[] values = new object[dr.FieldCount];
-                            dr.GetValues(values);
-                            statistics.Add(values);
-                        }
+                        ArrayList statistics = GatherStatisticData(cmd);
 
                         return statistics;
-
                     }
-                    //return statistics;
-                    //}
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            //The items get stock request the most(for a specific timeslot)
+            else if (type == "Most Restocked Items")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        // Find how many times per month an item has been restocked
+                        string sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId " +
+                            "WHERE requestDate BETWEEN @dateFrom AND @dateTo " +
+                            "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        // SELECT sr.productId, p.productName,SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr INNER JOIN product AS p ON p.productId = sr.productId GROUP BY sr.productId ORDER BY totalQuantity DESC
+
+                        // Create command object
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        // Parameters
+
+                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        // Open db connection
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
                 }
                 catch (MySqlException ex)
                 {
@@ -431,15 +707,67 @@ namespace MediaBazar
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         conn.Open();
 
-                        ArrayList statistics = new ArrayList();
+                        ArrayList statistics = GatherStatisticData(cmd);
 
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            object[] values = new object[dr.FieldCount];
-                            dr.GetValues(values);
-                            statistics.Add(values);
-                        }
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+
+            // Profit per year (stock requests)
+            else if (type == "Yearly profit")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "GROUP BY YEAR(sr.requestDate)";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+
+            // Profit per year (stock requests)
+            else if (type == "Yearly stock requests")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "GROUP BY YEAR(sr.requestDate)";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
 
                         return statistics;
                     }
@@ -456,6 +784,98 @@ namespace MediaBazar
             }
 
             return null;
+        }
+
+        public ArrayList GetStatistics(string date, string type)
+        {
+            // Restocked Items Per Date
+            if (type == "Restocked Items On Date")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId " +
+                            "WHERE requestDate = @date " +
+                            "GROUP BY sr.productId ORDER BY totalQuantity";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                        cmd.Parameters.AddWithValue("@date", date);
+
+
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            return null;
+        }
+
+        private ArrayList GatherStatisticData(MySqlCommand cmd)
+        {
+            ArrayList statistics = new ArrayList();
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                object[] values = new object[dr.FieldCount];
+                dr.GetValues(values);
+                statistics.Add(values);
+            }
+
+            return statistics;
+        }
+
+
+        /* GET EMPLOYEES PER SHIFT PER DAY */
+        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        {
+            string employees = "";
+            try
+            {
+                using (conn)
+                {
+                    string sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
+                        $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
+                        $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    conn.Open();
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        employees += $"{dr[0]} {dr[1]} {Environment.NewLine}";
+                    }
+                }
+                return employees;
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return "";
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return "";
+            }
+
         }
 
 
@@ -563,7 +983,232 @@ namespace MediaBazar
                 return ex.Message;
             }
         }
-<<<<<<< HEAD
+
+        /// <summary>
+        /// PRODUCT
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        //to get the departments
+        public List<string> GetDepartments()
+        {
+
+            try
+            {
+                string sql = "SELECT name FROM department"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    departments.Add(dr[0].ToString());
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return departments;
+        }
+
+
+        // to add the products
+        public void AddProduct(int departmentId, string name, double price)
+        {
+            bool productExist = false;
+            try
+            {
+                foreach (Product item in products) // to check if the Person with the same name already exists
+                {
+                    if (item.Name == name)
+                    {
+                        productExist = true;
+                    }
+                }
+                if (!productExist)
+                {
+                    string sql = "INSERT INTO product(departmentId, productName, price) VALUES(@departmentId, @productName, @productPrice)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(name, "[^0-9]"))
+                    {
+                        System.Windows.Forms.MessageBox.Show("Name Cannot be in Numbers");
+                    }
+                    else if(price <= 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Price Cannot be 0 or Less than 0");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@departmentId", departmentId);
+                        cmd.Parameters.AddWithValue("@productName", name);
+                        cmd.Parameters.AddWithValue("@productPrice", price);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        System.Windows.Forms.MessageBox.Show("Product has been Added to the System");
+                    }
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Product Exists");
+                }
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Product> GetProducts()
+        {
+            products = new List<Product>();
+            try
+            {
+                string sql = "SELECT productId, departmentId, productName, price, exist FROM product"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    string department = "";
+
+                    if (Convert.ToBoolean(dr[4]))
+                    {
+                        if (Convert.ToInt32(dr[1]) == 1)
+                        {
+                            department = "Household";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 2)
+                        {
+                            department = "Computer";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 3)
+                        {
+                            department = "Kitchen";
+                        }
+                        else if (Convert.ToInt32(dr[1]) == 4)
+                        {
+                            department = "Photo and Video";
+                        }
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                        products.Add(g);
+                    }
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return products;
+        }
+
+        public void ModifyProduct(int id, string givenProductName, double givenProductPrice)
+        {
+            try
+            {
+                string sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + id + "';";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                if (!System.Text.RegularExpressions.Regex.IsMatch(givenProductName, "[^0-9]"))
+                {
+                    System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
+                }
+                else if(givenProductPrice <= 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Price Cannot Be 0 or Negative");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@productName", givenProductName);
+                    cmd.Parameters.AddWithValue("@productPrice", givenProductPrice);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    System.Windows.Forms.MessageBox.Show("The information has been updated");
+                }
+
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public Product ReturnExistingProduct(int id)
+        {
+            Product foundProduct = null;
+            foreach (Product item in products)
+            {
+                if (item.ProductId == id)
+                {
+                    foundProduct = item;
+                }
+            }
+            return foundProduct;
+        }
+        public void ProductToRemove(int productId)
+        {
+            string sql = "";
+            bool fkStock = false;
+           // bool fkProductDelete = true;
+            try
+            {
+                MySqlCommand cmd;
+                //sql = "DELETE FROM stock WHERE productId = @id";
+                sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
+                cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                cmd.Parameters.AddWithValue("@exist", fkStock);
+                conn.Open();  // this must be before the execution which is just under this
+                cmd.ExecuteNonQuery();
+
+                // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
+             /*   if (sql != "DELETE FROM stock WHERE productId = @id")
+                {
+
+                    //sql = "DELETE FROM stock WHERE productId = @id";
+                    sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@exist", fkStock);
+                    conn.Open();  // this must be before the execution which is just under this
+                    cmd.ExecuteNonQuery();
+                    fkStock = true;
+                }
+                if (fkStock)
+                {
+                    sql = "DELETE FROM stock_request WHERE productId = @id";
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", productId);
+                    cmd.ExecuteNonQuery();
+
+                    fkProductDelete = true;
+                }
+                if (fkProductDelete) // removing the data from the main table
+                {
+                    sql = "DELETE FROM product WHERE productId = @id"; // a query of what we want
+                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                    cmd.Parameters.AddWithValue("@id", productId);
+                    cmd.ExecuteNonQuery();
+                }*/
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public Product GetProductByName(string givenName)
+        {
+            Product foundProduct = null;
+            foreach (Product p in products)
+            {
+                if (p.Name.Contains(givenName))
+                {
+                    foundProduct = p;
+                }
+            }
+            return foundProduct;
+        }
 
         //Read data from Database as object
         public Object ExecuteScalar(string sql)
@@ -715,7 +1360,5 @@ namespace MediaBazar
             }
             return nr;
         }
-=======
->>>>>>> master
-    }
+        }
 }

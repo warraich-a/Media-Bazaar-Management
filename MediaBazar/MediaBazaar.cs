@@ -20,6 +20,10 @@ namespace MediaBazar
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
         // Person person = new Person();
+        List<Department> departments = new List<Department>();
+        List<Request> requests = new List<Request>();
+        List<Stock> stocks = new List<Stock>();
+        List<Product> products = new List<Product>();
 
         Person person = new Person();
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
@@ -55,7 +59,7 @@ namespace MediaBazar
         }
 
 
-        /* Login */
+        /* LOGIN */
         /* Get User Type */
         public string GetUserType(string email)
         {
@@ -69,6 +73,14 @@ namespace MediaBazar
         {
             bool areCredentialsCorrect = database.CheckCredentials(email, password);
 
+            // Save user name
+            if (areCredentialsCorrect)
+            {
+                string name = GetUserName(email);
+
+                SaveCurrentUser(name);
+            }
+
             return areCredentialsCorrect;
         }
 
@@ -78,13 +90,13 @@ namespace MediaBazar
             Console.WriteLine(name);
         }
 
-        /* Logout */
+        /* LOGOUT */
         public void LogOut()
         {
             this.currentUser = null;
         }
 
-        /* Reset password */
+        /* RESET PASSWORD */
         public string ResetPassword(string email, string password)
         {
             string result = database.ResetPassword(email, password);
@@ -147,6 +159,7 @@ namespace MediaBazar
             return userName;
         }
 
+        /* Check if user exists */
         public string DoesUserExist(string email)
         {
             string doesUserExist = database.DoesUserExist(email);
@@ -162,6 +175,13 @@ namespace MediaBazar
             return statistics;
         }
 
+        public ArrayList GetStatistics(string dateFrom, string type)
+        {
+            ArrayList statistics = database.GetStatistics(dateFrom, type);
+
+            return statistics;
+        }
+
         public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
         {
             ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type);
@@ -169,12 +189,12 @@ namespace MediaBazar
             return statistics;
         }
 
-        //public ArrayList GetStatisticsNrEmployeesPerShift(string dateFrom, string dateTo, string type)
-        //{
-        //    ArrayList rowList = database.GetStatistics(dateFrom, dateTo, type);
-
-        //    return rowList;
-        //}
+        /* GET EMPLOYEE FOR SHIFT, STATISTICS */
+        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        {
+            string employees = database.GetEmployeesPerShift(date, shiftType);
+            return employees;
+        }
 
 
         // to add a person in a database
@@ -213,66 +233,59 @@ namespace MediaBazar
             return database.ReturnPersonFromList(id);
         }
 
-
         /* SCHEDULE */
-        public List<Schedule> VeiwSchedule()
+        public void ReadSchedule()
         {
-            this.schedules = new List<Schedule>();
-            try
+            this.schedules = database.ReadSchedule();
+
+
+        }
+        public List<Schedule> GetSchedulesList()
+        {
+            return this.schedules;
+        }
+
+        public List<Schedule> GetScheduleByShift(Shift givenShift)
+        {
+            List<Schedule> newSchedule = new List<Schedule>();
+            foreach (Schedule s in schedules)
             {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule`";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                conn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                if (s.ShiftType == givenShift)
                 {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
-
-                    ShiftStatus b = ShiftStatus.ASSIGNED;
-                    if (dr[4].ToString() == "Assigned")
-                    {
-                        b = ShiftStatus.ASSIGNED;
-                    }
-                    else if (dr[4].ToString() == "Proposed")
-                    {
-                        b = ShiftStatus.PROPOSED;
-                    }
-                    else if (dr[4].ToString() == "Accepted")
-                    {
-                        b = ShiftStatus.ACCEPTED;
-                    }
-                    else if (dr[4].ToString() == "Rejected")
-                    {
-                        b = ShiftStatus.REJECTED;
-                    }
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    schedules.Add(g);
+                    newSchedule.Add(s);
                 }
             }
-            finally
-            {
-                conn.Close();
-            }
-            return schedules;
+            return newSchedule;
         }
+        public List<Schedule> GetScheduleByName(string name)
+        {
+            List<Schedule> newSchedule = new List<Schedule>();
+            foreach (Schedule s in schedules)
+            {
+                if (s.EmployeeId == GetPersonIdByName(name))
+                {
+                    newSchedule.Add(s);
+                }
+            }
+            return newSchedule;
+        }
+        public List<Schedule> GetScheduleByNameAndShift(string name, Shift givenShift)
+        {
+            List<Schedule> newSchedule = new List<Schedule>();
+            foreach (Schedule s in schedules)
+            {
+                if (s.EmployeeId == GetPersonIdByName(name) && s.ShiftType == givenShift)
+                {
+                    newSchedule.Add(s);
+                }
+            }
+            return newSchedule;
+        }
+
         public String GetPersonNameById(int id)
         {
             string s = "";
-            foreach (Person p in people)
+            foreach (Person p in ReturnPeopleFromDB())
             {
                 if (id == p.Id)
                 {
@@ -283,153 +296,16 @@ namespace MediaBazar
         }
         public List<Person> GetPeopleList()
         {
-            return this.people;
+            return this.ReturnPeopleFromDB();
         }
-        public List<Schedule> VeiwSpecificSchedule1(int id, DateTime date)
-        {
-            List<Schedule> newSchedule = new List<Schedule>();
-            try
-            {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE employeeId = @id AND date = @date";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                conn.Open();
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@date", date.Date);
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
-
-                    ShiftStatus b = ShiftStatus.ASSIGNED;
-                    if (dr[4].ToString() == "Assigned")
-                    {
-                        b = ShiftStatus.ASSIGNED;
-                    }
-                    else if (dr[4].ToString() == "Proposed")
-                    {
-                        b = ShiftStatus.PROPOSED;
-                    }
-                    else if (dr[4].ToString() == "Accepted")
-                    {
-                        b = ShiftStatus.ACCEPTED;
-                    }
-                    else if (dr[4].ToString() == "Rejected")
-                    {
-                        b = ShiftStatus.REJECTED;
-                    }
 
 
 
-
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    newSchedule.Add(g);
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return newSchedule;
-        }
-        public List<Schedule> VeiwSpecificSchedule2(DateTime date, string shift)
-        {
-            List<Schedule> newSchedule = new List<Schedule>();
-            try
-            {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE date = @date AND shiftType = @shift";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                conn.Open();
-
-                cmd.Parameters.AddWithValue("@date", date.Date);
-                cmd.Parameters.AddWithValue("@shift", shift);
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
-
-                    ShiftStatus b = ShiftStatus.ASSIGNED;
-                    if (dr[4].ToString() == "Assigned")
-                    {
-                        b = ShiftStatus.ASSIGNED;
-                    }
-                    else if (dr[4].ToString() == "Proposed")
-                    {
-                        b = ShiftStatus.PROPOSED;
-                    }
-                    else if (dr[4].ToString() == "Accepted")
-                    {
-                        b = ShiftStatus.ACCEPTED;
-                    }
-                    else if (dr[4].ToString() == "Rejected")
-                    {
-                        b = ShiftStatus.REJECTED;
-                    }
-
-
-
-
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    newSchedule.Add(g);
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return newSchedule;
-        }
-        public void RemoveSchedule(int id)
-        {
-            try
-            {
-                string sql = "DELETE FROM schedule WHERE id = @id";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                conn.Open();
-                cmd.Parameters.AddWithValue("@id", id);
-                int dr = cmd.ExecuteNonQuery();
-
-
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-        }
 
         public int GetPersonIdByName(string name)
         {
             int i = 0;
-            foreach (Person p in people)
+            foreach (Person p in ReturnPeopleFromDB())
             {
                 if (p.GetFullName() == name)
                 {
@@ -466,6 +342,144 @@ namespace MediaBazar
             }
             return i;
         }
+
+        //to get the departments from the db
+        public List<string> GetDepartments()
+        {
+            return database.GetDepartments();
+        }
+
+        // to add a new product in the system
+        public void AddProduct(int departmentId, string productName, double productPrice)
+        {
+            database.AddProduct(departmentId, productName, productPrice);
+        }
+        //to get the products
+        public List<Product> GetProducts()
+        {
+            return database.GetProducts();
+        }
+
+        //to modify the existing product
+        public void ModifyProduct(int id, string productName, double productPrice)
+        {
+            database.ModifyProduct(id, productName, productPrice);
+        }
+
+        //to get the exisitng product in order to modify
+        public Product ReturnExistingProduct(int id)
+        {
+            return database.ReturnExistingProduct(id);
+        }
+
+        //to remove a product from the database
+        public void ProductToRemove(int id)
+        {
+            database.ProductToRemove(id);
+        }
+
+        // to search a product by name 
+        public Product ProductToSearch(string givenName)
+        {
+            return database.GetProductByName(givenName);
+        }
+
+        public void ReadProducts()
+        {
+            this.products = database.ReadProduct();
+        }
+        public List<Product> GetProductsList()
+        {
+            return this.products;
+        }
+        public List<Product> GetProductsListByName(string name)
+        {
+            List<Product> newProducts = new List<Product>();
+            foreach (Product p in products)
+            {
+                if (p.ProductName == name)
+                {
+                    newProducts.Add(p);
+                }
+            }
+            return newProducts;
+        }
+        public void SendDepoRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.DepotWorker);
+        }
+        public void SendManagerRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Manager);
+        }
+        public void SendAdminRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Administrator);
+        }
+        public void ReadDepartment()
+        {
+            this.departments = database.ReadDepartments();
+        }
+        public string GetDepartmentNameById(int id)
+        {
+            string name = "";
+            foreach (Department d in departments)
+            {
+                if (d.Id == id)
+                {
+                    name = d.Name;
+                }
+            }
+            return name;
+        }
+        public string GetProductNameById(int id)
+        {
+            ReadProducts();
+            string name = "";
+            foreach (Product d in products)
+            {
+                if (d.ProductId == id)
+                {
+                    name = d.ProductName;
+                }
+            }
+            return name;
+        }
+        public int GetProductIntByName(string name)
+        {
+            ReadProducts();
+            int id = 0;
+            foreach (Product d in products)
+            {
+                if (d.ProductName == name)
+                {
+                    id = d.ProductId;
+                }
+            }
+            return id;
+        }
+        public void ReadRequests()
+        {
+            this.requests = database.ReadRequests();
+        }
+        public void ReadStocks()
+        {
+            this.stocks = database.ReadStock();
+        }
+        public List<Stock> GetStockList()
+        {
+            return this.stocks;
+        }
+        public List<Request> GetRequestsList()
+        {
+            return this.requests;
+        }
+        public void ApproveRequest(int id, int productId, int quantity)
+        {
+            database.ApproveRequest(id, productId, quantity);
+        }
+
+
     }
 
 
