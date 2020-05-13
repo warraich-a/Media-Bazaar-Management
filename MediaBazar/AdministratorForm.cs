@@ -215,7 +215,16 @@ namespace MediaBazar
             // salary per employee between two dates
             else if (type == "Salary per employee")
             {
-                GenerateStatisticsSalaryPerEmployee(type);
+                // Calculate difference between two dates (number of days)
+                TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
+                if (nrDays.Days < 0)
+                {
+                    MessageBox.Show("Dates are not valid");
+                }
+                else
+                {
+                    GenerateStatisticsSalaryPerEmployee(type);
+                }
             }
 
             // Number employees per shift between two dates
@@ -229,6 +238,10 @@ namespace MediaBazar
                 {
                     MessageBox.Show("You can view a maximum of 15 days");
                 }
+                else if (nrDays.Days < 0)
+                {
+                    MessageBox.Show("Dates are not valid");
+                }
                 else
                 {
                     GenerateStatisticsNrEmployeesPerShift(type);
@@ -236,7 +249,17 @@ namespace MediaBazar
             }
             else if (type == "Most Restocked Items")
             {
-                GenerateStatisticsMostRestockedItems(type);
+                // Calculate difference between two dates (number of days)
+                TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
+                if (nrDays.Days < 0)
+                {
+                    MessageBox.Show("Dates are not valid");
+                }
+                else
+                {
+                    GenerateStatisticsMostRestockedItems(type);
+
+                }
             }
             else if (type == "Restocked Items On Date")
             {
