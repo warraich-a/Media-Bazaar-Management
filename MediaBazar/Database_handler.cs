@@ -209,6 +209,7 @@ namespace MediaBazar
         }
         public void SendStockRequest(int productId, int quantity, Roles role)
         {
+
             try
             {
                 string sql = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
@@ -217,6 +218,31 @@ namespace MediaBazar
                 if (role == Roles.Administrator)
                 {
                     status = "Approved";
+                    int x = 0;
+                    ReadStock();
+                    foreach (Stock s in stocks)
+                    {
+                        if (s.ProductId == productId)
+                        {
+                            x = s.Quantity + quantity;
+
+                        }
+                    }
+                    try
+                    {
+                        string sql2 = "UPDATE stock SET quantity = @Quantity WHERE productId = @Id";
+                        MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+
+                        cmd2.Parameters.AddWithValue("@Quantity", x);
+                        cmd2.Parameters.AddWithValue("@Id", productId);
+                        conn.Open();
+                        cmd2.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+
                 }
                 cmd.Parameters.AddWithValue("@pId", productId);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
@@ -227,6 +253,56 @@ namespace MediaBazar
                 cmd.ExecuteNonQuery();
                 System.Windows.Forms.MessageBox.Show("Request has been sent");
             }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void AddToStock(int productId, int quantity)
+        {
+            int stockId = 0;
+            try
+            {
+                int x = 0;
+                ReadStock();
+                foreach (Stock s in stocks)
+                {
+                    if (s.ProductId == productId)
+                    {
+                        x = s.Quantity + quantity;
+                        stockId = s.Id;
+                    }
+                }
+                if (stockId == 0)
+                {
+
+                    string sql = "INSERT INTO stock(quantity, productId) VALUES( @quantity, @productid)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cmd.Parameters.AddWithValue("@productid", productId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Stock is updated!");
+                }
+                else
+                {
+
+
+
+                    string sql = "UPDATE stock SET quantity = @Quantity WHERE id = @Id";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@Quantity", x);
+                    cmd.Parameters.AddWithValue("@Id", stockId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Stock is updated!");
+                }
+
+
+            }
+
             finally
             {
                 conn.Close();
