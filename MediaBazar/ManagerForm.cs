@@ -701,10 +701,18 @@ namespace MediaBazar
         {
             if (lvProductList.SelectedItems.Count > 0)
             {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text) && Convert.ToInt32(tbQuantity.Text) > 0)
+                if (!String.IsNullOrWhiteSpace(tbProductQuantity.Text) && Convert.ToInt32(tbProductQuantity.Text) > 0)
                 {
-                    mediaBazaar.SendManagerRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbProductQuantity.Text));
                 }
+                else
+                {
+                    MessageBox.Show("Incorrect quantity");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select the Id");
             }
         }
 
@@ -717,7 +725,7 @@ namespace MediaBazar
                 RefreshData();
                 for (int i = 0; i < lvProductList.Items.Count; i++)
                 {
-                    if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
+                    if (lvProductList.Items[i].SubItems[2].Text.Contains(productName.ToLower()) || lvProductList.Items[i].SubItems[2].Text.Contains(productName.ToUpper()))
                     {
                         items.Add(lvProductList.Items[i]);
                     }

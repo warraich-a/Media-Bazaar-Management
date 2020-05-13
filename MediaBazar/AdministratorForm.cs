@@ -136,6 +136,7 @@ namespace MediaBazar
                 list.SubItems.Add(item.Quantity.ToString());
                 list.SubItems.Add(item.Status);
                 list.SubItems.Add(item.RequestedBy);
+                list.SubItems.Add(item.DatE.Substring(0, 11));
                 lvRequests.Items.Add(list);
             }
         }
@@ -911,8 +912,13 @@ namespace MediaBazar
         {
             if (lvRequests.SelectedItems.Count > 0)
             {
-                mediaBazaar.ApproveRequest(Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[0].Text), mediaBazaar.GetProductIntByName(lvRequests.SelectedItems[0].SubItems[1].Text), Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[2].Text));
-                RefreshData();
+                if (lvRequests.SelectedItems[0].SubItems[3].Text != "Approved") {
+                    mediaBazaar.ApproveRequest(Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[0].Text), mediaBazaar.GetProductIntByName(lvRequests.SelectedItems[0].SubItems[1].Text), Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[2].Text));
+                    RefreshData();
+                } else 
+                {
+                    MessageBox.Show("This request is already approved");
+                }
             }
         }
 
