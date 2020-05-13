@@ -112,16 +112,12 @@ namespace MediaBazar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lvProductList.Items.Clear();
-            mediaBazaar.ReadProducts();
-            mediaBazaar.ReadDepartment();
-            foreach (Product p in mediaBazaar.GetProductsList())
+            if (lvProductList.SelectedItems.Count > 0)
             {
-                ListViewItem l = new ListViewItem(p.ProductId.ToString());
-                l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
-                l.SubItems.Add(p.ProductName);
-                l.SubItems.Add(p.Price.ToString());
-                lvProductList.Items.Add(l);
+                if (!String.IsNullOrWhiteSpace(tbQuantity.Text) && Convert.ToInt32(tbQuantity.Text) > 0)
+                {
+                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                }
             }
         }
 
