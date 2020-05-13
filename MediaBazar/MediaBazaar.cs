@@ -416,6 +416,10 @@ namespace MediaBazar
         {
             database.SendStockRequest(productId, quantity, Roles.Administrator);
         }
+        public void AddToStock(int productId, int quantity)
+        {
+            database.AddToStock(productId, quantity);
+        }
         public void ReadDepartment()
         {
             this.departments = database.ReadDepartments();

@@ -903,12 +903,54 @@ namespace MediaBazar
         {
             if (lvStock.SelectedItems.Count > 0)
             {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
+                bool x = false;
+                mediaBazaar.ReadProducts();
+                foreach(Product p in mediaBazaar.GetProductsList())
                 {
-                    mediaBazaar.SendAdminRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                    RefreshData();
-                    tbQuantity.Clear();
+                    if(p.ProductId == Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text))
+                    {
+                        x = true;
+                    }
                 }
+                if (!x)
+                {
+                    MessageBox.Show("Item does not exist");
+                }
+                else
+                {
+                    if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
+                    {
+                        mediaBazaar.SendAdminRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                        RefreshData();
+                        tbQuantity.Clear();
+                    } else
+                    {
+                        MessageBox.Show("Incorrect quantity");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select the Id");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listViewProducts.SelectedItems.Count > 0)
+            {
+                if(!String.IsNullOrWhiteSpace(tbNewQuantity.Text) && Convert.ToInt32(tbNewQuantity.Text) > 0)
+                    {
+                    mediaBazaar.AddToStock(Convert.ToInt32(listViewProducts.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbNewQuantity.Text));
+                    RefreshData();
+                    tbNewQuantity.Clear();
+                } else
+                {
+                    MessageBox.Show("Incorrect quantity");
+                }
+            } else
+            {
+                MessageBox.Show("Select the Id");
             }
         }
     }
