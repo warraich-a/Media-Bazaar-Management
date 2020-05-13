@@ -71,16 +71,7 @@ namespace MediaBazar
             this.Close();
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
-            if (lvStock.SelectedItems.Count > 0)
-            {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
-                {
-                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                }
-            }
-        }
+   
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -114,9 +105,9 @@ namespace MediaBazar
         {
             if (lvProductList.SelectedItems.Count > 0)
             {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text) && Convert.ToInt32(tbQuantity.Text) > 0)
+                if (!String.IsNullOrWhiteSpace(tbProductQuantity.Text) && Convert.ToInt32(tbProductQuantity.Text) > 0)
                 {
-                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbProductQuantity.Text));
                 }
             }
         }
