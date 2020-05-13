@@ -434,9 +434,9 @@ namespace MediaBazar
         }
         public string GetProductNameById(int id)
         {
-            ReadProducts();
+            
             string name = "";
-            foreach (Product d in products)
+            foreach (Product d in database.ReadAllProduct())
             {
                 if (d.ProductId == id)
                 {

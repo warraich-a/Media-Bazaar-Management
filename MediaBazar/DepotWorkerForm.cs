@@ -73,13 +73,7 @@ namespace MediaBazar
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            if (lvStock.SelectedItems.Count > 0)
-            {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
-                {
-                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                }
-            }
+            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -112,13 +106,7 @@ namespace MediaBazar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lvProductList.SelectedItems.Count > 0)
-            {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text) && Convert.ToInt32(tbQuantity.Text) > 0)
-                {
-                    mediaBazaar.SendDepoRequest(Convert.ToInt32(lvProductList.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                }
-            }
+            
         }
 
         private void tbProductName_TextChanged(object sender, EventArgs e)
