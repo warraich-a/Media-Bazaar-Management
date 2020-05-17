@@ -416,6 +416,10 @@ namespace MediaBazar
         {
             database.SendStockRequest(productId, quantity, Roles.Administrator);
         }
+        public void AddToStock(int productId, int quantity)
+        {
+            database.AddToStock(productId, quantity);
+        }
         public void ReadDepartment()
         {
             this.departments = database.ReadDepartments();
@@ -434,9 +438,9 @@ namespace MediaBazar
         }
         public string GetProductNameById(int id)
         {
-            ReadProducts();
+            
             string name = "";
-            foreach (Product d in products)
+            foreach (Product d in database.ReadAllProduct())
             {
                 if (d.ProductId == id)
                 {

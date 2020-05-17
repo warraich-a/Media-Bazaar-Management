@@ -65,11 +65,10 @@
             this.metroTabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.metroTabControl1.CustomBackground = true;
             this.metroTabControl1.ItemSize = new System.Drawing.Size(510, 40);
-            this.metroTabControl1.Location = new System.Drawing.Point(-3, 123);
-            this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTabControl1.Location = new System.Drawing.Point(-2, 100);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(1365, 807);
+            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.Size = new System.Drawing.Size(1024, 656);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroTabControl1.TabIndex = 3;
@@ -82,15 +81,12 @@
             this.metroTabPage1.CustomBackground = true;
             this.metroTabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.HorizontalScrollbarSize = 12;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 44);
-            this.metroTabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1357, 759);
+            this.metroTabPage1.Size = new System.Drawing.Size(1016, 608);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = " Stock";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
-            this.metroTabPage1.VerticalScrollbarSize = 13;
             // 
             // lvStock
             // 
@@ -99,10 +95,9 @@
             this.columnHeader6,
             this.columnHeader8});
             this.lvStock.HideSelection = false;
-            this.lvStock.Location = new System.Drawing.Point(40, 74);
-            this.lvStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvStock.Location = new System.Drawing.Point(30, 60);
             this.lvStock.Name = "lvStock";
-            this.lvStock.Size = new System.Drawing.Size(1276, 593);
+            this.lvStock.Size = new System.Drawing.Size(958, 456);
             this.lvStock.TabIndex = 12;
             this.lvStock.UseCompatibleStateImageBehavior = false;
             this.lvStock.View = System.Windows.Forms.View.Details;
@@ -131,15 +126,12 @@
             this.metroTabPage2.Controls.Add(this.tbProductQuantity);
             this.metroTabPage2.Controls.Add(this.button1);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarSize = 12;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 44);
-            this.metroTabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1357, 759);
+            this.metroTabPage2.Size = new System.Drawing.Size(1016, 608);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Products";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarSize = 13;
             // 
             // lvProductList
             // 
@@ -152,10 +144,9 @@
             this.lvProductList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvProductList.GridLines = true;
             this.lvProductList.HideSelection = false;
-            this.lvProductList.Location = new System.Drawing.Point(52, 117);
-            this.lvProductList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvProductList.Location = new System.Drawing.Point(39, 95);
             this.lvProductList.Name = "lvProductList";
-            this.lvProductList.Size = new System.Drawing.Size(1272, 478);
+            this.lvProductList.Size = new System.Drawing.Size(955, 389);
             this.lvProductList.TabIndex = 76;
             this.lvProductList.UseCompatibleStateImageBehavior = false;
             this.lvProductList.View = System.Windows.Forms.View.Details;
@@ -189,8 +180,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.SystemColors.Control;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(41, 25);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(31, 20);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(182, 20);
             this.label22.TabIndex = 73;
@@ -198,29 +188,26 @@
             // 
             // tbProductName
             // 
-            this.tbProductName.Location = new System.Drawing.Point(47, 64);
-            this.tbProductName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbProductName.Location = new System.Drawing.Point(35, 52);
             this.tbProductName.Name = "tbProductName";
-            this.tbProductName.Size = new System.Drawing.Size(404, 22);
+            this.tbProductName.Size = new System.Drawing.Size(304, 20);
             this.tbProductName.TabIndex = 72;
             this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(41, 628);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(31, 510);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 16);
+            this.label14.Size = new System.Drawing.Size(46, 13);
             this.label14.TabIndex = 71;
             this.label14.Text = "Quantity";
             // 
             // tbProductQuantity
             // 
-            this.tbProductQuantity.Location = new System.Drawing.Point(173, 620);
-            this.tbProductQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbProductQuantity.Location = new System.Drawing.Point(130, 504);
             this.tbProductQuantity.Name = "tbProductQuantity";
-            this.tbProductQuantity.Size = new System.Drawing.Size(277, 22);
+            this.tbProductQuantity.Size = new System.Drawing.Size(209, 20);
             this.tbProductQuantity.TabIndex = 70;
             // 
             // button1
@@ -229,10 +216,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(532, 620);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(399, 504);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(257, 39);
+            this.button1.Size = new System.Drawing.Size(193, 32);
             this.button1.TabIndex = 69;
             this.button1.Text = "Send Restock Request";
             this.button1.UseVisualStyleBackColor = false;
@@ -244,10 +230,9 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogout.Location = new System.Drawing.Point(1129, 44);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Location = new System.Drawing.Point(847, 36);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(193, 44);
+            this.btnLogout.Size = new System.Drawing.Size(145, 36);
             this.btnLogout.TabIndex = 48;
             this.btnLogout.Text = "Log out";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -257,9 +242,9 @@
             // 
             this.pictureBox1.Image = global::MediaBazar.Properties.Resources.linkedin_banner_image_1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(245, 122);
+            this.pictureBox1.Size = new System.Drawing.Size(184, 99);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
@@ -269,8 +254,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.lblUsername.Location = new System.Drawing.Point(389, 71);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsername.Location = new System.Drawing.Point(292, 58);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(97, 24);
             this.lblUsername.TabIndex = 46;
@@ -279,10 +263,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::MediaBazar.Properties.Resources.user;
-            this.pictureBox4.Location = new System.Drawing.Point(323, 64);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(242, 52);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox4.Size = new System.Drawing.Size(29, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 45;
             this.pictureBox4.TabStop = false;
@@ -292,8 +275,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label19.Location = new System.Drawing.Point(389, 22);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(292, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(234, 24);
             this.label19.TabIndex = 54;
@@ -301,17 +283,16 @@
             // 
             // DepotWorkerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(213)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(1364, 864);
+            this.ClientSize = new System.Drawing.Size(1023, 702);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.lblUsername);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DepotWorkerForm";
             this.Text = "Depot Worker";
             this.metroTabControl1.ResumeLayout(false);
