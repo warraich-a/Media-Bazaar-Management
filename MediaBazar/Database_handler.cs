@@ -244,6 +244,7 @@ namespace MediaBazar
                     }
 
                 }
+
                 cmd.Parameters.AddWithValue("@pId", productId);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@status", status);
@@ -251,7 +252,15 @@ namespace MediaBazar
                 cmd.Parameters.AddWithValue("@rDate", DateTime.Now.Date);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                System.Windows.Forms.MessageBox.Show("Request has been sent");
+                if(role == Roles.Administrator)
+                {
+                    System.Windows.Forms.MessageBox.Show("Stock has been updated");
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Request has been sent");
+                }
+                
             }
             finally
             {
@@ -276,7 +285,6 @@ namespace MediaBazar
                 }
                 if (stockId == 0)
                 {
-
                     string sql = "INSERT INTO stock(quantity, productId) VALUES( @quantity, @productid)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@quantity", quantity);
@@ -284,12 +292,24 @@ namespace MediaBazar
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Stock is updated!");
+
+
+
+                    string sql2 = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
+                    MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+                    string status = "Approved";
+                    cmd2.Parameters.AddWithValue("@pId", productId);
+                    cmd2.Parameters.AddWithValue("@quantity", quantity);
+                    cmd2.Parameters.AddWithValue("@status", status);
+                    cmd2.Parameters.AddWithValue("@rBy", Roles.Administrator.ToString());
+                    cmd2.Parameters.AddWithValue("@rDate", DateTime.Now.Date);
+                    cmd2.ExecuteNonQuery();
+
+
+
                 }
                 else
                 {
-
-
-
                     string sql = "UPDATE stock SET quantity = @Quantity WHERE id = @Id";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -298,11 +318,19 @@ namespace MediaBazar
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Stock is updated!");
+
+                    string sql2 = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
+                    MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+                    string status = "Approved";
+                    cmd2.Parameters.AddWithValue("@pId", productId);
+                    cmd2.Parameters.AddWithValue("@quantity", quantity);
+                    cmd2.Parameters.AddWithValue("@status", status);
+                    cmd2.Parameters.AddWithValue("@rBy", Roles.Administrator.ToString());
+                    cmd2.Parameters.AddWithValue("@rDate", DateTime.Now.Date);
+                    cmd2.ExecuteNonQuery();
                 }
 
-
             }
-
             finally
             {
                 conn.Close();
@@ -1119,7 +1147,7 @@ namespace MediaBazar
             bool productExist = false;
             try
             {
-                foreach (Product item in products) // to check if the Person with the same name already exists
+                foreach (Product item in GetProducts()) // to check if the Person with the same name already exists
                 {
                     if (item.Name == name)
                     {

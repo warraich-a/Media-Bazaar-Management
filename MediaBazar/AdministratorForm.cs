@@ -833,7 +833,9 @@ namespace MediaBazar
                 int departmentId = cmbDepartmentStack.SelectedIndex + 1;
                 mediaBazaar.AddProduct(departmentId, productName, productPrice);
                 RefreshData();
-                Refresh();
+                tbProductName.Text = "";
+                tbProductPrice.Text = "";
+                cmbDepartmentStack.Text = "";
             }
             catch (ArgumentNullException)
             {

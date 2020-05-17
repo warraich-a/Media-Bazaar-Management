@@ -67,7 +67,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(510, 40);
             this.metroTabControl1.Location = new System.Drawing.Point(-2, 100);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1024, 656);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -94,6 +94,7 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader8});
+            this.lvStock.GridLines = true;
             this.lvStock.HideSelection = false;
             this.lvStock.Location = new System.Drawing.Point(30, 60);
             this.lvStock.Name = "lvStock";
