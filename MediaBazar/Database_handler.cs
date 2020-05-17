@@ -1213,7 +1213,7 @@ namespace MediaBazar
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 if (!System.Text.RegularExpressions.Regex.IsMatch(givenProductName, "[^0-9]"))
                 {
-                    System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
+                    System.Windows.Forms.MessageBox.Show("Name cannot be a number");
                 }
                 else if (givenProductPrice <= 0)
                 {
