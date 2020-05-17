@@ -3,11 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-<<<<<<< HEAD
-/.vs
-
-=======
->>>>>>> b8c892af28aa5f7cf7471d86b9fcbc34e049046c
 # User-specific files
 *.rsuser
 *.suo
@@ -28,10 +23,7 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
-<<<<<<< HEAD
-=======
 [Ww][Ii][Nn]32/
->>>>>>> b8c892af28aa5f7cf7471d86b9fcbc34e049046c
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -41,11 +33,7 @@ bld/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
-<<<<<<< HEAD
-.vs/
-=======
 /.vs
->>>>>>> b8c892af28aa5f7cf7471d86b9fcbc34e049046c
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -74,12 +62,9 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
-<<<<<<< HEAD
-=======
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
->>>>>>> b8c892af28aa5f7cf7471d86b9fcbc34e049046c
 # StyleCop
 StyleCopReport.xml
 
@@ -156,12 +141,9 @@ _TeamCity*
 .axoCover/*
 !.axoCover/settings.json
 
-<<<<<<< HEAD
-=======
 # Coverlet is a free, cross platform Code Coverage Tool
 coverage*[.json, .xml, .info]
 
->>>>>>> b8c892af28aa5f7cf7471d86b9fcbc34e049046c
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml
