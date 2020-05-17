@@ -136,6 +136,7 @@ namespace MediaBazar
                 list.SubItems.Add(item.Quantity.ToString());
                 list.SubItems.Add(item.Status);
                 list.SubItems.Add(item.RequestedBy);
+                list.SubItems.Add(item.DatE.Substring(0, 11));
                 lvRequests.Items.Add(list);
             }
         }
@@ -214,7 +215,16 @@ namespace MediaBazar
             // salary per employee between two dates
             else if (type == "Salary per employee")
             {
-                GenerateStatisticsSalaryPerEmployee(type);
+                // Calculate difference between two dates (number of days)
+                TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
+                if (nrDays.Days < 0)
+                {
+                    MessageBox.Show("Dates are not valid");
+                }
+                else
+                {
+                    GenerateStatisticsSalaryPerEmployee(type);
+                }
             }
 
             // Number employees per shift between two dates
@@ -228,6 +238,10 @@ namespace MediaBazar
                 {
                     MessageBox.Show("You can view a maximum of 15 days");
                 }
+                else if (nrDays.Days < 0)
+                {
+                    MessageBox.Show("Dates are not valid");
+                }
                 else
                 {
                     GenerateStatisticsNrEmployeesPerShift(type);
@@ -235,7 +249,17 @@ namespace MediaBazar
             }
             else if (type == "Most Restocked Items")
             {
-                GenerateStatisticsMostRestockedItems(type);
+                // Calculate difference between two dates (number of days)
+                TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
+                if (nrDays.Days < 0)
+                {
+                    MessageBox.Show("Dates are not valid");
+                }
+                else
+                {
+                    GenerateStatisticsMostRestockedItems(type);
+
+                }
             }
             else if (type == "Restocked Items On Date")
             {
@@ -888,8 +912,13 @@ namespace MediaBazar
         {
             if (lvRequests.SelectedItems.Count > 0)
             {
-                mediaBazaar.ApproveRequest(Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[0].Text), mediaBazaar.GetProductIntByName(lvRequests.SelectedItems[0].SubItems[1].Text), Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[2].Text));
-                RefreshData();
+                if (lvRequests.SelectedItems[0].SubItems[3].Text != "Approved") {
+                    mediaBazaar.ApproveRequest(Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[0].Text), mediaBazaar.GetProductIntByName(lvRequests.SelectedItems[0].SubItems[1].Text), Convert.ToInt32(lvRequests.SelectedItems[0].SubItems[2].Text));
+                    RefreshData();
+                } else 
+                {
+                    MessageBox.Show("This request is already approved");
+                }
             }
         }
 
@@ -897,12 +926,54 @@ namespace MediaBazar
         {
             if (lvStock.SelectedItems.Count > 0)
             {
-                if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
+                bool x = false;
+                mediaBazaar.ReadProducts();
+                foreach(Product p in mediaBazaar.GetProductsList())
                 {
-                    mediaBazaar.SendAdminRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
-                    RefreshData();
-                    tbQuantity.Clear();
+                    if(p.ProductId == Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text))
+                    {
+                        x = true;
+                    }
                 }
+                if (!x)
+                {
+                    MessageBox.Show("Item does not exist");
+                }
+                else
+                {
+                    if (!String.IsNullOrWhiteSpace(tbQuantity.Text))
+                    {
+                        mediaBazaar.SendAdminRequest(Convert.ToInt32(lvStock.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbQuantity.Text));
+                        RefreshData();
+                        tbQuantity.Clear();
+                    } else
+                    {
+                        MessageBox.Show("Incorrect quantity");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select the Id");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listViewProducts.SelectedItems.Count > 0)
+            {
+                if(!String.IsNullOrWhiteSpace(tbNewQuantity.Text) && Convert.ToInt32(tbNewQuantity.Text) > 0)
+                    {
+                    mediaBazaar.AddToStock(Convert.ToInt32(listViewProducts.SelectedItems[0].SubItems[0].Text), Convert.ToInt32(tbNewQuantity.Text));
+                    RefreshData();
+                    tbNewQuantity.Clear();
+                } else
+                {
+                    MessageBox.Show("Incorrect quantity");
+                }
+            } else
+            {
+                MessageBox.Show("Select the Id");
             }
         }
     }

@@ -13,14 +13,16 @@ namespace MediaBazar
         private int quantity;
         private string status;
         private string requestedBy;
+        private string Date;
 
-        public Request(int givenId, int givenPId, int givenquantity, string givenStatus, string givenRBy)
+        public Request(int givenId, int givenPId, int givenquantity, string givenStatus, string givenRBy, string givenDate)
         {
             Id = givenId;
             ProductId = givenPId;
             Quantity = givenquantity;
             Status = givenStatus;
             RequestedBy = givenRBy;
+            DatE = givenDate;
         }
 
         public int Id
@@ -76,6 +78,17 @@ namespace MediaBazar
             private set
             {
                 this.status = value;
+            }
+        }
+        public string DatE
+        {
+            get
+            {
+                return this.Date;
+            }
+            private set
+            {
+                this.Date = value;
             }
         }
     }

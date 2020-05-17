@@ -117,6 +117,30 @@ namespace MediaBazar
             }
             return products;
         }
+
+        public List<Product> ReadAllProduct()
+        {
+            this.products = new List<Product>();
+            try
+            {
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product`";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]));
+                    products.Add(product);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return products;
+        }
+
         public List<Department> ReadDepartments()
         {
             this.newDepartments = new List<Department>();
@@ -144,14 +168,14 @@ namespace MediaBazar
             this.requests = new List<Request>();
             try
             {
-                string sql = "SELECT `id`, `productId`, `quantity`, `status`, `requestedBy` FROM `stock_request`";
+                string sql = "SELECT `id`, `productId`, `quantity`, `status`, `requestedBy`, `requestDate` FROM `stock_request`";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]));
+                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]), Convert.ToString(dr[5]));
                     requests.Add(request);
                 }
             }
@@ -185,6 +209,7 @@ namespace MediaBazar
         }
         public void SendStockRequest(int productId, int quantity, Roles role)
         {
+
             try
             {
                 string sql = "INSERT INTO stock_request(productId, quantity, status, requestedBy, requestDate) VALUES(@pId, @quantity, @status, @rBy, @rDate)";
@@ -193,6 +218,31 @@ namespace MediaBazar
                 if (role == Roles.Administrator)
                 {
                     status = "Approved";
+                    int x = 0;
+                    ReadStock();
+                    foreach (Stock s in stocks)
+                    {
+                        if (s.ProductId == productId)
+                        {
+                            x = s.Quantity + quantity;
+
+                        }
+                    }
+                    try
+                    {
+                        string sql2 = "UPDATE stock SET quantity = @Quantity WHERE productId = @Id";
+                        MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+
+                        cmd2.Parameters.AddWithValue("@Quantity", x);
+                        cmd2.Parameters.AddWithValue("@Id", productId);
+                        conn.Open();
+                        cmd2.ExecuteNonQuery();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+
                 }
                 cmd.Parameters.AddWithValue("@pId", productId);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
@@ -203,6 +253,56 @@ namespace MediaBazar
                 cmd.ExecuteNonQuery();
                 System.Windows.Forms.MessageBox.Show("Request has been sent");
             }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void AddToStock(int productId, int quantity)
+        {
+            int stockId = 0;
+            try
+            {
+                int x = 0;
+                ReadStock();
+                foreach (Stock s in stocks)
+                {
+                    if (s.ProductId == productId)
+                    {
+                        x = s.Quantity + quantity;
+                        stockId = s.Id;
+                    }
+                }
+                if (stockId == 0)
+                {
+
+                    string sql = "INSERT INTO stock(quantity, productId) VALUES( @quantity, @productid)";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cmd.Parameters.AddWithValue("@productid", productId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Stock is updated!");
+                }
+                else
+                {
+
+
+
+                    string sql = "UPDATE stock SET quantity = @Quantity WHERE id = @Id";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@Quantity", x);
+                    cmd.Parameters.AddWithValue("@Id", stockId);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Stock is updated!");
+                }
+
+
+            }
+
             finally
             {
                 conn.Close();
@@ -1034,7 +1134,7 @@ namespace MediaBazar
                     {
                         System.Windows.Forms.MessageBox.Show("Name Cannot be in Numbers");
                     }
-                    else if(price <= 0)
+                    else if (price <= 0)
                     {
                         System.Windows.Forms.MessageBox.Show("Price Cannot be 0 or Less than 0");
                     }
@@ -1115,7 +1215,7 @@ namespace MediaBazar
                 {
                     System.Windows.Forms.MessageBox.Show("None of the above requirements should be empty");
                 }
-                else if(givenProductPrice <= 0)
+                else if (givenProductPrice <= 0)
                 {
                     System.Windows.Forms.MessageBox.Show("Price Cannot Be 0 or Negative");
                 }
@@ -1152,7 +1252,7 @@ namespace MediaBazar
         {
             string sql = "";
             bool fkStock = false;
-           // bool fkProductDelete = true;
+            // bool fkProductDelete = true;
             try
             {
                 MySqlCommand cmd;
@@ -1164,33 +1264,33 @@ namespace MediaBazar
                 cmd.ExecuteNonQuery();
 
                 // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
-             /*   if (sql != "DELETE FROM stock WHERE productId = @id")
-                {
+                /*   if (sql != "DELETE FROM stock WHERE productId = @id")
+                   {
 
-                    //sql = "DELETE FROM stock WHERE productId = @id";
-                    sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
-                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                    cmd.Parameters.AddWithValue("@exist", fkStock);
-                    conn.Open();  // this must be before the execution which is just under this
-                    cmd.ExecuteNonQuery();
-                    fkStock = true;
-                }
-                if (fkStock)
-                {
-                    sql = "DELETE FROM stock_request WHERE productId = @id";
-                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                    cmd.Parameters.AddWithValue("@id", productId);
-                    cmd.ExecuteNonQuery();
+                       //sql = "DELETE FROM stock WHERE productId = @id";
+                       sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
+                       cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                       cmd.Parameters.AddWithValue("@exist", fkStock);
+                       conn.Open();  // this must be before the execution which is just under this
+                       cmd.ExecuteNonQuery();
+                       fkStock = true;
+                   }
+                   if (fkStock)
+                   {
+                       sql = "DELETE FROM stock_request WHERE productId = @id";
+                       cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                       cmd.Parameters.AddWithValue("@id", productId);
+                       cmd.ExecuteNonQuery();
 
-                    fkProductDelete = true;
-                }
-                if (fkProductDelete) // removing the data from the main table
-                {
-                    sql = "DELETE FROM product WHERE productId = @id"; // a query of what we want
-                    cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                    cmd.Parameters.AddWithValue("@id", productId);
-                    cmd.ExecuteNonQuery();
-                }*/
+                       fkProductDelete = true;
+                   }
+                   if (fkProductDelete) // removing the data from the main table
+                   {
+                       sql = "DELETE FROM product WHERE productId = @id"; // a query of what we want
+                       cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+                       cmd.Parameters.AddWithValue("@id", productId);
+                       cmd.ExecuteNonQuery();
+                   }*/
             }
             finally
             {
@@ -1360,5 +1460,5 @@ namespace MediaBazar
             }
             return nr;
         }
-        }
+    }
 }
