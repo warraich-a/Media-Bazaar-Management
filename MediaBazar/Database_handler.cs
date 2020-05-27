@@ -386,7 +386,7 @@ namespace MediaBazar
                 conn.Close();
             }
         }
-        public void SellStockItem(int pId, int pQuantity)
+        public void SellStockItem(int pId, int pQuantity, int soldItems)
         {
             try
             {
@@ -397,6 +397,15 @@ namespace MediaBazar
                 cmd.Parameters.AddWithValue("@Id", pId);
                 conn.Open();
                 cmd.ExecuteNonQuery();
+                
+
+                string sql2 = "INSERT INTO sale_history(productId, date, quantity) VALUES(@pId,@date, @quantity)";
+                MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+                cmd2.Parameters.AddWithValue("@pId", pId);
+                cmd2.Parameters.AddWithValue("@date", DateTime.Now.Date);
+                cmd2.Parameters.AddWithValue("@quantity", soldItems);
+                
+                cmd2.ExecuteNonQuery();
                 MessageBox.Show("Stock is updated!");
 
             } finally

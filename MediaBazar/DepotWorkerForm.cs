@@ -179,7 +179,7 @@ namespace MediaBazar
                         }
                     }
                     stockQuantity -= Convert.ToInt32(tbAmountItems.Text);
-                    mediaBazaar.SellStockItem(productId, stockQuantity);
+                    mediaBazaar.SellStockItem(productId, stockQuantity, Convert.ToInt32(tbAmountItems.Text));
                     RefreshData();
                 }
             }

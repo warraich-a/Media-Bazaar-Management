@@ -495,9 +495,9 @@ namespace MediaBazar
         {
             database.ApproveRequest(id, productId, quantity);
         }
-        public void SellStockItem(int pId, int pQuantity)
+        public void SellStockItem(int pId, int pQuantity, int soldItems)
         {
-            database.SellStockItem(pId, pQuantity);
+            database.SellStockItem(pId, pQuantity, soldItems);
         }
         public List<Person> GetManagersList()
         {
