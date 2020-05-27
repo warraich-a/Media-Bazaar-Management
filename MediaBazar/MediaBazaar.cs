@@ -20,6 +20,10 @@ namespace MediaBazar
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
         // Person person = new Person();
+        List<Department> departments = new List<Department>();
+        List<Request> requests = new List<Request>();
+        List<Stock> stocks = new List<Stock>();
+        List<Product> products = new List<Product>();
 
         Person person = new Person();
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
@@ -55,7 +59,7 @@ namespace MediaBazar
         }
 
 
-        /* Login */
+        /* LOGIN */
         /* Get User Type */
         public string GetUserType(string email)
         {
@@ -69,6 +73,14 @@ namespace MediaBazar
         {
             bool areCredentialsCorrect = database.CheckCredentials(email, password);
 
+            // Save user name
+            if (areCredentialsCorrect)
+            {
+                string name = GetUserName(email);
+
+                SaveCurrentUser(name);
+            }
+
             return areCredentialsCorrect;
         }
 
@@ -78,13 +90,13 @@ namespace MediaBazar
             Console.WriteLine(name);
         }
 
-        /* Logout */
+        /* LOGOUT */
         public void LogOut()
         {
             this.currentUser = null;
         }
 
-        /* Reset password */
+        /* RESET PASSWORD */
         public string ResetPassword(string email, string password)
         {
             string result = database.ResetPassword(email, password);
@@ -147,6 +159,7 @@ namespace MediaBazar
             return userName;
         }
 
+        /* Check if user exists */
         public string DoesUserExist(string email)
         {
             string doesUserExist = database.DoesUserExist(email);
@@ -162,6 +175,13 @@ namespace MediaBazar
             return statistics;
         }
 
+        public ArrayList GetStatistics(string dateFrom, string type)
+        {
+            ArrayList statistics = database.GetStatistics(dateFrom, type);
+
+            return statistics;
+        }
+
         public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
         {
             ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type);
@@ -169,12 +189,12 @@ namespace MediaBazar
             return statistics;
         }
 
-        //public ArrayList GetStatisticsNrEmployeesPerShift(string dateFrom, string dateTo, string type)
-        //{
-        //    ArrayList rowList = database.GetStatistics(dateFrom, dateTo, type);
-
-        //    return rowList;
-        //}
+        /* GET EMPLOYEE FOR SHIFT, STATISTICS */
+        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        {
+            string employees = database.GetEmployeesPerShift(date, shiftType);
+            return employees;
+        }
 
 
         // to add a person in a database
@@ -212,7 +232,6 @@ namespace MediaBazar
         {
             return database.ReturnPersonFromList(id);
         }
-
 
         /* SCHEDULE */
         public void ReadSchedule()
@@ -281,7 +300,7 @@ namespace MediaBazar
         }
 
 
-       
+
 
         public int GetPersonIdByName(string name)
         {
@@ -324,10 +343,204 @@ namespace MediaBazar
             return i;
         }
 
+        //to get the departments from the db
+        public List<string> GetDepartments()
+        {
+            return database.GetDepartments();
+        }
 
 
+        // to add a new product in the system
+        public void AddProduct(int departmentId, string productName, double productPrice)
+        {
+            database.AddProduct(departmentId, productName, productPrice);
+        }
+        //to get the products
+        public List<Product> GetProducts()
+        {
+            return database.GetProducts();
+        }
 
+        //to modify the existing product
+        public void ModifyProduct(int id, string productName, double productPrice)
+        {
+            database.ModifyProduct(id, productName, productPrice);
+        }
+        public void ModifyDepartment(int id, string name, int personId, int minEmp)
+        {
+            database.ModifyDepartment(id, name, personId, minEmp);
+        }
 
+        //to get the exisitng product in order to modify
+        public Product ReturnExistingProduct(int id)
+        {
+            return database.ReturnExistingProduct(id);
+        }
+
+        //to remove a product from the database
+        public void ProductToRemove(int id)
+        {
+            database.ProductToRemove(id);
+        }
+
+        // to search a product by name 
+        public Product ProductToSearch(string givenName)
+        {
+            return database.GetProductByName(givenName);
+        }
+
+        public void ReadProducts()
+        {
+            this.products = database.ReadProduct();
+        }
+        public List<Product> GetProductsList()
+        {
+            return this.products;
+        }
+        public List<Product> GetProductsListByName(string name)
+        {
+            List<Product> newProducts = new List<Product>();
+            foreach (Product p in products)
+            {
+                if (p.ProductName == name)
+                {
+                    newProducts.Add(p);
+                }
+            }
+            return newProducts;
+        }
+        public void SendDepoRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.DepotWorker);
+        }
+        public void SendManagerRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Manager);
+        }
+        public void SendAdminRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Administrator);
+        }
+        public void AddToStock(int productId, int quantity)
+        {
+            database.AddToStock(productId, quantity);
+        }
+        public void ReadDepartment()
+        {
+            this.departments = database.ReadDepartments();
+        }
+        public string GetDepartmentNameById(int id)
+        {
+            string name = "";
+            foreach (Department d in departments)
+            {
+                if (d.Id == id)
+                {
+                    name = d.Name;
+                }
+            }
+            return name;
+        }
+        public string GetProductNameById(int id)
+        {
+            
+            string name = "";
+            foreach (Product d in database.ReadAllProduct())
+            {
+                if (d.ProductId == id)
+                {
+                    name = d.ProductName;
+                }
+            }
+            return name;
+        }
+        public List<Department> GetDepartmentsList()
+        {
+            return departments;
+        }
+        public void AddDepartment(string name, int pId, int minEmp, int lastId)
+        {
+            database.AddDepartment(name, pId, minEmp, lastId);
+        }
+        public int GetProductIntByName(string name)
+        {
+            ReadProducts();
+            int id = 0;
+            foreach (Product d in products)
+            {
+                if (d.ProductName == name)
+                {
+                    id = d.ProductId;
+                }
+            }
+            return id;
+        }
+        public void ReadRequests()
+        {
+            this.requests = database.ReadRequests();
+        }
+        public void ReadStocks()
+        {
+            this.stocks = database.ReadStock();
+        }
+        public List<Stock> GetStockList()
+        {
+            return this.stocks;
+        }
+        public List<Request> GetRequestsList()
+        {
+            return this.requests;
+        }
+        public void ApproveRequest(int id, int productId, int quantity)
+        {
+            database.ApproveRequest(id, productId, quantity);
+        }
+        public void SellStockItem(int pId, int pQuantity)
+        {
+            database.SellStockItem(pId, pQuantity);
+        }
+        public List<Person> GetManagersList()
+        {
+            List<Person> managers = new List<Person>();
+            foreach(Person p in ReadPersons())
+            {
+                if(p.Role == Roles.Manager)
+                {
+                    managers.Add(p);
+                }
+            }
+            return managers;
+        }
+        public List<Person> ReadPersons()
+        {
+            return database.ReadPersons();
+        }
+        public Product GetProductById(int id)
+        {
+            Product p = null;
+            
+            foreach (Product product in database.ReadAllProduct())
+            {
+                if(product.ProductId == id)
+                {
+                    p = product;
+                }
+            }
+            return p;
+        }
+        public Person GetPersonatById(int id)
+        {
+            Person p = null;
+
+            foreach (Person person in database.ReadPersons())
+            {
+                if (person.Id == id)
+                {
+                    p = person;
+                }
+            }
+            return p;
+        }
 
     }
 
