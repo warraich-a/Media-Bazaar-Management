@@ -466,7 +466,7 @@ namespace MediaBazar
         {
             ReadProducts();
             int id = 0;
-            foreach (Product d in products)
+            foreach (Product d in database.ReadAllProduct())
             {
                 if (d.ProductName == name)
                 {

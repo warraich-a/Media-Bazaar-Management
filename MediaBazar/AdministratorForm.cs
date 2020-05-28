@@ -623,7 +623,7 @@ namespace MediaBazar
                 {
                     FlowLayoutPanel p = new FlowLayoutPanel();
                     p.Name = $"pDay{c}";
-                    p.Size = new Size(135, 150);
+                    p.Size = new Size(145, 150);
                     p.Location = new Point(x, y);
 
                     p.BorderStyle = BorderStyle.FixedSingle;
@@ -687,18 +687,23 @@ namespace MediaBazar
                             lblSchedule.AutoSize = false;
                             lblSchedule.Size = new Size(170, 24);
                             String text = $"{mediaBazaar.GetPersonNameById(s.EmployeeId)}({s.ShiftType.ToString()})";
+                            lblSchedule.Font = new Font(lblSchedule.Font.FontFamily, 10);
                             lblSchedule.Text = text;
                             schedulesPanels[i].Controls.Add(lblSchedule);
                             count += 1;
                         }
                     }
-                    if (count >= 15)
+                    if (count > 15)
                     {
                         schedulesPanels[i].BackColor = Color.Red;
                     }
+                    else if (count == 15)
+                    {
+                        schedulesPanels[i].BackColor = Color.Green;
+                    }
                     else if (count > 0)
                     {
-                        schedulesPanels[i].BackColor = Color.LightGreen;
+                        schedulesPanels[i].BackColor = Color.Orange;
                     }
 
                     dayN++;
@@ -735,13 +740,17 @@ namespace MediaBazar
                                     count++;
                                 }
                             }
-                            if (count >= 5)
+                            if (count > 15)
                             {
                                 schedulesPanels[i].BackColor = Color.Red;
                             }
+                            else if (count == 15)
+                            {
+                                schedulesPanels[i].BackColor = Color.Green;
+                            }
                             else if (count > 0)
                             {
-                                schedulesPanels[i].BackColor = Color.LightGreen;
+                                schedulesPanels[i].BackColor = Color.Orange;
                             }
 
                             dayN++;
@@ -997,7 +1006,10 @@ namespace MediaBazar
             cbManagers.Items.Clear();
             foreach(Person p in mediaBazaar.GetManagersList())
             {
-                cbManagers.Items.Add(p.GetFullName());
+                if(p.DepartmentId <= 1)
+                {
+                    cbManagers.Items.Add(p.GetFullName());
+                }
             }
         }
 

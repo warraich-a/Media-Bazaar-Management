@@ -471,9 +471,9 @@ namespace MediaBazar
                 {
                     FlowLayoutPanel p = new FlowLayoutPanel();
                     p.Name = $"pDay{c}";
-                    p.Size = new Size(135, 150);
+                    p.Size = new Size(145, 150);
                     p.Location = new Point(x, y);
-
+                    p.AutoScroll = true;
                     p.BorderStyle = BorderStyle.FixedSingle;
                     pnlSchedule.Controls.Add(p);
                     schedulesPanels.Add(p);
@@ -508,6 +508,7 @@ namespace MediaBazar
             {
                 d = 6;
             }
+            
             int dayN = 1;
             int count = 0;
             if (cbAllSchedule.Checked)
@@ -535,25 +536,25 @@ namespace MediaBazar
                                 lblSchedule.Name = $"lblWorker{dayN}";
                                 lblSchedule.Location = new Point(5, 35);
                                 lblSchedule.AutoSize = false;
-                                lblSchedule.Size = new Size(170, 24);
-                                String text = $"{mediaBazaar.GetPersonNameById(s.EmployeeId)}({s.ShiftType.ToString()})";
+                                lblSchedule.Size = new Size(130, 24);
+                                String text = $"{mediaBazaar.GetPersonNameById(s.EmployeeId)}({s.ShiftType.ToString().Substring(0,1)})";
+                                lblSchedule.Font = new Font(lblSchedule.Font.FontFamily, 10);
                                 lblSchedule.Text = text;
                                 schedulesPanels[i].Controls.Add(lblSchedule);
                                 count += 1;
                             }
                         }
                     }
-                    if (count >= 5)
+                    if (count > 15)
                     {
                         schedulesPanels[i].BackColor = Color.Red;
-                    }
-                    else if (count == 4)
+                    } else if(count == 15)
                     {
-                        schedulesPanels[i].BackColor = Color.Yellow;
+                        schedulesPanels[i].BackColor = Color.Green;
                     }
                     else if (count > 0)
                     {
-                        schedulesPanels[i].BackColor = Color.LightGreen;
+                        schedulesPanels[i].BackColor = Color.Orange;
                     }
 
                     dayN++;
@@ -577,6 +578,7 @@ namespace MediaBazar
                             l.Size = new Size(130, 30);
                             l.Text = dayN.ToString();
                             schedulesPanels[i].Controls.Add(l);
+                            count = 0;
                             foreach (Schedule s in schedules)
                             {
                                 if (s.DATETime.Day == dayN && s.DATETime.Month == date.Month)
@@ -588,8 +590,21 @@ namespace MediaBazar
                                         lblSchedule.Location = new Point(5, 35);
                                         lblSchedule.Text = mediaBazaar.GetPersonNameById(s.EmployeeId);
                                         schedulesPanels[i].Controls.Add(lblSchedule);
+                                        count++;
                                     }
                                 }
+                            }
+                            if (count > 15)
+                            {
+                                schedulesPanels[i].BackColor = Color.Red;
+                            }
+                            else if (count == 15)
+                            {
+                                schedulesPanels[i].BackColor = Color.Green;
+                            }
+                            else if (count > 0)
+                            {
+                                schedulesPanels[i].BackColor = Color.Orange;
                             }
 
                             dayN++;
@@ -626,7 +641,9 @@ namespace MediaBazar
                                         lblShift.Text = s.ShiftType.ToString();
                                         schedulesPanels[i].Controls.Add(lblShift);
                                     }
+
                                 }
+
                             }
 
                             dayN++;

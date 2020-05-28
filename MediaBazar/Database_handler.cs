@@ -663,7 +663,12 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
+                    int dpId = 0;
+                    if (dr[3] != DBNull.Value)
+                    {
+                        dpId = Convert.ToInt32(dr[3]);
+                    }
+                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dpId, Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                     people.Add(g);
                 }
             }
