@@ -146,14 +146,25 @@ namespace MediaBazar
             this.newDepartments = new List<Department>();
             try
             {
-                string sql = "SELECT `id`, `name`, `personId`, `minEmployees` FROM `department`";
+                string sql = "SELECT `id`, `name`, `personId`, `minEmployees` FROM `department` ORDER BY id";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
+
                 while (dr.Read())
                 {
-                    Department department = new Department(Convert.ToInt32(dr[0]), Convert.ToString(dr[1]), Convert.ToInt32(1), Convert.ToInt32(1));
+                    int pId = 0;
+                    int minEmp = 0;
+                    if (dr[2] != DBNull.Value)
+                    {
+                        pId = Convert.ToInt32(dr[2]);
+                    }
+                    if (dr[3] != DBNull.Value)
+                    {
+                        minEmp = Convert.ToInt32(dr[3]);
+                    }
+                    Department department = new Department(Convert.ToInt32(dr[0]), Convert.ToString(dr[1]), pId, minEmp);
                     newDepartments.Add(department);
                 }
             }
@@ -162,6 +173,45 @@ namespace MediaBazar
                 conn.Close();
             }
             return newDepartments;
+        }
+
+        public void AddDepartment(string name, int personId, int minEmp, int lastId)
+        {
+
+
+            try
+            {
+
+                string sql = "INSERT INTO department(name, personId, minEmployees) VALUES(@Name, @pId, @MinEmp)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@pId", personId);
+                cmd.Parameters.AddWithValue("@MinEmp", minEmp);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                int id = 0;
+                foreach (Department d in ReadDepartments())
+                {
+                    id = d.Id;
+                }
+
+                string sql2 = "UPDATE person SET department_id = @dId WHERE id ='" + personId + "';";
+                MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+
+                cmd2.Parameters.AddWithValue("@dId", id);
+
+                conn.Open();
+                cmd2.ExecuteNonQuery();
+                System.Windows.Forms.MessageBox.Show("Department has been Added to the System");
+            }
+
+            finally
+            {
+                conn.Close();
+            }
         }
         public List<Request> ReadRequests()
         {
@@ -190,7 +240,7 @@ namespace MediaBazar
             this.stocks = new List<Stock>();
             try
             {
-                string sql = "SELECT `id`, `quantity`, `productId` FROM `stock`";
+                string sql = "SELECT `id`, `quantity`, `productId` FROM `stock` ORDER BY `quantity`";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
@@ -252,7 +302,7 @@ namespace MediaBazar
                 cmd.Parameters.AddWithValue("@rDate", DateTime.Now.Date);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                if(role == Roles.Administrator)
+                if (role == Roles.Administrator)
                 {
                     System.Windows.Forms.MessageBox.Show("Stock has been updated");
                 }
@@ -260,7 +310,7 @@ namespace MediaBazar
                 {
                     System.Windows.Forms.MessageBox.Show("Request has been sent");
                 }
-                
+
             }
             finally
             {
@@ -329,6 +379,34 @@ namespace MediaBazar
                     cmd2.Parameters.AddWithValue("@rDate", DateTime.Now.Date);
                     cmd2.ExecuteNonQuery();
                 }
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public void SellStockItem(int pId, int pQuantity, int soldItems)
+        {
+            try
+            {
+                string sql = "UPDATE stock SET quantity = @Quantity WHERE productId = @Id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@Quantity", pQuantity);
+                cmd.Parameters.AddWithValue("@Id", pId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+
+                string sql2 = "INSERT INTO sale_history(productId, date, quantity) VALUES(@pId,@date, @quantity)";
+                MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+                cmd2.Parameters.AddWithValue("@pId", pId);
+                cmd2.Parameters.AddWithValue("@date", DateTime.Now.Date);
+                cmd2.Parameters.AddWithValue("@quantity", soldItems);
+
+                cmd2.ExecuteNonQuery();
+                MessageBox.Show("Stock is updated!");
 
             }
             finally
@@ -552,6 +630,46 @@ namespace MediaBazar
                         r = Roles.DepotWorker;
                     }
                     Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r); // has to specify the order like this
+                    people.Add(g);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return people;
+        }
+        public List<Person> ReadPersons()
+        {
+            people = new List<Person>();
+            try
+            {
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Roles r = Roles.Employee;
+                    if (dr[10].ToString() == "Administrator")
+                    {
+                        r = Roles.Administrator;
+                    }
+                    else if (dr[10].ToString() == "Manager")
+                    {
+                        r = Roles.Manager;
+                    }
+                    else if (dr[10].ToString() == "DepotWorker")
+                    {
+                        r = Roles.DepotWorker;
+                    }
+                    int dpId = 0;
+                    if (dr[3] != DBNull.Value)
+                    {
+                        dpId = Convert.ToInt32(dr[3]);
+                    }
+                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dpId, Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                     people.Add(g);
                 }
             }
@@ -1255,6 +1373,37 @@ namespace MediaBazar
                     cmd.ExecuteNonQuery();
                     System.Windows.Forms.MessageBox.Show("The information has been updated");
                 }
+
+            }
+
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void ModifyDepartment(int id, string name, int personId, int minEmp)
+        {
+            try
+            {
+                string sql = "UPDATE department SET name = @Name, personId = @PersonId, minEmployees = @MinEmployees WHERE id ='" + id + "';";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@PersonId", personId);
+                cmd.Parameters.AddWithValue("@MinEmployees", minEmp);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+
+                string sql2 = "UPDATE person SET department_id = @dId WHERE id ='" + personId + "';";
+                MySqlCommand cmd2 = new MySqlCommand(sql2, conn);
+
+                cmd2.Parameters.AddWithValue("@dId", id);
+
+
+                cmd2.ExecuteNonQuery();
+                System.Windows.Forms.MessageBox.Show("The information has been updated");
 
             }
 

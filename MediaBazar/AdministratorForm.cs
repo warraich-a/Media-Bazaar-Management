@@ -139,6 +139,16 @@ namespace MediaBazar
                 list.SubItems.Add(item.DatE.Substring(0, 11));
                 lvRequests.Items.Add(list);
             }
+            lvDepartments.Items.Clear();
+            mediaBazaar.ReadDepartment();
+            foreach (Department item in mediaBazaar.GetDepartmentsList())
+            {
+                list = new ListViewItem(Convert.ToString(item.Id));
+                list.SubItems.Add(item.Name);
+                list.SubItems.Add(mediaBazaar.GetPersonNameById(item.PersonId));
+                list.SubItems.Add(item.MinEmp.ToString());
+                lvDepartments.Items.Add(list);
+            }
         }
 
         // To remove an employee from the system
@@ -976,6 +986,58 @@ namespace MediaBazar
             } else
             {
                 MessageBox.Show("Select the Id");
+            }
+        }
+
+        private void btnAddDepartment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = 0;
+                foreach (Department d in mediaBazaar.GetDepartmentsList())
+                {
+                    id = d.Id;
+                }
+
+                mediaBazaar.AddDepartment(tbNewCategoryName.Text, mediaBazaar.GetPersonIdByName(cbManagers.SelectedItem.ToString()), Convert.ToInt32(tbMinEmp.Text), id);
+                RefreshData();
+                tbNewCategoryName.Text = "";
+                tbMinEmp.Text = "";
+                cbManagers.SelectedIndex = -1;
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("MinEmp Cannot be Null");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("None of the above field should be empty");
+            }
+        }
+
+        private void btnModifyDep_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(lvDepartments.SelectedItems[0].SubItems[0].Text);
+                ModifyDepartment m = new ModifyDepartment(id, this, mediaBazaar);
+                m.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No employee is selected");
+            }
+        }
+
+        private void cbManagers_Click(object sender, EventArgs e)
+        {
+            cbManagers.Items.Clear();
+            foreach (Person p in mediaBazaar.GetManagersList())
+            {
+                if (p.DepartmentId <= 1)
+                {
+                    cbManagers.Items.Add(p.GetFullName());
+                }
             }
         }
     }

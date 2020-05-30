@@ -349,6 +349,7 @@ namespace MediaBazar
             return database.GetDepartments();
         }
 
+
         // to add a new product in the system
         public void AddProduct(int departmentId, string productName, double productPrice)
         {
@@ -364,6 +365,10 @@ namespace MediaBazar
         public void ModifyProduct(int id, string productName, double productPrice)
         {
             database.ModifyProduct(id, productName, productPrice);
+        }
+        public void ModifyDepartment(int id, string name, int personId, int minEmp)
+        {
+            database.ModifyDepartment(id, name, personId, minEmp);
         }
 
         //to get the exisitng product in order to modify
@@ -438,7 +443,7 @@ namespace MediaBazar
         }
         public string GetProductNameById(int id)
         {
-            
+
             string name = "";
             foreach (Product d in database.ReadAllProduct())
             {
@@ -449,11 +454,19 @@ namespace MediaBazar
             }
             return name;
         }
+        public List<Department> GetDepartmentsList()
+        {
+            return departments;
+        }
+        public void AddDepartment(string name, int pId, int minEmp, int lastId)
+        {
+            database.AddDepartment(name, pId, minEmp, lastId);
+        }
         public int GetProductIntByName(string name)
         {
             ReadProducts();
             int id = 0;
-            foreach (Product d in products)
+            foreach (Product d in database.ReadAllProduct())
             {
                 if (d.ProductName == name)
                 {
@@ -482,7 +495,52 @@ namespace MediaBazar
         {
             database.ApproveRequest(id, productId, quantity);
         }
+        public void SellStockItem(int pId, int pQuantity, int soldItems)
+        {
+            database.SellStockItem(pId, pQuantity, soldItems);
+        }
+        public List<Person> GetManagersList()
+        {
+            List<Person> managers = new List<Person>();
+            foreach (Person p in ReadPersons())
+            {
+                if (p.Role == Roles.Manager)
+                {
+                    managers.Add(p);
+                }
+            }
+            return managers;
+        }
+        public List<Person> ReadPersons()
+        {
+            return database.ReadPersons();
+        }
+        public Product GetProductById(int id)
+        {
+            Product p = null;
 
+            foreach (Product product in database.ReadAllProduct())
+            {
+                if (product.ProductId == id)
+                {
+                    p = product;
+                }
+            }
+            return p;
+        }
+        public Person GetPersonatById(int id)
+        {
+            Person p = null;
+
+            foreach (Person person in database.ReadPersons())
+            {
+                if (person.Id == id)
+                {
+                    p = person;
+                }
+            }
+            return p;
+        }
 
     }
 

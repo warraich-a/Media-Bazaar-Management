@@ -150,5 +150,48 @@ namespace MediaBazar
                 RefreshData();
             }
         }
+
+        private void cbStockItm_Click(object sender, EventArgs e)
+        {
+            mediaBazaar.ReadStocks();
+            mediaBazaar.ReadProducts();
+            cbStockItm.Items.Clear();
+            foreach (Stock p in mediaBazaar.GetStockList())
+            {
+                cbStockItm.Items.Add(mediaBazaar.GetProductNameById(p.ProductId));
+            }
+        }
+
+        private void btnSellPrd_Click(object sender, EventArgs e)
+        {
+            if (cbStockItm.SelectedIndex > -1)
+            {
+                if (!String.IsNullOrEmpty(tbAmountItems.Text))
+                {
+                    int stockQuantity = 0;
+                    int productId = mediaBazaar.GetProductIntByName(cbStockItm.SelectedItem.ToString());
+                    foreach (Stock s in mediaBazaar.GetStockList())
+                    {
+                        if (s.ProductId == productId)
+                        {
+                            stockQuantity = s.Quantity;
+                        }
+                    }
+                    if (Convert.ToInt32(tbAmountItems.Text) <= stockQuantity)
+                    {
+                        mediaBazaar.ReadStocks();
+                        stockQuantity -= Convert.ToInt32(tbAmountItems.Text);
+                        mediaBazaar.SellStockItem(productId, stockQuantity, Convert.ToInt32(tbAmountItems.Text));
+                        RefreshData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Amount cannot be bigger than quantity");
+                    }
+                }
+                else MessageBox.Show("Choose an amount");
+            }
+            else MessageBox.Show("Select a product");
+        }
     }
 }
