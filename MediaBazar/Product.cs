@@ -11,26 +11,29 @@ namespace MediaBazar
         private int productId;
         private int departmentId;
         private string productName;
-        private double price;
 
         public string Name { get; set; }
         public string DepartmentName { get; set; }
         public bool Exist { get; set; }
 
-        public Product(int givenProductId, string givenName, double givenPrice, int givenDepartmentId)
+        public double SellingPrice { get; }
+
+        public Product(int givenProductId, string givenName, double givenPrice, int givenDepartmentId, double givenSellingPrice)
         {
             ProductId = givenProductId;
             Name = givenName;
             Price = givenPrice;
             departmentId = givenDepartmentId;
+            SellingPrice = givenSellingPrice;
             
         }
-        public Product(int givenId, int givenDId, string givenName, double givenPrice)
+        public Product(int givenId, int givenDId, string givenName, double givenPrice, double givenSellingPrice)
         {
             ProductId = givenId;
             DapartmentId = givenDId;
             ProductName = givenName;
             Price = givenPrice;
+            SellingPrice = givenSellingPrice;
         }
         public override string ToString()
         {
@@ -70,16 +73,6 @@ namespace MediaBazar
                 this.productName = value;
             }
         }
-        public double Price
-        {
-            get
-            {
-                return this.price;
-            }
-            private set
-            {
-                this.price = value;
-            }
-        }
+        public double Price { get; private set; }
     }
 }

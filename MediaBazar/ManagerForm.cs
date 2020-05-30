@@ -417,6 +417,7 @@ namespace MediaBazar
                 l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
                 l.SubItems.Add(p.ProductName);
                 l.SubItems.Add(p.Price.ToString());
+                l.SubItems.Add(Convert.ToString(p.SellingPrice));
                 foreach (Stock s in mediaBazaar.GetStockList())
                 {
                     if (s.ProductId == p.ProductId)
@@ -797,8 +798,11 @@ namespace MediaBazar
                         }
                     }
                     listOfProducts.SubItems.Add(p.Name);
+
                     listOfProducts.SubItems.Add(Convert.ToString(p.Price));
-                   
+                    listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
+
+
                     foreach (Stock s in mediaBazaar.GetStockList())
                     {
                         if (s.ProductId == p.ProductId)

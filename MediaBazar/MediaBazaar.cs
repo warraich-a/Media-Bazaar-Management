@@ -350,9 +350,9 @@ namespace MediaBazar
         }
 
         // to add a new product in the system
-        public void AddProduct(int departmentId, string productName, double productPrice)
+        public void AddProduct(int departmentId, string productName, double productPrice, double sellingPrice)
         {
-            database.AddProduct(departmentId, productName, productPrice);
+            database.AddProduct(departmentId, productName, productPrice, sellingPrice);
         }
         //to get the products
         public List<Product> GetProducts()
@@ -361,9 +361,9 @@ namespace MediaBazar
         }
 
         //to modify the existing product
-        public void ModifyProduct(int id, string productName, double productPrice)
+        public void ModifyProduct(int id, string productName, double productPrice, double sellingPrice)
         {
-            database.ModifyProduct(id, productName, productPrice);
+            database.ModifyProduct(id, productName, productPrice, sellingPrice);
         }
 
         //to get the exisitng product in order to modify

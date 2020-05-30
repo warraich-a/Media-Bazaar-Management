@@ -100,14 +100,14 @@ namespace MediaBazar
             this.products = new List<Product>();
             try
             {
-                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product` WHERE Exist = 1";
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price`, `selling_price` FROM `product` WHERE Exist = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]));
+                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToDouble(dr[4]));
                     products.Add(product);
                 }
             }
@@ -123,14 +123,14 @@ namespace MediaBazar
             this.products = new List<Product>();
             try
             {
-                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product`";
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price`,`selling_price` FROM `product`";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]));
+                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToDouble(dr[4]));
                     products.Add(product);
                 }
             }
@@ -1144,7 +1144,7 @@ namespace MediaBazar
 
 
         // to add the products
-        public void AddProduct(int departmentId, string name, double price)
+        public void AddProduct(int departmentId, string name, double price, double sellingPrice)
         {
             bool productExist = false;
             try
@@ -1158,7 +1158,7 @@ namespace MediaBazar
                 }
                 if (!productExist)
                 {
-                    string sql = "INSERT INTO product(departmentId, productName, price) VALUES(@departmentId, @productName, @productPrice)";
+                    string sql = "INSERT INTO product(departmentId, productName, price, selling_price) VALUES(@departmentId, @productName, @productPrice, @sellingPrice)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     if (!System.Text.RegularExpressions.Regex.IsMatch(name, "[^0-9]"))
                     {
@@ -1173,6 +1173,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@departmentId", departmentId);
                         cmd.Parameters.AddWithValue("@productName", name);
                         cmd.Parameters.AddWithValue("@productPrice", price);
+                        cmd.Parameters.AddWithValue("@sellingPrice", sellingPrice);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         System.Windows.Forms.MessageBox.Show("Product has been Added to the System");
@@ -1195,7 +1196,7 @@ namespace MediaBazar
             products = new List<Product>();
             try
             {
-                string sql = "SELECT productId, departmentId, productName, price, exist FROM product"; // a query of what we want
+                string sql = "SELECT productId, departmentId, productName, price, exist, selling_price FROM product"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
@@ -1206,7 +1207,7 @@ namespace MediaBazar
                 {
                     if(Convert.ToBoolean(dr[4]) == true)
                     {
-                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[1])); // has to specify the order like this
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[1]), Convert.ToDouble(dr[5])); // has to specify the order like this
                         products.Add(g);
                     }
                 }
@@ -1219,11 +1220,11 @@ namespace MediaBazar
         }
 
 
-        public void ModifyProduct(int id, string givenProductName, double givenProductPrice)
+        public void ModifyProduct(int id, string givenProductName, double givenProductPrice, double sellingPrice)
         {
             try
             {
-                string sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + id + "';";
+                string sql = "UPDATE product SET productName = @productName, price = @productPrice, selling_price = @sellingPrice WHERE productId ='" + id + "';";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 if (!System.Text.RegularExpressions.Regex.IsMatch(givenProductName, "[^0-9]"))
                 {
@@ -1237,6 +1238,7 @@ namespace MediaBazar
                 {
                     cmd.Parameters.AddWithValue("@productName", givenProductName);
                     cmd.Parameters.AddWithValue("@productPrice", givenProductPrice);
+                    cmd.Parameters.AddWithValue("@sellingPrice", sellingPrice);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     System.Windows.Forms.MessageBox.Show("The information has been updated");
@@ -1253,7 +1255,7 @@ namespace MediaBazar
         public Product ReturnExistingProduct(int id)
         {
             Product foundProduct = null;
-            foreach (Product item in products)
+            foreach (Product item in GetProducts())
             {
                 if (item.ProductId == id)
                 {

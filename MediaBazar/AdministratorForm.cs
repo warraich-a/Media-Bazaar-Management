@@ -151,7 +151,7 @@ namespace MediaBazar
                 }
                 listOfProducts.SubItems.Add(p.Name);
                 listOfProducts.SubItems.Add(Convert.ToString(p.Price));
-
+                listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
                 listViewProducts.Items.Add(listOfProducts);
             }
             mediaBazaar.ReadRequests();
@@ -858,11 +858,27 @@ namespace MediaBazar
                 string productName = tbProductName.Text;
                 double productPrice = Convert.ToDouble(tbProductPrice.Text);
                 int departmentId = cmbDepartmentStack.SelectedIndex + 1;
-                mediaBazaar.AddProduct(departmentId, productName, productPrice);
-                RefreshData();
-                tbProductName.Text = "";
-                tbProductPrice.Text = "";
-                cmbDepartmentStack.Text = "";
+                double sellingPrice = Convert.ToDouble(tbSellingPrice.Text);
+                if(sellingPrice < productPrice)
+                {
+                    if (MessageBox.Show("Are you very rich????", "Remove Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
+                        RefreshData();
+                        tbProductName.Text = "";
+                        tbProductPrice.Text = "";
+                        cmbDepartmentStack.Text = "";
+                    }
+                }
+                else
+                {
+                    mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
+                    RefreshData();
+                    tbProductName.Text = "";
+                    tbProductPrice.Text = "";
+                    cmbDepartmentStack.Text = "";
+                }
+               
             }
             catch (ArgumentNullException)
             {
@@ -1050,6 +1066,7 @@ namespace MediaBazar
                     }
                     listOfProducts.SubItems.Add(p.Name);
                     listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                    listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
                     listViewProducts.Items.Add(listOfProducts);
                 }
             }
