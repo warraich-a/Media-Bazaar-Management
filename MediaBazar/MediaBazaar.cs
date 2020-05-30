@@ -344,7 +344,7 @@ namespace MediaBazar
         }
 
         //to get the departments from the db
-        public List<string> GetDepartments()
+        public List<Department> GetDepartments()
         {
             return database.GetDepartments();
         }

@@ -24,7 +24,7 @@ namespace MediaBazar
         List<string> departments = new List<string>();
         List<Product> products;
         List<Department> newDepartments = new List<Department>();
-
+        List<Department> Departments;
 
 
         List<Request> requests = new List<Request>();
@@ -495,7 +495,7 @@ namespace MediaBazar
             Person g = null;
             try
             {
-                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE firstName = @name"; // Getting the person by name
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@name", givenName);
                 conn.Open();
@@ -503,22 +503,22 @@ namespace MediaBazar
                 while (dr.Read())
                 {
                     Roles r = Roles.Employee;
-                    if (dr[9].ToString() == "Administrator")
+                    if (dr[10].ToString() == "Administrator")
                     {
                         r = Roles.Administrator;
                     }
-                    else if (dr[9].ToString() == "Manager")
+                    else if (dr[10].ToString() == "Manager")
                     {
                         r = Roles.Manager;
                     }
-                    else if (dr[9].ToString() == "DepotWorker")
+                    else if (dr[10].ToString() == "DepotWorker")
                     {
                         r = Roles.DepotWorker;
                     }
 
-                    g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r);
+                    g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                 }
-                return g;
+                    return g;
             }
             finally
             {
@@ -531,7 +531,7 @@ namespace MediaBazar
             people = new List<Person>();
             try
             {
-                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
@@ -539,19 +539,19 @@ namespace MediaBazar
                 while (dr.Read())
                 {
                     Roles r = Roles.Employee;
-                    if (dr[9].ToString() == "Administrator")
+                    if (dr[10].ToString() == "Administrator")
                     {
                         r = Roles.Administrator;
                     }
-                    else if (dr[9].ToString() == "Manager")
+                    else if (dr[10].ToString() == "Manager")
                     {
                         r = Roles.Manager;
                     }
-                    else if (dr[9].ToString() == "DepotWorker")
+                    else if (dr[10].ToString() == "DepotWorker")
                     {
                         r = Roles.DepotWorker;
                     }
-                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r); // has to specify the order like this
+                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                     people.Add(g);
                 }
             }
@@ -1118,26 +1118,28 @@ namespace MediaBazar
         /// <returns></returns>
         /// 
         //to get the departments
-        public List<string> GetDepartments()
+        public List<Department> GetDepartments()
         {
 
+            Departments = new List<Department>();
             try
             {
-                string sql = "SELECT name FROM department"; // a query of what we want
+                string sql = "SELECT name, id FROM department"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    departments.Add(dr[0].ToString());
+                    Department department = new Department(dr[0].ToString(), Convert.ToInt32(dr[1]));
+                    Departments.Add(department);
                 }
             }
             finally
             {
                 conn.Close();
             }
-            return departments;
+            return Departments;
         }
 
 
@@ -1188,6 +1190,7 @@ namespace MediaBazar
             }
         }
 
+        int departmentId;
         public List<Product> GetProducts()
         {
             products = new List<Product>();
@@ -1199,29 +1202,13 @@ namespace MediaBazar
                 conn.Open();  // this must be before the execution which is just under this
                 MySqlDataReader dr = cmd.ExecuteReader();
 
+               
                 while (dr.Read())
                 {
-                    string department = "";
+                   departmentId = Convert.ToInt32(dr[1]);
 
-                    if (Convert.ToBoolean(dr[4]))
-                    {
-                        if (Convert.ToInt32(dr[1]) == 1)
-                        {
-                            department = "Household";
-                        }
-                        else if (Convert.ToInt32(dr[1]) == 2)
-                        {
-                            department = "Computer";
-                        }
-                        else if (Convert.ToInt32(dr[1]) == 3)
-                        {
-                            department = "Kitchen";
-                        }
-                        else if (Convert.ToInt32(dr[1]) == 4)
-                        {
-                            department = "Photo and Video";
-                        }
-                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                    { 
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), departmentId); // has to specify the order like this
                         products.Add(g);
                     }
                 }
@@ -1232,6 +1219,7 @@ namespace MediaBazar
             }
             return products;
         }
+
 
         public void ModifyProduct(int id, string givenProductName, double givenProductPrice)
         {

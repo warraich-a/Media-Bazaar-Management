@@ -17,12 +17,12 @@ namespace MediaBazar
         public string DepartmentName { get; set; }
         public bool Exist { get; set; }
 
-        public Product(int givenProductId, string givenName, double givenPrice, string givenDepartmentName)
+        public Product(int givenProductId, string givenName, double givenPrice, int givenDepartmentId)
         {
             ProductId = givenProductId;
             Name = givenName;
             Price = givenPrice;
-            DepartmentName = givenDepartmentName;
+            departmentId = givenDepartmentId;
             
         }
         public Product(int givenId, int givenDId, string givenName, double givenPrice)
