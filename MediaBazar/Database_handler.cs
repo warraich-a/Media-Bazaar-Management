@@ -1190,7 +1190,6 @@ namespace MediaBazar
             }
         }
 
-        int departmentId;
         public List<Product> GetProducts()
         {
             products = new List<Product>();
@@ -1205,10 +1204,9 @@ namespace MediaBazar
                
                 while (dr.Read())
                 {
-                   departmentId = Convert.ToInt32(dr[1]);
-
-                    { 
-                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), departmentId); // has to specify the order like this
+                    if(Convert.ToBoolean(dr[4]) == true)
+                    {
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[1])); // has to specify the order like this
                         products.Add(g);
                     }
                 }

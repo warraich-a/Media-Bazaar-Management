@@ -78,6 +78,7 @@ namespace MediaBazar
             }
         }
 
+        //adding the departments
         public void Departments()
         {
             cmbDepartmentStack.Items.Clear();
@@ -86,8 +87,24 @@ namespace MediaBazar
             foreach (Department d in mediaBazaar.GetDepartments())
             {
                 cmbDepartmentStack.Items.Add(d.Name);
-                cmbDepartment.Items.Add(d.Name);
+                
                 cmbSearchByDepartmentProduct.Items.Add(d.Name);
+
+                cmbDepartment.Items.Add(d.Name);
+                /*if (radioButton4.Checked)
+                {
+                    foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+                    {
+                        if(item.Role == Roles.Manager)
+                        {
+                            cmbDepartment.Items.Add(item.FirstName);
+                        } 
+                    }
+                }
+                else if(radioButton5.Checked)
+                {*/
+
+                //}
             }
         }
         public void RefreshData()
@@ -1036,6 +1053,21 @@ namespace MediaBazar
                     listViewProducts.Items.Add(listOfProducts);
                 }
             }
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbDepartment_CheckedChanged(object sender, EventArgs e)
+        {
+            Departments();
+        }
+
+        private void rbManager_CheckedChanged(object sender, EventArgs e)
+        {
+            Departments();
         }
     }
 }

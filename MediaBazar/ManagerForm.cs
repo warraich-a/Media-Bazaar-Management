@@ -27,7 +27,18 @@ namespace MediaBazar
             lblUsername.Text = mediaBazaar.CurrentUser;
 
             RefreshData();
+            Departments();
 
+        }
+        public void Departments()
+        {
+            cmbDepartment.Items.Clear();
+            cmbSearchByDepartmentProduct.Items.Clear();
+            foreach (Department d in mediaBazaar.GetDepartments())
+            {
+                cmbDepartment.Items.Add(d.Name);
+                cmbSearchByDepartmentProduct.Items.Add(d.Name);
+            }
         }
 
         private void label21_Click(object sender, EventArgs e)
@@ -742,6 +753,61 @@ namespace MediaBazar
             {
                 lvProductList.Items.Clear();
                 RefreshData();
+            }
+        }
+
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = cmbDepartment.SelectedIndex + 1;
+            LV2.Items.Clear();
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+            {
+                if (item.DepartmentId == departmentId)
+                {
+                    listB = new ListViewItem(Convert.ToString(item.Id));
+                    listB.SubItems.Add(item.FirstName);
+                    listB.SubItems.Add(item.LastName);
+                    listB.SubItems.Add(item.GetEmail);
+                    listB.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                    listB.SubItems.Add(item.StreetName);
+                    listB.SubItems.Add(Convert.ToString(item.HouseNr));
+                    listB.SubItems.Add(item.Zipcode);
+                    listB.SubItems.Add(item.City);
+                    listB.SubItems.Add(Convert.ToString(item.HourlyWage));
+                    listB.SubItems.Add(Convert.ToString(item.Role));
+                    LV2.Items.Add(listB);
+                }
+            }
+        }
+
+        private void cmbSearchByDepartmentProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = cmbSearchByDepartmentProduct.SelectedIndex + 1;
+            lvProductList.Items.Clear();
+            foreach (Product p in mediaBazaar.GetProducts())
+            {
+                if (p.DapartmentId == departmentId)
+                {
+                    ListViewItem listOfProducts = new ListViewItem(p.ProductId.ToString());
+                    foreach (Department item in mediaBazaar.GetDepartments())
+                    {
+                        if (p.DapartmentId == item.Id)
+                        {
+                            listOfProducts.SubItems.Add(Convert.ToString(item.Name));
+                        }
+                    }
+                    listOfProducts.SubItems.Add(p.Name);
+                    listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                   
+                    foreach (Stock s in mediaBazaar.GetStockList())
+                    {
+                        if (s.ProductId == p.ProductId)
+                        {
+                            listOfProducts.SubItems.Add(s.Quantity.ToString());
+                        }
+                    }
+                    lvProductList.Items.Add(listOfProducts);
+                }
             }
         }
     }
