@@ -75,8 +75,6 @@ namespace MediaBazar
 
             string department = currentUserDepartment;
 
-            MessageBox.Show(department);
-
             // Clear graph
             chartEmployeeStatistics.Series.Clear();
             chartEmployeeStatistics.Titles.Clear();

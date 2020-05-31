@@ -486,7 +486,7 @@ namespace MediaBazar
             chartEmployeeStatistics.Series.Add("FamousItems");
 
 
-            chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Pie;
 
             // Title
             chartEmployeeStatistics.Titles.Add($"Most restocked items between {dateFrom} and {dateTo} in department '{department}'");
@@ -513,7 +513,7 @@ namespace MediaBazar
             chartEmployeeStatistics.Series.Add("Total stock requests");
 
 
-            chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Spline;
 
             chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
 
@@ -542,7 +542,7 @@ namespace MediaBazar
             chartEmployeeStatistics.Series.Add("Total profit");
 
 
-            chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Spline;
 
             chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
 
@@ -619,6 +619,10 @@ namespace MediaBazar
             {
                 // Disable department picking
                 cbxDepartments.Enabled = false;
+
+                // Disable date picking
+                dtpFrom.Enabled = false;
+                dtpTo.Enabled = false;
             }
 
             // Salary per employee between two dates OR Number employees per shift between two dates OR Most Restocked Items
