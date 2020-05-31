@@ -1,13 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
-using System.Collections;
 
 namespace MediaBazar
 {
@@ -83,7 +79,6 @@ namespace MediaBazar
         private void SaveCurrentUser(string name)
         {
             this.currentUser = name;
-            Console.WriteLine(name);
         }
 
         /* LOGOUT */
@@ -164,35 +159,41 @@ namespace MediaBazar
         }
 
         /* STATISTICS */
-        public ArrayList GetStatistics(string type)
+        public ArrayList GetStatistics(string type, string department)
         {
-            ArrayList statistics = database.GetStatistics(type);
+            ArrayList statistics = database.GetStatistics(type, department);
 
             return statistics;
         }
 
-        public ArrayList GetStatistics(string dateFrom, string type)
+        public ArrayList GetStatistics(string dateFrom, string type, string department)
         {
-            ArrayList statistics = database.GetStatistics(dateFrom, type);
+            ArrayList statistics = database.GetStatistics(dateFrom, type, department);
 
             return statistics;
         }
 
-        public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
+        public ArrayList GetStatistics(string dateFrom, string dateTo, string type, string department)
         {
-            ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type);
+            ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type, department);
 
             return statistics;
         }
 
         /* GET EMPLOYEE FOR SHIFT, STATISTICS */
-        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        public string GetEmployeesPerShift(DateTime date, string shiftType, string department)
         {
-            string employees = database.GetEmployeesPerShift(date, shiftType);
+            string employees = database.GetEmployeesPerShift(date, shiftType, department);
             return employees;
         }
 
+        /* GET DEPARTMENTS */
+        public ArrayList GetDepartments()
+        {
+            ArrayList departments = database.GetDepartments();
 
+            return departments;
+        }
 
 
         // to add a person in a database

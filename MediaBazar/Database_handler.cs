@@ -392,7 +392,7 @@ namespace MediaBazar
 
 
         /* STATISTICS */
-        public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
+        public ArrayList GetStatistics(string dateFrom, string dateTo, string type, string department)
         {
             // Salary per employee between two dates
             if (type == "Salary per employee")
@@ -402,10 +402,10 @@ namespace MediaBazar
 
                     using (conn)
                     {
-                        // TOOLTIP
-                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s " +
-                            "INNER JOIN person p ON p.id = s.employeeId " +
-                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage* Count(s.date) *4 FROM(schedule s " +
+                            "INNER JOIN person p ON p.id = s.employeeId) " +
+                            "INNER JOIN department d ON d.id = p.department_id " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
                             "GROUP BY s.employeeId";
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -414,6 +414,7 @@ namespace MediaBazar
                         // Parameters
                         cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
                         cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        cmd.Parameters.AddWithValue("@department", department);
 
                         ArrayList statistics = GatherStatisticData(cmd);
 
@@ -437,15 +438,21 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
-                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
+                            "INNER JOIN person p ON s.employeeId = p.id) " +
+                            "INNER JOIN department d ON d.id = p.department_id " +
+                            "WHERE (d.name = @department) AND " +
+                            "(date BETWEEN @dateFrom AND @dateTo) " +
                             "GROUP BY date, shiftType ORDER BY date;";
+
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         // Parameters
 
                         cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
                         cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        cmd.Parameters.AddWithValue("@department", department);
+
                         // Open db connection
                         conn.Open();
 
@@ -470,12 +477,11 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        // Find how many times per month an item has been restocked
-                        string sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr " +
-                            "INNER JOIN product AS p ON p.productId = sr.productId " +
-                            "WHERE requestDate BETWEEN @dateFrom AND @dateTo " +
-                            "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
-                        // SELECT sr.productId, p.productName,SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr INNER JOIN product AS p ON p.productId = sr.productId GROUP BY sr.productId ORDER BY totalQuantity DESC
+                        string sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM (stock_request AS sr " +
+                                    "INNER JOIN product AS p ON p.productId = sr.productId) " +
+                                    "INNER JOIN department d ON d.id = p.departmentId " +
+                                    "WHERE sr.requestDate BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
+                                    "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
 
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -483,6 +489,9 @@ namespace MediaBazar
 
                         cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
                         cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        cmd.Parameters.AddWithValue("@department", department);
+
+
                         // Open db connection
                         conn.Open();
 
@@ -504,7 +513,7 @@ namespace MediaBazar
         }
 
 
-        public ArrayList GetStatistics(string type)
+        public ArrayList GetStatistics(string type, string department)
         {
             // Hourly wage per employee
             if (type == "Hourly wage per employee")
@@ -513,9 +522,15 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT firstName, lastName, hourlyWage FROM person";
+                        string sql = "SELECT firstName, lastName, hourlyWage FROM person AS p " +
+                            "INNER JOIN department AS d ON d.id = p.department_id " +
+                            "WHERE d.name = @department";
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        // Parameters
+
+                        cmd.Parameters.AddWithValue("@department", department);
+
                         conn.Open();
 
                         ArrayList statistics = GatherStatisticData(cmd);
@@ -534,18 +549,24 @@ namespace MediaBazar
                 }
             }
 
-            // Profit per year (stock requests)
+            // Stock requests per year
             else if (type == "Yearly stock requests")
             {
                 try
                 {
                     using (conn)
-                    {
+                    { 
                         string sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
-                            "FROM stock_request AS sr " +
+                            "FROM (stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId) " +
+                            "INNER JOIN department AS d ON d.id = p.departmentId " +
+                            "WHERE d.name = @department " +
                             "GROUP BY YEAR(sr.requestDate)";
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                        cmd.Parameters.AddWithValue("@department", department);
+
                         conn.Open();
 
                         ArrayList statistics = GatherStatisticData(cmd);
@@ -564,10 +585,74 @@ namespace MediaBazar
                 }
             }
 
+            // Profit per year
+            else if (type == "Yearly profit")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT year, SUM(totalProfit) FROM " +
+                            "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) * (p.selling_price - p.price) AS totalProfit " +
+                            "FROM(sale_history AS sh INNER JOIN product AS p ON p.productId = sh.productId) " +
+                            "INNER JOIN department AS d ON d.id = p.departmentId WHERE d.name = @department " +
+                            "GROUP BY YEAR(sh.date), p.productId) AS yearlyProfit GROUP BY year";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                        cmd.Parameters.AddWithValue("@department", department);
+
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            // Number of employees per department
+            else if (type == "Number of employees per department")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql = "SELECT d.name, COUNT(*) AS numberOfEmployees FROM person AS p " +
+                            "INNER JOIN department d ON d.id = p.department_id " +
+                            "GROUP BY department_id";
+
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
             return null;
         }
 
-        public ArrayList GetStatistics(string date, string type)
+        public ArrayList GetStatistics(string date, string type, string department)
         {
             // Restocked Items Per Date
             if (type == "Restocked Items On Date")
@@ -577,14 +662,16 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
-                            "FROM stock_request AS sr " +
-                            "INNER JOIN product AS p ON p.productId = sr.productId " +
-                            "WHERE requestDate = @date " +
+                            "FROM (stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId) " +
+                            "INNER JOIN department AS d ON d.id = p.departmentId " +
+                            "WHERE requestDate = @date AND d.name = @department " +
                             "GROUP BY sr.productId ORDER BY totalQuantity";
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                         cmd.Parameters.AddWithValue("@date", date);
+                        cmd.Parameters.AddWithValue("@department", department);
 
 
                         conn.Open();
@@ -624,7 +711,7 @@ namespace MediaBazar
 
 
         /* GET EMPLOYEES PER SHIFT PER DAY */
-        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        public string GetEmployeesPerShift(DateTime date, string shiftType, string department)
         {
             string employees = "";
             try
@@ -633,11 +720,14 @@ namespace MediaBazar
                 {
                     string sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
                         $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
-                        $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}'";
+                        $"INNER JOIN department AS d ON d.id = p.department_id " +
+                        $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}' AND d.name = '{department}'";
+
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     conn.Open();
                     MySqlDataReader dr = cmd.ExecuteReader();
+
                     while (dr.Read())
                     {
                         employees += $"{dr[0]} {dr[1]} {Environment.NewLine}";
@@ -656,7 +746,46 @@ namespace MediaBazar
                 System.Windows.Forms.MessageBox.Show(ex.Message);
                 return "";
             }
+        }
 
+        /* */
+        // Number of employees per department
+
+
+        /* GET ALL DEPARTMENTS */
+        public ArrayList GetDepartments()
+        {
+            try
+            {
+                using (conn)
+                {
+                    ArrayList departments = new ArrayList();
+
+                    string sql = $"SELECT * FROM department";
+
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    conn.Open();
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+
+                    while (dr.Read())
+                    {
+                       // employees += $"{dr[0]} {dr[1]} {Environment.NewLine}";
+
+                        object[] values = new object[dr.FieldCount];
+                        dr.GetValues(values);
+                        departments.Add(values);
+                    }
+                    return departments;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 
