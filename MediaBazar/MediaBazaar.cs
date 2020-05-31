@@ -213,7 +213,12 @@ namespace MediaBazar
 
             return departments;
         }
+        /* GET DEPARTMENTS */
+        public List<Department> GetAllDepartments()
+        {
+            return database.GetAllDepartments();
 
+        }
 
         // to add a person in a database
         public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
@@ -369,9 +374,9 @@ namespace MediaBazar
 
 
         // to add a new product in the system
-        public void AddProduct(int departmentId, string productName, double productPrice)
+        public void AddProduct(int departmentId, string productName, double productPrice, double sellingPrice)
         {
-            database.AddProduct(departmentId, productName, productPrice);
+            database.AddProduct(departmentId, productName, productPrice, sellingPrice);
         }
         //to get the products
         public List<Product> GetProducts()
@@ -380,9 +385,9 @@ namespace MediaBazar
         }
 
         //to modify the existing product
-        public void ModifyProduct(int id, string productName, double productPrice)
+        public void ModifyProduct(int id, string productName, double productPrice, double sellingPrice)
         {
-            database.ModifyProduct(id, productName, productPrice);
+            database.ModifyProduct(id, productName, productPrice, sellingPrice);
         }
         public void ModifyDepartment(int id, string name, int personId, int minEmp)
         {

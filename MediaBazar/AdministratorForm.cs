@@ -41,6 +41,7 @@ namespace MediaBazar
             InitializeComponent();
 
             RefreshData();
+            Departments();
 
 
             // Add user name
@@ -118,10 +119,16 @@ namespace MediaBazar
             foreach (Product p in mediaBazaar.GetProducts())
             {
                 listOfProducts = new ListViewItem(p.ProductId.ToString());
-                listOfProducts.SubItems.Add(Convert.ToString(p.DepartmentName));
+                foreach (Department item in mediaBazaar.GetAllDepartments())
+                {
+                    if (p.DapartmentId == item.Id)
+                    {
+                        listOfProducts.SubItems.Add(Convert.ToString(item.Name));
+                    }
+                }
                 listOfProducts.SubItems.Add(p.Name);
                 listOfProducts.SubItems.Add(Convert.ToString(p.Price));
-              
+                listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
                 listViewProducts.Items.Add(listOfProducts);
             }
             mediaBazaar.ReadRequests();
@@ -147,7 +154,34 @@ namespace MediaBazar
                 lvDepartments.Items.Add(list);
             }
         }
+        public void Departments()
+        {
+            cmbDepartmentStack.Items.Clear();
+            cmbDepartment.Items.Clear();
+            cmbSearchByDepartmentProduct.Items.Clear();
+            foreach (Department d in mediaBazaar.GetAllDepartments())
+            {
+                cmbDepartmentStack.Items.Add(d.Name);
 
+                cmbSearchByDepartmentProduct.Items.Add(d.Name);
+
+                cmbDepartment.Items.Add(d.Name);
+                /*if (radioButton4.Checked)
+                {
+                    foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+                    {
+                        if(item.Role == Roles.Manager)
+                        {
+                            cmbDepartment.Items.Add(item.FirstName);
+                        } 
+                    }
+                }
+                else if(radioButton5.Checked)
+                {*/
+
+                //}
+            }
+        }
         // To remove an employee from the system
         private void btnRemoveEmp_Click(object sender, EventArgs e)
         {
@@ -938,11 +972,29 @@ namespace MediaBazar
                 string productName = tbProductName.Text;
                 double productPrice = Convert.ToDouble(tbProductPrice.Text);
                 int departmentId = cmbDepartmentStack.SelectedIndex + 1;
-                mediaBazaar.AddProduct(departmentId, productName, productPrice);
-                RefreshData();
-                tbProductName.Text = "";
-                tbProductPrice.Text = "";
-                cmbDepartmentStack.Text = "";
+                double sellingPrice = Convert.ToDouble(tbSellingPrice.Text);
+                if (sellingPrice < productPrice)
+                {
+                    if (MessageBox.Show("Are you very rich????", "Remove Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
+                        RefreshData();
+                        tbProductName.Text = "";
+                        tbProductPrice.Text = "";
+                        tbSellingPrice.Text = "";
+                        cmbDepartmentStack.Text = "";
+                    }
+                }
+                else
+                {
+                    mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
+                    RefreshData();
+                    tbProductName.Text = "";
+                    tbProductPrice.Text = "";
+                    tbSellingPrice.Text = "";
+                    cmbDepartmentStack.Text = "";
+                }
+
             }
             catch (ArgumentNullException)
             {
@@ -1134,6 +1186,55 @@ namespace MediaBazar
                 if (p.DepartmentId <= 1)
                 {
                     cbManagers.Items.Add(p.GetFullName());
+                }
+            }
+        }
+
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = cmbDepartment.SelectedIndex + 1;
+            listView1.Items.Clear();
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+            {
+                if (item.DepartmentId == departmentId)
+                {
+                    list = new ListViewItem(Convert.ToString(item.Id));
+                    list.SubItems.Add(item.FirstName);
+                    list.SubItems.Add(item.LastName);
+                    list.SubItems.Add(item.GetEmail);
+                    list.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                    list.SubItems.Add(item.StreetName);
+                    list.SubItems.Add(Convert.ToString(item.HouseNr));
+                    list.SubItems.Add(item.Zipcode);
+                    list.SubItems.Add(item.City);
+                    list.SubItems.Add(Convert.ToString(item.HourlyWage));
+                    list.SubItems.Add(Convert.ToString(item.Role));
+                    listView1.Items.Add(list);
+                }
+            }
+        }
+
+        private void cmbSearchByDepartmentProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int departmentId = cmbSearchByDepartmentProduct.SelectedIndex + 1;
+            listViewProducts.Items.Clear();
+            listViewProducts.Items.Clear();
+            foreach (Product p in mediaBazaar.GetProducts())
+            {
+                if (p.DapartmentId == departmentId)
+                {
+                    listOfProducts = new ListViewItem(p.ProductId.ToString());
+                    foreach (Department item in mediaBazaar.GetAllDepartments())
+                    {
+                        if (p.DapartmentId == item.Id)
+                        {
+                            listOfProducts.SubItems.Add(Convert.ToString(item.Name));
+                        }
+                    }
+                    listOfProducts.SubItems.Add(p.Name);
+                    listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                    listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
+                    listViewProducts.Items.Add(listOfProducts);
                 }
             }
         }

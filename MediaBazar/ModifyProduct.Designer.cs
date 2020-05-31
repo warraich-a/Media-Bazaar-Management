@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tbSellingPrice = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tbProductPrice = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbProductName = new System.Windows.Forms.TextBox();
@@ -35,38 +37,55 @@
             this.btnModifyProduct = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // tbSellingPrice
+            // 
+            this.tbSellingPrice.Location = new System.Drawing.Point(146, 138);
+            this.tbSellingPrice.Name = "tbSellingPrice";
+            this.tbSellingPrice.Size = new System.Drawing.Size(281, 20);
+            this.tbSellingPrice.TabIndex = 112;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(27, 141);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 111;
+            this.label2.Text = "Selling Price";
+            // 
             // tbProductPrice
             // 
-            this.tbProductPrice.Location = new System.Drawing.Point(141, 67);
+            this.tbProductPrice.Location = new System.Drawing.Point(146, 90);
             this.tbProductPrice.Name = "tbProductPrice";
             this.tbProductPrice.Size = new System.Drawing.Size(281, 20);
-            this.tbProductPrice.TabIndex = 103;
+            this.tbProductPrice.TabIndex = 110;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(22, 70);
+            this.label7.Location = new System.Drawing.Point(27, 93);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 102;
+            this.label7.TabIndex = 109;
             this.label7.Text = "Product Price";
             // 
             // tbProductName
             // 
-            this.tbProductName.Location = new System.Drawing.Point(141, 20);
+            this.tbProductName.Location = new System.Drawing.Point(146, 43);
             this.tbProductName.Name = "tbProductName";
             this.tbProductName.Size = new System.Drawing.Size(281, 20);
-            this.tbProductName.TabIndex = 101;
+            this.tbProductName.TabIndex = 108;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(22, 20);
+            this.label1.Location = new System.Drawing.Point(27, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 100;
+            this.label1.TabIndex = 107;
             this.label1.Text = "Product Name";
             // 
             // btnModifyProduct
@@ -75,10 +94,10 @@
             this.btnModifyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifyProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifyProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnModifyProduct.Location = new System.Drawing.Point(141, 110);
+            this.btnModifyProduct.Location = new System.Drawing.Point(146, 191);
             this.btnModifyProduct.Name = "btnModifyProduct";
             this.btnModifyProduct.Size = new System.Drawing.Size(281, 32);
-            this.btnModifyProduct.TabIndex = 86;
+            this.btnModifyProduct.TabIndex = 106;
             this.btnModifyProduct.Text = "Update";
             this.btnModifyProduct.UseVisualStyleBackColor = false;
             this.btnModifyProduct.Click += new System.EventHandler(this.btnModifyProduct_Click);
@@ -87,7 +106,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 173);
+            this.ClientSize = new System.Drawing.Size(454, 266);
+            this.Controls.Add(this.tbSellingPrice);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tbProductPrice);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbProductName);
@@ -103,6 +124,8 @@
 
         #endregion
 
+        private System.Windows.Forms.TextBox tbSellingPrice;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbProductPrice;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbProductName;

@@ -17,20 +17,25 @@ namespace MediaBazar
         public string DepartmentName { get; set; }
         public bool Exist { get; set; }
 
-        public Product(int givenProductId, string givenName, double givenPrice, string givenDepartmentName)
+        public double SellingPrice { get; }
+
+
+        public Product(int givenProductId, string givenName, double givenPrice, int givenDepartmentId, double givenSellingPrice)
         {
             ProductId = givenProductId;
             Name = givenName;
             Price = givenPrice;
-            DepartmentName = givenDepartmentName;
-            
+            departmentId = givenDepartmentId;
+            SellingPrice = givenSellingPrice;
+
         }
-        public Product(int givenId, int givenDId, string givenName, double givenPrice)
+        public Product(int givenId, int givenDId, string givenName, double givenPrice, double givenSellingPrice)
         {
             ProductId = givenId;
             DapartmentId = givenDId;
             ProductName = givenName;
             Price = givenPrice;
+            SellingPrice = givenSellingPrice;
         }
         public override string ToString()
         {

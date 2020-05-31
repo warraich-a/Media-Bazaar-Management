@@ -20,6 +20,11 @@ namespace MediaBazar
             MinEmp = givenMinEmp;
         }
 
+        public Department(string givenName, int givenDepartmentId)
+        {
+            Id = givenDepartmentId;
+            Name = givenName;
+        }
         public int Id
         {
             get
