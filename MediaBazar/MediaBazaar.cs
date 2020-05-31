@@ -19,6 +19,7 @@ namespace MediaBazar
 
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
+        List<Schedule> proposed = new List<Schedule>();
         // Person person = new Person();
         List<Department> departments = new List<Department>();
         List<Request> requests = new List<Request>();
@@ -483,7 +484,35 @@ namespace MediaBazar
             database.ApproveRequest(id, productId, quantity);
         }
 
+        public void ChangeScheduleStatusById (int id, string status)
+        {
+            database.changeschedulestatusbyid(id,status);
+        }
+        public int[] GetShiftsByDay(string date)
+        {
+            return database.checkshiftsinday(date);
+        }
+        public int CheckProposalNrShift(string shifttype, string date)
+        {
+            return database.checkproposalnrshift(shifttype, date);
+        }
+        public void ReadProposeByDay(string date, string shifttype)
+        {
+            this.proposed = database.ReadProposalByDay(date,shifttype);
 
+        }
+        public List<Schedule> GetLimSchedulesListByType(int limit)
+        {
+            int x = 0;
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                sch.Add(s);
+                x++;
+                if (x == limit) return sch;
+           }
+            return sch;
+        }
     }
 
 
