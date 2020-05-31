@@ -41,7 +41,6 @@ namespace MediaBazar
             InitializeComponent();
 
             RefreshData();
-            Departments();
 
 
             // Add user name
@@ -84,14 +83,6 @@ namespace MediaBazar
             GenerateDepartments();
         }
 
-        public void Departments()
-        {
-            cmbDepartmentStack.Items.Clear();
-            foreach (string d in mediaBazaar.GetDepartments())
-            {
-                cmbDepartmentStack.Items.Add(d);
-            }
-        }
         public void RefreshData()
         {
             listView1.Items.Clear();
