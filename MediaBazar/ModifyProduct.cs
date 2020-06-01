@@ -26,7 +26,6 @@ namespace MediaBazar
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -69,6 +68,5 @@ namespace MediaBazar
         {
 
         }
-
     }
 }

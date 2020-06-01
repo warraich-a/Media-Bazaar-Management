@@ -118,12 +118,6 @@
     <Compile Include="Modify Data.Designer.cs">
       <DependentUpon>Modify Data.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModifyDepartment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModifyDepartment.Designer.cs">
-      <DependentUpon>ModifyDepartment.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModifyProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,9 +154,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modify Data.resx">
       <DependentUpon>Modify Data.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModifyDepartment.resx">
-      <DependentUpon>ModifyDepartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyProduct.resx">
       <DependentUpon>ModifyProduct.cs</DependentUpon>
