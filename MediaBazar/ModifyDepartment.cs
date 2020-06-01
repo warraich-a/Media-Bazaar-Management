@@ -10,32 +10,31 @@ using System.Windows.Forms;
 
 namespace MediaBazar
 {
-    public partial class ModifyProduct : Form
+    public partial class ModifyDepartment : Form
     {
         int id;
         AdministratorForm form;
         MediaBazaar mediaBazaar;
-        public ModifyProduct(int givenId, AdministratorForm f, MediaBazaar mediaBazaar)
+        public ModifyDepartment(int givenId, AdministratorForm f, MediaBazaar mediaBazaar)
         {
             InitializeComponent();
             form = f;
             id = givenId;
             this.mediaBazaar = mediaBazaar;
-            FoundProduct(id);
+            FoundDepartment(id);
         }
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string productNewName = tbProductName.Text;
-                    double productNewPrice = Convert.ToDouble(tbProductPrice.Text);
-                    double sellingPrice = Convert.ToDouble(tbSellingPrice.Text);
-                    mediaBazaar.ModifyProduct(this.id, productNewName, productNewPrice, sellingPrice);
+                    string depName = tbDName.Text;
+                    int minEmp = Convert.ToInt32(tbMinEmp.Text);
+                    mediaBazaar.ModifyDepartment(id, depName, mediaBazaar.GetPersonIdByName(cbManager.SelectedItem.ToString()), minEmp);
                     this.Close();
+                    form.Show();
                     form.RefreshData();
                 }
                 else
@@ -49,26 +48,37 @@ namespace MediaBazar
                 MessageBox.Show("Have you added everything?");
             }
         }
-
-        public void FoundProduct(int id)
+        public void FoundDepartment(int id)
         {
             try
             {
-                Product foundProduct = mediaBazaar.ReturnExistingProduct(id); // to give the correct id through parameters
-                tbProductName.Text = foundProduct.Name;
-                tbProductPrice.Text = foundProduct.Price.ToString();
-                tbSellingPrice.Text = foundProduct.SellingPrice.ToString();
+                Department dep = null;
+                mediaBazaar.ReadDepartment();
+                foreach (Department d in mediaBazaar.GetDepartmentsList())
+                {
+                    if (id == d.Id)
+                    {
+                        dep = d;
+                    }
+                }
+                tbDName.Text = dep.Name;
+                tbMinEmp.Text = dep.MinEmp.ToString();
+
+                foreach (Person p in mediaBazaar.GetManagersList())
+                {
+
+                    if (p.DepartmentId <= 1)
+                    {
+
+                        cbManager.Items.Add(p.GetFullName());
+                    }
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void ModifyProduct_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

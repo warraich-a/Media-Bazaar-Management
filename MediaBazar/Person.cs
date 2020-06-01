@@ -22,6 +22,7 @@ namespace MediaBazar
         protected int departmentId;
 
         protected Roles role;
+        protected int departmentId;
 
         public Person()
         {
@@ -41,6 +42,21 @@ namespace MediaBazar
             City = givenCity;
             role = givenRole;
             departmentId = givenDepartmentId;
+        }
+        public Person(int givenId, string givenFirstName, string givenSecondName, int givenDId, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole)
+        {
+            id = givenId;
+            FirstName = givenFirstName;
+            LastName = givenSecondName;
+            DepartmentId = givenDId;
+            Email(givenFirstName, givenSecondName); // creating an email
+            dateOfBirth = givenDOB;
+            StreetName = givenStreetName;
+            HouseNr = givenHouseNr;
+            Zipcode = givenZipcode;
+            hourlyWage = givenHourlyWage;
+            City = givenCity;
+            role = givenRole;
         }
 
         //first Name
@@ -140,6 +156,20 @@ namespace MediaBazar
                 if (value != "")
                 {
                     this.city = value;
+                }
+            }
+        }
+        public int DepartmentId
+        {
+            get
+            {
+                return this.departmentId;
+            }
+            set
+            {
+                if (value != 0)
+                {
+                    this.departmentId = value;
                 }
             }
         }
