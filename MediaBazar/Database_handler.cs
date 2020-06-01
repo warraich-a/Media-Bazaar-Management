@@ -24,6 +24,7 @@ namespace MediaBazar
         List<string> departments = new List<string>();
         List<Product> products;
         List<Department> newDepartments = new List<Department>();
+        List<Department> Departments;
 
 
 
@@ -95,19 +96,20 @@ namespace MediaBazar
             return schedules;
         }
 
+ 
         public List<Product> ReadProduct()
         {
             this.products = new List<Product>();
             try
             {
-                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product` WHERE Exist = 1";
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price`, `selling_price` FROM `product` WHERE Exist = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]));
+                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToDouble(dr[4]));
                     products.Add(product);
                 }
             }
@@ -118,19 +120,20 @@ namespace MediaBazar
             return products;
         }
 
+
         public List<Product> ReadAllProduct()
         {
             this.products = new List<Product>();
             try
             {
-                string sql = "SELECT `productId`, `departmentId`, `productName`, `price` FROM `product`";
+                string sql = "SELECT `productId`, `departmentId`, `productName`, `price`,`selling_price` FROM `product`";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]));
+                    Product product = new Product(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToDouble(dr[4]));
                     products.Add(product);
                 }
             }
@@ -609,7 +612,7 @@ namespace MediaBazar
             people = new List<Person>();
             try
             {
-                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
@@ -617,19 +620,19 @@ namespace MediaBazar
                 while (dr.Read())
                 {
                     Roles r = Roles.Employee;
-                    if (dr[9].ToString() == "Administrator")
+                    if (dr[10].ToString() == "Administrator")
                     {
                         r = Roles.Administrator;
                     }
-                    else if (dr[9].ToString() == "Manager")
+                    else if (dr[10].ToString() == "Manager")
                     {
                         r = Roles.Manager;
                     }
-                    else if (dr[9].ToString() == "DepotWorker")
+                    else if (dr[10].ToString() == "DepotWorker")
                     {
                         r = Roles.DepotWorker;
                     }
-                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r); // has to specify the order like this
+                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                     people.Add(g);
                 }
             }
@@ -1223,6 +1226,29 @@ namespace MediaBazar
             }
         }
 
+        public List<Department> GetAllDepartments()
+        {
+
+            Departments = new List<Department>();
+            try
+            {
+                string sql = "SELECT name, id FROM department"; // a query of what we want
+                MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
+
+                conn.Open();  // this must be before the execution which is just under this
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Department department = new Department(dr[0].ToString(), Convert.ToInt32(dr[1]));
+                    Departments.Add(department);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return Departments;
+        }
 
         /* RESET PASSWORD */
         public string ResetPassword(string email, string password)
@@ -1396,7 +1422,7 @@ namespace MediaBazar
 
 
         // to add the products
-        public void AddProduct(int departmentId, string name, double price)
+        public void AddProduct(int departmentId, string name, double price, double sellingPrice)
         {
             bool productExist = false;
             try
@@ -1410,7 +1436,7 @@ namespace MediaBazar
                 }
                 if (!productExist)
                 {
-                    string sql = "INSERT INTO product(departmentId, productName, price) VALUES(@departmentId, @productName, @productPrice)";
+                    string sql = "INSERT INTO product(departmentId, productName, price, selling_price) VALUES(@departmentId, @productName, @productPrice, @sellingPrice)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     if (!System.Text.RegularExpressions.Regex.IsMatch(name, "[^0-9]"))
                     {
@@ -1425,6 +1451,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@departmentId", departmentId);
                         cmd.Parameters.AddWithValue("@productName", name);
                         cmd.Parameters.AddWithValue("@productPrice", price);
+                        cmd.Parameters.AddWithValue("@sellingPrice", sellingPrice);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         System.Windows.Forms.MessageBox.Show("Product has been Added to the System");
@@ -1441,41 +1468,23 @@ namespace MediaBazar
                 conn.Close();
             }
         }
-
         public List<Product> GetProducts()
         {
             products = new List<Product>();
             try
             {
-                string sql = "SELECT productId, departmentId, productName, price, exist FROM product"; // a query of what we want
+                string sql = "SELECT productId, departmentId, productName, price, exist, selling_price FROM product"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
                 conn.Open();  // this must be before the execution which is just under this
                 MySqlDataReader dr = cmd.ExecuteReader();
 
+
                 while (dr.Read())
                 {
-                    string department = "";
-
-                    if (Convert.ToBoolean(dr[4]))
+                    if (Convert.ToBoolean(dr[4]) == true)
                     {
-                        if (Convert.ToInt32(dr[1]) == 1)
-                        {
-                            department = "Household";
-                        }
-                        else if (Convert.ToInt32(dr[1]) == 2)
-                        {
-                            department = "Computer";
-                        }
-                        else if (Convert.ToInt32(dr[1]) == 3)
-                        {
-                            department = "Kitchen";
-                        }
-                        else if (Convert.ToInt32(dr[1]) == 4)
-                        {
-                            department = "Photo and Video";
-                        }
-                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), department); // has to specify the order like this
+                        Product g = new Product(Convert.ToInt32(dr[0]), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[1]), Convert.ToDouble(dr[5])); // has to specify the order like this
                         products.Add(g);
                     }
                 }
@@ -1487,11 +1496,11 @@ namespace MediaBazar
             return products;
         }
 
-        public void ModifyProduct(int id, string givenProductName, double givenProductPrice)
+        public void ModifyProduct(int id, string givenProductName, double givenProductPrice, double sellingPrice)
         {
             try
             {
-                string sql = "UPDATE product SET productName = @productName, price = @productPrice WHERE productId ='" + id + "';";
+                string sql = "UPDATE product SET productName = @productName, price = @productPrice, selling_price = @sellingPrice WHERE productId ='" + id + "';";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 if (!System.Text.RegularExpressions.Regex.IsMatch(givenProductName, "[^0-9]"))
                 {
@@ -1505,6 +1514,7 @@ namespace MediaBazar
                 {
                     cmd.Parameters.AddWithValue("@productName", givenProductName);
                     cmd.Parameters.AddWithValue("@productPrice", givenProductPrice);
+                    cmd.Parameters.AddWithValue("@sellingPrice", sellingPrice);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     System.Windows.Forms.MessageBox.Show("The information has been updated");
@@ -1517,6 +1527,7 @@ namespace MediaBazar
                 conn.Close();
             }
         }
+
 
         public void ModifyDepartment(int id, string name, int personId, int minEmp)
         {
@@ -1772,6 +1783,231 @@ namespace MediaBazar
                 MessageBox.Show(ex.Message);
             }
             return nr;
+        }
+        //Check the number of accepted shifts in one day
+        public int checkproposalnrshift(string shifttype, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+                    string sql = "SELECT * FROM schedule WHERE (shiftType='" + shifttype + "' AND date='" + date + "' AND statusOfShift <> 'Rejected' AND statusOfShift <> 'Cancelled' AND statusOfShift <> 'Proposed');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+
+
+        //Check the number of accepted shifts in a day for an employee
+        public int checkemployee(int employeeid, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
+
+                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
+
+        //update schedule status
+        public void changeschedulestatusbyid(int id, string status)
+        {
+            try
+            {
+                using (conn)
+                {
+                    string sql = "UPDATE schedule SET statusOfShift = @Status WHERE id = @Id";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@Status", status);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //check the shifts in one day
+        public int[] checkshiftsinday(string date)
+        {
+            int nrM = 0, nrA = 0, nrE = 0;
+            int[] shifts = new int[3];
+            try
+            {
+                using (conn)
+                {
+
+                    string sql = "SELECT shiftType FROM schedule WHERE (date='" + date + "' AND statusOfShift <> 'Rejected' AND statusOfShift <> 'Cancelled' AND statusOfShift <> 'Proposed');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        if (rdr[0].ToString() == "Morning")
+                        {
+                            nrM++;
+                        }
+                        if (rdr[0].ToString() == "Afternoon")
+                        {
+                            nrA++;
+                        }
+                        if (rdr[0].ToString() == "Evening")
+                        {
+                            nrE++;
+                        }
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //MessageBox.Show(nrM.ToString() + " - " + nrA.ToString() + " - " + nrE.ToString());
+            shifts[0] = nrM;
+            shifts[1] = nrA;
+            shifts[2] = nrE;
+            return shifts;
+        }
+
+        public List<Schedule> ReadProposalByDay(string date, string shifttype)
+        {
+            this.schedules = new List<Schedule>();
+            try
+            {
+                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed' AND shiftType='" + shifttype + "') ORDER BY id ASC;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Shift a = Shift.MORNING;
+                    if (dr[2].ToString() == "Morning")
+                    {
+                        a = Shift.MORNING;
+                    }
+                    else if (dr[2].ToString() == "Afternoon")
+                    {
+                        a = Shift.AFTERNOON;
+                    }
+                    else if (dr[2].ToString() == "Evening")
+                    {
+                        a = Shift.EVENING;
+                    }
+
+                    ShiftStatus b = ShiftStatus.PROPOSED;
+
+
+                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+                    schedules.Add(g);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return schedules;
+        }
+
+        public List<Schedule> ReadAllProposalByDay(string date)
+        {
+            this.schedules = new List<Schedule>();
+            try
+            {
+                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Shift a = Shift.MORNING;
+                    if (dr[2].ToString() == "Morning")
+                    {
+                        a = Shift.MORNING;
+                    }
+                    else if (dr[2].ToString() == "Afternoon")
+                    {
+                        a = Shift.AFTERNOON;
+                    }
+                    else if (dr[2].ToString() == "Evening")
+                    {
+                        a = Shift.EVENING;
+                    }
+
+                    ShiftStatus b = ShiftStatus.PROPOSED;
+
+
+                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+                    schedules.Add(g);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return schedules;
         }
     }
 }

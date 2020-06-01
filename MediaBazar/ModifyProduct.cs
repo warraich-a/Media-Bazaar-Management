@@ -26,13 +26,15 @@ namespace MediaBazar
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     string productNewName = tbProductName.Text;
                     double productNewPrice = Convert.ToDouble(tbProductPrice.Text);
-                    mediaBazaar.ModifyProduct(this.id, productNewName, productNewPrice);
+                    double sellingPrice = Convert.ToDouble(tbSellingPrice.Text);
+                    mediaBazaar.ModifyProduct(this.id, productNewName, productNewPrice, sellingPrice);
                     this.Close();
                     form.RefreshData();
                 }
@@ -53,9 +55,9 @@ namespace MediaBazar
             try
             {
                 Product foundProduct = mediaBazaar.ReturnExistingProduct(id); // to give the correct id through parameters
-                tbProductName.Text = foundProduct.ProductName;
+                tbProductName.Text = foundProduct.Name;
                 tbProductPrice.Text = foundProduct.Price.ToString();
-                
+                tbSellingPrice.Text = foundProduct.SellingPrice.ToString();
             }
             catch (Exception ex)
             {
@@ -67,5 +69,6 @@ namespace MediaBazar
         {
 
         }
+
     }
 }

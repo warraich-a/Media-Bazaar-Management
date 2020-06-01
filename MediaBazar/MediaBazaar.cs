@@ -15,6 +15,7 @@ namespace MediaBazar
 
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
+        List<Schedule> proposed = new List<Schedule>();
         // Person person = new Person();
         List<Department> departments = new List<Department>();
         List<Request> requests = new List<Request>();
@@ -213,7 +214,12 @@ namespace MediaBazar
 
             return departments;
         }
+        /* GET DEPARTMENTS */
+        public List<Department> GetAllDepartments()
+        {
+            return database.GetAllDepartments();
 
+        }
 
         // to add a person in a database
         public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
@@ -369,9 +375,9 @@ namespace MediaBazar
 
 
         // to add a new product in the system
-        public void AddProduct(int departmentId, string productName, double productPrice)
+        public void AddProduct(int departmentId, string productName, double productPrice, double sellingPrice)
         {
-            database.AddProduct(departmentId, productName, productPrice);
+            database.AddProduct(departmentId, productName, productPrice, sellingPrice);
         }
         //to get the products
         public List<Product> GetProducts()
@@ -380,9 +386,9 @@ namespace MediaBazar
         }
 
         //to modify the existing product
-        public void ModifyProduct(int id, string productName, double productPrice)
+        public void ModifyProduct(int id, string productName, double productPrice, double sellingPrice)
         {
-            database.ModifyProduct(id, productName, productPrice);
+            database.ModifyProduct(id, productName, productPrice, sellingPrice);
         }
         public void ModifyDepartment(int id, string name, int personId, int minEmp)
         {
@@ -560,6 +566,50 @@ namespace MediaBazar
             return p;
         }
 
+        public void ChangeScheduleStatusById(int id, string status)
+        {
+            database.changeschedulestatusbyid(id, status);
+        }
+        public int[] GetShiftsByDay(string date)
+        {
+            return database.checkshiftsinday(date);
+        }
+        public int CheckProposalNrShift(string shifttype, string date)
+        {
+            return database.checkproposalnrshift(shifttype, date);
+        }
+        public void ReadProposeByDay(string date, string shifttype)
+        {
+            this.proposed = database.ReadProposalByDay(date, shifttype);
+
+        }
+
+        public List<Schedule> GetLimSchedulesListByType(int limit)
+        {
+            int x = 0;
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                sch.Add(s);
+                x++;
+                if (x == limit) return sch;
+            }
+            return sch;
+        }
+        public void ReadAllProposeByDay(string date)
+        {
+            this.proposed = database.ReadAllProposalByDay(date);
+        }
+        public List<Schedule> GetProposeByDay(string date)
+        {
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                int x = s.EmployeeId;
+                if (database.checkemployee(x, date) == 0) sch.Add(s);
+            }
+            return sch;
+        }
     }
 
 
