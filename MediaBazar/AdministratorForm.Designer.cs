@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.label20 = new System.Windows.Forms.Label();
@@ -143,27 +143,31 @@
             this.label27 = new System.Windows.Forms.Label();
             this.pnlSchedule = new System.Windows.Forms.Panel();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbEmpShift = new System.Windows.Forms.ComboBox();
-            this.dtpTimeForShift = new System.Windows.Forms.DateTimePicker();
-            this.btnAssignShift = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnAcceptShift = new System.Windows.Forms.Button();
-            this.btnRejectShift = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnAutoAssign = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbEmpShift = new System.Windows.Forms.ComboBox();
+            this.btnAssignShift = new System.Windows.Forms.Button();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpTimeForShift = new System.Windows.Forms.DateTimePicker();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
@@ -178,6 +182,8 @@
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -191,7 +197,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(205, 31);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(1035, 684);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -1100,19 +1106,19 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
+            chartArea6.Area3DStyle.Enable3D = true;
+            chartArea6.Area3DStyle.IsClustered = true;
+            chartArea6.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend6);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(44, 188);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series6);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 351);
             this.chartEmployeeStatistics.TabIndex = 52;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -1356,19 +1362,16 @@
             // metroTabPage2
             // 
             this.metroTabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage2.Controls.Add(this.button2);
+            this.metroTabPage2.Controls.Add(this.lblTitle);
+            this.metroTabPage2.Controls.Add(this.panel2);
+            this.metroTabPage2.Controls.Add(this.panel1);
             this.metroTabPage2.Controls.Add(this.radioButton3);
             this.metroTabPage2.Controls.Add(this.radioButton2);
             this.metroTabPage2.Controls.Add(this.radioButton1);
-            this.metroTabPage2.Controls.Add(this.label18);
             this.metroTabPage2.Controls.Add(this.label5);
-            this.metroTabPage2.Controls.Add(this.cbEmpShift);
             this.metroTabPage2.Controls.Add(this.dtpTimeForShift);
-            this.metroTabPage2.Controls.Add(this.btnAssignShift);
-            this.metroTabPage2.Controls.Add(this.label6);
             this.metroTabPage2.Controls.Add(this.listView3);
-            this.metroTabPage2.Controls.Add(this.label16);
-            this.metroTabPage2.Controls.Add(this.btnAcceptShift);
-            this.metroTabPage2.Controls.Add(this.btnRejectShift);
             this.metroTabPage2.CustomBackground = true;
             this.metroTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
@@ -1378,168 +1381,6 @@
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Assign Shift";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(666, 386);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(84, 24);
-            this.radioButton3.TabIndex = 65;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Evening";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(666, 340);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(98, 24);
-            this.radioButton2.TabIndex = 64;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Afternoon";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(668, 298);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(84, 24);
-            this.radioButton1.TabIndex = 63;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Morning";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.Control;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(662, 47);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(119, 24);
-            this.label18.TabIndex = 62;
-            this.label18.Text = "Assign a shift";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(663, 191);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
-            this.label5.TabIndex = 61;
-            this.label5.Text = "Date";
-            // 
-            // cbEmpShift
-            // 
-            this.cbEmpShift.FormattingEnabled = true;
-            this.cbEmpShift.Location = new System.Drawing.Point(666, 129);
-            this.cbEmpShift.Name = "cbEmpShift";
-            this.cbEmpShift.Size = new System.Drawing.Size(305, 28);
-            this.cbEmpShift.TabIndex = 60;
-            // 
-            // dtpTimeForShift
-            // 
-            this.dtpTimeForShift.Location = new System.Drawing.Point(667, 230);
-            this.dtpTimeForShift.Name = "dtpTimeForShift";
-            this.dtpTimeForShift.Size = new System.Drawing.Size(304, 26);
-            this.dtpTimeForShift.TabIndex = 59;
-            // 
-            // btnAssignShift
-            // 
-            this.btnAssignShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnAssignShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssignShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssignShift.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAssignShift.Location = new System.Drawing.Point(667, 453);
-            this.btnAssignShift.Name = "btnAssignShift";
-            this.btnAssignShift.Size = new System.Drawing.Size(304, 32);
-            this.btnAssignShift.TabIndex = 55;
-            this.btnAssignShift.Text = "Assign";
-            this.btnAssignShift.UseVisualStyleBackColor = false;
-            this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click_1);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.Control;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(664, 91);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 20);
-            this.label6.TabIndex = 54;
-            this.label6.Text = "Name";
-            // 
-            // listView3
-            // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14});
-            this.listView3.GridLines = true;
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(40, 87);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(604, 398);
-            this.listView3.TabIndex = 53;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Name";
-            this.columnHeader12.Width = 200;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Day";
-            this.columnHeader13.Width = 200;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Shift";
-            this.columnHeader14.Width = 180;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.SystemColors.Control;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(37, 38);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(141, 24);
-            this.label16.TabIndex = 40;
-            this.label16.Text = "Proposed Shifts";
-            // 
-            // btnAcceptShift
-            // 
-            this.btnAcceptShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnAcceptShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcceptShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAcceptShift.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAcceptShift.Location = new System.Drawing.Point(240, 515);
-            this.btnAcceptShift.Name = "btnAcceptShift";
-            this.btnAcceptShift.Size = new System.Drawing.Size(145, 32);
-            this.btnAcceptShift.TabIndex = 37;
-            this.btnAcceptShift.Text = "Accept";
-            this.btnAcceptShift.UseVisualStyleBackColor = false;
-            // 
-            // btnRejectShift
-            // 
-            this.btnRejectShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnRejectShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRejectShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRejectShift.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRejectShift.Location = new System.Drawing.Point(43, 515);
-            this.btnRejectShift.Name = "btnRejectShift";
-            this.btnRejectShift.Size = new System.Drawing.Size(145, 32);
-            this.btnRejectShift.TabIndex = 36;
-            this.btnRejectShift.Text = "Reject";
-            this.btnRejectShift.UseVisualStyleBackColor = false;
             // 
             // btnLogout
             // 
@@ -1598,6 +1439,210 @@
             this.pictureBox5.TabIndex = 49;
             this.pictureBox5.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(218, 505);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 32);
+            this.button2.TabIndex = 83;
+            this.button2.Text = "Show all";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(9, 38);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(0, 23);
+            this.lblTitle.TabIndex = 77;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.btnAutoAssign);
+            this.panel2.Location = new System.Drawing.Point(844, 259);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(178, 216);
+            this.panel2.TabIndex = 82;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.Control;
+            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(6, 11);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(165, 23);
+            this.label16.TabIndex = 63;
+            this.label16.Text = "Auto assign shifts";
+            // 
+            // btnAutoAssign
+            // 
+            this.btnAutoAssign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnAutoAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoAssign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoAssign.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAutoAssign.Location = new System.Drawing.Point(13, 99);
+            this.btnAutoAssign.Name = "btnAutoAssign";
+            this.btnAutoAssign.Size = new System.Drawing.Size(150, 32);
+            this.btnAutoAssign.TabIndex = 63;
+            this.btnAutoAssign.Text = "AUTO-assign";
+            this.btnAutoAssign.UseVisualStyleBackColor = false;
+            this.btnAutoAssign.Click += new System.EventHandler(this.btnAutoAssign_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.cbEmpShift);
+            this.panel1.Controls.Add(this.btnAssignShift);
+            this.panel1.Location = new System.Drawing.Point(619, 259);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 216);
+            this.panel1.TabIndex = 81;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.SystemColors.Control;
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(37, 11);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(126, 23);
+            this.label18.TabIndex = 62;
+            this.label18.Text = "Assign a shift";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Control;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(4, 59);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "Name";
+            // 
+            // cbEmpShift
+            // 
+            this.cbEmpShift.FormattingEnabled = true;
+            this.cbEmpShift.Location = new System.Drawing.Point(2, 92);
+            this.cbEmpShift.Name = "cbEmpShift";
+            this.cbEmpShift.Size = new System.Drawing.Size(212, 28);
+            this.cbEmpShift.TabIndex = 60;
+            // 
+            // btnAssignShift
+            // 
+            this.btnAssignShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnAssignShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAssignShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssignShift.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAssignShift.Location = new System.Drawing.Point(26, 153);
+            this.btnAssignShift.Name = "btnAssignShift";
+            this.btnAssignShift.Size = new System.Drawing.Size(150, 32);
+            this.btnAssignShift.TabIndex = 55;
+            this.btnAssignShift.Text = "Assign";
+            this.btnAssignShift.UseVisualStyleBackColor = false;
+            this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(634, 211);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(84, 24);
+            this.radioButton3.TabIndex = 80;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Evening";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(635, 181);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(98, 24);
+            this.radioButton2.TabIndex = 79;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Afternoon";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(635, 151);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(84, 24);
+            this.radioButton1.TabIndex = 78;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Morning";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(631, 69);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.TabIndex = 76;
+            this.label5.Text = "Date";
+            // 
+            // dtpTimeForShift
+            // 
+            this.dtpTimeForShift.Location = new System.Drawing.Point(634, 107);
+            this.dtpTimeForShift.Name = "dtpTimeForShift";
+            this.dtpTimeForShift.Size = new System.Drawing.Size(304, 26);
+            this.dtpTimeForShift.TabIndex = 75;
+            this.dtpTimeForShift.ValueChanged += new System.EventHandler(this.dtpTimeForShift_ValueChanged);
+            // 
+            // listView3
+            // 
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader31});
+            this.listView3.GridLines = true;
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(9, 77);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(604, 398);
+            this.listView3.TabIndex = 74;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "ID";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Name";
+            this.columnHeader13.Width = 200;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Day";
+            this.columnHeader14.Width = 200;
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Shift";
+            this.columnHeader31.Width = 180;
+            // 
             // AdministratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1634,6 +1679,10 @@
             this.metroTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1646,26 +1695,10 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroTabPage metroTabPage4;
         private MetroFramework.Controls.MetroTabPage metroTabPage5;
-        private System.Windows.Forms.Button btnAcceptShift;
-        private System.Windows.Forms.Button btnRejectShift;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbEmpShift;
-        private System.Windows.Forms.DateTimePicker dtpTimeForShift;
-        private System.Windows.Forms.Button btnAssignShift;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnLoadChart;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEmployeeStatistics;
@@ -1773,5 +1806,25 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnAutoAssign;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbEmpShift;
+        private System.Windows.Forms.Button btnAssignShift;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dtpTimeForShift;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader31;
     }
 }

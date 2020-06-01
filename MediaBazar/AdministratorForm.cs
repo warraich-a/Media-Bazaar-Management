@@ -23,6 +23,7 @@ namespace MediaBazar
         MediaBazaar mediaBazaar = MediaBazaar.Instance;
         ListViewItem list;
         ListViewItem listOfProducts;
+        List<Schedule> schedules;
         public class ComboboxItem
         {
             public string Text { get; set; }
@@ -82,6 +83,29 @@ namespace MediaBazar
 
             // Generate departments in statistics
             GenerateDepartments();
+            // get schedules
+            schedules = new List<Schedule>();
+            mediaBazaar.ReadSchedule();
+            schedules = mediaBazaar.GetSchedulesList();
+
+            RefreshTable();
+        }
+
+        public void RefreshTable()
+        {
+            lblTitle.Text = "Proposed shifts";
+            listView3.Items.Clear();
+            foreach (Schedule s in schedules)
+            {
+                if (s.Status == ShiftStatus.PROPOSED)
+                {
+                    list = new ListViewItem(s.SheduleId.ToString(), 0);
+                    list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+                    list.SubItems.Add(s.DATETime.ToString("dd-MM-yyyy"));
+                    list.SubItems.Add(s.ShiftType.ToString());
+                    listView3.Items.Add(list);
+                }
+            }
         }
 
         public void RefreshData()
@@ -1240,6 +1264,160 @@ namespace MediaBazar
                     listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
                     listViewProducts.Items.Add(listOfProducts);
                 }
+            }
+        }
+
+        private void btnAssignShift_Click(object sender, EventArgs e)
+        {
+            bool writeindb = false;
+            int count = -1;
+            string shifttype = "";
+            int employeedId = -1;
+            DateTime date = DateTime.Today;
+            // MessageBox.Show((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+            Database_handler connection = new Database_handler();
+            try
+            {
+                string sql = "SELECT MAX(id) FROM schedule;";
+                Object result = connection.ExecuteScalar(sql);
+                if (result != null) { count = Convert.ToInt32(result) + 1; }
+                //MessageBox.Show(count.ToString());
+                if (cbEmpShift.SelectedItem != null)
+                {
+                    if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+                    {
+                        employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+                        date = dtpTimeForShift.Value.Date;
+                        if (radioButton1.Checked)
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
+                            shifttype = "Morning";
+                        }
+                        if (radioButton2.Checked)
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
+                            shifttype = "Afternoon";
+                        }
+                        if (radioButton3.Checked)
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
+                            shifttype = "Evening";
+                        }
+                        writeindb = true;
+                    }
+                    else MessageBox.Show("Please select a shift type!");
+                }
+                else MessageBox.Show("Please select an employee!");
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            if (writeindb)
+            {
+                DateTime dayonly = date.Date;
+                // checknrshift - check for less than 5 employees on one shift
+                // checknrperson - check for one employee shifts in one day
+                if ((connection.checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (connection.checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
+                {
+                    //MessageBox.Show($"{date.ToString("yyyy-MM-dd")}");
+                    string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES ('" + count + "','" + employeedId + "','" + shifttype + "','" + date.ToString("yyyy-MM-dd") + "','Assigned');";
+
+                    if (connection.ExecuteNonQuery(sql) >= 0) MessageBox.Show("Shift has been assigned!");
+                    else MessageBox.Show("Error Writing to database! Please contact Administrator!");
+                }
+                else MessageBox.Show("Shift is not possible due to a shift rule(s)!");
+            }
+        }
+
+        private void btnAutoAssign_Click(object sender, EventArgs e)
+        {
+            int NoOfDays = 30, Shift = 0, NoOfEmp, NoOfChanges = 0;
+            string[] shifttype = new string[3];
+            shifttype[0] = "Morning";
+            shifttype[1] = "Afternoon";
+            shifttype[2] = "Evening";
+            lblTitle.Text = "AutoAssigned shifts";
+            listView3.Items.Clear();
+            DateTime startday = dtpTimeForShift.Value;
+            if (startday.DayOfWeek.ToString() == "Saturday") startday = startday.AddDays(2);
+            else if (startday.DayOfWeek.ToString() == "Sunday") startday = startday.AddDays(1);
+            string date = startday.ToString("yyyy-MM-dd");
+            int nrM, nrA, nrE;
+            nrM = mediaBazaar.GetShiftsByDay(date)[0];
+            nrA = mediaBazaar.GetShiftsByDay(date)[1];
+            nrE = mediaBazaar.GetShiftsByDay(date)[2];
+            if ((nrM == 5) && (nrA == 5) && (nrE == 5)) MessageBox.Show("No shifts available for this day: " + date);
+            else
+            {
+                while (NoOfDays > 0)
+                {
+                    while (Shift < 3)
+                    {
+                        //test shift if full
+                        date = startday.ToString("yyyy-MM-dd");
+                        NoOfEmp = mediaBazaar.CheckProposalNrShift(shifttype[Shift], date);
+                        if (NoOfEmp < 5)
+                        {
+                            // get proposals
+                            mediaBazaar.ReadProposeByDay(date, shifttype[Shift]);
+                            foreach (Schedule s in mediaBazaar.GetLimSchedulesListByType(5 - NoOfEmp))
+                            {
+                                list = new ListViewItem(s.SheduleId.ToString(), 0);
+                                list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+                                list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
+                                list.SubItems.Add(shifttype[Shift]);
+                                listView3.Items.Add(list);
+
+                                //set auto-assigned status 
+                                mediaBazaar.ChangeScheduleStatusById(s.SheduleId, "AutoAssigned");
+                                NoOfChanges++;
+                            }
+                        }
+                        Shift++;
+                    }
+                    if (startday.DayOfWeek.ToString() == "Friday") { startday = startday.AddDays(3); NoOfDays -= 3; }
+                    else { startday = startday.AddDays(1); NoOfDays--; }
+                    Shift = 0;
+
+                }
+                MessageBox.Show("Total of schedules auto-assigned: " + NoOfChanges.ToString());
+            }
+            RefreshTable();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RefreshTable();
+            //btnAcceptShift.Enabled = true;
+            //btnRejectShift.Enabled = true;
+        }
+
+        private void dtpTimeForShift_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime startday = dtpTimeForShift.Value;
+            string date = startday.ToString("yyyy-MM-dd");
+            lblTitle.Text = "Proposed shifts on " + date;
+            listView3.Items.Clear();
+            //btnAcceptShift.Enabled = false;
+            //btnRejectShift.Enabled = false;
+            string[] shifttype = new string[3];
+            shifttype[0] = "Morning";
+            shifttype[1] = "Afternoon";
+            shifttype[2] = "Evening";
+            // show shifts on specific date
+            mediaBazaar.ReadAllProposeByDay(date);
+            foreach (Schedule s in mediaBazaar.GetProposeByDay(date))
+            {
+                list = new ListViewItem(s.SheduleId.ToString(), 0);
+                list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+                list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
+                list.SubItems.Add(s.ShiftType.ToString());
+                listView3.Items.Add(list);
             }
         }
     }
