@@ -576,7 +576,7 @@ namespace MediaBazar
             Person g = null;
             try
             {
-                string sql = "SELECT id, firstName, lastName, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE firstName = @name"; // Getting the person by name
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@name", givenName);
                 conn.Open();
@@ -584,20 +584,20 @@ namespace MediaBazar
                 while (dr.Read())
                 {
                     Roles r = Roles.Employee;
-                    if (dr[9].ToString() == "Administrator")
+                    if (dr[10].ToString() == "Administrator")
                     {
                         r = Roles.Administrator;
                     }
-                    else if (dr[9].ToString() == "Manager")
+                    else if (dr[10].ToString() == "Manager")
                     {
                         r = Roles.Manager;
                     }
-                    else if (dr[9].ToString() == "DepotWorker")
+                    else if (dr[10].ToString() == "DepotWorker")
                     {
                         r = Roles.DepotWorker;
                     }
 
-                    g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDateTime(dr[3]), dr[4].ToString(), Convert.ToInt32(dr[5]), dr[6].ToString(), dr[7].ToString(), Convert.ToDouble(dr[8]), r);
+                    g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                 }
                 return g;
             }
@@ -606,6 +606,7 @@ namespace MediaBazar
                 conn.Close();
             }
         }
+
 
         public List<Person> ReturnPeopleFromDB()
         {
