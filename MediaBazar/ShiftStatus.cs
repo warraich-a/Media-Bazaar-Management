@@ -8,6 +8,6 @@ namespace MediaBazar
 {
     public enum ShiftStatus
     {
-        ASSIGNED, PROPOSED, ACCEPTED, REJECTED, AUTOASSIGNED
+        ASSIGNED, PROPOSED, ACCEPTED, REJECTED
     }
 }
