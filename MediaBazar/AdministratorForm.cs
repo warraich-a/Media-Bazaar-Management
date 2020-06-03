@@ -66,6 +66,7 @@ namespace MediaBazar
                         ComboboxItem item = new ComboboxItem();
                         item.Text = rdr.GetString("firstName") + " " + rdr.GetString("lastName") + " - " + rdr.GetString("role");
                         item.Value = rdr.GetString("id");
+                        MessageBox.Show(item.ToString());
                         cbEmpShift.Items.Add(item);
                     }
                     rdr.Close();
@@ -94,6 +95,13 @@ namespace MediaBazar
         public void RefreshTable()
         {
             lblTitle.Text = "Proposed shifts";
+
+            if (listView3.Columns.Count < 4)
+            {
+                listView3.Columns.Add("Date", 150);
+                listView3.Columns.Add("Shift Type", 150);
+            }
+
             listView3.Items.Clear();
             foreach (Schedule s in schedules)
             {
@@ -1401,24 +1409,43 @@ namespace MediaBazar
         {
             DateTime startday = dtpTimeForShift.Value;
             string date = startday.ToString("yyyy-MM-dd");
-            lblTitle.Text = "Proposed shifts on " + date;
+            lblTitle.Text = "Available employees on " + date;
+
+            if (listView3.Columns.Count > 2)
+            {
+                listView3.Columns.RemoveAt(3);
+                listView3.Columns.RemoveAt(2);
+            }
+
+
             listView3.Items.Clear();
             //btnAcceptShift.Enabled = false;
             //btnRejectShift.Enabled = false;
-            string[] shifttype = new string[3];
-            shifttype[0] = "Morning";
-            shifttype[1] = "Afternoon";
-            shifttype[2] = "Evening";
+            //string[] shifttype = new string[3];
+            //shifttype[0] = "Morning";
+            //shifttype[1] = "Afternoon";
+            //shifttype[2] = "Evening";
             // show shifts on specific date
-            mediaBazaar.ReadAllProposeByDay(date);
-            foreach (Schedule s in mediaBazaar.GetProposeByDay(date))
+
+            List<Person> availablePeople = mediaBazaar.GetAvailablePeopleByDay(date);
+
+            //MessageBox.Show(availablePeople.Count.ToString());
+            foreach (Person p in availablePeople)
             {
-                list = new ListViewItem(s.SheduleId.ToString(), 0);
-                list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
-                list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
-                list.SubItems.Add(s.ShiftType.ToString());
+                list = new ListViewItem(Convert.ToString(p.Id));
+                list.SubItems.Add(p.FirstName + p.LastName);
                 listView3.Items.Add(list);
             }
+
+            //mediaBazaar.GetAvailablePeopleByDay(date);
+            //foreach (Schedule s in mediaBazaar.GetProposeByDay(date))
+            //{
+            //    list = new ListViewItem(s.SheduleId.ToString(), 0);
+            //    list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+            //    list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
+            //    list.SubItems.Add(s.ShiftType.ToString());
+            //    listView3.Items.Add(list);
+            //}
         }
     }
 }

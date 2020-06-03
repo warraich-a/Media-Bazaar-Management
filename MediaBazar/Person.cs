@@ -26,6 +26,12 @@ namespace MediaBazar
         {
 
         }
+        public Person(int givenId, string givenFirstName, string givenSecondName)
+        {
+            id = givenId;
+            FirstName = givenFirstName;
+            LastName = givenSecondName;
+        }
         public Person(int givenId, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole)
         {
             id = givenId;

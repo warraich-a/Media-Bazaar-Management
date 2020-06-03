@@ -596,20 +596,22 @@ namespace MediaBazar
             }
             return sch;
         }
-        public void ReadAllProposeByDay(string date)
+
+        public List<Person> GetAvailablePeopleByDay(string date)
         {
-            this.proposed = database.ReadAllProposalByDay(date);
+            List<Person> availablePeroplt = database.FindAvailablePeopleByDay(date);
+            return availablePeroplt;
         }
-        public List<Schedule> GetProposeByDay(string date)
-        {
-            List<Schedule> sch = new List<Schedule>();
-            foreach (Schedule s in proposed)
-            {
-                int x = s.EmployeeId;
-                if (database.checkemployee(x, date) == 0) sch.Add(s);
-            }
-            return sch;
-        }
+        //public List<Schedule> GetProposeByDay(string date)
+        //{
+        //    List<Schedule> sch = new List<Schedule>();
+        //    foreach (Schedule s in proposed)
+        //    {
+        //        int x = s.EmployeeId;
+        //        if (database.checkemployee(x, date) == 0) sch.Add(s);
+        //    }
+        //    return sch;
+        //}
     }
 
 

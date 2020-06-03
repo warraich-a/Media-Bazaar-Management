@@ -1819,38 +1819,38 @@ namespace MediaBazar
 
 
         //Check the number of accepted shifts in a day for an employee
-        public int checkemployee(int employeeid, string date)
-        {
-            int nr = 0;
-            try
-            {
-                using (conn)
-                {
+        //public int checkemployee(int employeeid, string date)
+        //{
+        //    int nr = 0;
+        //    try
+        //    {
+        //        using (conn)
+        //        {
 
-                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
+        //            string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
 
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            conn.Open();
 
-                    MySqlDataReader rdr = cmd.ExecuteReader();
+        //            MySqlDataReader rdr = cmd.ExecuteReader();
 
-                    while (rdr.Read())
-                    {
-                        nr++;
-                    }
-                    rdr.Close();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return nr;
-        }
+        //            while (rdr.Read())
+        //            {
+        //                nr++;
+        //            }
+        //            rdr.Close();
+        //        }
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    return nr;
+        //}
 
         //update schedule status
         public void changeschedulestatusbyid(int id, string status)
@@ -1969,45 +1969,94 @@ namespace MediaBazar
             return schedules;
         }
 
-        public List<Schedule> ReadAllProposalByDay(string date)
+
+        public List<Person> FindAvailablePeopleByDay(string date)
         {
-            this.schedules = new List<Schedule>();
+            List<Person> availablePeople = new List<Person>();
             try
             {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                conn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                using (conn)
                 {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
+                    // string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
 
-                    ShiftStatus b = ShiftStatus.PROPOSED;
+                    string sql = "SELECT id, firstName, lastName FROM person AS p " +
+                    "WHERE id NOT IN(SELECT per.id FROM person AS per " +
+                    "INNER JOIN schedule s ON s.employeeId = per.id " +
+                    "WHERE s.date = @date AND (s.statusOfShift = 'Assigned' " +
+                    "OR s.statusOfShift = 'Accepted' OR s.statusOfShift = 'Confirmed' " +
+                    "OR s.statusOfShift = 'Rejected' OR s.statusOfShift = 'AutoAssigned'))";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@date", date);
 
 
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    schedules.Add(g);
+                    conn.Open();
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        //Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+                        Person p = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString());
+                        availablePeople.Add(p);
+                    }
                 }
+                return availablePeople;
+
             }
-            finally
+            catch (MySqlException ex)
             {
-                conn.Close();
+                MessageBox.Show(ex.Message);
             }
-            return schedules;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
         }
+
+
+        //public List<Schedule> ReadAllProposalByDay(string date)
+        //{
+        //    this.schedules = new List<Schedule>();
+        //    try
+        //    {
+        //        string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
+        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+        //        conn.Open();
+        //        MySqlDataReader dr = cmd.ExecuteReader();
+
+        //        while (dr.Read())
+        //        {
+        //            Shift a = Shift.MORNING;
+        //            if (dr[2].ToString() == "Morning")
+        //            {
+        //                a = Shift.MORNING;
+        //            }
+        //            else if (dr[2].ToString() == "Afternoon")
+        //            {
+        //                a = Shift.AFTERNOON;
+        //            }
+        //            else if (dr[2].ToString() == "Evening")
+        //            {
+        //                a = Shift.EVENING;
+        //            }
+
+        //            ShiftStatus b = ShiftStatus.PROPOSED;
+
+
+        //            Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+        //            schedules.Add(g);
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
+        //    return schedules;
+        //}
     }
 }
