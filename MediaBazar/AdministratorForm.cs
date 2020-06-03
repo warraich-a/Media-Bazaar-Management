@@ -672,10 +672,14 @@ namespace MediaBazar
             ArrayList departments = mediaBazaar.GetDepartments();
 
             cbxDepartments.Items.Clear();
+            cbxDepartments.Items.Add("All");
             foreach (object[] department in departments)
             {
                 cbxDepartments.Items.Add(department[1]);
             }
+
+            cbxDepartments.SelectedIndex = 0;
+            cbxCategoryStatistics.SelectedIndex = 0;
         }
 
 

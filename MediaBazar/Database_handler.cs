@@ -840,11 +840,23 @@ namespace MediaBazar
 
                     using (conn)
                     {
-                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage* Count(s.date) *4 FROM(schedule s " +
-                            "INNER JOIN person p ON p.id = s.employeeId) " +
-                            "INNER JOIN department d ON d.id = p.department_id " +
-                            "WHERE date BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
-                            "GROUP BY s.employeeId";
+                        string sql;
+                        if (department == "All")
+                        {
+                             sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s " +
+                                "INNER JOIN person p ON p.id = s.employeeId " +
+                                "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                                "GROUP BY s.employeeId";
+                        }
+                        else
+                        {
+                             sql = "SELECT p.firstName, p.lastName, p.hourlyWage* Count(s.date) *4 FROM(schedule s " +
+                                "INNER JOIN person p ON p.id = s.employeeId) " +
+                                "INNER JOIN department d ON d.id = p.department_id " +
+                                "WHERE date BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
+                                "GROUP BY s.employeeId";
+                        }
+
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         conn.Open();
@@ -876,12 +888,22 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
-                            "INNER JOIN person p ON s.employeeId = p.id) " +
-                            "INNER JOIN department d ON d.id = p.department_id " +
-                            "WHERE (d.name = @department) AND " +
-                            "(date BETWEEN @dateFrom AND @dateTo) " +
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
                             "GROUP BY date, shiftType ORDER BY date;";
+                        }
+                        else
+                        {
+                            sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
+                           "INNER JOIN person p ON s.employeeId = p.id) " +
+                           "INNER JOIN department d ON d.id = p.department_id " +
+                           "WHERE (d.name = @department) AND " +
+                           "(date BETWEEN @dateFrom AND @dateTo) " +
+                           "GROUP BY date, shiftType ORDER BY date;";
+                        }
 
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -915,11 +937,22 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM (stock_request AS sr " +
-                                    "INNER JOIN product AS p ON p.productId = sr.productId) " +
-                                    "INNER JOIN department d ON d.id = p.departmentId " +
-                                    "WHERE sr.requestDate BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
-                                    "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr " +
+                                   "INNER JOIN product AS p ON p.productId = sr.productId " +
+                                   "WHERE requestDate BETWEEN @dateFrom AND @dateTo " +
+                                   "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        }
+                        else
+                        {
+                            sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM (stock_request AS sr " +
+                                   "INNER JOIN product AS p ON p.productId = sr.productId) " +
+                                   "INNER JOIN department d ON d.id = p.departmentId " +
+                                   "WHERE sr.requestDate BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
+                                   "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        }
 
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -960,9 +993,17 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT firstName, lastName, hourlyWage FROM person AS p " +
+                        string sql;
+                        if (department == "All")
+                        {
+                             sql = "SELECT firstName, lastName, hourlyWage FROM person";
+                        }
+                        else
+                        {
+                            sql = "SELECT firstName, lastName, hourlyWage FROM person AS p " +
                             "INNER JOIN department AS d ON d.id = p.department_id " +
                             "WHERE d.name = @department";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         // Parameters
@@ -994,12 +1035,22 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                           "FROM stock_request AS sr " +
+                           "GROUP BY YEAR(sr.requestDate)";
+                        }
+                        else
+                        {
+                            sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
                             "FROM (stock_request AS sr " +
                             "INNER JOIN product AS p ON p.productId = sr.productId) " +
                             "INNER JOIN department AS d ON d.id = p.departmentId " +
                             "WHERE d.name = @department " +
                             "GROUP BY YEAR(sr.requestDate)";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1030,11 +1081,24 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT year, SUM(totalProfit) FROM " +
-                            "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) * (p.selling_price - p.price) AS totalProfit " +
-                            "FROM(sale_history AS sh INNER JOIN product AS p ON p.productId = sh.productId) " +
-                            "INNER JOIN department AS d ON d.id = p.departmentId WHERE d.name = @department " +
-                            "GROUP BY YEAR(sh.date), p.productId) AS yearlyProfit GROUP BY year";
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT year, SUM(totalProfit) FROM " +
+                                   "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) *(p.selling_price - p.price) AS totalProfit  " +
+                                   "FROM (sale_history AS sh " +
+                                   "INNER JOIN product AS p ON p.productId = sh.productId) " +
+                                   "GROUP BY YEAR(sh.date), sh.productId) AS yearlyProfit GROUP BY year";
+                        }
+                        else
+                        {
+                            sql = "SELECT year, SUM(totalProfit) FROM " +
+                               "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) * (p.selling_price - p.price) AS totalProfit " +
+                               "FROM(sale_history AS sh " +
+                               "INNER JOIN product AS p ON p.productId = sh.productId) " +
+                               "INNER JOIN department AS d ON d.id = p.departmentId WHERE d.name = @department " +
+                               "GROUP BY YEAR(sh.date), p.productId) AS yearlyProfit GROUP BY year";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1099,12 +1163,24 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId " +
+                            "WHERE requestDate = @date " +
+                            "GROUP BY sr.productId ORDER BY totalQuantity";
+                        }
+                        else
+                        {
+                            sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
                             "FROM (stock_request AS sr " +
                             "INNER JOIN product AS p ON p.productId = sr.productId) " +
                             "INNER JOIN department AS d ON d.id = p.departmentId " +
                             "WHERE requestDate = @date AND d.name = @department " +
                             "GROUP BY sr.productId ORDER BY totalQuantity";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1156,10 +1232,20 @@ namespace MediaBazar
             {
                 using (conn)
                 {
-                    string sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
+                    string sql;
+                    if (department == "All")
+                    {
+                        sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
+                        $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
+                        $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}'";
+                    }
+                    else
+                    {
+                        sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
                         $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
                         $"INNER JOIN department AS d ON d.id = p.department_id " +
                         $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}' AND d.name = '{department}'";
+                    }
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
