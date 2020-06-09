@@ -1,13 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 using System.Net;
 using System.Net.Mail;
-using System.Collections;
 
 namespace MediaBazar
 {
@@ -19,6 +15,7 @@ namespace MediaBazar
 
         List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
+        List<Schedule> proposed = new List<Schedule>();
         // Person person = new Person();
         List<Department> departments = new List<Department>();
         List<Request> requests = new List<Request>();
@@ -35,6 +32,11 @@ namespace MediaBazar
         public string CurrentUser
         {
             get { return this.currentUser; }
+        }
+
+        public string CurrentUserDepartment
+        {
+            get; private set;
         }
 
         /* Reset code variables */
@@ -77,17 +79,18 @@ namespace MediaBazar
             if (areCredentialsCorrect)
             {
                 string name = GetUserName(email);
+                string department = GetUserDepartment(email);
 
-                SaveCurrentUser(name);
+                SaveCurrentUser(name, department);
             }
 
             return areCredentialsCorrect;
         }
 
-        private void SaveCurrentUser(string name)
+        private void SaveCurrentUser(string name, string department)
         {
             this.currentUser = name;
-            Console.WriteLine(name);
+            this.CurrentUserDepartment = department;
         }
 
         /* LOGOUT */
@@ -159,6 +162,14 @@ namespace MediaBazar
             return userName;
         }
 
+        /* Get user department */
+        public string GetUserDepartment(string email)
+        {
+            string department = database.GetUserDepartment(email);
+
+            return department;
+        }
+
         /* Check if user exists */
         public string DoesUserExist(string email)
         {
@@ -168,34 +179,47 @@ namespace MediaBazar
         }
 
         /* STATISTICS */
-        public ArrayList GetStatistics(string type)
+        public ArrayList GetStatistics(string type, string department)
         {
-            ArrayList statistics = database.GetStatistics(type);
+            ArrayList statistics = database.GetStatistics(type, department);
 
             return statistics;
         }
 
-        public ArrayList GetStatistics(string dateFrom, string type)
+        public ArrayList GetStatistics(string dateFrom, string type, string department)
         {
-            ArrayList statistics = database.GetStatistics(dateFrom, type);
+            ArrayList statistics = database.GetStatistics(dateFrom, type, department);
 
             return statistics;
         }
 
-        public ArrayList GetStatistics(string dateFrom, string dateTo, string type)
+        public ArrayList GetStatistics(string dateFrom, string dateTo, string type, string department)
         {
-            ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type);
+            ArrayList statistics = database.GetStatistics(dateFrom, dateTo, type, department);
 
             return statistics;
         }
 
         /* GET EMPLOYEE FOR SHIFT, STATISTICS */
-        public string GetEmployeesPerShift(DateTime date, string shiftType)
+        public string GetEmployeesPerShift(DateTime date, string shiftType, string department)
         {
-            string employees = database.GetEmployeesPerShift(date, shiftType);
+            string employees = database.GetEmployeesPerShift(date, shiftType, department);
             return employees;
         }
 
+        /* GET DEPARTMENTS */
+        public ArrayList GetDepartments()
+        {
+            ArrayList departments = database.GetDepartments();
+
+            return departments;
+        }
+        /* GET DEPARTMENTS */
+        public List<Department> GetAllDepartments()
+        {
+            return database.GetAllDepartments();
+
+        }
 
         // to add a person in a database
         public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
@@ -344,16 +368,16 @@ namespace MediaBazar
         }
 
         //to get the departments from the db
-        public List<string> GetDepartments()
-        {
-            return database.GetDepartments();
-        }
+        //public List<string> GetDepartments()
+        //{
+        //    return database.GetDepartments();
+        //}
 
 
         // to add a new product in the system
-        public void AddProduct(int departmentId, string productName, double productPrice)
+        public void AddProduct(int departmentId, string productName, double productPrice, double sellingPrice)
         {
-            database.AddProduct(departmentId, productName, productPrice);
+            database.AddProduct(departmentId, productName, productPrice, sellingPrice);
         }
         //to get the products
         public List<Product> GetProducts()
@@ -362,9 +386,9 @@ namespace MediaBazar
         }
 
         //to modify the existing product
-        public void ModifyProduct(int id, string productName, double productPrice)
+        public void ModifyProduct(int id, string productName, double productPrice, double sellingPrice)
         {
-            database.ModifyProduct(id, productName, productPrice);
+            database.ModifyProduct(id, productName, productPrice, sellingPrice);
         }
         public void ModifyDepartment(int id, string name, int personId, int minEmp)
         {
@@ -443,7 +467,7 @@ namespace MediaBazar
         }
         public string GetProductNameById(int id)
         {
-            
+
             string name = "";
             foreach (Product d in database.ReadAllProduct())
             {
@@ -502,9 +526,9 @@ namespace MediaBazar
         public List<Person> GetManagersList()
         {
             List<Person> managers = new List<Person>();
-            foreach(Person p in ReadPersons())
+            foreach (Person p in ReadPersons())
             {
-                if(p.Role == Roles.Manager)
+                if (p.Role == Roles.Manager)
                 {
                     managers.Add(p);
                 }
@@ -518,10 +542,10 @@ namespace MediaBazar
         public Product GetProductById(int id)
         {
             Product p = null;
-            
+
             foreach (Product product in database.ReadAllProduct())
             {
-                if(product.ProductId == id)
+                if (product.ProductId == id)
                 {
                     p = product;
                 }
@@ -542,6 +566,77 @@ namespace MediaBazar
             return p;
         }
 
+        public int GetCountOfEmpDep(int id)
+        {
+            int count = 0;
+            foreach (Person p in ReturnPeopleFromDB())
+            {
+                if (p.DepartmentId == id)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public string GetPeopleByDep(int id)
+        {
+            string count = "";
+            foreach (Person p in ReturnPeopleFromDB())
+            {
+                if (p.DepartmentId == id)
+                {
+                    count = $"{count}{p.GetFullName()} ({p.Role.ToString()})\n\r";
+                }
+            }
+            return count;
+        }
+
+        public void ChangeScheduleStatusById(int id, string status)
+        {
+            database.changeschedulestatusbyid(id, status);
+        }
+        public int[] GetShiftsByDay(string date)
+        {
+            return database.checkshiftsinday(date);
+        }
+        public int CheckProposalNrShift(string shifttype, string date)
+        {
+            return database.checkproposalnrshift(shifttype, date);
+        }
+        public void ReadProposeByDay(string date, string shifttype)
+        {
+            this.proposed = database.ReadProposalByDay(date, shifttype);
+
+        }
+
+        public List<Schedule> GetLimSchedulesListByType(int limit)
+        {
+            int x = 0;
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                sch.Add(s);
+                x++;
+                if (x == limit) return sch;
+            }
+            return sch;
+        }
+
+        public List<Person> GetAvailablePeopleByDay(string date)
+        {
+            List<Person> availablePeroplt = database.FindAvailablePeopleByDay(date);
+            return availablePeroplt;
+        }
+        //public List<Schedule> GetProposeByDay(string date)
+        //{
+        //    List<Schedule> sch = new List<Schedule>();
+        //    foreach (Schedule s in proposed)
+        //    {
+        //        int x = s.EmployeeId;
+        //        if (database.checkemployee(x, date) == 0) sch.Add(s);
+        //    }
+        //    return sch;
+        //}
     }
 
 

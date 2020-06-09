@@ -35,6 +35,17 @@ namespace MediaBazar
                 l.SubItems.Add(p.Quantity.ToString());
 
                 lvStock.Items.Add(l);
+                if (p.Quantity < 100)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+                    
+                }
+                if (p.Quantity == 0)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                    lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                }
+                
             }
 
             lvProductList.Items.Clear();
@@ -45,8 +56,10 @@ namespace MediaBazar
             {
                 ListViewItem l = new ListViewItem(p.ProductId.ToString());
                 l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
+                
                 l.SubItems.Add(p.ProductName);
                 l.SubItems.Add(p.Price.ToString());
+                
                 foreach (Stock s in mediaBazaar.GetStockList())
                 {
                     if (s.ProductId == p.ProductId)
@@ -58,7 +71,7 @@ namespace MediaBazar
 
                 lvProductList.Items.Add(l);
             }
-
+            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -164,7 +177,7 @@ namespace MediaBazar
 
         private void btnSellPrd_Click(object sender, EventArgs e)
         {
-            if(cbStockItm.SelectedIndex > -1)
+            if (cbStockItm.SelectedIndex > -1)
             {
                 if (!String.IsNullOrEmpty(tbAmountItems.Text))
                 {
@@ -183,7 +196,8 @@ namespace MediaBazar
                         stockQuantity -= Convert.ToInt32(tbAmountItems.Text);
                         mediaBazaar.SellStockItem(productId, stockQuantity, Convert.ToInt32(tbAmountItems.Text));
                         RefreshData();
-                    } else
+                    }
+                    else
                     {
                         MessageBox.Show("Amount cannot be bigger than quantity");
                     }
@@ -191,8 +205,6 @@ namespace MediaBazar
                 else MessageBox.Show("Choose an amount");
             }
             else MessageBox.Show("Select a product");
-
-
         }
     }
 }

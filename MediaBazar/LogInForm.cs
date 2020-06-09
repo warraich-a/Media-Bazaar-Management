@@ -26,7 +26,7 @@ namespace MediaBazar
             //a.Show();
 
 
-            // Get login details
+            //// Get login details
             string email = tbxEmail.Text;
             string password = tbxPassword.Text;
 

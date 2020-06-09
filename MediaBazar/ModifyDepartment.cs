@@ -24,11 +24,6 @@ namespace MediaBazar
             FoundDepartment(id);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnModifyProduct_Click(object sender, EventArgs e)
         {
             try
@@ -59,19 +54,24 @@ namespace MediaBazar
             {
                 Department dep = null;
                 mediaBazaar.ReadDepartment();
-                foreach(Department d in mediaBazaar.GetDepartmentsList())
+                foreach (Department d in mediaBazaar.GetDepartmentsList())
                 {
-                    if(id == d.Id)
+                    if (id == d.Id)
                     {
                         dep = d;
                     }
                 }
                 tbDName.Text = dep.Name;
                 tbMinEmp.Text = dep.MinEmp.ToString();
-                
+
                 foreach (Person p in mediaBazaar.GetManagersList())
                 {
-                    cbManager.Items.Add(p.GetFullName());
+
+                    if (p.DepartmentId == 0 || p.DepartmentId ==id)
+                    {
+
+                        cbManager.Items.Add(p.GetFullName());
+                    }
                 }
 
             }
@@ -79,6 +79,11 @@ namespace MediaBazar
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void cbManager_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
