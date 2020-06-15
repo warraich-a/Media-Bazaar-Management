@@ -142,6 +142,7 @@
             this.Controls.Add(this.lblRepeatNewPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Name = "ResetPasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "00";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
