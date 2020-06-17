@@ -559,7 +559,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartEmployeeStatistics.Series.Add(series1);
-            this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 370);
+            this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 438);
             this.chartEmployeeStatistics.TabIndex = 60;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
             // 
