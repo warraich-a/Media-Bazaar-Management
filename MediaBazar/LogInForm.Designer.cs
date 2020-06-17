@@ -82,6 +82,7 @@
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(226, 15);
             this.tbxEmail.TabIndex = 5;
+            this.tbxEmail.Text = "PamelaRosario@mediabazaar.com";
             // 
             // btnLogIn
             // 
@@ -148,6 +149,7 @@
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(226, 15);
             this.tbxPassword.TabIndex = 13;
+            this.tbxPassword.Text = "Duis";
             // 
             // LogInForm
             // 

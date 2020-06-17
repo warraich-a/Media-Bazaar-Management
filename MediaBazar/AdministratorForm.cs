@@ -365,6 +365,11 @@ namespace MediaBazar
             {
                 GenerateStatisticsNumberEmployeesPerDep(type, department);
             }
+            // Top Selling Products
+            else if(type == "Top Selling Products")
+            {
+                GenerateStatisticsTopSellingProducts(type, department);
+            }
         }
 
         /* GENERATE STATISTICS */
@@ -635,6 +640,43 @@ namespace MediaBazar
                 Refresh();
             }
         }
+
+        // Top Selling Products
+        private void GenerateStatisticsTopSellingProducts(string type, string department)
+        {
+            string dateFrom;
+            string dateTo;
+
+            // Select dates
+            dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
+            dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
+
+            // Series
+            chartEmployeeStatistics.Series.Add("FamousItems");
+
+
+            chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Pie;
+
+            // Title
+            chartEmployeeStatistics.Titles.Add($"Top Selling Products between {dateFrom} and {dateTo} in department '{department}'");
+
+
+            // Made it fit all data
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+            ArrayList statistics = mediaBazaar.GetStatistics(dateFrom, dateTo, type, department);
+
+            foreach (object[] statistic in statistics)
+            {
+                chartEmployeeStatistics.Series["FamousItems"].Points.AddXY(statistic[1].ToString(), statistic[2]);
+                chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
+                chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
+
+                // Displays one employee at a time
+                Refresh();
+            }
+        }
+
 
         /* CHOSEN STATISTICS */
         private void cbxCategoryStatistics_SelectedIndexChanged(object sender, EventArgs e)

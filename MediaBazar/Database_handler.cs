@@ -985,7 +985,58 @@ namespace MediaBazar
                     MessageBox.Show(ex.Message);
                 }
             }
+            //The items got sold the most(for a specific timeslot)
+            else if (type == "Top Selling Products")
+            {
+                try
+                {
+                    using (conn)
+                    {
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT sl.productId, p.productName, SUM(sl.quantity) AS totalQuantity FROM sale_history AS sl " +
+                                "INNER JOIN product AS p ON p.productId = sl.productId " +
+                                "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                                "GROUP BY sl.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        }
+                        else
+                        {
+                            sql = "SELECT sl.productId, p.productName, SUM(sl.quantity) AS totalQuantity FROM (sale_history AS sl " +
+                                "INNER JOIN product AS p ON p.productId = sl.productId) " +
+                                "INNER JOIN department d ON d.id = p.departmentId " +
+                                "WHERE date BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
+                                "GROUP BY sl.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        }
+
+                        // Create command object
+                        MySqlCommand cmd = new MySqlCommand(sql, conn);
+                        // Parameters
+
+                        cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
+                        cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                        cmd.Parameters.AddWithValue("@department", department);
+
+
+                        // Open db connection
+                        conn.Open();
+
+                        ArrayList statistics = GatherStatisticData(cmd);
+
+                        return statistics;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             return null;
+
         }
 
 
@@ -1212,6 +1263,8 @@ namespace MediaBazar
             }
             return null;
         }
+
+
 
         private ArrayList GatherStatisticData(MySqlCommand cmd)
         {
@@ -1579,6 +1632,14 @@ namespace MediaBazar
                         products.Add(g);
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             finally
             {

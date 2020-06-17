@@ -30,6 +30,11 @@
         {
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbAmountItems = new System.Windows.Forms.TextBox();
+            this.cbStockItm = new System.Windows.Forms.ComboBox();
+            this.btnSellPrd = new System.Windows.Forms.Button();
             this.lvStock = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,11 +56,6 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbAmountItems = new System.Windows.Forms.TextBox();
-            this.cbStockItm = new System.Windows.Forms.ComboBox();
-            this.btnSellPrd = new System.Windows.Forms.Button();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -97,6 +97,54 @@
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = " Stock";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(647, 257);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 20);
+            this.label2.TabIndex = 79;
+            this.label2.Text = "Choose an amount";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(647, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "Select a product";
+            // 
+            // tbAmountItems
+            // 
+            this.tbAmountItems.Location = new System.Drawing.Point(649, 290);
+            this.tbAmountItems.Name = "tbAmountItems";
+            this.tbAmountItems.Size = new System.Drawing.Size(316, 26);
+            this.tbAmountItems.TabIndex = 77;
+            // 
+            // cbStockItm
+            // 
+            this.cbStockItm.FormattingEnabled = true;
+            this.cbStockItm.Location = new System.Drawing.Point(649, 161);
+            this.cbStockItm.Name = "cbStockItm";
+            this.cbStockItm.Size = new System.Drawing.Size(316, 28);
+            this.cbStockItm.TabIndex = 76;
+            this.cbStockItm.Click += new System.EventHandler(this.cbStockItm_Click);
+            // 
+            // btnSellPrd
+            // 
+            this.btnSellPrd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnSellPrd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSellPrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSellPrd.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSellPrd.Location = new System.Drawing.Point(704, 412);
+            this.btnSellPrd.Name = "btnSellPrd";
+            this.btnSellPrd.Size = new System.Drawing.Size(193, 32);
+            this.btnSellPrd.TabIndex = 75;
+            this.btnSellPrd.Text = "Sell Product";
+            this.btnSellPrd.UseVisualStyleBackColor = false;
+            this.btnSellPrd.Click += new System.EventHandler(this.btnSellPrd_Click);
             // 
             // lvStock
             // 
@@ -292,54 +340,6 @@
             this.label19.TabIndex = 54;
             this.label19.Text = "Logged in as depot worker";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(647, 257);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 20);
-            this.label2.TabIndex = 79;
-            this.label2.Text = "Choose an amount";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(647, 113);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 20);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Select a product";
-            // 
-            // tbAmountItems
-            // 
-            this.tbAmountItems.Location = new System.Drawing.Point(649, 290);
-            this.tbAmountItems.Name = "tbAmountItems";
-            this.tbAmountItems.Size = new System.Drawing.Size(316, 26);
-            this.tbAmountItems.TabIndex = 77;
-            // 
-            // cbStockItm
-            // 
-            this.cbStockItm.FormattingEnabled = true;
-            this.cbStockItm.Location = new System.Drawing.Point(649, 161);
-            this.cbStockItm.Name = "cbStockItm";
-            this.cbStockItm.Size = new System.Drawing.Size(316, 28);
-            this.cbStockItm.TabIndex = 76;
-            this.cbStockItm.Click += new System.EventHandler(this.cbStockItm_Click);
-            // 
-            // btnSellPrd
-            // 
-            this.btnSellPrd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnSellPrd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSellPrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSellPrd.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSellPrd.Location = new System.Drawing.Point(704, 412);
-            this.btnSellPrd.Name = "btnSellPrd";
-            this.btnSellPrd.Size = new System.Drawing.Size(193, 32);
-            this.btnSellPrd.TabIndex = 75;
-            this.btnSellPrd.Text = "Sell Product";
-            this.btnSellPrd.UseVisualStyleBackColor = false;
-            this.btnSellPrd.Click += new System.EventHandler(this.btnSellPrd_Click);
-            // 
             // DepotWorkerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +353,7 @@
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.lblUsername);
             this.Name = "DepotWorkerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Depot Worker";
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
