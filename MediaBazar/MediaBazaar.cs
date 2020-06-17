@@ -242,7 +242,14 @@ namespace MediaBazar
         // to get the list of people from database
         public List<Person> ReturnPeopleFromDB()
         {
-            return database.ReturnPeopleFromDB();
+            people = database.ReturnPeopleFromDB();
+            return people;
+        }
+
+        public List<Person> GetPeople()
+        {
+
+            return people;
         }
 
         // to modify the data of an existing employee
