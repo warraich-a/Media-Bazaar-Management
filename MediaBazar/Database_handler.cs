@@ -492,7 +492,7 @@ namespace MediaBazar
             bool personExist = false;
             try
             {
-                foreach (Person item in people) // to check if the Person with the same name already exists
+                foreach (Person item in ReturnPeopleFromDB()) // to check if the Person with the same name already exists
                 {
                     if (item.FirstName + item.LastName == givenFirstName + givenSecondName)
                     {
@@ -610,7 +610,7 @@ namespace MediaBazar
 
         public List<Person> ReturnPeopleFromDB()
         {
-            people = new List<Person>();
+           List<Person> people = new List<Person>();
             try
             {
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
@@ -643,6 +643,11 @@ namespace MediaBazar
             }
             return people;
         }
+
+      /*  public List<Person> GetPeople()
+        {
+            return this.people;
+        }*/
         public List<Person> ReadPersons()
         {
             people = new List<Person>();
@@ -841,11 +846,23 @@ namespace MediaBazar
 
                     using (conn)
                     {
-                        string sql = "SELECT p.firstName, p.lastName, p.hourlyWage* Count(s.date) *4 FROM(schedule s " +
-                            "INNER JOIN person p ON p.id = s.employeeId) " +
-                            "INNER JOIN department d ON d.id = p.department_id " +
-                            "WHERE date BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
-                            "GROUP BY s.employeeId";
+                        string sql;
+                        if (department == "All")
+                        {
+                             sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s " +
+                                "INNER JOIN person p ON p.id = s.employeeId " +
+                                "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                                "GROUP BY s.employeeId";
+                        }
+                        else
+                        {
+                             sql = "SELECT p.firstName, p.lastName, p.hourlyWage* Count(s.date) *4 FROM(schedule s " +
+                                "INNER JOIN person p ON p.id = s.employeeId) " +
+                                "INNER JOIN department d ON d.id = p.department_id " +
+                                "WHERE date BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
+                                "GROUP BY s.employeeId";
+                        }
+
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         conn.Open();
@@ -877,12 +894,22 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
-                            "INNER JOIN person p ON s.employeeId = p.id) " +
-                            "INNER JOIN department d ON d.id = p.department_id " +
-                            "WHERE (d.name = @department) AND " +
-                            "(date BETWEEN @dateFrom AND @dateTo) " +
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
+                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
                             "GROUP BY date, shiftType ORDER BY date;";
+                        }
+                        else
+                        {
+                            sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
+                           "INNER JOIN person p ON s.employeeId = p.id) " +
+                           "INNER JOIN department d ON d.id = p.department_id " +
+                           "WHERE (d.name = @department) AND " +
+                           "(date BETWEEN @dateFrom AND @dateTo) " +
+                           "GROUP BY date, shiftType ORDER BY date;";
+                        }
 
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -916,11 +943,22 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM (stock_request AS sr " +
-                                    "INNER JOIN product AS p ON p.productId = sr.productId) " +
-                                    "INNER JOIN department d ON d.id = p.departmentId " +
-                                    "WHERE sr.requestDate BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
-                                    "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr " +
+                                   "INNER JOIN product AS p ON p.productId = sr.productId " +
+                                   "WHERE requestDate BETWEEN @dateFrom AND @dateTo " +
+                                   "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        }
+                        else
+                        {
+                            sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM (stock_request AS sr " +
+                                   "INNER JOIN product AS p ON p.productId = sr.productId) " +
+                                   "INNER JOIN department d ON d.id = p.departmentId " +
+                                   "WHERE sr.requestDate BETWEEN @dateFrom AND @dateTo AND d.name = @department " +
+                                   "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
+                        }
 
                         // Create command object
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -961,9 +999,17 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT firstName, lastName, hourlyWage FROM person AS p " +
+                        string sql;
+                        if (department == "All")
+                        {
+                             sql = "SELECT firstName, lastName, hourlyWage FROM person";
+                        }
+                        else
+                        {
+                            sql = "SELECT firstName, lastName, hourlyWage FROM person AS p " +
                             "INNER JOIN department AS d ON d.id = p.department_id " +
                             "WHERE d.name = @department";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
                         // Parameters
@@ -995,12 +1041,22 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
+                           "FROM stock_request AS sr " +
+                           "GROUP BY YEAR(sr.requestDate)";
+                        }
+                        else
+                        {
+                            sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
                             "FROM (stock_request AS sr " +
                             "INNER JOIN product AS p ON p.productId = sr.productId) " +
                             "INNER JOIN department AS d ON d.id = p.departmentId " +
                             "WHERE d.name = @department " +
                             "GROUP BY YEAR(sr.requestDate)";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1031,11 +1087,24 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT year, SUM(totalProfit) FROM " +
-                            "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) * (p.selling_price - p.price) AS totalProfit " +
-                            "FROM(sale_history AS sh INNER JOIN product AS p ON p.productId = sh.productId) " +
-                            "INNER JOIN department AS d ON d.id = p.departmentId WHERE d.name = @department " +
-                            "GROUP BY YEAR(sh.date), p.productId) AS yearlyProfit GROUP BY year";
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT year, SUM(totalProfit) FROM " +
+                                   "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) *(p.selling_price - p.price) AS totalProfit  " +
+                                   "FROM (sale_history AS sh " +
+                                   "INNER JOIN product AS p ON p.productId = sh.productId) " +
+                                   "GROUP BY YEAR(sh.date), sh.productId) AS yearlyProfit GROUP BY year";
+                        }
+                        else
+                        {
+                            sql = "SELECT year, SUM(totalProfit) FROM " +
+                               "(SELECT YEAR(sh.date) AS year, SUM(sh.quantity) * (p.selling_price - p.price) AS totalProfit " +
+                               "FROM(sale_history AS sh " +
+                               "INNER JOIN product AS p ON p.productId = sh.productId) " +
+                               "INNER JOIN department AS d ON d.id = p.departmentId WHERE d.name = @department " +
+                               "GROUP BY YEAR(sh.date), p.productId) AS yearlyProfit GROUP BY year";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1100,12 +1169,24 @@ namespace MediaBazar
                 {
                     using (conn)
                     {
-                        string sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
+                        string sql;
+                        if (department == "All")
+                        {
+                            sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
+                            "FROM stock_request AS sr " +
+                            "INNER JOIN product AS p ON p.productId = sr.productId " +
+                            "WHERE requestDate = @date " +
+                            "GROUP BY sr.productId ORDER BY totalQuantity";
+                        }
+                        else
+                        {
+                            sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
                             "FROM (stock_request AS sr " +
                             "INNER JOIN product AS p ON p.productId = sr.productId) " +
                             "INNER JOIN department AS d ON d.id = p.departmentId " +
                             "WHERE requestDate = @date AND d.name = @department " +
                             "GROUP BY sr.productId ORDER BY totalQuantity";
+                        }
 
                         MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1157,10 +1238,20 @@ namespace MediaBazar
             {
                 using (conn)
                 {
-                    string sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
+                    string sql;
+                    if (department == "All")
+                    {
+                        sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
+                        $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
+                        $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}'";
+                    }
+                    else
+                    {
+                        sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
                         $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
                         $"INNER JOIN department AS d ON d.id = p.department_id " +
                         $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}' AND d.name = '{department}'";
+                    }
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -1428,7 +1519,7 @@ namespace MediaBazar
             bool productExist = false;
             try
             {
-                foreach (Product item in GetProducts()) // to check if the Person with the same name already exists
+                foreach (Product item in products) // to check if the Person with the same name already exists
                 {
                     if (item.Name == name)
                     {
@@ -1820,38 +1911,38 @@ namespace MediaBazar
 
 
         //Check the number of accepted shifts in a day for an employee
-        public int checkemployee(int employeeid, string date)
-        {
-            int nr = 0;
-            try
-            {
-                using (conn)
-                {
+        //public int checkemployee(int employeeid, string date)
+        //{
+        //    int nr = 0;
+        //    try
+        //    {
+        //        using (conn)
+        //        {
 
-                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
+        //            string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
 
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            conn.Open();
 
-                    MySqlDataReader rdr = cmd.ExecuteReader();
+        //            MySqlDataReader rdr = cmd.ExecuteReader();
 
-                    while (rdr.Read())
-                    {
-                        nr++;
-                    }
-                    rdr.Close();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return nr;
-        }
+        //            while (rdr.Read())
+        //            {
+        //                nr++;
+        //            }
+        //            rdr.Close();
+        //        }
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    return nr;
+        //}
 
         //update schedule status
         public void changeschedulestatusbyid(int id, string status)
@@ -1970,45 +2061,94 @@ namespace MediaBazar
             return schedules;
         }
 
-        public List<Schedule> ReadAllProposalByDay(string date)
+
+        public List<Person> FindAvailablePeopleByDay(string date)
         {
-            this.schedules = new List<Schedule>();
+            List<Person> availablePeople = new List<Person>();
             try
             {
-                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                conn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                using (conn)
                 {
-                    Shift a = Shift.MORNING;
-                    if (dr[2].ToString() == "Morning")
-                    {
-                        a = Shift.MORNING;
-                    }
-                    else if (dr[2].ToString() == "Afternoon")
-                    {
-                        a = Shift.AFTERNOON;
-                    }
-                    else if (dr[2].ToString() == "Evening")
-                    {
-                        a = Shift.EVENING;
-                    }
+                    // string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
 
-                    ShiftStatus b = ShiftStatus.PROPOSED;
+                    string sql = "SELECT id, firstName, lastName FROM person AS p " +
+                    "WHERE id NOT IN(SELECT per.id FROM person AS per " +
+                    "INNER JOIN schedule s ON s.employeeId = per.id " +
+                    "WHERE s.date = @date AND (s.statusOfShift = 'Assigned' " +
+                    "OR s.statusOfShift = 'Accepted' OR s.statusOfShift = 'Confirmed' " +
+                    "OR s.statusOfShift = 'Rejected' OR s.statusOfShift = 'AutoAssigned'))";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@date", date);
 
 
-                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-                    schedules.Add(g);
+                    conn.Open();
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        //Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+                        Person p = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString());
+                        availablePeople.Add(p);
+                    }
                 }
+                return availablePeople;
+
             }
-            finally
+            catch (MySqlException ex)
             {
-                conn.Close();
+                MessageBox.Show(ex.Message);
             }
-            return schedules;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
         }
+
+
+        //public List<Schedule> ReadAllProposalByDay(string date)
+        //{
+        //    this.schedules = new List<Schedule>();
+        //    try
+        //    {
+        //        string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
+        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+        //        conn.Open();
+        //        MySqlDataReader dr = cmd.ExecuteReader();
+
+        //        while (dr.Read())
+        //        {
+        //            Shift a = Shift.MORNING;
+        //            if (dr[2].ToString() == "Morning")
+        //            {
+        //                a = Shift.MORNING;
+        //            }
+        //            else if (dr[2].ToString() == "Afternoon")
+        //            {
+        //                a = Shift.AFTERNOON;
+        //            }
+        //            else if (dr[2].ToString() == "Evening")
+        //            {
+        //                a = Shift.EVENING;
+        //            }
+
+        //            ShiftStatus b = ShiftStatus.PROPOSED;
+
+
+        //            Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+        //            schedules.Add(g);
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
+        //    return schedules;
+        //}
     }
 }

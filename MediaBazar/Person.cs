@@ -19,8 +19,6 @@ namespace MediaBazar
         protected string zipcode;
         protected string city;
         protected double hourlyWage;
-        
-
         protected Roles role;
         protected int departmentId;
 
@@ -28,7 +26,13 @@ namespace MediaBazar
         {
 
         }
-        public Person(int givenId, string givenFirstName, string givenSecondName, int givenDepartmentId, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole)
+        public Person(int givenId, string givenFirstName, string givenSecondName)
+        {
+            id = givenId;
+            FirstName = givenFirstName;
+            LastName = givenSecondName;
+        }
+        public Person(int givenId, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole)
         {
             id = givenId;
             FirstName = givenFirstName;
@@ -41,14 +45,13 @@ namespace MediaBazar
             hourlyWage = givenHourlyWage;
             City = givenCity;
             role = givenRole;
-            departmentId = givenDepartmentId;
         }
-        public Person(int givenId, string givenFirstName, string givenSecondName, int givenDId, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole, int givenDepartmentId)
+        public Person(int givenId, string givenFirstName, string givenSecondName, int givenDId, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, Roles givenRole)
         {
             id = givenId;
             FirstName = givenFirstName;
             LastName = givenSecondName;
-            DepartmentId = givenDepartmentId;
+            DepartmentId = givenDId;
             Email(givenFirstName, givenSecondName); // creating an email
             dateOfBirth = givenDOB;
             StreetName = givenStreetName;
@@ -79,7 +82,6 @@ namespace MediaBazar
 
         //id
         public int Id { get { return this.id; } }
-
         //second name
         public string LastName
         {

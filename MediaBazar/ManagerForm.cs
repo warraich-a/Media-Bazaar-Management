@@ -44,6 +44,9 @@ namespace MediaBazar
 
             RefreshData();
 
+            // Select first category statistic
+            cbxCategoryStatistics.SelectedIndex = 0;
+
         }
 
         private void label21_Click(object sender, EventArgs e)

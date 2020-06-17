@@ -113,7 +113,7 @@
             // 
             this.pictureBox2.Image = global::MediaBazar.Properties.Resources.logo1;
             this.pictureBox2.Location = new System.Drawing.Point(-2, -1);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(392, 262);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
