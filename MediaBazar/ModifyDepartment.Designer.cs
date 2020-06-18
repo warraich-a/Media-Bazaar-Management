@@ -116,6 +116,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModifyProduct);
             this.Name = "ModifyDepartment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModifyDepartment";
             this.ResumeLayout(false);
             this.PerformLayout();

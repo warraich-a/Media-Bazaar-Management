@@ -22,8 +22,8 @@ namespace MediaBazar
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            //AdministratorForm a = new AdministratorForm();
-            //a.Show();
+            AdministratorForm a = new AdministratorForm();
+            a.Show();
 
 
             //// Get login details
@@ -46,11 +46,10 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
+                        this.Hide();
                         ManagerForm managerForm = new ManagerForm();
 
                         managerForm.ShowDialog();
-
-                        this.Hide();
                         this.Close();
                     }
                     else
@@ -62,10 +61,10 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
+                        this.Hide();
                         AdministratorForm adminForm = new AdministratorForm();
 
                         adminForm.ShowDialog();
-                        this.Hide();
                         this.Close();
                     }
                     else
@@ -77,10 +76,10 @@ namespace MediaBazar
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
                     {
+                        this.Hide();
                         DepotWorkerForm depotWorkerForm = new DepotWorkerForm();
 
                         depotWorkerForm.ShowDialog();
-                        this.Hide();
                         this.Close();
                     }
                     else
@@ -97,11 +96,13 @@ namespace MediaBazar
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
+            this.Hide();
+
             ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
 
-            forgetPasswordForm.Show();
+            forgetPasswordForm.ShowDialog();
 
-            this.Hide();
+            this.Close();
         }
     }
 }

@@ -242,7 +242,14 @@ namespace MediaBazar
         // to get the list of people from database
         public List<Person> ReturnPeopleFromDB()
         {
-            return database.ReturnPeopleFromDB();
+            people = database.ReturnPeopleFromDB();
+            return people;
+        }
+
+        public List<Person> GetPeople()
+        {
+
+            return people;
         }
 
         // to modify the data of an existing employee
@@ -596,20 +603,22 @@ namespace MediaBazar
             }
             return sch;
         }
-        public void ReadAllProposeByDay(string date)
+
+        public List<Person> GetAvailablePeopleByDay(string date)
         {
-            this.proposed = database.ReadAllProposalByDay(date);
+            List<Person> availablePeroplt = database.FindAvailablePeopleByDay(date);
+            return availablePeroplt;
         }
-        public List<Schedule> GetProposeByDay(string date)
-        {
-            List<Schedule> sch = new List<Schedule>();
-            foreach (Schedule s in proposed)
-            {
-                int x = s.EmployeeId;
-                if (database.checkemployee(x, date) == 0) sch.Add(s);
-            }
-            return sch;
-        }
+        //public List<Schedule> GetProposeByDay(string date)
+        //{
+        //    List<Schedule> sch = new List<Schedule>();
+        //    foreach (Schedule s in proposed)
+        //    {
+        //        int x = s.EmployeeId;
+        //        if (database.checkemployee(x, date) == 0) sch.Add(s);
+        //    }
+        //    return sch;
+        //}
     }
 
 

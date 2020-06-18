@@ -82,16 +82,17 @@
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(226, 15);
             this.tbxEmail.TabIndex = 5;
+            this.tbxEmail.Text = "PamelaRosario@mediabazaar.com";
             // 
             // btnLogIn
             // 
             this.btnLogIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogIn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogIn.ForeColor = System.Drawing.SystemColors.Control;
             this.btnLogIn.Location = new System.Drawing.Point(81, 468);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(204, 32);
+            this.btnLogIn.Size = new System.Drawing.Size(204, 38);
             this.btnLogIn.TabIndex = 10;
             this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = false;
@@ -148,6 +149,7 @@
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(226, 15);
             this.tbxPassword.TabIndex = 13;
+            this.tbxPassword.Text = "Duis";
             // 
             // LogInForm
             // 
