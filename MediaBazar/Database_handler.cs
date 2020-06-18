@@ -492,7 +492,7 @@ namespace MediaBazar
             bool personExist = false;
             try
             {
-                foreach (Person item in people) // to check if the Person with the same name already exists
+                foreach (Person item in ReturnPeopleFromDB()) // to check if the Person with the same name already exists
                 {
                     if (item.FirstName + item.LastName == givenFirstName + givenSecondName)
                     {
@@ -609,7 +609,7 @@ namespace MediaBazar
 
         public List<Person> ReturnPeopleFromDB()
         {
-            people = new List<Person>();
+           List<Person> people = new List<Person>();
             try
             {
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
@@ -642,6 +642,11 @@ namespace MediaBazar
             }
             return people;
         }
+
+      /*  public List<Person> GetPeople()
+        {
+            return this.people;
+        }*/
         public List<Person> ReadPersons()
         {
             people = new List<Person>();
@@ -1566,7 +1571,7 @@ namespace MediaBazar
             bool productExist = false;
             try
             {
-                foreach (Product item in GetProducts()) // to check if the Person with the same name already exists
+                foreach (Product item in products) // to check if the Person with the same name already exists
                 {
                     if (item.Name == name)
                     {

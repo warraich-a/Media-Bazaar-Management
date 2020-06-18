@@ -43,6 +43,8 @@ namespace MediaBazar
 
             RefreshData();
             Departments();
+            GetProducts();
+            AddEmployeesToList();
 
 
             // Add user name
@@ -66,7 +68,7 @@ namespace MediaBazar
                         ComboboxItem item = new ComboboxItem();
                         item.Text = rdr.GetString("firstName") + " " + rdr.GetString("lastName") + " - " + rdr.GetString("role");
                         item.Value = rdr.GetString("id");
-                        MessageBox.Show(item.ToString());
+                       // MessageBox.Show(item.ToString());
                         cbEmpShift.Items.Add(item);
                     }
                     rdr.Close();
@@ -118,23 +120,6 @@ namespace MediaBazar
 
         public void RefreshData()
         {
-            listView1.Items.Clear();
-            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
-            {
-                list = new ListViewItem(Convert.ToString(item.Id));
-                list.SubItems.Add(item.FirstName);
-                list.SubItems.Add(item.LastName);
-                list.SubItems.Add(item.GetEmail);
-                list.SubItems.Add(Convert.ToString(item.DateOfBirth));
-                list.SubItems.Add(item.StreetName);
-                list.SubItems.Add(Convert.ToString(item.HouseNr));
-                list.SubItems.Add(item.Zipcode);
-                list.SubItems.Add(item.City);
-                list.SubItems.Add(Convert.ToString(item.HourlyWage));
-                list.SubItems.Add(Convert.ToString(item.Role));
-                listView1.Items.Add(list);
-            }
-
             mediaBazaar.ReadStocks();
             mediaBazaar.ReadProducts();
             lvStock.Items.Clear();
@@ -147,22 +132,7 @@ namespace MediaBazar
                 lvStock.Items.Add(l);
             }
 
-            listViewProducts.Items.Clear();
-            foreach (Product p in mediaBazaar.GetProducts())
-            {
-                listOfProducts = new ListViewItem(p.ProductId.ToString());
-                foreach (Department item in mediaBazaar.GetAllDepartments())
-                {
-                    if (p.DapartmentId == item.Id)
-                    {
-                        listOfProducts.SubItems.Add(Convert.ToString(item.Name));
-                    }
-                }
-                listOfProducts.SubItems.Add(p.Name);
-                listOfProducts.SubItems.Add(Convert.ToString(p.Price));
-                listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
-                listViewProducts.Items.Add(listOfProducts);
-            }
+           
             mediaBazaar.ReadRequests();
             lvRequests.Items.Clear();
             foreach (Request item in mediaBazaar.GetRequestsList())
@@ -191,6 +161,8 @@ namespace MediaBazar
             cmbDepartmentStack.Items.Clear();
             cmbDepartment.Items.Clear();
             cmbSearchByDepartmentProduct.Items.Clear();
+
+           
             foreach (Department d in mediaBazaar.GetAllDepartments())
             {
                 cmbDepartmentStack.Items.Add(d.Name);
@@ -212,6 +184,47 @@ namespace MediaBazar
                 {*/
 
                 //}
+            }
+            cmbDepartment.Items.Add("All");
+            cmbSearchByDepartmentProduct.Items.Add("All");
+        }
+        public void GetProducts()
+        {
+            listViewProducts.Items.Clear();
+            foreach (Product p in mediaBazaar.GetProducts())
+            {
+                listOfProducts = new ListViewItem(p.ProductId.ToString());
+                foreach (Department item in mediaBazaar.GetAllDepartments())
+                {
+                    if (p.DapartmentId == item.Id)
+                    {
+                        listOfProducts.SubItems.Add(Convert.ToString(item.Name));
+                    }
+                }
+                listOfProducts.SubItems.Add(p.Name);
+                listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
+                listViewProducts.Items.Add(listOfProducts);
+            }
+        }
+
+        public void AddEmployeesToList()
+        {
+            listView1.Items.Clear();
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+            {
+                list = new ListViewItem(Convert.ToString(item.Id));
+                list.SubItems.Add(item.FirstName);
+                list.SubItems.Add(item.LastName);
+                list.SubItems.Add(item.GetEmail);
+                list.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                list.SubItems.Add(item.StreetName);
+                list.SubItems.Add(Convert.ToString(item.HouseNr));
+                list.SubItems.Add(item.Zipcode);
+                list.SubItems.Add(item.City);
+                list.SubItems.Add(Convert.ToString(item.HourlyWage));
+                list.SubItems.Add(Convert.ToString(item.Role));
+                listView1.Items.Add(list);
             }
         }
         // To remove an employee from the system
@@ -1060,7 +1073,7 @@ namespace MediaBazar
                     if (MessageBox.Show("Are you very rich????", "Remove Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
-                        RefreshData();
+                        GetProducts();
                         tbProductName.Text = "";
                         tbProductPrice.Text = "";
                         tbSellingPrice.Text = "";
@@ -1070,7 +1083,7 @@ namespace MediaBazar
                 else
                 {
                     mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
-                    RefreshData();
+                    GetProducts();
                     tbProductName.Text = "";
                     tbProductPrice.Text = "";
                     tbSellingPrice.Text = "";
@@ -1131,7 +1144,7 @@ namespace MediaBazar
         {
             List<ListViewItem> items = new List<ListViewItem>();
             string productName = tbProductToSearch.Text;
-            RefreshData();
+            GetProducts();
             for (int i = 0; i < listViewProducts.Items.Count; i++)
             {
                 if (listViewProducts.Items[i].SubItems[2].Text.Contains(productName.ToLower()) || listViewProducts.Items[i].SubItems[2].Text.Contains(productName.ToUpper()))
@@ -1147,7 +1160,7 @@ namespace MediaBazar
 
             if (tbProductToSearch.Text == "")
             {
-                RefreshData();
+                GetProducts();
             }
         }
 
@@ -1275,8 +1288,9 @@ namespace MediaBazar
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = cmbDepartment.SelectedIndex + 1;
+
             listView1.Items.Clear();
-            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+            foreach (Person item in mediaBazaar.GetPeople())
             {
                 if (item.DepartmentId == departmentId)
                 {
@@ -1294,12 +1308,16 @@ namespace MediaBazar
                     listView1.Items.Add(list);
                 }
             }
+            if(cmbDepartment.Text == "All")
+            {
+                AddEmployeesToList();
+            }
         }
 
         private void cmbSearchByDepartmentProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = cmbSearchByDepartmentProduct.SelectedIndex + 1;
-            listViewProducts.Items.Clear();
+      
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
             {
@@ -1318,6 +1336,10 @@ namespace MediaBazar
                     listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
                     listViewProducts.Items.Add(listOfProducts);
                 }
+            }
+            if(cmbSearchByDepartmentProduct.Text == "All")
+            {
+                GetProducts();
             }
         }
 
