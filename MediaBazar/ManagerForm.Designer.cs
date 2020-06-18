@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mtbManager = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.LV2 = new System.Windows.Forms.ListView();
@@ -545,20 +545,20 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
+            chartArea4.Area3DStyle.Enable3D = true;
+            chartArea4.Area3DStyle.IsClustered = true;
+            chartArea4.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea4.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend4);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(54, 163);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series4);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 438);
             this.chartEmployeeStatistics.TabIndex = 60;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -581,7 +581,7 @@
             // 
             this.btnLoadChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnLoadChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadChart.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadChart.ForeColor = System.Drawing.SystemColors.Control;
             this.btnLoadChart.Location = new System.Drawing.Point(739, 60);
             this.btnLoadChart.Name = "btnLoadChart";
@@ -604,6 +604,7 @@
             // 
             // cbxCategoryStatistics
             // 
+            this.cbxCategoryStatistics.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoryStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxCategoryStatistics.FormattingEnabled = true;
             this.cbxCategoryStatistics.Items.AddRange(new object[] {
@@ -821,11 +822,11 @@
             // 
             this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogout.Location = new System.Drawing.Point(874, 37);
+            this.btnLogout.Location = new System.Drawing.Point(856, 35);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(145, 36);
+            this.btnLogout.Size = new System.Drawing.Size(145, 50);
             this.btnLogout.TabIndex = 44;
             this.btnLogout.Text = "Log out";
             this.btnLogout.UseVisualStyleBackColor = false;

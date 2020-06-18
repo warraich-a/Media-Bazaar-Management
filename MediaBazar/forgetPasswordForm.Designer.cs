@@ -46,11 +46,11 @@
             // 
             this.btnSendCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnSendCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendCode.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSendCode.Location = new System.Drawing.Point(189, 376);
+            this.btnSendCode.Location = new System.Drawing.Point(168, 376);
             this.btnSendCode.Name = "btnSendCode";
-            this.btnSendCode.Size = new System.Drawing.Size(103, 32);
+            this.btnSendCode.Size = new System.Drawing.Size(124, 32);
             this.btnSendCode.TabIndex = 20;
             this.btnSendCode.Text = "Send code";
             this.btnSendCode.UseVisualStyleBackColor = false;
@@ -121,11 +121,11 @@
             // 
             this.btnVerifyCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnVerifyCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerifyCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerifyCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerifyCode.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnVerifyCode.Location = new System.Drawing.Point(189, 495);
+            this.btnVerifyCode.Location = new System.Drawing.Point(168, 495);
             this.btnVerifyCode.Name = "btnVerifyCode";
-            this.btnVerifyCode.Size = new System.Drawing.Size(107, 32);
+            this.btnVerifyCode.Size = new System.Drawing.Size(128, 32);
             this.btnVerifyCode.TabIndex = 18;
             this.btnVerifyCode.Text = "Verify code";
             this.btnVerifyCode.UseVisualStyleBackColor = false;
