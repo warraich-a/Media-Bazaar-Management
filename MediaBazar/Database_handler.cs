@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data;
 using MySql.Data.MySqlClient;
-using System.Net;
-using System.Net.Mail;
 using System.Collections;
 using System.Windows.Forms;
 using System.Data;
@@ -15,7 +9,6 @@ namespace MediaBazar
 {
     class Database_handler
     {
-
         string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
         MySqlConnection conn;
         List<Schedule> schedules = new List<Schedule>();
@@ -25,9 +18,6 @@ namespace MediaBazar
         List<Product> products;
         List<Department> newDepartments = new List<Department>();
         List<Department> Departments;
-
-
-
         List<Request> requests = new List<Request>();
         List<Stock> stocks = new List<Stock>();
 
@@ -841,6 +831,7 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                              sql = "SELECT p.firstName, p.lastName, p.hourlyWage * Count(s.date) * 4 FROM schedule s " +
@@ -848,6 +839,7 @@ namespace MediaBazar
                                 "WHERE date BETWEEN @dateFrom AND @dateTo " +
                                 "GROUP BY s.employeeId";
                         }
+                        // A specific department
                         else
                         {
                              sql = "SELECT p.firstName, p.lastName, p.hourlyWage* Count(s.date) *4 FROM(schedule s " +
@@ -889,12 +881,14 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                             sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
                             "WHERE date BETWEEN @dateFrom AND @dateTo " +
                             "GROUP BY date, shiftType ORDER BY date;";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
@@ -938,6 +932,7 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                             sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM stock_request AS sr " +
@@ -945,6 +940,7 @@ namespace MediaBazar
                                    "WHERE requestDate BETWEEN @dateFrom AND @dateTo " +
                                    "GROUP BY sr.productId ORDER BY totalQuantity DESC LIMIT 5";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT sr.productId, p.productName, SUM(sr.quantity) AS totalQuantity FROM (stock_request AS sr " +
@@ -988,6 +984,7 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                             sql = "SELECT sl.productId, p.productName, SUM(sl.quantity) AS totalQuantity FROM sale_history AS sl " +
@@ -995,6 +992,7 @@ namespace MediaBazar
                                 "WHERE date BETWEEN @dateFrom AND @dateTo " +
                                 "GROUP BY sl.productId ORDER BY totalQuantity DESC LIMIT 5";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT sl.productId, p.productName, SUM(sl.quantity) AS totalQuantity FROM (sale_history AS sl " +
@@ -1045,10 +1043,12 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                              sql = "SELECT firstName, lastName, hourlyWage FROM person";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT firstName, lastName, hourlyWage FROM person AS p " +
@@ -1087,12 +1087,14 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                             sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
                            "FROM stock_request AS sr " +
                            "GROUP BY YEAR(sr.requestDate)";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT YEAR(sr.requestDate), SUM(sr.quantity) AS totalQuantity " +
@@ -1133,6 +1135,7 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                             sql = "SELECT year, SUM(totalProfit) FROM " +
@@ -1141,6 +1144,7 @@ namespace MediaBazar
                                    "INNER JOIN product AS p ON p.productId = sh.productId) " +
                                    "GROUP BY YEAR(sh.date), sh.productId) AS yearlyProfit GROUP BY year";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT year, SUM(totalProfit) FROM " +
@@ -1215,6 +1219,7 @@ namespace MediaBazar
                     using (conn)
                     {
                         string sql;
+                        // All departments
                         if (department == "All")
                         {
                             sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
@@ -1223,6 +1228,7 @@ namespace MediaBazar
                             "WHERE requestDate = @date " +
                             "GROUP BY sr.productId ORDER BY totalQuantity";
                         }
+                        // A specific department
                         else
                         {
                             sql = "SELECT p.productName, SUM(sr.quantity) AS totalQuantity " +
@@ -1260,7 +1266,7 @@ namespace MediaBazar
         }
 
 
-
+        // Gather statistics and save it in an ArrayList and return it
         private ArrayList GatherStatisticData(MySqlCommand cmd)
         {
             ArrayList statistics = new ArrayList();
@@ -1286,12 +1292,14 @@ namespace MediaBazar
                 using (conn)
                 {
                     string sql;
+                    // All departments
                     if (department == "All")
                     {
                         sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
                         $"INNER JOIN schedule AS s ON s.employeeId = p.id) " +
                         $"WHERE s.date = '{date:yyyy-MM-dd}' AND s.shiftType = '{shiftType}'";
                     }
+                    // A specific department
                     else
                     {
                         sql = $"SELECT p.firstName, p.lastName FROM (`person` AS p " +
@@ -1325,10 +1333,7 @@ namespace MediaBazar
             }
         }
 
-        /* */
-        // Number of employees per department
-
-
+        // ***********************************
         /* GET ALL DEPARTMENTS */
         public ArrayList GetDepartments()
         {
@@ -1349,8 +1354,6 @@ namespace MediaBazar
 
                     while (dr.Read())
                     {
-                        // employees += $"{dr[0]} {dr[1]} {Environment.NewLine}";
-
                         object[] values = new object[dr.FieldCount];
                         dr.GetValues(values);
                         departments.Add(values);
@@ -1358,10 +1361,15 @@ namespace MediaBazar
                     return departments;
                 }
             }
-            catch (Exception)
+            catch (MySqlException ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
 
@@ -1382,6 +1390,16 @@ namespace MediaBazar
                     Departments.Add(department);
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
             finally
             {
                 conn.Close();
@@ -1396,6 +1414,7 @@ namespace MediaBazar
             {
                 using (conn)
                 {
+                    // Find employee
                     string sql = "UPDATE person SET password= @password WHERE email = @email;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     // Parameters
@@ -1530,34 +1549,6 @@ namespace MediaBazar
                 return ex.Message;
             }
         }
-
-        /// <summary>
-        /// PRODUCT
-        /// </summary>
-        /// <returns></returns>
-        /// 
-        //to get the departments
-        //public List<string> GetDepartments()
-        //{
-
-        //    try
-        //    {
-        //        string sql = "SELECT name FROM department"; // a query of what we want
-        //        MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-
-        //        conn.Open();  // this must be before the execution which is just under this
-        //        MySqlDataReader dr = cmd.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            departments.Add(dr[0].ToString());
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //    return departments;
-        //}
 
 
         // to add the products

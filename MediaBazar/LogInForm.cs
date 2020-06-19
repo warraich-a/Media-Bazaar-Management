@@ -19,14 +19,9 @@ namespace MediaBazar
             InitializeComponent();
         }
 
-
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            //AdministratorForm a = new AdministratorForm();
-            //a.Show();
-
-
-            //// Get login details
+            // Get login details
             string email = tbxEmail.Text;
             string password = tbxPassword.Text;
 
