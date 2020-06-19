@@ -133,7 +133,6 @@ namespace MediaBazar
             message.IsBodyHtml = true;
             message.Body = messageBody;
 
-
             message.Subject = "Password resetting code";
             // Creating the smtp object
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
