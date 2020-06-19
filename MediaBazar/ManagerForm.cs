@@ -76,6 +76,7 @@ namespace MediaBazar
         {
             string type = cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem);
 
+            // Department of manager
             string department = currentUserDepartment;
 
             // Clear graph
@@ -89,7 +90,6 @@ namespace MediaBazar
             {
                 GenerateStatisticHourlyWagePerEmployee(type, department);
             }
-
             // salary per employee between two dates
             else if (type == "Salary per employee")
             {
@@ -104,12 +104,9 @@ namespace MediaBazar
                     GenerateStatisticsSalaryPerEmployee(type, department);
                 }
             }
-
             // Number employees per shift between two dates
             else if (type == "Number of employees per shift")
             {
-                //type = "Number of employees per shift";
-
                 // Calculate difference between two dates (number of days)
                 TimeSpan nrDays = dtpTo.Value - dtpFrom.Value;
                 if (nrDays.Days > 15)
@@ -191,7 +188,6 @@ namespace MediaBazar
             // Series
             chartEmployeeStatistics.Series.Add("Salary");
 
-
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
             // Title
@@ -236,12 +232,12 @@ namespace MediaBazar
             chartEmployeeStatistics.Series[1]["PixelPointWidth"] = "45";
             chartEmployeeStatistics.Series[2]["PixelPointWidth"] = "45";
 
-
             int indexMorning = 0;
             int indexAfternoon = 0;
             int indexEvening = 0;
             foreach (object[] statistic in statistics)
             {
+                // If morning shift
                 if (statistic[2].ToString() == "Morning")
                 {
                     chartEmployeeStatistics.Series["Morning"].Points.AddXY((statistic[1]), Convert.ToInt32(statistic[0]));
@@ -249,9 +245,9 @@ namespace MediaBazar
                     string employees = mediaBazaar.GetEmployeesPerShift(Convert.ToDateTime(statistic[1]), "Morning", department).ToString();
                     // Add tooltip, Employees working that day that shift
                     chartEmployeeStatistics.Series["Morning"].Points[indexMorning].ToolTip = $"{employees}";
-
                     indexMorning++;
                 }
+                // If afternoon shift
                 else if (statistic[2].ToString() == "Afternoon")
                 {
                     chartEmployeeStatistics.Series["Afternoon"].Points.AddXY((statistic[1]), Convert.ToInt32(statistic[0]));
@@ -260,13 +256,12 @@ namespace MediaBazar
 
                     // Add tooltip, Employees working that day that shift
                     chartEmployeeStatistics.Series["Afternoon"].Points[indexAfternoon].ToolTip = $"{employees}";
-
                     indexAfternoon++;
                 }
+                // If evening shift
                 else if (statistic[2].ToString() == "Evening")
                 {
                     chartEmployeeStatistics.Series["Evening"].Points.AddXY((statistic[1]), Convert.ToInt32(statistic[0]));
-
 
                     string employees = mediaBazaar.GetEmployeesPerShift(Convert.ToDateTime(statistic[1]), "Evening", department).ToString();
 
@@ -293,7 +288,6 @@ namespace MediaBazar
             // Title
             chartEmployeeStatistics.Titles.Add($"Restocked items on {dateFrom} in department '{department}'");
 
-
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
@@ -319,12 +313,10 @@ namespace MediaBazar
             // Series
             chartEmployeeStatistics.Series.Add("FamousItems");
 
-
             chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
             // Title
             chartEmployeeStatistics.Titles.Add($"Most restocked items between {dateFrom} and {dateTo} in department '{department}'");
-
 
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
@@ -373,7 +365,6 @@ namespace MediaBazar
         {
             chartEmployeeStatistics.Series.Add("Total profit");
 
-
             chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
 
             chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
@@ -410,12 +401,10 @@ namespace MediaBazar
             // Series
             chartEmployeeStatistics.Series.Add("FamousItems");
 
-
             chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Pie;
 
             // Title
             chartEmployeeStatistics.Titles.Add($"Top Selling Products between {dateFrom} and {dateTo} in department '{department}'");
-
 
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;

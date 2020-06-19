@@ -10,10 +10,7 @@ namespace MediaBazar
     public class MediaBazaar
     {
         private static MediaBazaar instance = null;
-        // Current user
-        private string currentUser;
 
-        List<Person> people = new List<Person>();
         List<Schedule> schedules = new List<Schedule>();
         List<Schedule> proposed = new List<Schedule>();
         // Person person = new Person();
@@ -22,16 +19,13 @@ namespace MediaBazar
         List<Stock> stocks = new List<Stock>();
         List<Product> products = new List<Product>();
 
-        Person person = new Person();
-        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
-
-        MySqlConnection conn;
 
         Database_handler database;
 
+        // Current user
         public string CurrentUser
         {
-            get { return this.currentUser; }
+            get; private set;
         }
 
         public string CurrentUserDepartment
@@ -45,9 +39,9 @@ namespace MediaBazar
         public MediaBazaar()
         {
             database = new Database_handler();
-            conn = new MySqlConnection(connectionString);
         }
 
+        // Create only one instance of MediaBazaar
         public static MediaBazaar Instance
         {
             get
@@ -89,14 +83,14 @@ namespace MediaBazar
 
         private void SaveCurrentUser(string name, string department)
         {
-            this.currentUser = name;
+            this.CurrentUser = name;
             this.CurrentUserDepartment = department;
         }
 
         /* LOGOUT */
         public void LogOut()
         {
-            this.currentUser = null;
+            this.CurrentUser = null;
         }
 
         /* RESET PASSWORD */
