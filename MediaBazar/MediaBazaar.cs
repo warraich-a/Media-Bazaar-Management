@@ -591,6 +591,11 @@ namespace MediaBazar
 
         }
 
+        public int GetProposedListCount()
+        {
+            return this.proposed.Count;
+        }
+
         public List<Schedule> GetLimSchedulesListByType(int limit)
         {
             int x = 0;
@@ -606,21 +611,20 @@ namespace MediaBazar
 
         public List<Person> GetAvailablePeopleByDay(string date)
         {
-            List<Person> availablePeroplt = database.FindAvailablePeopleByDay(date);
-            return availablePeroplt;
+            List<Person> availablePeople = database.FindAvailablePeopleByDay(date);
+            return availablePeople;
         }
-        //public List<Schedule> GetProposeByDay(string date)
-        //{
-        //    List<Schedule> sch = new List<Schedule>();
-        //    foreach (Schedule s in proposed)
-        //    {
-        //        int x = s.EmployeeId;
-        //        if (database.checkemployee(x, date) == 0) sch.Add(s);
-        //    }
-        //    return sch;
-        //}
+        public List<Schedule> GetProposeByDay(string date)
+        {
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                int x = s.EmployeeId;
+                if (database.checkemployee(x, date) == 0) sch.Add(s);
+            }
+            return sch;
+        }
+
     }
-
-
 }
 
