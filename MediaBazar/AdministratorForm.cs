@@ -24,6 +24,10 @@ namespace MediaBazar
         ListViewItem list;
         ListViewItem listOfProducts;
         List<Schedule> schedules;
+
+
+        private ListViewColumnSorter lvwColumnSorter;
+        private ListViewColumnSorter lvProductSortByColumn;
         public class ComboboxItem
         {
             public string Text { get; set; }
@@ -40,12 +44,17 @@ namespace MediaBazar
         {
 
             InitializeComponent();
+            lvwColumnSorter = new ListViewColumnSorter();
+            lvProductSortByColumn = new ListViewColumnSorter();
+            this.listView1.ListViewItemSorter = lvwColumnSorter;
+            this.listViewProducts.ListViewItemSorter = lvProductSortByColumn; 
 
             RefreshData();
             Departments();
             GetProducts();
-            AddEmployeesToList();
 
+            AddEmployeesToList();
+          
 
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
@@ -162,7 +171,8 @@ namespace MediaBazar
             cmbDepartment.Items.Clear();
             cmbSearchByDepartmentProduct.Items.Clear();
 
-           
+            cmbDepartment.Items.Add("All");
+            cmbSearchByDepartmentProduct.Items.Add("All");
             foreach (Department d in mediaBazaar.GetAllDepartments())
             {
                 cmbDepartmentStack.Items.Add(d.Name);
@@ -170,26 +180,12 @@ namespace MediaBazar
                 cmbSearchByDepartmentProduct.Items.Add(d.Name);
 
                 cmbDepartment.Items.Add(d.Name);
-                /*if (radioButton4.Checked)
-                {
-                    foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
-                    {
-                        if(item.Role == Roles.Manager)
-                        {
-                            cmbDepartment.Items.Add(item.FirstName);
-                        } 
-                    }
-                }
-                else if(radioButton5.Checked)
-                {*/
-
-                //}
             }
-            cmbDepartment.Items.Add("All");
-            cmbSearchByDepartmentProduct.Items.Add("All");
+          
         }
         public void GetProducts()
         {
+            
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
             {
@@ -210,6 +206,7 @@ namespace MediaBazar
 
         public void AddEmployeesToList()
         {
+           
             listView1.Items.Clear();
             foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
             {
@@ -217,7 +214,7 @@ namespace MediaBazar
                 list.SubItems.Add(item.FirstName);
                 list.SubItems.Add(item.LastName);
                 list.SubItems.Add(item.GetEmail);
-                list.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                list.SubItems.Add(Convert.ToString(item.DateOfBirth.ToShortDateString()));
                 list.SubItems.Add(item.StreetName);
                 list.SubItems.Add(Convert.ToString(item.HouseNr));
                 list.SubItems.Add(item.Zipcode);
@@ -1066,6 +1063,8 @@ namespace MediaBazar
                 int id = Convert.ToInt32(listViewProducts.SelectedItems[0].SubItems[0].Text);
                 ModifyProduct m = new ModifyProduct(id, this, mediaBazaar); // sending the id to modify data form through the parameters
                 m.Show();
+                GetProducts();
+                Refresh();
             }
             catch (Exception)
             {
@@ -1082,7 +1081,7 @@ namespace MediaBazar
                 {
                     mediaBazaar.ProductToRemove(Convert.ToInt32(id));
                     MessageBox.Show("Product is removed");
-                    RefreshData();
+                    GetProducts();
                     Refresh();
                 }
                 else
@@ -1245,10 +1244,10 @@ namespace MediaBazar
 
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int departmentId = cmbDepartment.SelectedIndex + 1;
+            int departmentId = cmbDepartment.SelectedIndex;
 
             listView1.Items.Clear();
-            foreach (Person item in mediaBazaar.GetPeople())
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
             {
                 if (item.DepartmentId == departmentId)
                 {
@@ -1256,7 +1255,7 @@ namespace MediaBazar
                     list.SubItems.Add(item.FirstName);
                     list.SubItems.Add(item.LastName);
                     list.SubItems.Add(item.GetEmail);
-                    list.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                    list.SubItems.Add(Convert.ToString(item.DateOfBirth.ToShortDateString()));
                     list.SubItems.Add(item.StreetName);
                     list.SubItems.Add(Convert.ToString(item.HouseNr));
                     list.SubItems.Add(item.Zipcode);
@@ -1274,7 +1273,7 @@ namespace MediaBazar
 
         private void cmbSearchByDepartmentProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int departmentId = cmbSearchByDepartmentProduct.SelectedIndex + 1;
+            int departmentId = cmbSearchByDepartmentProduct.SelectedIndex;
       
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
@@ -1472,6 +1471,59 @@ namespace MediaBazar
             //    list.SubItems.Add(s.ShiftType.ToString());
             //    listView3.Items.Add(list);
             //}
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listView1.Sort();
+        }
+
+        private void listViewProducts_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvProductSortByColumn.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvProductSortByColumn.Order == SortOrder.Ascending)
+                {
+                    lvProductSortByColumn.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvProductSortByColumn.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvProductSortByColumn.SortColumn = e.Column;
+                lvProductSortByColumn.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listViewProducts.Sort();
         }
     }
 }

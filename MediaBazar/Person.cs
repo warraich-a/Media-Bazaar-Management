@@ -68,7 +68,6 @@ namespace MediaBazar
             get
             {
                 return this.firstName;
-
             }
             set
             {

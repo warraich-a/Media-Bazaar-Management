@@ -93,6 +93,7 @@
     <Compile Include="forgetPasswordForm.Designer.cs">
       <DependentUpon>forgetPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>

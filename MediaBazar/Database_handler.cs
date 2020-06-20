@@ -610,7 +610,7 @@ namespace MediaBazar
 
         public List<Person> ReturnPeopleFromDB()
         {
-           List<Person> people = new List<Person>();
+           people = new List<Person>();
             try
             {
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
@@ -644,10 +644,6 @@ namespace MediaBazar
             return people;
         }
 
-      /*  public List<Person> GetPeople()
-        {
-            return this.people;
-        }*/
         public List<Person> ReadPersons()
         {
             people = new List<Person>();
@@ -1678,35 +1674,6 @@ namespace MediaBazar
                 cmd.Parameters.AddWithValue("@exist", fkStock);
                 conn.Open();  // this must be before the execution which is just under this
                 cmd.ExecuteNonQuery();
-
-                // to remove the data first from schedule otherwise becuase of the foreing key. Otherwise it wont work. First the data from the child has to be removed
-                /*   if (sql != "DELETE FROM stock WHERE productId = @id")
-                   {
-
-                       //sql = "DELETE FROM stock WHERE productId = @id";
-                       sql = "UPDATE product SET exist = @exist WHERE productId ='" + productId + "';";
-                       cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                       cmd.Parameters.AddWithValue("@exist", fkStock);
-                       conn.Open();  // this must be before the execution which is just under this
-                       cmd.ExecuteNonQuery();
-                       fkStock = true;
-                   }
-                   if (fkStock)
-                   {
-                       sql = "DELETE FROM stock_request WHERE productId = @id";
-                       cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                       cmd.Parameters.AddWithValue("@id", productId);
-                       cmd.ExecuteNonQuery();
-
-                       fkProductDelete = true;
-                   }
-                   if (fkProductDelete) // removing the data from the main table
-                   {
-                       sql = "DELETE FROM product WHERE productId = @id"; // a query of what we want
-                       cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
-                       cmd.Parameters.AddWithValue("@id", productId);
-                       cmd.ExecuteNonQuery();
-                   }*/
             }
             finally
             {

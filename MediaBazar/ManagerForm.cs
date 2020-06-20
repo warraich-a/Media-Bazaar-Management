@@ -23,9 +23,16 @@ namespace MediaBazar
         int departmentId = 0;
 
         string currentUserDepartment;
+
+        private ListViewColumnSorter lvwColumnSorter;
+        private ListViewColumnSorter lvProductSortByColumn;
         public ManagerForm()
         {
             InitializeComponent();
+            lvwColumnSorter = new ListViewColumnSorter();
+            lvProductSortByColumn = new ListViewColumnSorter();
+            this.LV2.ListViewItemSorter = lvwColumnSorter;
+            this.lvStock.ListViewItemSorter = lvProductSortByColumn;
 
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
@@ -848,6 +855,58 @@ namespace MediaBazar
         private void lvStock_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void LV2_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.LV2.Sort();
+        }
+
+        private void lvStock_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvProductSortByColumn.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvProductSortByColumn.Order == SortOrder.Ascending)
+                {
+                    lvProductSortByColumn.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvProductSortByColumn.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvProductSortByColumn.SortColumn = e.Column;
+                lvProductSortByColumn.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.lvStock.Sort();
         }
     }
 }
