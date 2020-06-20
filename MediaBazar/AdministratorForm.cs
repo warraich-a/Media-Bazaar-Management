@@ -675,72 +675,72 @@ namespace MediaBazar
 
 
 
-        private void btnAssignShift_Click_1(object sender, EventArgs e)
-        {
-            bool writeindb = false;
-            int count = -1;
-            string shifttype = "";
-            int employeedId = -1;
-            DateTime date = DateTime.Today;
-            // MessageBox.Show((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
-            Database_handler connection = new Database_handler();
-            try
-            {
-                string sql = "SELECT MAX(id) FROM schedule;";
-                Object result = connection.ExecuteScalar(sql);
-                if (result != null) { count = Convert.ToInt32(result) + 1; }
-                //MessageBox.Show(count.ToString());
-                if (cbEmpShift.SelectedItem != null)
-                {
-                    if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
-                    {
-                        employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
-                        date = dtpTimeForShift.Value.Date;
-                        if (radioButton1.Checked)
-                        {
-                            Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
-                            shifttype = "Morning";
-                        }
-                        if (radioButton2.Checked)
-                        {
-                            Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
-                            shifttype = "Afternoon";
-                        }
-                        if (radioButton3.Checked)
-                        {
-                            Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
-                            shifttype = "Evening";
-                        }
-                        writeindb = true;
-                    }
-                    else MessageBox.Show("Please select a shift type!");
-                }
-                else MessageBox.Show("Please select an employee!");
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            if (writeindb)
-            {
-                DateTime dayonly = date.Date;
-                // checknrshift - check for less than 5 employees on one shift
-                // checknrperson - check for one employee shifts in one day
-                if ((connection.checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (connection.checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
-                {
-                    //MessageBox.Show($"{date.ToString("yyyy-MM-dd")}");
-                    string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES ('" + count + "','" + employeedId + "','" + shifttype + "','" + date.ToString("yyyy-MM-dd") + "','Assigned');";
+        //private void btnAssignShift_Click_1(object sender, EventArgs e)
+        //{
+        //    bool writeindb = false;
+        //    int count = -1;
+        //    string shifttype = "";
+        //    int employeedId = -1;
+        //    DateTime date = DateTime.Today;
+        //    // MessageBox.Show((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+        //    Database_handler connection = new Database_handler();
+        //    try
+        //    {
+        //        string sql = "SELECT MAX(id) FROM schedule;";
+        //        Object result = connection.ExecuteScalar(sql);
+        //        if (result != null) { count = Convert.ToInt32(result) + 1; }
+        //        //MessageBox.Show(count.ToString());
+        //        if (cbEmpShift.SelectedItem != null)
+        //        {
+        //            if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+        //            {
+        //                employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
+        //                date = dtpTimeForShift.Value.Date;
+        //                if (radioButton1.Checked)
+        //                {
+        //                    Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
+        //                    shifttype = "Morning";
+        //                }
+        //                if (radioButton2.Checked)
+        //                {
+        //                    Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
+        //                    shifttype = "Afternoon";
+        //                }
+        //                if (radioButton3.Checked)
+        //                {
+        //                    Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
+        //                    shifttype = "Evening";
+        //                }
+        //                writeindb = true;
+        //            }
+        //            else MessageBox.Show("Please select a shift type!");
+        //        }
+        //        else MessageBox.Show("Please select an employee!");
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    if (writeindb)
+        //    {
+        //        DateTime dayonly = date.Date;
+        //        // checknrshift - check for less than 5 employees on one shift
+        //        // checknrperson - check for one employee shifts in one day
+        //        if ((connection.checknrshift(shifttype, date.ToString("yyyy-MM-dd")) < 5) && (connection.checknrperson(employeedId, date.ToString("yyyy-MM-dd")) < 1))
+        //        {
+        //            //MessageBox.Show($"{date.ToString("yyyy-MM-dd")}");
+        //            string sql = "INSERT INTO schedule (id,employeeId,shiftType,date,statusOfShift) VALUES ('" + count + "','" + employeedId + "','" + shifttype + "','" + date.ToString("yyyy-MM-dd") + "','Assigned');";
 
-                    if (connection.ExecuteNonQuery(sql) >= 0) MessageBox.Show("Shift has been assigned!");
-                    else MessageBox.Show("Error Writing to database! Please contact Administrator!");
-                }
-                else MessageBox.Show("Shift is not possible due to a shift rule(s)!");
-            }
-        }
+        //            if (connection.ExecuteNonQuery(sql) >= 0) MessageBox.Show("Shift has been assigned!");
+        //            else MessageBox.Show("Error Writing to database! Please contact Administrator!");
+        //        }
+        //        else MessageBox.Show("Shift is not possible due to a shift rule(s)!");
+        //    }
+        //}
 
         private void btnAddNewEmployee_Click(object sender, EventArgs e)
         {
@@ -748,10 +748,6 @@ namespace MediaBazar
             Add.Show();
         }
 
-        private void metroTabPage4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnShowSchedule_Click(object sender, EventArgs e)
         {

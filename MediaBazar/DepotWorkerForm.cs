@@ -71,38 +71,38 @@ namespace MediaBazar
             this.Close();
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
+        //private void btnOrder_Click(object sender, EventArgs e)
+        //{
             
-        }
+        //}
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrWhiteSpace(tbProductName.Text))
-            {
-                List<ListViewItem> items = new List<ListViewItem>();
-                string productName = tbProductName.Text;
-                RefreshData();
-                for (int i = 0; i < lvProductList.Items.Count; i++)
-                {
-                    if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
-                    {
-                        items.Add(lvProductList.Items[i]);
-                    }
-                }
-                lvProductList.Items.Clear();
-                foreach (ListViewItem lvi in items)
-                {
-                    lvProductList.Items.Add(lvi);
-                }
-            }
-        }
+        //private void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (!String.IsNullOrWhiteSpace(tbProductName.Text))
+        //    {
+        //        List<ListViewItem> items = new List<ListViewItem>();
+        //        string productName = tbProductName.Text;
+        //        RefreshData();
+        //        for (int i = 0; i < lvProductList.Items.Count; i++)
+        //        {
+        //            if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
+        //            {
+        //                items.Add(lvProductList.Items[i]);
+        //            }
+        //        }
+        //        lvProductList.Items.Clear();
+        //        foreach (ListViewItem lvi in items)
+        //        {
+        //            lvProductList.Items.Add(lvi);
+        //        }
+        //    }
+        //}
 
-        private void btnClearList_Click(object sender, EventArgs e)
-        {
-            lvProductList.Items.Clear();
-            RefreshData();
-        }
+        //private void btnClearList_Click(object sender, EventArgs e)
+        //{
+        //    lvProductList.Items.Clear();
+        //    RefreshData();
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -192,11 +192,6 @@ namespace MediaBazar
                 else MessageBox.Show("Choose an amount");
             }
             else MessageBox.Show("Select a product");
-        }
-
-        private void metroTabPage2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
