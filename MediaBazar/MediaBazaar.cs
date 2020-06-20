@@ -18,6 +18,7 @@ namespace MediaBazar
         List<Request> requests = new List<Request>();
         List<Stock> stocks = new List<Stock>();
         List<Product> products = new List<Product>();
+        List<Person> people = new List<Person>();
 
 
         Database_handler database;
