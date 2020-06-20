@@ -938,6 +938,5 @@ namespace MediaBazar
             // Perform the sort with these new sort options.
             this.lvStock.Sort();
         }
-
     }
 }

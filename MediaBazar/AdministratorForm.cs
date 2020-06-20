@@ -1545,6 +1545,5 @@ namespace MediaBazar
             this.listViewProducts.Sort();
         }
 
-
     }
 }
