@@ -10,10 +10,7 @@ namespace MediaBazar
     public class MediaBazaar
     {
         private static MediaBazaar instance = null;
-        // Current user
-        private string currentUser;
 
-     
         List<Schedule> schedules = new List<Schedule>();
         List<Schedule> proposed = new List<Schedule>();
         // Person person = new Person();
@@ -21,17 +18,15 @@ namespace MediaBazar
         List<Request> requests = new List<Request>();
         List<Stock> stocks = new List<Stock>();
         List<Product> products = new List<Product>();
+        List<Person> people = new List<Person>();
 
-        Person person = new Person();
-      
-
-        MySqlConnection conn;
 
         Database_handler database;
 
+        // Current user
         public string CurrentUser
         {
-            get { return this.currentUser; }
+            get; private set;
         }
 
         public string CurrentUserDepartment
@@ -45,9 +40,9 @@ namespace MediaBazar
         public MediaBazaar()
         {
             database = new Database_handler();
-           
         }
 
+        // Create only one instance of MediaBazaar
         public static MediaBazaar Instance
         {
             get
@@ -89,14 +84,14 @@ namespace MediaBazar
 
         private void SaveCurrentUser(string name, string department)
         {
-            this.currentUser = name;
+            this.CurrentUser = name;
             this.CurrentUserDepartment = department;
         }
 
         /* LOGOUT */
         public void LogOut()
         {
-            this.currentUser = null;
+            this.CurrentUser = null;
         }
 
         /* RESET PASSWORD */
@@ -132,7 +127,6 @@ namespace MediaBazar
             message.From = new MailAddress(from);
             message.IsBodyHtml = true;
             message.Body = messageBody;
-
 
             message.Subject = "Password resetting code";
             // Creating the smtp object
@@ -242,9 +236,15 @@ namespace MediaBazar
         // to get the list of people from database
         public List<Person> ReturnPeopleFromDB()
         {
-          //  people = database.ReturnPeopleFromDB();
-            return database.ReturnPeopleFromDB(); ;
-        } 
+            people = database.ReturnPeopleFromDB();
+            return people;
+        }
+
+        public List<Person> GetPeople()
+        {
+
+            return people;
+        }
 
         // to modify the data of an existing employee
         public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)

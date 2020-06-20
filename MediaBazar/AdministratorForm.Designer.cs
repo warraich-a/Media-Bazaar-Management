@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.label20 = new System.Windows.Forms.Label();
@@ -52,38 +52,6 @@
             this.label33 = new System.Windows.Forms.Label();
             this.btnModifyEmp = new System.Windows.Forms.Button();
             this.btnRemoveEmp = new System.Windows.Forms.Button();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnAutoAssign = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbEmpShift = new System.Windows.Forms.ComboBox();
-            this.btnAssignShift = new System.Windows.Forms.Button();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpTimeForShift = new System.Windows.Forms.DateTimePicker();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
-            this.label32 = new System.Windows.Forms.Label();
-            this.cbxDepartments = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.lb = new System.Windows.Forms.Label();
-            this.cbxCategoryStatistics = new System.Windows.Forms.ComboBox();
-            this.chartEmployeeStatistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnLoadChart = new System.Windows.Forms.Button();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -163,6 +131,38 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.pnlSchedule = new System.Windows.Forms.Panel();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnAutoAssign = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbEmpShift = new System.Windows.Forms.ComboBox();
+            this.btnAssignShift = new System.Windows.Forms.Button();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpTimeForShift = new System.Windows.Forms.DateTimePicker();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cbxDepartments = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.lb = new System.Windows.Forms.Label();
+            this.cbxCategoryStatistics = new System.Windows.Forms.ComboBox();
+            this.chartEmployeeStatistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnLoadChart = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -170,11 +170,6 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.metroTabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
             this.metroTabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -182,6 +177,11 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.metroTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -189,15 +189,15 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage5);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
+            this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.HotTrack = true;
             this.metroTabControl1.ItemSize = new System.Drawing.Size(205, 31);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(1035, 684);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -292,7 +292,6 @@
             this.listView1.TabIndex = 54;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
             // 
             // columnHeader22
             // 
@@ -382,386 +381,6 @@
             this.btnRemoveEmp.Text = "Remove";
             this.btnRemoveEmp.UseVisualStyleBackColor = false;
             this.btnRemoveEmp.Click += new System.EventHandler(this.btnRemoveEmp_Click);
-            // 
-            // metroTabPage2
-            // 
-            this.metroTabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTabPage2.Controls.Add(this.button2);
-            this.metroTabPage2.Controls.Add(this.lblTitle);
-            this.metroTabPage2.Controls.Add(this.panel2);
-            this.metroTabPage2.Controls.Add(this.panel1);
-            this.metroTabPage2.Controls.Add(this.radioButton3);
-            this.metroTabPage2.Controls.Add(this.radioButton2);
-            this.metroTabPage2.Controls.Add(this.radioButton1);
-            this.metroTabPage2.Controls.Add(this.label5);
-            this.metroTabPage2.Controls.Add(this.dtpTimeForShift);
-            this.metroTabPage2.Controls.Add(this.listView3);
-            this.metroTabPage2.CustomBackground = true;
-            this.metroTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1027, 645);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Assign Shift";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(218, 505);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 32);
-            this.button2.TabIndex = 83;
-            this.button2.Text = "Show all";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(9, 38);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(0, 23);
-            this.lblTitle.TabIndex = 77;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.btnAutoAssign);
-            this.panel2.Location = new System.Drawing.Point(844, 259);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(178, 216);
-            this.panel2.TabIndex = 82;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.SystemColors.Control;
-            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(6, 11);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(165, 23);
-            this.label16.TabIndex = 63;
-            this.label16.Text = "Auto assign shifts";
-            // 
-            // btnAutoAssign
-            // 
-            this.btnAutoAssign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnAutoAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoAssign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoAssign.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAutoAssign.Location = new System.Drawing.Point(13, 99);
-            this.btnAutoAssign.Name = "btnAutoAssign";
-            this.btnAutoAssign.Size = new System.Drawing.Size(150, 32);
-            this.btnAutoAssign.TabIndex = 63;
-            this.btnAutoAssign.Text = "AUTO-assign";
-            this.btnAutoAssign.UseVisualStyleBackColor = false;
-            this.btnAutoAssign.Click += new System.EventHandler(this.btnAutoAssign_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.cbEmpShift);
-            this.panel1.Controls.Add(this.btnAssignShift);
-            this.panel1.Location = new System.Drawing.Point(619, 259);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 216);
-            this.panel1.TabIndex = 81;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.Control;
-            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(37, 11);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(126, 23);
-            this.label18.TabIndex = 62;
-            this.label18.Text = "Assign a shift";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.Control;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 59);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 20);
-            this.label6.TabIndex = 54;
-            this.label6.Text = "Name";
-            // 
-            // cbEmpShift
-            // 
-            this.cbEmpShift.FormattingEnabled = true;
-            this.cbEmpShift.Location = new System.Drawing.Point(2, 92);
-            this.cbEmpShift.Name = "cbEmpShift";
-            this.cbEmpShift.Size = new System.Drawing.Size(212, 28);
-            this.cbEmpShift.TabIndex = 60;
-            // 
-            // btnAssignShift
-            // 
-            this.btnAssignShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnAssignShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssignShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssignShift.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAssignShift.Location = new System.Drawing.Point(26, 153);
-            this.btnAssignShift.Name = "btnAssignShift";
-            this.btnAssignShift.Size = new System.Drawing.Size(150, 32);
-            this.btnAssignShift.TabIndex = 55;
-            this.btnAssignShift.Text = "Assign";
-            this.btnAssignShift.UseVisualStyleBackColor = false;
-            this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(634, 211);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(84, 24);
-            this.radioButton3.TabIndex = 80;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Evening";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(635, 181);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(98, 24);
-            this.radioButton2.TabIndex = 79;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Afternoon";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(635, 151);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(84, 24);
-            this.radioButton1.TabIndex = 78;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Morning";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(631, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
-            this.label5.TabIndex = 76;
-            this.label5.Text = "Date";
-            // 
-            // dtpTimeForShift
-            // 
-            this.dtpTimeForShift.Location = new System.Drawing.Point(634, 107);
-            this.dtpTimeForShift.Name = "dtpTimeForShift";
-            this.dtpTimeForShift.Size = new System.Drawing.Size(304, 26);
-            this.dtpTimeForShift.TabIndex = 75;
-            this.dtpTimeForShift.ValueChanged += new System.EventHandler(this.dtpTimeForShift_ValueChanged);
-            // 
-            // listView3
-            // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader31});
-            this.listView3.GridLines = true;
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(9, 77);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(604, 398);
-            this.listView3.TabIndex = 74;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "ID";
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Name";
-            this.columnHeader13.Width = 200;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Date";
-            this.columnHeader14.Width = 150;
-            // 
-            // columnHeader31
-            // 
-            this.columnHeader31.Text = "Shift Type";
-            this.columnHeader31.Width = 150;
-            // 
-            // metroTabPage5
-            // 
-            this.metroTabPage5.AutoScroll = true;
-            this.metroTabPage5.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTabPage5.Controls.Add(this.label32);
-            this.metroTabPage5.Controls.Add(this.cbxDepartments);
-            this.metroTabPage5.Controls.Add(this.label25);
-            this.metroTabPage5.Controls.Add(this.label24);
-            this.metroTabPage5.Controls.Add(this.dtpTo);
-            this.metroTabPage5.Controls.Add(this.dtpFrom);
-            this.metroTabPage5.Controls.Add(this.lb);
-            this.metroTabPage5.Controls.Add(this.cbxCategoryStatistics);
-            this.metroTabPage5.Controls.Add(this.chartEmployeeStatistics);
-            this.metroTabPage5.Controls.Add(this.btnLoadChart);
-            this.metroTabPage5.CustomBackground = true;
-            this.metroTabPage5.HorizontalScrollbar = true;
-            this.metroTabPage5.HorizontalScrollbarBarColor = true;
-            this.metroTabPage5.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1027, 645);
-            this.metroTabPage5.TabIndex = 4;
-            this.metroTabPage5.Text = "Statistics";
-            this.metroTabPage5.VerticalScrollbar = true;
-            this.metroTabPage5.VerticalScrollbarBarColor = true;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(405, 33);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(78, 16);
-            this.label32.TabIndex = 64;
-            this.label32.Text = "Department";
-            // 
-            // cbxDepartments
-            // 
-            this.cbxDepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxDepartments.FormattingEnabled = true;
-            this.cbxDepartments.Items.AddRange(new object[] {
-            "All"});
-            this.cbxDepartments.Location = new System.Drawing.Point(408, 72);
-            this.cbxDepartments.Name = "cbxDepartments";
-            this.cbxDepartments.Size = new System.Drawing.Size(286, 28);
-            this.cbxDepartments.TabIndex = 63;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(50, 129);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(39, 16);
-            this.label25.TabIndex = 62;
-            this.label25.Text = "From";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(405, 129);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(25, 16);
-            this.label24.TabIndex = 61;
-            this.label24.Text = "To";
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Location = new System.Drawing.Point(456, 129);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(238, 20);
-            this.dtpTo.TabIndex = 60;
-            // 
-            // dtpFrom
-            // 
-            this.dtpFrom.Location = new System.Drawing.Point(128, 129);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(239, 20);
-            this.dtpFrom.TabIndex = 59;
-            // 
-            // lb
-            // 
-            this.lb.AutoSize = true;
-            this.lb.BackColor = System.Drawing.Color.Transparent;
-            this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb.Location = new System.Drawing.Point(50, 33);
-            this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(63, 16);
-            this.lb.TabIndex = 58;
-            this.lb.Text = "Category";
-            // 
-            // cbxCategoryStatistics
-            // 
-            this.cbxCategoryStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxCategoryStatistics.FormattingEnabled = true;
-            this.cbxCategoryStatistics.Items.AddRange(new object[] {
-            "Hourly wage per employee",
-            "Salary per employee",
-            "Number of employees per shift",
-            "Number of employees per department",
-            "Most Restocked Items",
-            "Top Selling Products",
-            "Restocked Items On Date",
-            "Yearly stock requests",
-            "Yearly profit"});
-            this.cbxCategoryStatistics.Location = new System.Drawing.Point(52, 72);
-            this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
-            this.cbxCategoryStatistics.Size = new System.Drawing.Size(314, 28);
-            this.cbxCategoryStatistics.TabIndex = 57;
-            this.cbxCategoryStatistics.SelectedIndexChanged += new System.EventHandler(this.cbxCategoryStatistics_SelectedIndexChanged);
-            // 
-            // chartEmployeeStatistics
-            // 
-            this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
-            this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
-            this.chartEmployeeStatistics.Location = new System.Drawing.Point(41, 188);
-            this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
-            this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            series1.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
-            this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 405);
-            this.chartEmployeeStatistics.TabIndex = 52;
-            this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
-            // 
-            // btnLoadChart
-            // 
-            this.btnLoadChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnLoadChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadChart.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLoadChart.Location = new System.Drawing.Point(729, 66);
-            this.btnLoadChart.Name = "btnLoadChart";
-            this.btnLoadChart.Size = new System.Drawing.Size(216, 41);
-            this.btnLoadChart.TabIndex = 44;
-            this.btnLoadChart.Text = "Load chart";
-            this.btnLoadChart.UseVisualStyleBackColor = false;
-            this.btnLoadChart.Click += new System.EventHandler(this.btnLoadChart_Click);
             // 
             // metroTabPage3
             // 
@@ -1034,7 +653,6 @@
             this.listViewProducts.TabIndex = 63;
             this.listViewProducts.UseCompatibleStateImageBehavior = false;
             this.listViewProducts.View = System.Windows.Forms.View.Details;
-            this.listViewProducts.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewProducts_ColumnClick);
             // 
             // columnHeader9
             // 
@@ -1588,15 +1206,399 @@
             this.pnlSchedule.Size = new System.Drawing.Size(1032, 526);
             this.pnlSchedule.TabIndex = 118;
             // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage2.Controls.Add(this.button2);
+            this.metroTabPage2.Controls.Add(this.lblTitle);
+            this.metroTabPage2.Controls.Add(this.panel2);
+            this.metroTabPage2.Controls.Add(this.panel1);
+            this.metroTabPage2.Controls.Add(this.radioButton3);
+            this.metroTabPage2.Controls.Add(this.radioButton2);
+            this.metroTabPage2.Controls.Add(this.radioButton1);
+            this.metroTabPage2.Controls.Add(this.label5);
+            this.metroTabPage2.Controls.Add(this.dtpTimeForShift);
+            this.metroTabPage2.Controls.Add(this.listView3);
+            this.metroTabPage2.CustomBackground = true;
+            this.metroTabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(1027, 645);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Assign Shift";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(218, 505);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 32);
+            this.button2.TabIndex = 83;
+            this.button2.Text = "Show all";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(9, 38);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(0, 23);
+            this.lblTitle.TabIndex = 77;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.btnAutoAssign);
+            this.panel2.Location = new System.Drawing.Point(844, 259);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(178, 216);
+            this.panel2.TabIndex = 82;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.Control;
+            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(6, 11);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(165, 23);
+            this.label16.TabIndex = 63;
+            this.label16.Text = "Auto assign shifts";
+            // 
+            // btnAutoAssign
+            // 
+            this.btnAutoAssign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnAutoAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoAssign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoAssign.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAutoAssign.Location = new System.Drawing.Point(13, 99);
+            this.btnAutoAssign.Name = "btnAutoAssign";
+            this.btnAutoAssign.Size = new System.Drawing.Size(150, 32);
+            this.btnAutoAssign.TabIndex = 63;
+            this.btnAutoAssign.Text = "AUTO-assign";
+            this.btnAutoAssign.UseVisualStyleBackColor = false;
+            this.btnAutoAssign.Click += new System.EventHandler(this.btnAutoAssign_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.cbEmpShift);
+            this.panel1.Controls.Add(this.btnAssignShift);
+            this.panel1.Location = new System.Drawing.Point(619, 259);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 216);
+            this.panel1.TabIndex = 81;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.SystemColors.Control;
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(37, 11);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(126, 23);
+            this.label18.TabIndex = 62;
+            this.label18.Text = "Assign a shift";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Control;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(4, 59);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "Name";
+            // 
+            // cbEmpShift
+            // 
+            this.cbEmpShift.FormattingEnabled = true;
+            this.cbEmpShift.Location = new System.Drawing.Point(2, 92);
+            this.cbEmpShift.Name = "cbEmpShift";
+            this.cbEmpShift.Size = new System.Drawing.Size(212, 28);
+            this.cbEmpShift.TabIndex = 60;
+            // 
+            // btnAssignShift
+            // 
+            this.btnAssignShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnAssignShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAssignShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssignShift.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAssignShift.Location = new System.Drawing.Point(26, 153);
+            this.btnAssignShift.Name = "btnAssignShift";
+            this.btnAssignShift.Size = new System.Drawing.Size(150, 32);
+            this.btnAssignShift.TabIndex = 55;
+            this.btnAssignShift.Text = "Assign";
+            this.btnAssignShift.UseVisualStyleBackColor = false;
+            this.btnAssignShift.Click += new System.EventHandler(this.btnAssignShift_Click);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(634, 211);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(84, 24);
+            this.radioButton3.TabIndex = 80;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Evening";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(635, 181);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(98, 24);
+            this.radioButton2.TabIndex = 79;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Afternoon";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(635, 151);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(84, 24);
+            this.radioButton1.TabIndex = 78;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Morning";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(631, 69);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.TabIndex = 76;
+            this.label5.Text = "Date";
+            // 
+            // dtpTimeForShift
+            // 
+            this.dtpTimeForShift.Location = new System.Drawing.Point(634, 107);
+            this.dtpTimeForShift.Name = "dtpTimeForShift";
+            this.dtpTimeForShift.Size = new System.Drawing.Size(304, 26);
+            this.dtpTimeForShift.TabIndex = 75;
+            this.dtpTimeForShift.ValueChanged += new System.EventHandler(this.dtpTimeForShift_ValueChanged);
+            // 
+            // listView3
+            // 
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader31});
+            this.listView3.GridLines = true;
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(9, 77);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(604, 398);
+            this.listView3.TabIndex = 74;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "ID";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Name";
+            this.columnHeader13.Width = 200;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Date";
+            this.columnHeader14.Width = 150;
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Shift Type";
+            this.columnHeader31.Width = 150;
+            // 
+            // metroTabPage5
+            // 
+            this.metroTabPage5.AutoScroll = true;
+            this.metroTabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage5.Controls.Add(this.label32);
+            this.metroTabPage5.Controls.Add(this.cbxDepartments);
+            this.metroTabPage5.Controls.Add(this.label25);
+            this.metroTabPage5.Controls.Add(this.label24);
+            this.metroTabPage5.Controls.Add(this.dtpTo);
+            this.metroTabPage5.Controls.Add(this.dtpFrom);
+            this.metroTabPage5.Controls.Add(this.lb);
+            this.metroTabPage5.Controls.Add(this.cbxCategoryStatistics);
+            this.metroTabPage5.Controls.Add(this.chartEmployeeStatistics);
+            this.metroTabPage5.Controls.Add(this.btnLoadChart);
+            this.metroTabPage5.CustomBackground = true;
+            this.metroTabPage5.HorizontalScrollbar = true;
+            this.metroTabPage5.HorizontalScrollbarBarColor = true;
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage5.Name = "metroTabPage5";
+            this.metroTabPage5.Size = new System.Drawing.Size(1027, 645);
+            this.metroTabPage5.TabIndex = 4;
+            this.metroTabPage5.Text = "Statistics";
+            this.metroTabPage5.VerticalScrollbar = true;
+            this.metroTabPage5.VerticalScrollbarBarColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(405, 33);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(78, 16);
+            this.label32.TabIndex = 64;
+            this.label32.Text = "Department";
+            // 
+            // cbxDepartments
+            // 
+            this.cbxDepartments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxDepartments.FormattingEnabled = true;
+            this.cbxDepartments.Items.AddRange(new object[] {
+            "All"});
+            this.cbxDepartments.Location = new System.Drawing.Point(408, 72);
+            this.cbxDepartments.Name = "cbxDepartments";
+            this.cbxDepartments.Size = new System.Drawing.Size(286, 28);
+            this.cbxDepartments.TabIndex = 63;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(50, 129);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(39, 16);
+            this.label25.TabIndex = 62;
+            this.label25.Text = "From";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(405, 129);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(25, 16);
+            this.label24.TabIndex = 61;
+            this.label24.Text = "To";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dtpTo.Location = new System.Drawing.Point(456, 129);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(245, 20);
+            this.dtpTo.TabIndex = 60;
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Location = new System.Drawing.Point(128, 129);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(239, 20);
+            this.dtpFrom.TabIndex = 59;
+            // 
+            // lb
+            // 
+            this.lb.AutoSize = true;
+            this.lb.BackColor = System.Drawing.Color.Transparent;
+            this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb.Location = new System.Drawing.Point(50, 33);
+            this.lb.Name = "lb";
+            this.lb.Size = new System.Drawing.Size(63, 16);
+            this.lb.TabIndex = 58;
+            this.lb.Text = "Category";
+            // 
+            // cbxCategoryStatistics
+            // 
+            this.cbxCategoryStatistics.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCategoryStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxCategoryStatistics.FormattingEnabled = true;
+            this.cbxCategoryStatistics.Items.AddRange(new object[] {
+            "Hourly wage per employee",
+            "Salary per employee",
+            "Number of employees per shift",
+            "Number of employees per department",
+            "Most Restocked Items",
+            "Top Selling Products",
+            "Restocked Items On Date",
+            "Yearly stock requests",
+            "Yearly profit"});
+            this.cbxCategoryStatistics.Location = new System.Drawing.Point(52, 72);
+            this.cbxCategoryStatistics.Name = "cbxCategoryStatistics";
+            this.cbxCategoryStatistics.Size = new System.Drawing.Size(314, 28);
+            this.cbxCategoryStatistics.TabIndex = 57;
+            this.cbxCategoryStatistics.SelectedIndexChanged += new System.EventHandler(this.cbxCategoryStatistics_SelectedIndexChanged);
+            // 
+            // chartEmployeeStatistics
+            // 
+            this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
+            this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            chartArea9.Area3DStyle.Enable3D = true;
+            chartArea9.Area3DStyle.IsClustered = true;
+            chartArea9.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea9.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend9);
+            this.chartEmployeeStatistics.Location = new System.Drawing.Point(41, 188);
+            this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
+            this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series9.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series9.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series9.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series9);
+            this.chartEmployeeStatistics.Size = new System.Drawing.Size(944, 405);
+            this.chartEmployeeStatistics.TabIndex = 52;
+            this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
+            // 
+            // btnLoadChart
+            // 
+            this.btnLoadChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnLoadChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadChart.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadChart.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLoadChart.Location = new System.Drawing.Point(729, 66);
+            this.btnLoadChart.Name = "btnLoadChart";
+            this.btnLoadChart.Size = new System.Drawing.Size(216, 48);
+            this.btnLoadChart.TabIndex = 44;
+            this.btnLoadChart.Text = "Load chart";
+            this.btnLoadChart.UseVisualStyleBackColor = false;
+            this.btnLoadChart.Click += new System.EventHandler(this.btnLoadChart_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogout.Location = new System.Drawing.Point(846, 34);
+            this.btnLogout.Location = new System.Drawing.Point(858, 21);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(145, 36);
+            this.btnLogout.Size = new System.Drawing.Size(145, 50);
             this.btnLogout.TabIndex = 52;
             this.btnLogout.Text = "Log out";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -1664,15 +1666,6 @@
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
-            this.metroTabPage2.ResumeLayout(false);
-            this.metroTabPage2.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.metroTabPage5.ResumeLayout(false);
-            this.metroTabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
             this.metroTabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1684,6 +1677,15 @@
             this.tabPage4.PerformLayout();
             this.metroTabPage4.ResumeLayout(false);
             this.metroTabPage4.PerformLayout();
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.metroTabPage5.ResumeLayout(false);
+            this.metroTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);

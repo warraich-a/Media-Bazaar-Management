@@ -77,8 +77,6 @@ namespace MediaBazar
                 //to = "CheyenneConway@mediabazaar.com";
                 ResetPasswordForm resetPasswordForm = new ResetPasswordForm(to);
                 resetPasswordForm.Show();
-
-                this.Close();
             }
             else
             {

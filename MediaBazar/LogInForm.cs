@@ -19,14 +19,9 @@ namespace MediaBazar
             InitializeComponent();
         }
 
-
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            /*AdministratorForm a = new AdministratorForm();
-            a.Show();*/
-
-
-            //// Get login details
+            // Get login details
             string email = tbxEmail.Text;
             string password = tbxPassword.Text;
 
@@ -42,6 +37,7 @@ namespace MediaBazar
             }
             else
             {
+                // If manager
                 if (mediaBazaar.GetUserType(email) == "Manager")
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
@@ -57,6 +53,7 @@ namespace MediaBazar
                         MessageBox.Show("Credentials are wrong");
                     }
                 }
+                // If admin
                 else if (mediaBazaar.GetUserType(email) == "Administrator")
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
@@ -72,6 +69,7 @@ namespace MediaBazar
                         MessageBox.Show("Credentials are wrong");
                     }
                 }
+                // If depot worker
                 else if (mediaBazaar.GetUserType(email) == "DepotWorker")
                 {
                     if (mediaBazaar.CheckCredentials(email, password))
