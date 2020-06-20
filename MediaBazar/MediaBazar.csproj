@@ -85,6 +85,7 @@
     <Compile Include="AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComboboxItem.cs" />
     <Compile Include="Database_handler.cs" />
     <Compile Include="Departments.cs" />
     <Compile Include="forgetPasswordForm.cs">

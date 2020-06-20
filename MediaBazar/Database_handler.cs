@@ -1805,7 +1805,7 @@ namespace MediaBazar
             return null;
         }
 
-        //
+        
         public int ExecuteNonQuery(string sql)
         {
             try
@@ -1895,6 +1895,7 @@ namespace MediaBazar
             }
             return nr;
         }
+
         //Check the number of accepted shifts in one day
         public int checkproposalnrshift(string shifttype, string date)
         {
@@ -1930,38 +1931,38 @@ namespace MediaBazar
 
 
         //Check the number of accepted shifts in a day for an employee
-        //public int checkemployee(int employeeid, string date)
-        //{
-        //    int nr = 0;
-        //    try
-        //    {
-        //        using (conn)
-        //        {
+        public int checkemployee(int employeeid, string date)
+        {
+            int nr = 0;
+            try
+            {
+                using (conn)
+                {
 
-        //            string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
+                    string sql = "SELECT * FROM schedule WHERE (employeeId='" + employeeid + "' AND date='" + date + "' AND statusOfShift<>'Proposed' AND statusOfShift<>'Cancelled' AND statusOfShift<>'Rejected');";
 
-        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
-        //            conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
 
-        //            MySqlDataReader rdr = cmd.ExecuteReader();
+                    MySqlDataReader rdr = cmd.ExecuteReader();
 
-        //            while (rdr.Read())
-        //            {
-        //                nr++;
-        //            }
-        //            rdr.Close();
-        //        }
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    return nr;
-        //}
+                    while (rdr.Read())
+                    {
+                        nr++;
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return nr;
+        }
 
         //update schedule status
         public void changeschedulestatusbyid(int id, string status)
@@ -1970,11 +1971,8 @@ namespace MediaBazar
             {
                 using (conn)
                 {
-                    string sql = "UPDATE schedule SET statusOfShift = @Status WHERE id = @Id";
+                    string sql = "UPDATE schedule SET statusOfShift = '" + status + "' WHERE (id = " + id.ToString() + ")";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                    cmd.Parameters.AddWithValue("@Status", status);
-                    cmd.Parameters.AddWithValue("@Id", id);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -2089,7 +2087,7 @@ namespace MediaBazar
 
                 using (conn)
                 {
-                    // string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
+                    //string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
 
                     string sql = "SELECT id, firstName, lastName FROM person AS p " +
                     "WHERE id NOT IN(SELECT per.id FROM person AS per " +
@@ -2129,45 +2127,83 @@ namespace MediaBazar
         }
 
 
-        //public List<Schedule> ReadAllProposalByDay(string date)
-        //{
-        //    this.schedules = new List<Schedule>();
-        //    try
-        //    {
-        //        string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
-        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+        public List<Schedule> ReadAllProposalByDay(string date)
+        {
+            this.schedules = new List<Schedule>();
+            try
+            {
+                string sql = "SELECT `id`, `employeeId`, `shiftType`, `date`, `statusOfShift` FROM `schedule` WHERE (date='" + date + "' AND statusOfShift='Proposed') ORDER BY id ASC;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-        //        conn.Open();
-        //        MySqlDataReader dr = cmd.ExecuteReader();
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
 
-        //        while (dr.Read())
-        //        {
-        //            Shift a = Shift.MORNING;
-        //            if (dr[2].ToString() == "Morning")
-        //            {
-        //                a = Shift.MORNING;
-        //            }
-        //            else if (dr[2].ToString() == "Afternoon")
-        //            {
-        //                a = Shift.AFTERNOON;
-        //            }
-        //            else if (dr[2].ToString() == "Evening")
-        //            {
-        //                a = Shift.EVENING;
-        //            }
+                while (dr.Read())
+                {
+                    Shift a = Shift.MORNING;
+                    if (dr[2].ToString() == "Morning")
+                    {
+                        a = Shift.MORNING;
+                    }
+                    else if (dr[2].ToString() == "Afternoon")
+                    {
+                        a = Shift.AFTERNOON;
+                    }
+                    else if (dr[2].ToString() == "Evening")
+                    {
+                        a = Shift.EVENING;
+                    }
 
-        //            ShiftStatus b = ShiftStatus.PROPOSED;
+                    ShiftStatus b = ShiftStatus.PROPOSED;
 
 
-        //            Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
-        //            schedules.Add(g);
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //    return schedules;
-        //}
+                    Schedule g = new Schedule(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), a, Convert.ToDateTime(dr[3]), b);
+                    schedules.Add(g);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return schedules;
+        }
+        public List<ComboboxItem> AddToCombobox()
+        {
+            List<ComboboxItem> cmbxlist = new List<ComboboxItem>();
+            try
+            {
+                using (conn)
+                {
+
+                    string sql = "SELECT * FROM person WHERE (role='Employee' OR role='DepotWorker');";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        ComboboxItem item = new ComboboxItem();
+                        item.Text = rdr.GetString("firstName") + " " + rdr.GetString("lastName") + " - " + rdr.GetString("role");
+                        item.Value = rdr.GetString("id");
+                        // MessageBox.Show(item.ToString());
+                        cmbxlist.Add(item);
+                    }
+
+                    conn.Close();
+                    return cmbxlist;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
+        }
     }
 }

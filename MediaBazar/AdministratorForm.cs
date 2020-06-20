@@ -28,16 +28,7 @@ namespace MediaBazar
 
         private ListViewColumnSorter lvwColumnSorter;
         private ListViewColumnSorter lvProductSortByColumn;
-        public class ComboboxItem
-        {
-            public string Text { get; set; }
-            public object Value { get; set; }
-
-            public override string ToString()
-            {
-                return Text;
-            }
-        }
+        
         
 
         public AdministratorForm()
@@ -59,37 +50,11 @@ namespace MediaBazar
             // Add user name
             lblUsername.Text = mediaBazaar.CurrentUser;
 
-            string connStr = "server=studmysql01.fhict.local;database=dbi435688;uid=dbi435688;password=webhosting54;";
-            try
+            //Add to combobox
+            Database_handler database = new Database_handler();
+            foreach (ComboboxItem ci in database.AddToCombobox())
             {
-                using (MySqlConnection conn = new MySqlConnection(connStr))
-                {
-
-                    string sql = "SELECT * FROM person WHERE (role='Employee' OR role='DepotWorker');";
-
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    conn.Open();
-
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
-                    {
-                        ComboboxItem item = new ComboboxItem();
-                        item.Text = rdr.GetString("firstName") + " " + rdr.GetString("lastName") + " - " + rdr.GetString("role");
-                        item.Value = rdr.GetString("id");
-                       // MessageBox.Show(item.ToString());
-                        cbEmpShift.Items.Add(item);
-                    }
-                    rdr.Close();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                cbEmpShift.Items.Add(ci);
             }
 
 
@@ -1411,18 +1376,22 @@ namespace MediaBazar
 
         private void btnAutoAssign_Click(object sender, EventArgs e)
         {
+            //auto assign for 30 days
             int NoOfDays = 30, Shift = 0, NoOfEmp, NoOfChanges = 0;
             string[] shifttype = new string[3];
+            //declare shift types
             shifttype[0] = "Morning";
             shifttype[1] = "Afternoon";
             shifttype[2] = "Evening";
             lblTitle.Text = "AutoAssigned shifts";
             listView3.Items.Clear();
             DateTime startday = dtpTimeForShift.Value;
+            //skip the week-ends
             if (startday.DayOfWeek.ToString() == "Saturday") startday = startday.AddDays(2);
             else if (startday.DayOfWeek.ToString() == "Sunday") startday = startday.AddDays(1);
             string date = startday.ToString("yyyy-MM-dd");
             int nrM, nrA, nrE;
+            //get the 3 shifts from the day
             nrM = mediaBazaar.GetShiftsByDay(date)[0];
             nrA = mediaBazaar.GetShiftsByDay(date)[1];
             nrE = mediaBazaar.GetShiftsByDay(date)[2];
@@ -1433,32 +1402,40 @@ namespace MediaBazar
                 {
                     while (Shift < 3)
                     {
-                        //test shift if full
+                        //test if shift is full
                         date = startday.ToString("yyyy-MM-dd");
+                        //check the number of proposals
                         NoOfEmp = mediaBazaar.CheckProposalNrShift(shifttype[Shift], date);
-                        if (NoOfEmp < 5)
+                        //check that there are less than 5 employees are on the shift so it's according to the rules
+                        if ((NoOfEmp) < 5)
                         {
-                            // get proposals
+                            // get proposals of the day
                             mediaBazaar.ReadProposeByDay(date, shifttype[Shift]);
-                            foreach (Schedule s in mediaBazaar.GetLimSchedulesListByType(5 - NoOfEmp))
-                            {
-                                list = new ListViewItem(s.SheduleId.ToString(), 0);
-                                list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
-                                list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
-                                list.SubItems.Add(shifttype[Shift]);
-                                listView3.Items.Add(list);
+                            int nrofproposed = mediaBazaar.GetProposedListCount();
+                            //if there are more than 2 proposals it's according to the rules and can be auto assigned
+                            if (nrofproposed >= 2)
+                                foreach (Schedule s in mediaBazaar.GetLimSchedulesListByType(5 - NoOfEmp))
+                                {
+                                    list = new ListViewItem(s.SheduleId.ToString(), 0);
+                                    list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+                                    list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
+                                    list.SubItems.Add(shifttype[Shift]);
+                                    listView3.Items.Add(list);
 
-                                //set auto-assigned status 
-                                mediaBazaar.ChangeScheduleStatusById(s.SheduleId, "AutoAssigned");
-                                NoOfChanges++;
-                            }
+                                    //set auto-assigned status 
+                                    mediaBazaar.ChangeScheduleStatusById(s.SheduleId, "AutoAssigned");
+                                    //in order to see how many emplloyees have been auto assigned
+                                    NoOfChanges++;
+                                }
+                            //else MessageBox.Show("Date: "+date+" has only "+ nrofproposed.ToString()+ " proposed" );
                         }
+                        //next shift
                         Shift++;
                     }
+                    //skip the week-ends
                     if (startday.DayOfWeek.ToString() == "Friday") { startday = startday.AddDays(3); NoOfDays -= 3; }
                     else { startday = startday.AddDays(1); NoOfDays--; }
                     Shift = 0;
-
                 }
                 MessageBox.Show("Total of schedules auto-assigned: " + NoOfChanges.ToString());
             }
@@ -1488,12 +1465,12 @@ namespace MediaBazar
             listView3.Items.Clear();
             //btnAcceptShift.Enabled = false;
             //btnRejectShift.Enabled = false;
-            //string[] shifttype = new string[3];
-            //shifttype[0] = "Morning";
-            //shifttype[1] = "Afternoon";
-            //shifttype[2] = "Evening";
-            // show shifts on specific date
+            string[] shifttype = new string[3];
+            shifttype[0] = "Morning";
+            shifttype[1] = "Afternoon";
+            shifttype[2] = "Evening";
 
+            //get the employees available on that date
             List<Person> availablePeople = mediaBazaar.GetAvailablePeopleByDay(date);
 
             //MessageBox.Show(availablePeople.Count.ToString());
@@ -1504,15 +1481,15 @@ namespace MediaBazar
                 listView3.Items.Add(list);
             }
 
-            //mediaBazaar.GetAvailablePeopleByDay(date);
-            //foreach (Schedule s in mediaBazaar.GetProposeByDay(date))
-            //{
-            //    list = new ListViewItem(s.SheduleId.ToString(), 0);
-            //    list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
-            //    list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
-            //    list.SubItems.Add(s.ShiftType.ToString());
-            //    listView3.Items.Add(list);
-            //}
+            mediaBazaar.GetAvailablePeopleByDay(date);
+            foreach (Schedule s in mediaBazaar.GetProposeByDay(date))
+            {
+                list = new ListViewItem(s.SheduleId.ToString(), 0);
+                list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+                list.SubItems.Add(startday.ToString("dd-MM-yyyy"));
+                list.SubItems.Add(s.ShiftType.ToString());
+                listView3.Items.Add(list);
+            }
         }
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)

@@ -294,6 +294,7 @@ namespace MediaBazar
             }
             return newSchedule;
         }
+
         public List<Schedule> GetScheduleByNameAndShift(string name, Shift givenShift)
         {
             List<Schedule> newSchedule = new List<Schedule>();
@@ -319,6 +320,7 @@ namespace MediaBazar
             }
             return s;
         }
+
         public List<Person> GetPeopleList()
         {
             return this.ReturnPeopleFromDB();
@@ -585,6 +587,11 @@ namespace MediaBazar
 
         }
 
+        public int GetProposedListCount()
+        {
+            return this.proposed.Count;
+        }
+
         public List<Schedule> GetLimSchedulesListByType(int limit)
         {
             int x = 0;
@@ -603,16 +610,18 @@ namespace MediaBazar
             List<Person> availablePeroplt = database.FindAvailablePeopleByDay(date);
             return availablePeroplt;
         }
-        //public List<Schedule> GetProposeByDay(string date)
-        //{
-        //    List<Schedule> sch = new List<Schedule>();
-        //    foreach (Schedule s in proposed)
-        //    {
-        //        int x = s.EmployeeId;
-        //        if (database.checkemployee(x, date) == 0) sch.Add(s);
-        //    }
-        //    return sch;
-        //}
+
+        //get the proposals of a specific day
+        public List<Schedule> GetProposeByDay(string date)
+        {
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                int x = s.EmployeeId;
+                if (database.checkemployee(x, date) == 0) sch.Add(s);
+            }
+            return sch;
+        }
     }
 
 
