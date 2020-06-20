@@ -193,5 +193,10 @@ namespace MediaBazar
             }
             else MessageBox.Show("Select a product");
         }
+
+        private void metroTabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
