@@ -211,10 +211,7 @@ namespace MediaBazar
                 MessageBox.Show("No employee is selected");
             }
         }
-        private void btnModifyStack_Click(object sender, EventArgs e)
-        {
 
-        }
 
         // to modify a selected person's data
         private void btnModifyEmp_Click(object sender, EventArgs e)
@@ -399,7 +396,7 @@ namespace MediaBazar
             chartEmployeeStatistics.Titles.Add($"Number of employees per shift between {dateFrom} and {dateTo} in department '{department}'");
 
             // Made it fit all data
-            //chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
             ArrayList statistics = mediaBazaar.GetStatistics(dateFrom, dateTo, type, department);
 
@@ -419,7 +416,6 @@ namespace MediaBazar
             {
                 if (statistic[2].ToString() == "Morning")
                 {
-
                     // MessageBox.Show(String.Format("{0:MM/dd/yyyy}", statistic[1])); 
                     chartEmployeeStatistics.Series["Morning"].Points.AddXY(statistic[1], Convert.ToInt32(statistic[0]));
 
@@ -443,7 +439,6 @@ namespace MediaBazar
                 else if (statistic[2].ToString() == "Evening")
                 {
                     chartEmployeeStatistics.Series["Evening"].Points.AddXY(statistic[1], Convert.ToInt32(statistic[0]));
-
 
                     string employees = mediaBazaar.GetEmployeesPerShift(Convert.ToDateTime(statistic[1]), "Evening", department).ToString();
 
@@ -471,7 +466,6 @@ namespace MediaBazar
             // Title
             chartEmployeeStatistics.Titles.Add($"Restocked items on {dateFrom} in department '{department}'");
 
-
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
@@ -480,7 +474,7 @@ namespace MediaBazar
             foreach (object[] statistic in statistics)
             {
                 chartEmployeeStatistics.Series["Restocked Items"].Points.AddXY(statistic[0].ToString(), statistic[1]);
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }
@@ -496,13 +490,9 @@ namespace MediaBazar
 
             // Series
             chartEmployeeStatistics.Series.Add("FamousItems");
-
-
             chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Pie;
-
             // Title
             chartEmployeeStatistics.Titles.Add($"Most restocked items between {dateFrom} and {dateTo} in department '{department}'");
-
 
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
@@ -515,7 +505,7 @@ namespace MediaBazar
                 chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
                 chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
 
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }
@@ -524,11 +514,8 @@ namespace MediaBazar
         {
             chartEmployeeStatistics.Series.Add("Total stock requests");
 
-
             chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Spline;
-
             chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
-
             // Make line thicker
             chartEmployeeStatistics.Series[0].BorderWidth = 3;
 
@@ -543,7 +530,7 @@ namespace MediaBazar
             {
                 chartEmployeeStatistics.Series["Total stock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
 
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }
@@ -552,10 +539,7 @@ namespace MediaBazar
         private void GenerateStatisticsYearlyProfit(string type, string department)
         {
             chartEmployeeStatistics.Series.Add("Total profit");
-
-
             chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Spline;
-
             chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
 
             // Make line thicker
@@ -571,8 +555,6 @@ namespace MediaBazar
             foreach (object[] statistic in statistics)
             {
                 chartEmployeeStatistics.Series["Total profit"].Points.AddXY(statistic[0].ToString(), statistic[1]);
-
-                // Displays one employee at a time
                 Refresh();
             }
         }
@@ -581,9 +563,7 @@ namespace MediaBazar
         private void GenerateStatisticsNumberEmployeesPerDep(string type, string department)
         {
             chartEmployeeStatistics.Series.Add("Number of employees");
-
             chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
-
             // Make line thicker
             chartEmployeeStatistics.Series[0].BorderWidth = 3;
 
@@ -597,8 +577,6 @@ namespace MediaBazar
             foreach (object[] statistic in statistics)
             {
                 chartEmployeeStatistics.Series["Number of employees"].Points.AddXY(statistic[0].ToString(), statistic[1]);
-
-                // Displays one employee at a time
                 Refresh();
             }
         }
@@ -615,13 +593,9 @@ namespace MediaBazar
 
             // Series
             chartEmployeeStatistics.Series.Add("FamousItems");
-
-
             chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Pie;
-
             // Title
             chartEmployeeStatistics.Titles.Add($"Top Selling Products between {dateFrom} and {dateTo} in department '{department}'");
-
 
             // Made it fit all data
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
@@ -634,7 +608,7 @@ namespace MediaBazar
                 chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
                 chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
 
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }

@@ -303,7 +303,7 @@ namespace MediaBazar
             foreach (object[] statistic in statistics)
             {
                 chartEmployeeStatistics.Series["Restocked Items"].Points.AddXY(statistic[0].ToString(), statistic[1]);
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }
@@ -336,7 +336,7 @@ namespace MediaBazar
                 chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
                 chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
 
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }
@@ -362,8 +362,6 @@ namespace MediaBazar
             foreach (object[] statistic in statistics)
             {
                 chartEmployeeStatistics.Series["Total stock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
-
-                // Displays one employee at a time
                 Refresh();
             }
         }
@@ -389,8 +387,6 @@ namespace MediaBazar
             foreach (object[] statistic in statistics)
             {
                 chartEmployeeStatistics.Series["Total profit"].Points.AddXY(statistic[0].ToString(), statistic[1]);
-
-                // Displays one employee at a time
                 Refresh();
             }
         }
@@ -424,7 +420,7 @@ namespace MediaBazar
                 chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
                 chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
 
-                // Displays one employee at a time
+                // Displays one item at a time
                 Refresh();
             }
         }
