@@ -13,7 +13,7 @@ namespace MediaBazar
         // Current user
         private string currentUser;
 
-        List<Person> people = new List<Person>();
+     
         List<Schedule> schedules = new List<Schedule>();
         List<Schedule> proposed = new List<Schedule>();
         // Person person = new Person();
@@ -23,7 +23,7 @@ namespace MediaBazar
         List<Product> products = new List<Product>();
 
         Person person = new Person();
-        string connectionString = "Server=studmysql01.fhict.local;Uid=dbi435688;Database=dbi435688;Pwd=webhosting54;SslMode=none";
+      
 
         MySqlConnection conn;
 
@@ -45,7 +45,7 @@ namespace MediaBazar
         public MediaBazaar()
         {
             database = new Database_handler();
-            conn = new MySqlConnection(connectionString);
+           
         }
 
         public static MediaBazaar Instance
@@ -242,15 +242,9 @@ namespace MediaBazar
         // to get the list of people from database
         public List<Person> ReturnPeopleFromDB()
         {
-            people = database.ReturnPeopleFromDB();
-            return people;
-        }
-
-        public List<Person> GetPeople()
-        {
-
-            return people;
-        }
+          //  people = database.ReturnPeopleFromDB();
+            return database.ReturnPeopleFromDB(); ;
+        } 
 
         // to modify the data of an existing employee
         public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
