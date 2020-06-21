@@ -51,57 +51,6 @@
             this.btnAddNewEmployee = new System.Windows.Forms.Button();
             this.btnModifyEmp = new System.Windows.Forms.Button();
             this.btnRemoveEmp = new System.Windows.Forms.Button();
-            this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
-            this.label32 = new System.Windows.Forms.Label();
-            this.cbxDepartments = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.lb = new System.Windows.Forms.Label();
-            this.cbxCategoryStatistics = new System.Windows.Forms.ComboBox();
-            this.chartEmployeeStatistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnLoadChart = new System.Windows.Forms.Button();
-            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.cbAllSchedule = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbScheduleMonth = new System.Windows.Forms.ComboBox();
-            this.lblFilterBy = new System.Windows.Forms.Label();
-            this.btnShowSchedule = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbNameOfEmp = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.pnlSchedule = new System.Windows.Forms.Panel();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpTimeForShift = new System.Windows.Forms.DateTimePicker();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnAutoAssign = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbEmpShift = new System.Windows.Forms.ComboBox();
-            this.btnAssignShift = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -169,6 +118,57 @@
             this.tbMinEmp = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.cbManagers = new System.Windows.Forms.ComboBox();
+            this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cbxDepartments = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.lb = new System.Windows.Forms.Label();
+            this.cbxCategoryStatistics = new System.Windows.Forms.ComboBox();
+            this.chartEmployeeStatistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnLoadChart = new System.Windows.Forms.Button();
+            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.cbAllSchedule = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbScheduleMonth = new System.Windows.Forms.ComboBox();
+            this.lblFilterBy = new System.Windows.Forms.Label();
+            this.btnShowSchedule = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbNameOfEmp = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pnlSchedule = new System.Windows.Forms.Panel();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpTimeForShift = new System.Windows.Forms.DateTimePicker();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnAutoAssign = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbEmpShift = new System.Windows.Forms.ComboBox();
+            this.btnAssignShift = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -178,13 +178,6 @@
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.metroTabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
-            this.metroTabPage4.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -198,6 +191,13 @@
             this.tabPage4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.metroTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
+            this.metroTabPage4.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -205,15 +205,15 @@
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
+            this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Controls.Add(this.metroTabPage5);
-            this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.HotTrack = true;
             this.metroTabControl1.ItemSize = new System.Drawing.Size(230, 50);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1159, 839);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -394,6 +394,709 @@
             this.btnRemoveEmp.Text = "Remove";
             this.btnRemoveEmp.UseVisualStyleBackColor = false;
             this.btnRemoveEmp.Click += new System.EventHandler(this.btnRemoveEmp_Click);
+            // 
+            // metroTabPage3
+            // 
+            this.metroTabPage3.Controls.Add(this.tabControl1);
+            this.metroTabPage3.CustomBackground = true;
+            this.metroTabPage3.HorizontalScrollbarBarColor = true;
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 54);
+            this.metroTabPage3.Name = "metroTabPage3";
+            this.metroTabPage3.Size = new System.Drawing.Size(1151, 781);
+            this.metroTabPage3.TabIndex = 2;
+            this.metroTabPage3.Text = "Stock Info";
+            this.metroTabPage3.VerticalScrollbarBarColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.ItemSize = new System.Drawing.Size(284, 30);
+            this.tabControl1.Location = new System.Drawing.Point(7, 11);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1143, 770);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 51;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1135, 732);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Stock";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label33);
+            this.groupBox3.Controls.Add(this.tbQuantity);
+            this.groupBox3.Controls.Add(this.btnOrder);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox3.Location = new System.Drawing.Point(794, 22);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(326, 291);
+            this.groupBox3.TabIndex = 26;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Restock";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label33.Location = new System.Drawing.Point(22, 56);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(68, 20);
+            this.label33.TabIndex = 26;
+            this.label33.Text = "Quantity";
+            // 
+            // tbQuantity
+            // 
+            this.tbQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbQuantity.Location = new System.Drawing.Point(26, 115);
+            this.tbQuantity.Name = "tbQuantity";
+            this.tbQuantity.Size = new System.Drawing.Size(262, 26);
+            this.tbQuantity.TabIndex = 25;
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrder.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnOrder.Location = new System.Drawing.Point(26, 193);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(262, 42);
+            this.btnOrder.TabIndex = 24;
+            this.btnOrder.Text = "Restock";
+            this.btnOrder.UseVisualStyleBackColor = false;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lvStock);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox2.Location = new System.Drawing.Point(19, 22);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(753, 689);
+            this.groupBox2.TabIndex = 25;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Products In Stock";
+            // 
+            // lvStock
+            // 
+            this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colum11,
+            this.colum1,
+            this.columnHeader3});
+            this.lvStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvStock.GridLines = true;
+            this.lvStock.HideSelection = false;
+            this.lvStock.Location = new System.Drawing.Point(21, 40);
+            this.lvStock.Name = "lvStock";
+            this.lvStock.Size = new System.Drawing.Size(707, 627);
+            this.lvStock.TabIndex = 20;
+            this.lvStock.UseCompatibleStateImageBehavior = false;
+            this.lvStock.View = System.Windows.Forms.View.Details;
+            // 
+            // colum11
+            // 
+            this.colum11.Text = "Product Id";
+            this.colum11.Width = 97;
+            // 
+            // colum1
+            // 
+            this.colum1.Text = "Product Name";
+            this.colum1.Width = 184;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Quantity";
+            this.columnHeader3.Width = 143;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(46, 647);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 20);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Quantity";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(39, 647);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 20);
+            this.label11.TabIndex = 23;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.tbNewQuantity);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1135, 732);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Product";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.cmbSearchByDepartmentProduct);
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.tbProductToSearch);
+            this.groupBox5.Controls.Add(this.listViewProducts);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox5.Location = new System.Drawing.Point(20, 33);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(662, 618);
+            this.groupBox5.TabIndex = 76;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Products";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label12.Location = new System.Drawing.Point(408, 43);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(171, 20);
+            this.label12.TabIndex = 77;
+            this.label12.Text = "Search By Department";
+            // 
+            // cmbSearchByDepartmentProduct
+            // 
+            this.cmbSearchByDepartmentProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSearchByDepartmentProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSearchByDepartmentProduct.FormattingEnabled = true;
+            this.cmbSearchByDepartmentProduct.Location = new System.Drawing.Point(412, 84);
+            this.cmbSearchByDepartmentProduct.Name = "cmbSearchByDepartmentProduct";
+            this.cmbSearchByDepartmentProduct.Size = new System.Drawing.Size(227, 28);
+            this.cmbSearchByDepartmentProduct.TabIndex = 76;
+            this.cmbSearchByDepartmentProduct.SelectedIndexChanged += new System.EventHandler(this.cmbSearchByDepartmentProduct_SelectedIndexChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.SystemColors.Control;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label22.Location = new System.Drawing.Point(12, 43);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(182, 20);
+            this.label22.TabIndex = 75;
+            this.label22.Text = "Search product by name";
+            // 
+            // tbProductToSearch
+            // 
+            this.tbProductToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductToSearch.Location = new System.Drawing.Point(16, 84);
+            this.tbProductToSearch.Name = "tbProductToSearch";
+            this.tbProductToSearch.Size = new System.Drawing.Size(304, 26);
+            this.tbProductToSearch.TabIndex = 74;
+            this.tbProductToSearch.TextChanged += new System.EventHandler(this.tbProductToSearch_TextChanged);
+            // 
+            // listViewProducts
+            // 
+            this.listViewProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader9,
+            this.columnHeader26,
+            this.columnHeader27,
+            this.columnHeader29,
+            this.columnHeader30});
+            this.listViewProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewProducts.GridLines = true;
+            this.listViewProducts.HideSelection = false;
+            this.listViewProducts.Location = new System.Drawing.Point(16, 133);
+            this.listViewProducts.Name = "listViewProducts";
+            this.listViewProducts.Size = new System.Drawing.Size(623, 421);
+            this.listViewProducts.TabIndex = 73;
+            this.listViewProducts.UseCompatibleStateImageBehavior = false;
+            this.listViewProducts.View = System.Windows.Forms.View.Details;
+            this.listViewProducts.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewProducts_ColumnClick);
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "ID";
+            // 
+            // columnHeader26
+            // 
+            this.columnHeader26.Text = "Department";
+            this.columnHeader26.Width = 129;
+            // 
+            // columnHeader27
+            // 
+            this.columnHeader27.Text = "Product Name";
+            this.columnHeader27.Width = 184;
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Price";
+            this.columnHeader29.Width = 115;
+            // 
+            // columnHeader30
+            // 
+            this.columnHeader30.Text = "Selling Price";
+            this.columnHeader30.Width = 103;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnRemoveProduct);
+            this.groupBox4.Controls.Add(this.label34);
+            this.groupBox4.Controls.Add(this.btnAddProduct);
+            this.groupBox4.Controls.Add(this.tbSellingPrice);
+            this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.tbProductPrice);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.btnModifyProduct);
+            this.groupBox4.Controls.Add(this.tbProductName);
+            this.groupBox4.Controls.Add(this.cmbDepartmentStack);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox4.Location = new System.Drawing.Point(706, 33);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(399, 618);
+            this.groupBox4.TabIndex = 75;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Manage Product";
+            // 
+            // btnRemoveProduct
+            // 
+            this.btnRemoveProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnRemoveProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRemoveProduct.Location = new System.Drawing.Point(53, 522);
+            this.btnRemoveProduct.Name = "btnRemoveProduct";
+            this.btnRemoveProduct.Size = new System.Drawing.Size(304, 43);
+            this.btnRemoveProduct.TabIndex = 70;
+            this.btnRemoveProduct.Text = "Delete";
+            this.btnRemoveProduct.UseVisualStyleBackColor = false;
+            this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.SystemColors.Control;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label34.Location = new System.Drawing.Point(49, 309);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(95, 20);
+            this.label34.TabIndex = 74;
+            this.label34.Text = "Selling Price";
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAddProduct.Location = new System.Drawing.Point(52, 413);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(304, 38);
+            this.btnAddProduct.TabIndex = 60;
+            this.btnAddProduct.Text = "Add";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // tbSellingPrice
+            // 
+            this.tbSellingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSellingPrice.Location = new System.Drawing.Point(50, 346);
+            this.tbSellingPrice.Name = "tbSellingPrice";
+            this.tbSellingPrice.Size = new System.Drawing.Size(304, 26);
+            this.tbSellingPrice.TabIndex = 73;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.SystemColors.Control;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label35.Location = new System.Drawing.Point(48, 148);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(110, 20);
+            this.label35.TabIndex = 59;
+            this.label35.Text = "Product Name";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.SystemColors.Control;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label15.Location = new System.Drawing.Point(46, 43);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(94, 20);
+            this.label15.TabIndex = 58;
+            this.label15.Text = "Department";
+            // 
+            // tbProductPrice
+            // 
+            this.tbProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductPrice.Location = new System.Drawing.Point(50, 257);
+            this.tbProductPrice.Name = "tbProductPrice";
+            this.tbProductPrice.Size = new System.Drawing.Size(304, 26);
+            this.tbProductPrice.TabIndex = 61;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.SystemColors.Control;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label17.Location = new System.Drawing.Point(48, 223);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(44, 20);
+            this.label17.TabIndex = 62;
+            this.label17.Text = "Price";
+            // 
+            // btnModifyProduct
+            // 
+            this.btnModifyProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnModifyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifyProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifyProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnModifyProduct.Location = new System.Drawing.Point(53, 468);
+            this.btnModifyProduct.Name = "btnModifyProduct";
+            this.btnModifyProduct.Size = new System.Drawing.Size(304, 36);
+            this.btnModifyProduct.TabIndex = 69;
+            this.btnModifyProduct.Text = "Modify";
+            this.btnModifyProduct.UseVisualStyleBackColor = false;
+            this.btnModifyProduct.Click += new System.EventHandler(this.btnModifyProduct_Click);
+            // 
+            // tbProductName
+            // 
+            this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductName.Location = new System.Drawing.Point(50, 181);
+            this.tbProductName.Name = "tbProductName";
+            this.tbProductName.Size = new System.Drawing.Size(304, 26);
+            this.tbProductName.TabIndex = 56;
+            // 
+            // cmbDepartmentStack
+            // 
+            this.cmbDepartmentStack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartmentStack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDepartmentStack.FormattingEnabled = true;
+            this.cmbDepartmentStack.Location = new System.Drawing.Point(50, 94);
+            this.cmbDepartmentStack.Name = "cmbDepartmentStack";
+            this.cmbDepartmentStack.Size = new System.Drawing.Size(304, 28);
+            this.cmbDepartmentStack.TabIndex = 57;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label14.Location = new System.Drawing.Point(25, 681);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(68, 20);
+            this.label14.TabIndex = 66;
+            this.label14.Text = "Quantity";
+            // 
+            // tbNewQuantity
+            // 
+            this.tbNewQuantity.Location = new System.Drawing.Point(125, 675);
+            this.tbNewQuantity.Name = "tbNewQuantity";
+            this.tbNewQuantity.Size = new System.Drawing.Size(209, 26);
+            this.tbNewQuantity.TabIndex = 65;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(359, 669);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(209, 45);
+            this.button1.TabIndex = 64;
+            this.button1.Text = "Add to stock";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1135, 732);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Requests";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.lvRequests);
+            this.groupBox6.Controls.Add(this.btnSendRequest);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox6.Location = new System.Drawing.Point(15, 27);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1101, 720);
+            this.groupBox6.TabIndex = 43;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Restock Requests";
+            // 
+            // lvRequests
+            // 
+            this.lvRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader25,
+            this.columnHeader28,
+            this.columnHeader2});
+            this.lvRequests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvRequests.GridLines = true;
+            this.lvRequests.HideSelection = false;
+            this.lvRequests.Location = new System.Drawing.Point(24, 45);
+            this.lvRequests.Name = "lvRequests";
+            this.lvRequests.Size = new System.Drawing.Size(1062, 579);
+            this.lvRequests.TabIndex = 43;
+            this.lvRequests.UseCompatibleStateImageBehavior = false;
+            this.lvRequests.View = System.Windows.Forms.View.Details;
+            this.lvRequests.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvRequests_ColumnClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 104;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Product Name";
+            this.columnHeader4.Width = 184;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Quantity";
+            this.columnHeader5.Width = 143;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Status";
+            this.columnHeader25.Width = 138;
+            // 
+            // columnHeader28
+            // 
+            this.columnHeader28.Text = "Requested by";
+            this.columnHeader28.Width = 166;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Date";
+            this.columnHeader2.Width = 135;
+            // 
+            // btnSendRequest
+            // 
+            this.btnSendRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnSendRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendRequest.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSendRequest.Location = new System.Drawing.Point(24, 659);
+            this.btnSendRequest.Name = "btnSendRequest";
+            this.btnSendRequest.Size = new System.Drawing.Size(184, 38);
+            this.btnSendRequest.TabIndex = 44;
+            this.btnSendRequest.Text = "Restock ";
+            this.btnSendRequest.UseVisualStyleBackColor = false;
+            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.groupBox8);
+            this.tabPage4.Controls.Add(this.groupBox7);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1135, 732);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Department";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.lvDepartments);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox8.Location = new System.Drawing.Point(17, 46);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(661, 633);
+            this.groupBox8.TabIndex = 53;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Departments";
+            // 
+            // lvDepartments
+            // 
+            this.lvDepartments.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader15,
+            this.columnHeader24});
+            this.lvDepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvDepartments.GridLines = true;
+            this.lvDepartments.HideSelection = false;
+            this.lvDepartments.Location = new System.Drawing.Point(19, 56);
+            this.lvDepartments.Name = "lvDepartments";
+            this.lvDepartments.Size = new System.Drawing.Size(623, 509);
+            this.lvDepartments.TabIndex = 50;
+            this.lvDepartments.UseCompatibleStateImageBehavior = false;
+            this.lvDepartments.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "ID";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Name";
+            this.columnHeader11.Width = 189;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Manager ";
+            this.columnHeader15.Width = 196;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Min Employees";
+            this.columnHeader24.Width = 121;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnModifyDep);
+            this.groupBox7.Controls.Add(this.tbNewCategoryName);
+            this.groupBox7.Controls.Add(this.label30);
+            this.groupBox7.Controls.Add(this.label28);
+            this.groupBox7.Controls.Add(this.btnAddDepartment);
+            this.groupBox7.Controls.Add(this.tbMinEmp);
+            this.groupBox7.Controls.Add(this.label29);
+            this.groupBox7.Controls.Add(this.cbManagers);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox7.Location = new System.Drawing.Point(702, 46);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(399, 481);
+            this.groupBox7.TabIndex = 52;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Manage Departments";
+            // 
+            // btnModifyDep
+            // 
+            this.btnModifyDep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnModifyDep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifyDep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifyDep.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnModifyDep.Location = new System.Drawing.Point(211, 384);
+            this.btnModifyDep.Name = "btnModifyDep";
+            this.btnModifyDep.Size = new System.Drawing.Size(140, 40);
+            this.btnModifyDep.TabIndex = 51;
+            this.btnModifyDep.Text = "Modify";
+            this.btnModifyDep.UseVisualStyleBackColor = false;
+            this.btnModifyDep.Click += new System.EventHandler(this.btnModifyDep_Click);
+            // 
+            // tbNewCategoryName
+            // 
+            this.tbNewCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNewCategoryName.Location = new System.Drawing.Point(46, 122);
+            this.tbNewCategoryName.Name = "tbNewCategoryName";
+            this.tbNewCategoryName.Size = new System.Drawing.Size(304, 26);
+            this.tbNewCategoryName.TabIndex = 42;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.SystemColors.Control;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label30.Location = new System.Drawing.Point(41, 84);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(140, 20);
+            this.label30.TabIndex = 43;
+            this.label30.Text = "Department Name";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.SystemColors.Control;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label28.Location = new System.Drawing.Point(42, 275);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(79, 20);
+            this.label28.TabIndex = 47;
+            this.label28.Text = "Employee";
+            // 
+            // btnAddDepartment
+            // 
+            this.btnAddDepartment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.btnAddDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDepartment.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAddDepartment.Location = new System.Drawing.Point(47, 386);
+            this.btnAddDepartment.Name = "btnAddDepartment";
+            this.btnAddDepartment.Size = new System.Drawing.Size(145, 38);
+            this.btnAddDepartment.TabIndex = 40;
+            this.btnAddDepartment.Text = "Add";
+            this.btnAddDepartment.UseVisualStyleBackColor = false;
+            this.btnAddDepartment.Click += new System.EventHandler(this.btnAddDepartment_Click);
+            // 
+            // tbMinEmp
+            // 
+            this.tbMinEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMinEmp.Location = new System.Drawing.Point(47, 307);
+            this.tbMinEmp.Name = "tbMinEmp";
+            this.tbMinEmp.Size = new System.Drawing.Size(304, 26);
+            this.tbMinEmp.TabIndex = 46;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.SystemColors.Control;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label29.Location = new System.Drawing.Point(45, 175);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(76, 20);
+            this.label29.TabIndex = 45;
+            this.label29.Text = "Manager ";
+            // 
+            // cbManagers
+            // 
+            this.cbManagers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbManagers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbManagers.FormattingEnabled = true;
+            this.cbManagers.Location = new System.Drawing.Point(45, 210);
+            this.cbManagers.Name = "cbManagers";
+            this.cbManagers.Size = new System.Drawing.Size(304, 28);
+            this.cbManagers.TabIndex = 44;
+            this.cbManagers.Click += new System.EventHandler(this.cbManagers_Click);
             // 
             // metroTabPage5
             // 
@@ -1047,708 +1750,6 @@
             this.columnHeader31.Text = "Shift Type";
             this.columnHeader31.Width = 150;
             // 
-            // metroTabPage3
-            // 
-            this.metroTabPage3.Controls.Add(this.tabControl1);
-            this.metroTabPage3.CustomBackground = true;
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 54);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1151, 781);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "Stock Info";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.ItemSize = new System.Drawing.Size(284, 30);
-            this.tabControl1.Location = new System.Drawing.Point(7, 11);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1143, 770);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 51;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1135, 732);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Stock";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label33);
-            this.groupBox3.Controls.Add(this.tbQuantity);
-            this.groupBox3.Controls.Add(this.btnOrder);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox3.Location = new System.Drawing.Point(794, 22);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(326, 291);
-            this.groupBox3.TabIndex = 26;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Restock";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label33.Location = new System.Drawing.Point(22, 56);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(68, 20);
-            this.label33.TabIndex = 26;
-            this.label33.Text = "Quantity";
-            // 
-            // tbQuantity
-            // 
-            this.tbQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQuantity.Location = new System.Drawing.Point(26, 115);
-            this.tbQuantity.Name = "tbQuantity";
-            this.tbQuantity.Size = new System.Drawing.Size(262, 26);
-            this.tbQuantity.TabIndex = 25;
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrder.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnOrder.Location = new System.Drawing.Point(26, 193);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(262, 42);
-            this.btnOrder.TabIndex = 24;
-            this.btnOrder.Text = "Restock";
-            this.btnOrder.UseVisualStyleBackColor = false;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lvStock);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox2.Location = new System.Drawing.Point(19, 22);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(753, 689);
-            this.groupBox2.TabIndex = 25;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Products In Stock";
-            // 
-            // lvStock
-            // 
-            this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colum11,
-            this.colum1,
-            this.columnHeader3});
-            this.lvStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvStock.GridLines = true;
-            this.lvStock.HideSelection = false;
-            this.lvStock.Location = new System.Drawing.Point(21, 40);
-            this.lvStock.Name = "lvStock";
-            this.lvStock.Size = new System.Drawing.Size(707, 627);
-            this.lvStock.TabIndex = 20;
-            this.lvStock.UseCompatibleStateImageBehavior = false;
-            this.lvStock.View = System.Windows.Forms.View.Details;
-            // 
-            // colum11
-            // 
-            this.colum11.Text = "Product Id";
-            this.colum11.Width = 97;
-            // 
-            // colum1
-            // 
-            this.colum1.Text = "Product Name";
-            this.colum1.Width = 184;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Quantity";
-            this.columnHeader3.Width = 143;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(46, 647);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 20);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Quantity";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(39, 647);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 20);
-            this.label11.TabIndex = 23;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.tbNewQuantity);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1135, 732);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Product";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.cmbSearchByDepartmentProduct);
-            this.groupBox5.Controls.Add(this.label22);
-            this.groupBox5.Controls.Add(this.tbProductToSearch);
-            this.groupBox5.Controls.Add(this.listViewProducts);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox5.Location = new System.Drawing.Point(20, 33);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(662, 618);
-            this.groupBox5.TabIndex = 76;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Products";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label12.Location = new System.Drawing.Point(408, 43);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(171, 20);
-            this.label12.TabIndex = 77;
-            this.label12.Text = "Search By Department";
-            // 
-            // cmbSearchByDepartmentProduct
-            // 
-            this.cmbSearchByDepartmentProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSearchByDepartmentProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSearchByDepartmentProduct.FormattingEnabled = true;
-            this.cmbSearchByDepartmentProduct.Location = new System.Drawing.Point(412, 84);
-            this.cmbSearchByDepartmentProduct.Name = "cmbSearchByDepartmentProduct";
-            this.cmbSearchByDepartmentProduct.Size = new System.Drawing.Size(227, 28);
-            this.cmbSearchByDepartmentProduct.TabIndex = 76;
-            this.cmbSearchByDepartmentProduct.SelectedIndexChanged += new System.EventHandler(this.cmbSearchByDepartmentProduct_SelectedIndexChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.SystemColors.Control;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label22.Location = new System.Drawing.Point(12, 43);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(182, 20);
-            this.label22.TabIndex = 75;
-            this.label22.Text = "Search product by name";
-            // 
-            // tbProductToSearch
-            // 
-            this.tbProductToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductToSearch.Location = new System.Drawing.Point(16, 84);
-            this.tbProductToSearch.Name = "tbProductToSearch";
-            this.tbProductToSearch.Size = new System.Drawing.Size(304, 26);
-            this.tbProductToSearch.TabIndex = 74;
-            this.tbProductToSearch.TextChanged += new System.EventHandler(this.tbProductToSearch_TextChanged);
-            // 
-            // listViewProducts
-            // 
-            this.listViewProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader9,
-            this.columnHeader26,
-            this.columnHeader27,
-            this.columnHeader29,
-            this.columnHeader30});
-            this.listViewProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewProducts.GridLines = true;
-            this.listViewProducts.HideSelection = false;
-            this.listViewProducts.Location = new System.Drawing.Point(16, 133);
-            this.listViewProducts.Name = "listViewProducts";
-            this.listViewProducts.Size = new System.Drawing.Size(623, 421);
-            this.listViewProducts.TabIndex = 73;
-            this.listViewProducts.UseCompatibleStateImageBehavior = false;
-            this.listViewProducts.View = System.Windows.Forms.View.Details;
-            this.listViewProducts.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewProducts_ColumnClick);
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "ID";
-            // 
-            // columnHeader26
-            // 
-            this.columnHeader26.Text = "Department";
-            this.columnHeader26.Width = 129;
-            // 
-            // columnHeader27
-            // 
-            this.columnHeader27.Text = "Product Name";
-            this.columnHeader27.Width = 184;
-            // 
-            // columnHeader29
-            // 
-            this.columnHeader29.Text = "Price";
-            this.columnHeader29.Width = 115;
-            // 
-            // columnHeader30
-            // 
-            this.columnHeader30.Text = "Selling Price";
-            this.columnHeader30.Width = 103;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.btnRemoveProduct);
-            this.groupBox4.Controls.Add(this.label34);
-            this.groupBox4.Controls.Add(this.btnAddProduct);
-            this.groupBox4.Controls.Add(this.tbSellingPrice);
-            this.groupBox4.Controls.Add(this.label35);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.tbProductPrice);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.btnModifyProduct);
-            this.groupBox4.Controls.Add(this.tbProductName);
-            this.groupBox4.Controls.Add(this.cmbDepartmentStack);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox4.Location = new System.Drawing.Point(706, 33);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(399, 618);
-            this.groupBox4.TabIndex = 75;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Manage Product";
-            // 
-            // btnRemoveProduct
-            // 
-            this.btnRemoveProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnRemoveProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRemoveProduct.Location = new System.Drawing.Point(53, 522);
-            this.btnRemoveProduct.Name = "btnRemoveProduct";
-            this.btnRemoveProduct.Size = new System.Drawing.Size(304, 43);
-            this.btnRemoveProduct.TabIndex = 70;
-            this.btnRemoveProduct.Text = "Delete";
-            this.btnRemoveProduct.UseVisualStyleBackColor = false;
-            this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.SystemColors.Control;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label34.Location = new System.Drawing.Point(49, 309);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(95, 20);
-            this.label34.TabIndex = 74;
-            this.label34.Text = "Selling Price";
-            // 
-            // btnAddProduct
-            // 
-            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddProduct.Location = new System.Drawing.Point(52, 413);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(304, 38);
-            this.btnAddProduct.TabIndex = 60;
-            this.btnAddProduct.Text = "Add";
-            this.btnAddProduct.UseVisualStyleBackColor = false;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
-            // 
-            // tbSellingPrice
-            // 
-            this.tbSellingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSellingPrice.Location = new System.Drawing.Point(50, 346);
-            this.tbSellingPrice.Name = "tbSellingPrice";
-            this.tbSellingPrice.Size = new System.Drawing.Size(304, 26);
-            this.tbSellingPrice.TabIndex = 73;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.SystemColors.Control;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label35.Location = new System.Drawing.Point(48, 148);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(110, 20);
-            this.label35.TabIndex = 59;
-            this.label35.Text = "Product Name";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.SystemColors.Control;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label15.Location = new System.Drawing.Point(46, 43);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(94, 20);
-            this.label15.TabIndex = 58;
-            this.label15.Text = "Department";
-            // 
-            // tbProductPrice
-            // 
-            this.tbProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductPrice.Location = new System.Drawing.Point(50, 257);
-            this.tbProductPrice.Name = "tbProductPrice";
-            this.tbProductPrice.Size = new System.Drawing.Size(304, 26);
-            this.tbProductPrice.TabIndex = 61;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.SystemColors.Control;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label17.Location = new System.Drawing.Point(48, 223);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 20);
-            this.label17.TabIndex = 62;
-            this.label17.Text = "Price";
-            // 
-            // btnModifyProduct
-            // 
-            this.btnModifyProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnModifyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifyProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnModifyProduct.Location = new System.Drawing.Point(53, 468);
-            this.btnModifyProduct.Name = "btnModifyProduct";
-            this.btnModifyProduct.Size = new System.Drawing.Size(304, 36);
-            this.btnModifyProduct.TabIndex = 69;
-            this.btnModifyProduct.Text = "Modify";
-            this.btnModifyProduct.UseVisualStyleBackColor = false;
-            this.btnModifyProduct.Click += new System.EventHandler(this.btnModifyProduct_Click);
-            // 
-            // tbProductName
-            // 
-            this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductName.Location = new System.Drawing.Point(50, 181);
-            this.tbProductName.Name = "tbProductName";
-            this.tbProductName.Size = new System.Drawing.Size(304, 26);
-            this.tbProductName.TabIndex = 56;
-            // 
-            // cmbDepartmentStack
-            // 
-            this.cmbDepartmentStack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDepartmentStack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDepartmentStack.FormattingEnabled = true;
-            this.cmbDepartmentStack.Location = new System.Drawing.Point(50, 94);
-            this.cmbDepartmentStack.Name = "cmbDepartmentStack";
-            this.cmbDepartmentStack.Size = new System.Drawing.Size(304, 28);
-            this.cmbDepartmentStack.TabIndex = 57;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label14.Location = new System.Drawing.Point(25, 681);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(68, 20);
-            this.label14.TabIndex = 66;
-            this.label14.Text = "Quantity";
-            // 
-            // tbNewQuantity
-            // 
-            this.tbNewQuantity.Location = new System.Drawing.Point(125, 675);
-            this.tbNewQuantity.Name = "tbNewQuantity";
-            this.tbNewQuantity.Size = new System.Drawing.Size(209, 26);
-            this.tbNewQuantity.TabIndex = 65;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(359, 669);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(209, 45);
-            this.button1.TabIndex = 64;
-            this.button1.Text = "Add to stock";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.groupBox6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1135, 732);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Requests";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.lvRequests);
-            this.groupBox6.Controls.Add(this.btnSendRequest);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox6.Location = new System.Drawing.Point(15, 27);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1101, 720);
-            this.groupBox6.TabIndex = 43;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Restock Requests";
-            // 
-            // lvRequests
-            // 
-            this.lvRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader25,
-            this.columnHeader28,
-            this.columnHeader2});
-            this.lvRequests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvRequests.GridLines = true;
-            this.lvRequests.HideSelection = false;
-            this.lvRequests.Location = new System.Drawing.Point(24, 45);
-            this.lvRequests.Name = "lvRequests";
-            this.lvRequests.Size = new System.Drawing.Size(1062, 579);
-            this.lvRequests.TabIndex = 43;
-            this.lvRequests.UseCompatibleStateImageBehavior = false;
-            this.lvRequests.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            this.columnHeader1.Width = 104;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Product Name";
-            this.columnHeader4.Width = 184;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Quantity";
-            this.columnHeader5.Width = 143;
-            // 
-            // columnHeader25
-            // 
-            this.columnHeader25.Text = "Status";
-            this.columnHeader25.Width = 138;
-            // 
-            // columnHeader28
-            // 
-            this.columnHeader28.Text = "Requested by";
-            this.columnHeader28.Width = 166;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Date";
-            this.columnHeader2.Width = 135;
-            // 
-            // btnSendRequest
-            // 
-            this.btnSendRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnSendRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendRequest.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSendRequest.Location = new System.Drawing.Point(24, 659);
-            this.btnSendRequest.Name = "btnSendRequest";
-            this.btnSendRequest.Size = new System.Drawing.Size(184, 38);
-            this.btnSendRequest.TabIndex = 44;
-            this.btnSendRequest.Text = "Restock ";
-            this.btnSendRequest.UseVisualStyleBackColor = false;
-            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage4.Controls.Add(this.groupBox8);
-            this.tabPage4.Controls.Add(this.groupBox7);
-            this.tabPage4.Location = new System.Drawing.Point(4, 34);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1135, 732);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Department";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.lvDepartments);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox8.Location = new System.Drawing.Point(17, 46);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(661, 633);
-            this.groupBox8.TabIndex = 53;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Departments";
-            // 
-            // lvDepartments
-            // 
-            this.lvDepartments.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader10,
-            this.columnHeader11,
-            this.columnHeader15,
-            this.columnHeader24});
-            this.lvDepartments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvDepartments.GridLines = true;
-            this.lvDepartments.HideSelection = false;
-            this.lvDepartments.Location = new System.Drawing.Point(19, 56);
-            this.lvDepartments.Name = "lvDepartments";
-            this.lvDepartments.Size = new System.Drawing.Size(623, 509);
-            this.lvDepartments.TabIndex = 50;
-            this.lvDepartments.UseCompatibleStateImageBehavior = false;
-            this.lvDepartments.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "ID";
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Name";
-            this.columnHeader11.Width = 189;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Manager ";
-            this.columnHeader15.Width = 196;
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "Min Employees";
-            this.columnHeader24.Width = 121;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.btnModifyDep);
-            this.groupBox7.Controls.Add(this.tbNewCategoryName);
-            this.groupBox7.Controls.Add(this.label30);
-            this.groupBox7.Controls.Add(this.label28);
-            this.groupBox7.Controls.Add(this.btnAddDepartment);
-            this.groupBox7.Controls.Add(this.tbMinEmp);
-            this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Controls.Add(this.cbManagers);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox7.Location = new System.Drawing.Point(702, 46);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(399, 481);
-            this.groupBox7.TabIndex = 52;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Manage Departments";
-            // 
-            // btnModifyDep
-            // 
-            this.btnModifyDep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnModifyDep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifyDep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifyDep.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnModifyDep.Location = new System.Drawing.Point(211, 384);
-            this.btnModifyDep.Name = "btnModifyDep";
-            this.btnModifyDep.Size = new System.Drawing.Size(140, 40);
-            this.btnModifyDep.TabIndex = 51;
-            this.btnModifyDep.Text = "Modify";
-            this.btnModifyDep.UseVisualStyleBackColor = false;
-            this.btnModifyDep.Click += new System.EventHandler(this.btnModifyDep_Click);
-            // 
-            // tbNewCategoryName
-            // 
-            this.tbNewCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNewCategoryName.Location = new System.Drawing.Point(46, 122);
-            this.tbNewCategoryName.Name = "tbNewCategoryName";
-            this.tbNewCategoryName.Size = new System.Drawing.Size(304, 26);
-            this.tbNewCategoryName.TabIndex = 42;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.SystemColors.Control;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label30.Location = new System.Drawing.Point(41, 84);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(140, 20);
-            this.label30.TabIndex = 43;
-            this.label30.Text = "Department Name";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.SystemColors.Control;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label28.Location = new System.Drawing.Point(42, 275);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(79, 20);
-            this.label28.TabIndex = 47;
-            this.label28.Text = "Employee";
-            // 
-            // btnAddDepartment
-            // 
-            this.btnAddDepartment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.btnAddDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddDepartment.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddDepartment.Location = new System.Drawing.Point(47, 386);
-            this.btnAddDepartment.Name = "btnAddDepartment";
-            this.btnAddDepartment.Size = new System.Drawing.Size(145, 38);
-            this.btnAddDepartment.TabIndex = 40;
-            this.btnAddDepartment.Text = "Add";
-            this.btnAddDepartment.UseVisualStyleBackColor = false;
-            this.btnAddDepartment.Click += new System.EventHandler(this.btnAddDepartment_Click);
-            // 
-            // tbMinEmp
-            // 
-            this.tbMinEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMinEmp.Location = new System.Drawing.Point(47, 307);
-            this.tbMinEmp.Name = "tbMinEmp";
-            this.tbMinEmp.Size = new System.Drawing.Size(304, 26);
-            this.tbMinEmp.TabIndex = 46;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.SystemColors.Control;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label29.Location = new System.Drawing.Point(45, 175);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(76, 20);
-            this.label29.TabIndex = 45;
-            this.label29.Text = "Manager ";
-            // 
-            // cbManagers
-            // 
-            this.cbManagers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbManagers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbManagers.FormattingEnabled = true;
-            this.cbManagers.Location = new System.Drawing.Point(45, 210);
-            this.cbManagers.Name = "cbManagers";
-            this.cbManagers.Size = new System.Drawing.Size(304, 28);
-            this.cbManagers.TabIndex = 44;
-            this.cbManagers.Click += new System.EventHandler(this.cbManagers_Click);
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -1826,19 +1827,6 @@
             this.metroTabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.metroTabPage5.ResumeLayout(false);
-            this.metroTabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
-            this.metroTabPage4.ResumeLayout(false);
-            this.metroTabPage4.PerformLayout();
-            this.metroTabPage2.ResumeLayout(false);
-            this.metroTabPage2.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1858,6 +1846,19 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.metroTabPage5.ResumeLayout(false);
+            this.metroTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
+            this.metroTabPage4.ResumeLayout(false);
+            this.metroTabPage4.PerformLayout();
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
