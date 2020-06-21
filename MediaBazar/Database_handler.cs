@@ -751,7 +751,15 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
                         cmd.Parameters.AddWithValue("@city", givenCity);
                         cmd.Parameters.AddWithValue("@role", roles);
-                        cmd.Parameters.AddWithValue("@department", departmentId);
+                        if (departmentId == 0)
+                        {
+                            cmd.Parameters.AddWithValue("@department", null);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@department", departmentId);
+                        }
+                        
                         cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
                         conn.Open();
                         cmd.ExecuteNonQuery();
