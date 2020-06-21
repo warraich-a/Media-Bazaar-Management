@@ -27,7 +27,7 @@ namespace MediaBazar
             this.mediaBazaar = mediaBazaar;
             FoundPerson(id);
             btnAddNewEmployee.Text = "Update";
-            this.Name = "Update";
+            this.Text = "Update Data";
            // cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
             Departments();
         }
@@ -39,7 +39,7 @@ namespace MediaBazar
             this.mediaBazaar = mediaBazaar;
            // cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
             btnAddNewEmployee.Text = "Add";
-            this.Name = "Add";
+            this.Text = "Add New Employee";
             Departments();
 
         }
@@ -89,11 +89,20 @@ namespace MediaBazar
                 {
                     if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                      
-                        mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
-                        this.Close();
-                        form.AddEmployeesToList();
-                        form.RefreshData();
+                        if (role == "Manager")
+                        {
+                            mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), "");
+                            this.Close();
+                            form.AddEmployeesToList();
+                            form.RefreshData();
+                        }
+                        else
+                        {
+                            mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
+                            this.Close();
+                            form.AddEmployeesToList();
+                            form.RefreshData();
+                        }
                     }
                     else
                     {
