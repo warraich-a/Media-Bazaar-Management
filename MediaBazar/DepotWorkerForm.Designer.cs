@@ -143,18 +143,20 @@
             // 
             // tbAmountItems
             // 
+            this.tbAmountItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAmountItems.Location = new System.Drawing.Point(19, 219);
             this.tbAmountItems.Name = "tbAmountItems";
-            this.tbAmountItems.Size = new System.Drawing.Size(287, 29);
+            this.tbAmountItems.Size = new System.Drawing.Size(287, 26);
             this.tbAmountItems.TabIndex = 82;
             // 
             // cbStockItm
             // 
             this.cbStockItm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStockItm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStockItm.FormattingEnabled = true;
             this.cbStockItm.Location = new System.Drawing.Point(19, 97);
             this.cbStockItm.Name = "cbStockItm";
-            this.cbStockItm.Size = new System.Drawing.Size(287, 32);
+            this.cbStockItm.Size = new System.Drawing.Size(287, 28);
             this.cbStockItm.TabIndex = 81;
             this.cbStockItm.Click += new System.EventHandler(this.cbStockItm_Click);
             // 
@@ -256,9 +258,10 @@
             // 
             // tbProductQuantity
             // 
+            this.tbProductQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProductQuantity.Location = new System.Drawing.Point(27, 115);
             this.tbProductQuantity.Name = "tbProductQuantity";
-            this.tbProductQuantity.Size = new System.Drawing.Size(248, 29);
+            this.tbProductQuantity.Size = new System.Drawing.Size(248, 26);
             this.tbProductQuantity.TabIndex = 70;
             // 
             // button1
@@ -345,9 +348,10 @@
             // 
             // tbProductName
             // 
+            this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbProductName.Location = new System.Drawing.Point(230, 59);
             this.tbProductName.Name = "tbProductName";
-            this.tbProductName.Size = new System.Drawing.Size(432, 29);
+            this.tbProductName.Size = new System.Drawing.Size(432, 26);
             this.tbProductName.TabIndex = 77;
             this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
             // 
