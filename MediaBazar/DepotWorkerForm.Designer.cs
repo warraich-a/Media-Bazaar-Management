@@ -55,11 +55,11 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label22 = new System.Windows.Forms.Label();
             this.tbProductName = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -355,17 +355,6 @@
             this.tbProductName.TabIndex = 77;
             this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MediaBazar.Properties.Resources.linkedin_banner_image_1;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 99);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 47;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -377,16 +366,6 @@
             this.lblUsername.TabIndex = 46;
             this.lblUsername.Text = "Username";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::MediaBazar.Properties.Resources.user;
-            this.pictureBox4.Location = new System.Drawing.Point(242, 52);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(29, 30);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 45;
-            this.pictureBox4.TabStop = false;
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -394,9 +373,9 @@
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.label19.Location = new System.Drawing.Point(292, 18);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(234, 24);
+            this.label19.Size = new System.Drawing.Size(119, 24);
             this.label19.TabIndex = 54;
-            this.label19.Text = "Logged in as depot worker";
+            this.label19.Text = "Logged in as";
             // 
             // button3
             // 
@@ -411,6 +390,27 @@
             this.button3.TabIndex = 55;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MediaBazar.Properties.Resources.linkedin_banner_image_1;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(184, 99);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::MediaBazar.Properties.Resources.worker;
+            this.pictureBox4.Location = new System.Drawing.Point(242, 41);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 45;
+            this.pictureBox4.TabStop = false;
             // 
             // DepotWorkerForm
             // 

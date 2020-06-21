@@ -172,9 +172,9 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -213,7 +213,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(230, 50);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 4;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(1159, 839);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -831,7 +831,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(17, 649);
+            this.button2.Location = new System.Drawing.Point(17, 673);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(174, 45);
             this.button2.TabIndex = 83;
@@ -843,8 +843,9 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(13, 38);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.lblTitle.Location = new System.Drawing.Point(21, 38);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(0, 23);
             this.lblTitle.TabIndex = 77;
@@ -860,7 +861,7 @@
             this.listView3.HideSelection = false;
             this.listView3.Location = new System.Drawing.Point(17, 77);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(578, 545);
+            this.listView3.Size = new System.Drawing.Size(578, 573);
             this.listView3.TabIndex = 74;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -1766,30 +1767,9 @@
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.label19.Location = new System.Drawing.Point(291, 21);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(230, 24);
+            this.label19.Size = new System.Drawing.Size(119, 24);
             this.label19.TabIndex = 53;
-            this.label19.Text = "Logged in as administrator";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MediaBazar.Properties.Resources.linkedin_banner_image_1;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 99);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 51;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::MediaBazar.Properties.Resources.user;
-            this.pictureBox5.Location = new System.Drawing.Point(243, 54);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(29, 30);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 49;
-            this.pictureBox5.TabStop = false;
+            this.label19.Text = "Logged in as";
             // 
             // button3
             // 
@@ -1804,6 +1784,27 @@
             this.button3.TabIndex = 54;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MediaBazar.Properties.Resources.linkedin_banner_image_1;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(184, 99);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 51;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::MediaBazar.Properties.Resources.administrator;
+            this.pictureBox5.Location = new System.Drawing.Point(247, 46);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 49;
+            this.pictureBox5.TabStop = false;
             // 
             // AdministratorForm
             // 
