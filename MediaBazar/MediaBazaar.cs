@@ -18,7 +18,7 @@ namespace MediaBazar
         List<Request> requests = new List<Request>();
         List<Stock> stocks = new List<Stock>();
         List<Product> products = new List<Product>();
-        List<Person> people = new List<Person>();
+        
 
 
         Database_handler database;
@@ -236,15 +236,10 @@ namespace MediaBazar
         // to get the list of people from database
         public List<Person> ReturnPeopleFromDB()
         {
-            people = database.ReturnPeopleFromDB();
-            return people;
+            return database.ReturnPeopleFromDB();
+        
         }
 
-        public List<Person> GetPeople()
-        {
-
-            return people;
-        }
 
         // to modify the data of an existing employee
         public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)

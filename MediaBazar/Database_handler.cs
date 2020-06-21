@@ -523,7 +523,15 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
                         cmd.Parameters.AddWithValue("@city", givenCity);
                         cmd.Parameters.AddWithValue("@role", roles);
-                        cmd.Parameters.AddWithValue("@department", departmentId);
+                        if(departmentId == 0)
+                        {
+                            cmd.Parameters.AddWithValue("@department", null);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@department", departmentId);
+                        }
+                        
                         cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
                         cmd.Parameters.AddWithValue("@password", newPassword);
                         conn.Open();
@@ -642,12 +650,17 @@ namespace MediaBazar
                         r = Roles.DepotWorker;
                     }
                     
-                    if (dr[3] != DBNull.Value)
+                    if (dr[3] == DBNull.Value)
                     {
-                        dpId = Convert.ToInt32(dr[3]);
+                        Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dpId, Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
+                        people.Add(g);
                     }
-                    Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), dpId, Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
-                    people.Add(g);
+                    else
+                    {
+                        Person g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
+                        people.Add(g);
+                    }
+                  
                 }
             }
             finally
