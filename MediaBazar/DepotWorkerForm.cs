@@ -35,6 +35,16 @@ namespace MediaBazar
                 l.SubItems.Add(p.Quantity.ToString());
 
                 lvStock.Items.Add(l);
+                if (p.Quantity < 100)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+
+                }
+                if (p.Quantity == 0)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                    lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                }
             }
 
             lvProductList.Items.Clear();
