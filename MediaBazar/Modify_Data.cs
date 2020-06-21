@@ -27,7 +27,9 @@ namespace MediaBazar
             this.mediaBazaar = mediaBazaar;
             FoundPerson(id);
             btnAddNewEmployee.Text = "Update";
-            cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
+            this.Name = "Update";
+           // cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
+            Departments();
         }
         // a new constructor add a new employee
         public Modify_data(MediaBazaar mediaBazaar, AdministratorForm f)
@@ -35,8 +37,10 @@ namespace MediaBazar
             form = f;
             InitializeComponent();
             this.mediaBazaar = mediaBazaar;
-            cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
+           // cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
             btnAddNewEmployee.Text = "Add";
+            this.Name = "Add";
+            Departments();
 
         }
         // To add a new employee in the system
@@ -53,13 +57,15 @@ namespace MediaBazar
                 string zipcode = tbZipcode.Text;
                 string city = tbCity.Text;
                 double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
+
                 if (btnAddNewEmployee.Text == "Add")
                 {
                     if (MessageBox.Show("Do you want to Add this person?", "Add Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
+                        mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
                         this.Close();
                         form.AddEmployeesToList();
+                        form.RefreshData();
                         
                     }
                     else
@@ -72,9 +78,10 @@ namespace MediaBazar
                     if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                       
-                        mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
+                        mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
                         this.Close();
                         form.AddEmployeesToList();
+                        form.RefreshData();
                     }
                     else
                     {
@@ -99,15 +106,32 @@ namespace MediaBazar
                 dtpBirthDateEmp.Text = foundPerson.DateOfBirth.ToString();
                 tbxStreetName.Text = foundPerson.StreetName;
                 tbxHouseNr.Text = foundPerson.HouseNr.ToString();
-                tbCity.Text = foundPerson.City;
-                tbZipcode.Text = foundPerson.Zipcode;
+                tbCity.Text = foundPerson.Zipcode;
+                tbZipcode.Text = foundPerson.City;
                 tbxHourlyWage.Text = foundPerson.HourlyWage.ToString();
                 cbxRole.Text = foundPerson.Role.ToString();
+                foreach (Department item in mediaBazaar.GetAllDepartments())
+                {
+                    if (foundPerson.DepartmentId == item.Id)
+                    {
+                        cmbDepartment.Text = item.Name;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void Departments()
+        {
+            cmbDepartment.Items.Clear();
+            foreach (Department d in mediaBazaar.GetAllDepartments())
+            {
+                cmbDepartment.Items.Add(d.Name);
+            }
+
         }
     }
 }

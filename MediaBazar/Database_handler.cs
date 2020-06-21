@@ -475,10 +475,11 @@ namespace MediaBazar
         }
 
         /* EMPLOYEE MANAGEMENT */
-        public void AddPersonToDatabase(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void AddPersonToDatabase(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)
         {
             string givenEmail;
             string newPassword;
+            int departmentId = 0;
             bool personExist = false;
             try
             {
@@ -489,12 +490,19 @@ namespace MediaBazar
                         personExist = true;
                     }
                 }
+                foreach (Department item in Departments)
+                {
+                    if(item.Name == department)
+                    {
+                        departmentId = item.Id;
+                    }
+                }
 
                 if (personExist == false)
                 {
                     givenEmail = person.Email(givenFirstName, givenSecondName);
                     newPassword = person.SetPassword();
-                    string sql = "INSERT INTO person(firstName, lastName, email, dateOfBirth, streetName, houseNr,zipcode, city, hourlyWage, password, role) VALUES(@firstName, @lastName, @email, @DOB, @streetName, @houseNr, @zipcode, @city, @hourlyWage, @password, @role)";
+                    string sql = "INSERT INTO person(firstName, lastName, email, department_id, dateOfBirth, streetName, houseNr,zipcode, city, hourlyWage, password, role) VALUES(@firstName, @lastName, @email, @department, @DOB, @streetName, @houseNr, @zipcode, @city, @hourlyWage, @password, @role)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     if (givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0)
                     {
@@ -511,6 +519,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
                         cmd.Parameters.AddWithValue("@city", givenCity);
                         cmd.Parameters.AddWithValue("@role", roles);
+                        cmd.Parameters.AddWithValue("@department", departmentId);
                         cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
                         cmd.Parameters.AddWithValue("@password", newPassword);
                         conn.Open();
@@ -681,9 +690,10 @@ namespace MediaBazar
         }
 
         // a method to modify the data
-        public void ModifyData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void ModifyData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)
         {
             bool personExist = false;
+            int departmentId = 0;
             try
             {
                 foreach (Person item in people) // to check if the Person with the same name already exists
@@ -693,9 +703,16 @@ namespace MediaBazar
                         personExist = true;
                     }
                 }
+                foreach (Department item in Departments)
+                {
+                    if (item.Name == department)
+                    {
+                        departmentId = item.Id;
+                    }
+                }
                 if (!personExist)
                 {
-                    string sql = "UPDATE person SET firstName = @firstName, lastName = @lastName, dateOfBirth = @DOB, streetName = @streetName, houseNr = @houseNr, city = @city, zipcode = @zipcode, hourlyWage = @hourlyWage, role = @role WHERE id ='" + id + "';";
+                    string sql = "UPDATE person SET firstName = @firstName, lastName = @lastName, department_id = @department, dateOfBirth = @DOB, streetName = @streetName, houseNr = @houseNr, city = @city, zipcode = @zipcode, hourlyWage = @hourlyWage, role = @role WHERE id ='" + id + "';";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     if (givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0)
                     {
@@ -711,6 +728,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
                         cmd.Parameters.AddWithValue("@city", givenCity);
                         cmd.Parameters.AddWithValue("@role", roles);
+                        cmd.Parameters.AddWithValue("@department", departmentId);
                         cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
                         conn.Open();
                         cmd.ExecuteNonQuery();

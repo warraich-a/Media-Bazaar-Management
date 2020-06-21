@@ -47,6 +47,8 @@
             this.dtpBirthDateEmp = new System.Windows.Forms.DateTimePicker();
             this.btnAddNewEmployee = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // tbLastName
@@ -206,7 +208,7 @@
             this.btnAddNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewEmployee.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddNewEmployee.Location = new System.Drawing.Point(133, 435);
+            this.btnAddNewEmployee.Location = new System.Drawing.Point(133, 485);
             this.btnAddNewEmployee.Name = "btnAddNewEmployee";
             this.btnAddNewEmployee.Size = new System.Drawing.Size(281, 32);
             this.btnAddNewEmployee.TabIndex = 67;
@@ -224,11 +226,36 @@
             this.label3.TabIndex = 66;
             this.label3.Text = "Date of Birth";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(14, 447);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 85;
+            this.label2.Text = "Department";
+            // 
+            // cmbDepartment
+            // 
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Items.AddRange(new object[] {
+            "Administrator",
+            "Manager",
+            "DepotWorker",
+            "Employee"});
+            this.cmbDepartment.Location = new System.Drawing.Point(133, 439);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(281, 21);
+            this.cmbDepartment.TabIndex = 86;
+            // 
             // Modify_data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 487);
+            this.ClientSize = new System.Drawing.Size(443, 557);
+            this.Controls.Add(this.cmbDepartment);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbFirstName);
@@ -276,5 +303,7 @@
         private System.Windows.Forms.DateTimePicker dtpBirthDateEmp;
         private System.Windows.Forms.Button btnAddNewEmployee;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbDepartment;
     }
 }

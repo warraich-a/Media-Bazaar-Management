@@ -128,7 +128,7 @@ namespace MediaBazar
                 list.SubItems.Add(item.Quantity.ToString());
                 list.SubItems.Add(item.Status);
                 list.SubItems.Add(item.RequestedBy);
-                list.SubItems.Add(item.DatE.Substring(0, 11));
+                list.SubItems.Add(Convert.ToDateTime(item.DatE).ToShortDateString());
                 lvRequests.Items.Add(list);
             }
             lvDepartments.Items.Clear();
@@ -199,7 +199,13 @@ namespace MediaBazar
                 list.SubItems.Add(item.FirstName);
                 list.SubItems.Add(item.LastName);
                 list.SubItems.Add(item.GetEmail);
-                list.SubItems.Add(Convert.ToString(item.DateOfBirth.ToShortDateString()));
+                foreach (Department d in mediaBazaar.GetAllDepartments())
+                {
+                    if (item.DepartmentId == d.Id)
+                    {
+                        list.SubItems.Add(Convert.ToString(d.Name));
+                    }
+                }
                 list.SubItems.Add(item.StreetName);
                 list.SubItems.Add(Convert.ToString(item.HouseNr));
                 list.SubItems.Add(item.Zipcode);
