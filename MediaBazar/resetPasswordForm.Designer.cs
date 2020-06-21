@@ -76,7 +76,7 @@
             // 
             this.btnResetPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetPassword.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetPassword.ForeColor = System.Drawing.SystemColors.Control;
             this.btnResetPassword.Location = new System.Drawing.Point(106, 592);
             this.btnResetPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -91,12 +91,12 @@
             // 
             this.tbxNewPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.tbxNewPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxNewPassword.Location = new System.Drawing.Point(106, 407);
             this.tbxNewPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbxNewPassword.Name = "tbxNewPassword";
             this.tbxNewPassword.PasswordChar = '*';
-            this.tbxNewPassword.Size = new System.Drawing.Size(264, 15);
+            this.tbxNewPassword.Size = new System.Drawing.Size(264, 17);
             this.tbxNewPassword.TabIndex = 25;
             // 
             // lblRepeatNewPassword
@@ -125,12 +125,12 @@
             // 
             this.tbxRepeatPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.tbxRepeatPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxRepeatPassword.Location = new System.Drawing.Point(103, 526);
             this.tbxRepeatPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbxRepeatPassword.Name = "tbxRepeatPassword";
             this.tbxRepeatPassword.PasswordChar = '*';
-            this.tbxRepeatPassword.Size = new System.Drawing.Size(264, 15);
+            this.tbxRepeatPassword.Size = new System.Drawing.Size(264, 17);
             this.tbxRepeatPassword.TabIndex = 32;
             // 
             // ResetPasswordForm

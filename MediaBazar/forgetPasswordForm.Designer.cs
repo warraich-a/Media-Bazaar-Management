@@ -46,11 +46,11 @@
             // 
             this.btnSendCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnSendCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendCode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendCode.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSendCode.Location = new System.Drawing.Point(168, 376);
             this.btnSendCode.Name = "btnSendCode";
-            this.btnSendCode.Size = new System.Drawing.Size(124, 32);
+            this.btnSendCode.Size = new System.Drawing.Size(128, 33);
             this.btnSendCode.TabIndex = 20;
             this.btnSendCode.Text = "Send code";
             this.btnSendCode.UseVisualStyleBackColor = false;
@@ -71,10 +71,10 @@
             // 
             this.tbxEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.tbxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxEmail.Location = new System.Drawing.Point(88, 332);
             this.tbxEmail.Name = "tbxEmail";
-            this.tbxEmail.Size = new System.Drawing.Size(226, 15);
+            this.tbxEmail.Size = new System.Drawing.Size(226, 17);
             this.tbxEmail.TabIndex = 16;
             // 
             // lblCode
@@ -121,11 +121,11 @@
             // 
             this.btnVerifyCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
             this.btnVerifyCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerifyCode.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerifyCode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerifyCode.ForeColor = System.Drawing.SystemColors.Control;
             this.btnVerifyCode.Location = new System.Drawing.Point(168, 495);
             this.btnVerifyCode.Name = "btnVerifyCode";
-            this.btnVerifyCode.Size = new System.Drawing.Size(128, 32);
+            this.btnVerifyCode.Size = new System.Drawing.Size(128, 33);
             this.btnVerifyCode.TabIndex = 18;
             this.btnVerifyCode.Text = "Verify code";
             this.btnVerifyCode.UseVisualStyleBackColor = false;
@@ -135,17 +135,17 @@
             // 
             this.tbxCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.tbxCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxCode.Location = new System.Drawing.Point(85, 450);
             this.tbxCode.Name = "tbxCode";
-            this.tbxCode.Size = new System.Drawing.Size(226, 15);
+            this.tbxCode.Size = new System.Drawing.Size(226, 17);
             this.tbxCode.TabIndex = 23;
             // 
             // ForgetPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 540);
+            this.ClientSize = new System.Drawing.Size(386, 550);
             this.Controls.Add(this.tbxCode);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
