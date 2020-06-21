@@ -58,12 +58,10 @@ public class ListViewColumnSorter : IComparer
         // Cast the objects to be compared to ListViewItem objects
         listviewX = (ListViewItem)x;
         listviewY = (ListViewItem)y;
+        
 
         // Compare the two items
-       // compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
-
-
-        if (ColumnToSort == 0 || ColumnToSort == 6 || ColumnToSort == 9 || ColumnToSort.Equals("Price")) // assumes numeric data in fifth column.
+        if (ColumnToSort == 0 || ColumnToSort == 6 || ColumnToSort == 9 ) // assumes numeric data in fifth column.
             compareResult = Convert.ToInt32(x1).CompareTo(Convert.ToInt32(y1));
         else
             compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);

@@ -28,8 +28,8 @@ namespace MediaBazar
 
         private ListViewColumnSorter lvwColumnSorter;
         private ListViewColumnSorter lvProductSortByColumn;
-        
-        
+        private ListViewColumnSorter lvRequestSortByColumn;
+
 
         public AdministratorForm()
         {
@@ -37,8 +37,10 @@ namespace MediaBazar
             InitializeComponent();
             lvwColumnSorter = new ListViewColumnSorter();
             lvProductSortByColumn = new ListViewColumnSorter();
+            lvRequestSortByColumn = new ListViewColumnSorter();
             this.listView1.ListViewItemSorter = lvwColumnSorter;
-            this.listViewProducts.ListViewItemSorter = lvProductSortByColumn; 
+            this.listViewProducts.ListViewItemSorter = lvProductSortByColumn;
+            this.lvRequests.ListViewItemSorter = lvRequestSortByColumn;
 
             RefreshData();
             Departments();
@@ -199,7 +201,7 @@ namespace MediaBazar
                 {
                     mediaBazaar.RemovePerson(Convert.ToInt32(id));
                     MessageBox.Show("Person is removed");
-                    RefreshData();
+                    AddEmployeesToList();
                 }
                 else
                 {
@@ -1513,6 +1515,32 @@ namespace MediaBazar
 
             // Perform the sort with these new sort options.
             this.listViewProducts.Sort();
+        }
+
+        private void lvRequests_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvRequestSortByColumn.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvRequestSortByColumn.Order == SortOrder.Ascending)
+                {
+                    lvRequestSortByColumn.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvRequestSortByColumn.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvRequestSortByColumn.SortColumn = e.Column;
+                lvRequestSortByColumn.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.lvRequests.Sort();
         }
     }
 }

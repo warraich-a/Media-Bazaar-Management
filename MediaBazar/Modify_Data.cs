@@ -59,7 +59,7 @@ namespace MediaBazar
                     {
                         mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
                         this.Close();
-                        form.RefreshData();
+                        form.AddEmployeesToList();
                         
                     }
                     else
@@ -74,7 +74,7 @@ namespace MediaBazar
                       
                         mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
                         this.Close();
-                        form.RefreshData();
+                        form.AddEmployeesToList();
                     }
                     else
                     {
