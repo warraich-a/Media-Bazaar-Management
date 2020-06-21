@@ -1190,10 +1190,6 @@ namespace MediaBazar
                     list.SubItems.Add(item.FirstName);
                     list.SubItems.Add(item.LastName);
                     list.SubItems.Add(item.GetEmail);
-                    list = new ListViewItem(Convert.ToString(item.Id));
-                    list.SubItems.Add(item.FirstName);
-                    list.SubItems.Add(item.LastName);
-                    list.SubItems.Add(item.GetEmail);
                     foreach (Department d in mediaBazaar.GetAllDepartments())
                     {
                         if (item.DepartmentId == d.Id)
@@ -1208,13 +1204,7 @@ namespace MediaBazar
                     list.SubItems.Add(Convert.ToString(item.HourlyWage));
                     list.SubItems.Add(Convert.ToString(item.Role));
                     listView1.Items.Add(list);
-                    list.SubItems.Add(item.StreetName);
-                    list.SubItems.Add(Convert.ToString(item.HouseNr));
-                    list.SubItems.Add(item.Zipcode);
-                    list.SubItems.Add(item.City);
-                    list.SubItems.Add(Convert.ToString(item.HourlyWage));
-                    list.SubItems.Add(Convert.ToString(item.Role));
-                    listView1.Items.Add(list);
+                   
                 }
             }
             if(cmbDepartment.Text == "All")
