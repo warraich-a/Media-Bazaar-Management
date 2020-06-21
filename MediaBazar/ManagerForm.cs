@@ -835,43 +835,6 @@ namespace MediaBazar
             }
         }
 
-        //private void btnSearch_Click(object sender, EventArgs e)
-        //{
-        //    if (!String.IsNullOrWhiteSpace(tbProductName.Text))
-        //    {
-        //        List<ListViewItem> items = new List<ListViewItem>();
-        //        string productName = tbProductName.Text;
-        //        RefreshData();
-        //        for (int i = 0; i < lvProductList.Items.Count; i++)
-        //        {
-        //            if (lvProductList.Items[i].SubItems[2].Text.Contains(productName))
-        //            {
-        //                items.Add(lvProductList.Items[i]);
-        //            }
-        //        }
-        //        lvProductList.Items.Clear();
-        //        foreach (ListViewItem lvi in items)
-        //        {
-        //            lvProductList.Items.Add(lvi);
-        //        }
-        //    }
-        //}
-
-        //private void btnClearList_Click(object sender, EventArgs e)
-        //{
-        //    lvProductList.Items.Clear();
-        //    mediaBazaar.ReadProducts();
-        //    mediaBazaar.ReadDepartment();
-        //    foreach (Product p in mediaBazaar.GetProductsList())
-        //    {
-        //        ListViewItem l = new ListViewItem(p.ProductId.ToString());
-        //        l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
-        //        l.SubItems.Add(p.ProductName);
-        //        l.SubItems.Add(p.Price.ToString());
-        //        lvProductList.Items.Add(l);
-        //    }
-        //}
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (lvProductList.SelectedItems.Count > 0)
@@ -920,10 +883,6 @@ namespace MediaBazar
             }
         }
 
-        //private void lvStock_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void LV2_ColumnClick(object sender, ColumnClickEventArgs e)
         {
