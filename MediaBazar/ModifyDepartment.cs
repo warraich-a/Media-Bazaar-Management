@@ -77,7 +77,7 @@ namespace MediaBazar
                 foreach (Person p in mediaBazaar.GetManagersList())
                 {
 
-                    if (p.DepartmentId <= 1)
+                    if (p.DepartmentId == 0)
                     {
 
                         cbManager.Items.Add(p.GetFullName());

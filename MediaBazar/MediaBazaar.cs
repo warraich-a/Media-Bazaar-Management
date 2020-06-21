@@ -532,7 +532,7 @@ namespace MediaBazar
         public List<Person> GetManagersList()
         {
             List<Person> managers = new List<Person>();
-            foreach (Person p in ReadPersons())
+            foreach (Person p in ReturnPeopleFromDB())
             {
                 if (p.Role == Roles.Manager)
                 {

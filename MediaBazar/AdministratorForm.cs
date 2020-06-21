@@ -1177,7 +1177,7 @@ namespace MediaBazar
             cbManagers.Items.Clear();
             foreach (Person p in mediaBazaar.GetManagersList())
             {
-                if (p.DepartmentId <= 1)
+                if (p.DepartmentId == 0)
                 {
                     cbManagers.Items.Add(p.GetFullName());
                 }
