@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -213,7 +213,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(230, 50);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(1159, 839);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -498,6 +498,7 @@
             // 
             // lvStock
             // 
+            this.lvStock.BackColor = System.Drawing.SystemColors.Window;
             this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colum11,
             this.colum1,
@@ -629,6 +630,7 @@
             this.columnHeader29,
             this.columnHeader30});
             this.listViewProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewProducts.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listViewProducts.GridLines = true;
             this.listViewProducts.HideSelection = false;
             this.listViewProducts.Location = new System.Drawing.Point(16, 133);
@@ -882,7 +884,6 @@
             this.lvRequests.TabIndex = 43;
             this.lvRequests.UseCompatibleStateImageBehavior = false;
             this.lvRequests.View = System.Windows.Forms.View.Details;
-            this.lvRequests.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvRequests_ColumnClick);
             // 
             // columnHeader1
             // 
@@ -1225,23 +1226,23 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
+            chartArea5.Area3DStyle.Enable3D = true;
+            chartArea5.Area3DStyle.IsClustered = true;
+            chartArea5.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea5.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend5);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(98, 237);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            series1.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
+            series5.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series5.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series5.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series5);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(947, 466);
             this.chartEmployeeStatistics.TabIndex = 52;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -1698,9 +1699,9 @@
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
             this.button2.Location = new System.Drawing.Point(17, 673);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 45);
+            this.button2.Size = new System.Drawing.Size(217, 45);
             this.button2.TabIndex = 83;
-            this.button2.Text = "Show all";
+            this.button2.Text = "Show proposed shifts";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

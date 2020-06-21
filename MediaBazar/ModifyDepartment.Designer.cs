@@ -40,19 +40,17 @@
             // cbManager
             // 
             this.cbManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbManager.FormattingEnabled = true;
             this.cbManager.Location = new System.Drawing.Point(157, 87);
             this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(281, 26);
+            this.cbManager.Size = new System.Drawing.Size(281, 21);
             this.cbManager.TabIndex = 118;
             // 
             // tbMinEmp
             // 
-            this.tbMinEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMinEmp.Location = new System.Drawing.Point(157, 140);
             this.tbMinEmp.Name = "tbMinEmp";
-            this.tbMinEmp.Size = new System.Drawing.Size(281, 24);
+            this.tbMinEmp.Size = new System.Drawing.Size(281, 20);
             this.tbMinEmp.TabIndex = 117;
             // 
             // label2
@@ -81,10 +79,9 @@
             // 
             // tbDName
             // 
-            this.tbDName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDName.Location = new System.Drawing.Point(157, 37);
             this.tbDName.Name = "tbDName";
-            this.tbDName.Size = new System.Drawing.Size(281, 24);
+            this.tbDName.Size = new System.Drawing.Size(281, 20);
             this.tbDName.TabIndex = 114;
             // 
             // label1
@@ -117,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 269);
+            this.ClientSize = new System.Drawing.Size(526, 269);
             this.Controls.Add(this.cbManager);
             this.Controls.Add(this.tbMinEmp);
             this.Controls.Add(this.label2);
