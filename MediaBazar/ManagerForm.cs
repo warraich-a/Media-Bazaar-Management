@@ -467,7 +467,16 @@ namespace MediaBazar
         private void btnShowEmp_Click(object sender, EventArgs e)
         {
             string name = tbEmpNameToFind.Text;
-            MessageBox.Show($"{mediaBazaar.foundedPerson(name).ToString()}");
+            try
+            {
+                MessageBox.Show($"{mediaBazaar.foundedPerson(name).ToString()}");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("You can only search by first name");
+            }
+          
         }
 
         public void RefreshData()
@@ -525,7 +534,16 @@ namespace MediaBazar
                     listB.SubItems.Add(item.FirstName);
                     listB.SubItems.Add(item.LastName);
                     listB.SubItems.Add(item.GetEmail);
-                    listB.SubItems.Add(Convert.ToString(item.DateOfBirth));
+                   
+                   
+                    foreach (Department d in mediaBazaar.GetAllDepartments())
+                    {
+                        if (item.DepartmentId == d.Id)
+                        {
+                            listB.SubItems.Add(Convert.ToString(d.Name));
+                        }
+                    }
+                   
                     listB.SubItems.Add(item.StreetName);
                     listB.SubItems.Add(Convert.ToString(item.HouseNr));
                     listB.SubItems.Add(item.Zipcode);

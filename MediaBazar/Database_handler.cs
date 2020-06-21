@@ -577,9 +577,10 @@ namespace MediaBazar
         public Person foundedPersonFromDatabase(string givenName)
         {
             Person g = null;
+            int dpId = 0;
             try
             {
-                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE firstName = @name"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@name", givenName);
                 conn.Open();
@@ -599,7 +600,10 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-
+                    if (dr[3] != DBNull.Value)
+                    {
+                        dpId = Convert.ToInt32(dr[3]);
+                    }
                     g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                 }
                 return g;
@@ -614,6 +618,7 @@ namespace MediaBazar
         public List<Person> ReturnPeopleFromDB()
         {
            people = new List<Person>();
+            int dpId = 0;
             try
             {
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
@@ -636,7 +641,7 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-                    int dpId = 0;
+                    
                     if (dr[3] != DBNull.Value)
                     {
                         dpId = Convert.ToInt32(dr[3]);
@@ -657,6 +662,7 @@ namespace MediaBazar
             people = new List<Person>();
             try
             {
+                int dpId = 0;
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
@@ -677,7 +683,7 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-                    int dpId = 0;
+                   
                     if (dr[3] != DBNull.Value)
                     {
                         dpId = Convert.ToInt32(dr[3]);
