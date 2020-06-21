@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -213,7 +213,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(230, 50);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(1159, 839);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -673,7 +673,7 @@
             this.label5.BackColor = System.Drawing.SystemColors.Control;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label5.Location = new System.Drawing.Point(49, 45);
+            this.label5.Location = new System.Drawing.Point(33, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 76;
@@ -682,7 +682,7 @@
             // dtpTimeForShift
             // 
             this.dtpTimeForShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTimeForShift.Location = new System.Drawing.Point(150, 39);
+            this.dtpTimeForShift.Location = new System.Drawing.Point(134, 52);
             this.dtpTimeForShift.Name = "dtpTimeForShift";
             this.dtpTimeForShift.Size = new System.Drawing.Size(330, 26);
             this.dtpTimeForShift.TabIndex = 75;
@@ -693,7 +693,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.radioButton1.Location = new System.Drawing.Point(53, 119);
+            this.radioButton1.Location = new System.Drawing.Point(37, 132);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(84, 24);
             this.radioButton1.TabIndex = 78;
@@ -706,7 +706,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.radioButton2.Location = new System.Drawing.Point(216, 119);
+            this.radioButton2.Location = new System.Drawing.Point(200, 132);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(98, 24);
             this.radioButton2.TabIndex = 79;
@@ -719,7 +719,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.radioButton3.Location = new System.Drawing.Point(396, 119);
+            this.radioButton3.Location = new System.Drawing.Point(380, 132);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(84, 24);
             this.radioButton3.TabIndex = 80;
@@ -733,7 +733,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.btnAutoAssign);
-            this.panel2.Location = new System.Drawing.Point(53, 439);
+            this.panel2.Location = new System.Drawing.Point(37, 452);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(427, 189);
             this.panel2.TabIndex = 82;
@@ -772,7 +772,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cbEmpShift);
             this.panel1.Controls.Add(this.btnAssignShift);
-            this.panel1.Location = new System.Drawing.Point(53, 177);
+            this.panel1.Location = new System.Drawing.Point(37, 190);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(427, 233);
             this.panel1.TabIndex = 81;
@@ -859,9 +859,9 @@
             this.columnHeader31});
             this.listView3.GridLines = true;
             this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(17, 77);
+            this.listView3.Location = new System.Drawing.Point(17, 90);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(578, 573);
+            this.listView3.Size = new System.Drawing.Size(578, 560);
             this.listView3.TabIndex = 74;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -1502,9 +1502,9 @@
             this.btnModifyDep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifyDep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifyDep.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnModifyDep.Location = new System.Drawing.Point(220, 384);
+            this.btnModifyDep.Location = new System.Drawing.Point(211, 384);
             this.btnModifyDep.Name = "btnModifyDep";
-            this.btnModifyDep.Size = new System.Drawing.Size(151, 40);
+            this.btnModifyDep.Size = new System.Drawing.Size(140, 40);
             this.btnModifyDep.TabIndex = 51;
             this.btnModifyDep.Text = "Modify";
             this.btnModifyDep.UseVisualStyleBackColor = false;
@@ -1513,7 +1513,7 @@
             // tbNewCategoryName
             // 
             this.tbNewCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNewCategoryName.Location = new System.Drawing.Point(55, 122);
+            this.tbNewCategoryName.Location = new System.Drawing.Point(46, 122);
             this.tbNewCategoryName.Name = "tbNewCategoryName";
             this.tbNewCategoryName.Size = new System.Drawing.Size(304, 26);
             this.tbNewCategoryName.TabIndex = 42;
@@ -1524,7 +1524,7 @@
             this.label30.BackColor = System.Drawing.SystemColors.Control;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label30.Location = new System.Drawing.Point(50, 84);
+            this.label30.Location = new System.Drawing.Point(41, 84);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(140, 20);
             this.label30.TabIndex = 43;
@@ -1536,7 +1536,7 @@
             this.label28.BackColor = System.Drawing.SystemColors.Control;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label28.Location = new System.Drawing.Point(51, 275);
+            this.label28.Location = new System.Drawing.Point(42, 275);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(79, 20);
             this.label28.TabIndex = 47;
@@ -1548,7 +1548,7 @@
             this.btnAddDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDepartment.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddDepartment.Location = new System.Drawing.Point(56, 386);
+            this.btnAddDepartment.Location = new System.Drawing.Point(47, 386);
             this.btnAddDepartment.Name = "btnAddDepartment";
             this.btnAddDepartment.Size = new System.Drawing.Size(145, 38);
             this.btnAddDepartment.TabIndex = 40;
@@ -1559,7 +1559,7 @@
             // tbMinEmp
             // 
             this.tbMinEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMinEmp.Location = new System.Drawing.Point(56, 307);
+            this.tbMinEmp.Location = new System.Drawing.Point(47, 307);
             this.tbMinEmp.Name = "tbMinEmp";
             this.tbMinEmp.Size = new System.Drawing.Size(304, 26);
             this.tbMinEmp.TabIndex = 46;
@@ -1570,7 +1570,7 @@
             this.label29.BackColor = System.Drawing.SystemColors.Control;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label29.Location = new System.Drawing.Point(54, 175);
+            this.label29.Location = new System.Drawing.Point(45, 175);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(76, 20);
             this.label29.TabIndex = 45;
@@ -1581,7 +1581,7 @@
             this.cbManagers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbManagers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbManagers.FormattingEnabled = true;
-            this.cbManagers.Location = new System.Drawing.Point(54, 210);
+            this.cbManagers.Location = new System.Drawing.Point(45, 210);
             this.cbManagers.Name = "cbManagers";
             this.cbManagers.Size = new System.Drawing.Size(304, 28);
             this.cbManagers.TabIndex = 44;
@@ -1714,23 +1714,23 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea2.Area3DStyle.Enable3D = true;
-            chartArea2.Area3DStyle.IsClustered = true;
-            chartArea2.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea2.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend2);
+            chartArea6.Area3DStyle.Enable3D = true;
+            chartArea6.Area3DStyle.IsClustered = true;
+            chartArea6.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea6.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend6);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(98, 237);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            series2.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series2.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series2);
+            series6.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series6.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series6.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series6);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(947, 466);
             this.chartEmployeeStatistics.TabIndex = 52;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
