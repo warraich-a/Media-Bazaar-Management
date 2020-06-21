@@ -353,7 +353,7 @@ namespace MediaBazar
             chartEmployeeStatistics.Series[0].BorderWidth = 3;
 
             // Title
-            chartEmployeeStatistics.Titles.Add($"Total restock requests per year");
+            chartEmployeeStatistics.Titles.Add($"Total restock requests per year in department '{department}'");
 
             chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 

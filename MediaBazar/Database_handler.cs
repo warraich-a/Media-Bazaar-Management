@@ -892,7 +892,7 @@ namespace MediaBazar
                         if (department == "All")
                         {
                             sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM schedule " +
-                            "WHERE date BETWEEN @dateFrom AND @dateTo " +
+                            "WHERE (date BETWEEN @dateFrom AND @dateTo) " +
                             "GROUP BY date, shiftType ORDER BY date;";
                         }
                         // A specific department
@@ -931,7 +931,7 @@ namespace MediaBazar
                     MessageBox.Show(ex.Message);
                 }
             }
-            //The items get stock request the most(for a specific timeslot)
+            //The items which were requested the most(for a specific timeslot)
             else if (type == "Most Restocked Items")
             {
                 try
@@ -983,7 +983,7 @@ namespace MediaBazar
                     MessageBox.Show(ex.Message);
                 }
             }
-            //The items got sold the most(for a specific timeslot)
+            //The items which got sold the most(for a specific timeslot)
             else if (type == "Top Selling Products")
             {
                 try

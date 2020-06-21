@@ -425,9 +425,9 @@ namespace MediaBazar
             chartEmployeeStatistics.Series[1].XValueType = ChartValueType.Date;
             chartEmployeeStatistics.Series[2].XValueType = ChartValueType.Date;
 
-            chartEmployeeStatistics.Series[0]["PixelPointWidth"] = "45";
-            chartEmployeeStatistics.Series[1]["PixelPointWidth"] = "45";
-            chartEmployeeStatistics.Series[2]["PixelPointWidth"] = "45";
+            chartEmployeeStatistics.Series[0]["PixelPointWidth"] = "40";
+            chartEmployeeStatistics.Series[1]["PixelPointWidth"] = "40";
+            chartEmployeeStatistics.Series[2]["PixelPointWidth"] = "40";
 
             int indexMorning = 0;
             int indexAfternoon = 0;
