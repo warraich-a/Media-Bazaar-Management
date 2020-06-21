@@ -71,6 +71,10 @@ namespace MediaBazar
                     {
                         b = ShiftStatus.REJECTED;
                     }
+                    if (dr[4].ToString() == "AutoAssigned")
+                    {
+                        b = ShiftStatus.AUTOASSIGNED;
+                    }
 
 
 
@@ -218,7 +222,7 @@ namespace MediaBazar
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]), Convert.ToString(dr[5]));
+                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]), Convert.ToDateTime(dr[5]));
                     requests.Add(request);
                 }
             }

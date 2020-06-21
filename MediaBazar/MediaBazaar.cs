@@ -277,7 +277,9 @@ namespace MediaBazar
             {
                 if (s.ShiftType == givenShift)
                 {
-                    newSchedule.Add(s);
+                    if (s.Status == ShiftStatus.ACCEPTED || s.Status == ShiftStatus.AUTOASSIGNED) {
+                        newSchedule.Add(s);
+                    }
                 }
             }
             return newSchedule;
@@ -289,7 +291,10 @@ namespace MediaBazar
             {
                 if (s.EmployeeId == GetPersonIdByName(name))
                 {
-                    newSchedule.Add(s);
+                    if (s.Status == ShiftStatus.ACCEPTED || s.Status == ShiftStatus.AUTOASSIGNED)
+                    {
+                        newSchedule.Add(s);
+                    }
                 }
             }
             return newSchedule;
@@ -302,7 +307,10 @@ namespace MediaBazar
             {
                 if (s.EmployeeId == GetPersonIdByName(name) && s.ShiftType == givenShift)
                 {
-                    newSchedule.Add(s);
+                    if (s.Status == ShiftStatus.ACCEPTED || s.Status == ShiftStatus.AUTOASSIGNED)
+                    {
+                        newSchedule.Add(s);
+                    }
                 }
             }
             return newSchedule;
