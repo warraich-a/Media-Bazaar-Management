@@ -22,8 +22,13 @@ namespace MediaBazar
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             AdministratorForm a = new AdministratorForm();
             a.Show();
+=======
+            //AdministratorForm a = new AdministratorForm();
+            //a.Show();
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
 
 
             //// Get login details

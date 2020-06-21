@@ -199,6 +199,7 @@ namespace MediaBazar
 
             return statistics;
         }
+<<<<<<< HEAD
 
         /* GET EMPLOYEE FOR SHIFT, STATISTICS */
         public string GetEmployeesPerShift(DateTime date, string shiftType, string department)
@@ -219,6 +220,28 @@ namespace MediaBazar
         {
             return database.GetAllDepartments();
 
+=======
+
+        /* GET EMPLOYEE FOR SHIFT, STATISTICS */
+        public string GetEmployeesPerShift(DateTime date, string shiftType, string department)
+        {
+            string employees = database.GetEmployeesPerShift(date, shiftType, department);
+            return employees;
+        }
+
+        /* GET DEPARTMENTS */
+        public ArrayList GetDepartments()
+        {
+            ArrayList departments = database.GetDepartments();
+
+            return departments;
+        }
+        /* GET DEPARTMENTS */
+        public List<Department> GetAllDepartments()
+        {
+            return database.GetAllDepartments();
+
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
 
         // to add a person in a database
@@ -401,6 +424,7 @@ namespace MediaBazar
         {
             database.ModifyDepartment(id, name, personId, minEmp);
         }
+<<<<<<< HEAD
 
         //to get the exisitng product in order to modify
         public Product ReturnExistingProduct(int id)
@@ -604,6 +628,236 @@ namespace MediaBazar
             return sch;
         }
 
+=======
+
+        //to get the exisitng product in order to modify
+        public Product ReturnExistingProduct(int id)
+        {
+            return database.ReturnExistingProduct(id);
+        }
+
+        //to remove a product from the database
+        public void ProductToRemove(int id)
+        {
+            database.ProductToRemove(id);
+        }
+
+        // to search a product by name 
+        public Product ProductToSearch(string givenName)
+        {
+            return database.GetProductByName(givenName);
+        }
+
+        public void ReadProducts()
+        {
+            this.products = database.ReadProduct();
+        }
+        public List<Product> GetProductsList()
+        {
+            return this.products;
+        }
+        public List<Product> GetProductsListByName(string name)
+        {
+            List<Product> newProducts = new List<Product>();
+            foreach (Product p in products)
+            {
+                if (p.ProductName == name)
+                {
+                    newProducts.Add(p);
+                }
+            }
+            return newProducts;
+        }
+        public void SendDepoRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.DepotWorker);
+        }
+        public void SendManagerRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Manager);
+        }
+        public void SendAdminRequest(int productId, int quantity)
+        {
+            database.SendStockRequest(productId, quantity, Roles.Administrator);
+        }
+        public void AddToStock(int productId, int quantity)
+        {
+            database.AddToStock(productId, quantity);
+        }
+        public void ReadDepartment()
+        {
+            this.departments = database.ReadDepartments();
+        }
+        public string GetDepartmentNameById(int id)
+        {
+            string name = "";
+            foreach (Department d in departments)
+            {
+                if (d.Id == id)
+                {
+                    name = d.Name;
+                }
+            }
+            return name;
+        }
+        public string GetProductNameById(int id)
+        {
+
+            string name = "";
+            foreach (Product d in database.ReadAllProduct())
+            {
+                if (d.ProductId == id)
+                {
+                    name = d.ProductName;
+                }
+            }
+            return name;
+        }
+        public List<Department> GetDepartmentsList()
+        {
+            return departments;
+        }
+        public void AddDepartment(string name, int pId, int minEmp, int lastId)
+        {
+            database.AddDepartment(name, pId, minEmp, lastId);
+        }
+        public int GetProductIntByName(string name)
+        {
+            ReadProducts();
+            int id = 0;
+            foreach (Product d in database.ReadAllProduct())
+            {
+                if (d.ProductName == name)
+                {
+                    id = d.ProductId;
+                }
+            }
+            return id;
+        }
+        public void ReadRequests()
+        {
+            this.requests = database.ReadRequests();
+        }
+        public void ReadStocks()
+        {
+            this.stocks = database.ReadStock();
+        }
+        public List<Stock> GetStockList()
+        {
+            return this.stocks;
+        }
+        public List<Request> GetRequestsList()
+        {
+            return this.requests;
+        }
+        public void ApproveRequest(int id, int productId, int quantity)
+        {
+            database.ApproveRequest(id, productId, quantity);
+        }
+        public void SellStockItem(int pId, int pQuantity, int soldItems)
+        {
+            database.SellStockItem(pId, pQuantity, soldItems);
+        }
+        public List<Person> GetManagersList()
+        {
+            List<Person> managers = new List<Person>();
+            foreach (Person p in ReadPersons())
+            {
+                if (p.Role == Roles.Manager)
+                {
+                    managers.Add(p);
+                }
+            }
+            return managers;
+        }
+        public List<Person> ReadPersons()
+        {
+            return database.ReadPersons();
+        }
+        public Product GetProductById(int id)
+        {
+            Product p = null;
+
+            foreach (Product product in database.ReadAllProduct())
+            {
+                if (product.ProductId == id)
+                {
+                    p = product;
+                }
+            }
+            return p;
+        }
+        public Person GetPersonatById(int id)
+        {
+            Person p = null;
+
+            foreach (Person person in database.ReadPersons())
+            {
+                if (person.Id == id)
+                {
+                    p = person;
+                }
+            }
+            return p;
+        }
+
+        public int GetCountOfEmpDep(int id)
+        {
+            int count = 0;
+            foreach (Person p in ReturnPeopleFromDB())
+            {
+                if (p.DepartmentId == id)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public string GetPeopleByDep(int id)
+        {
+            string count = "";
+            foreach (Person p in ReturnPeopleFromDB())
+            {
+                if (p.DepartmentId == id)
+                {
+                    count = $"{count}{p.GetFullName()} ({p.Role.ToString()})\n\r";
+                }
+            }
+            return count;
+        }
+
+        public void ChangeScheduleStatusById(int id, string status)
+        {
+            database.changeschedulestatusbyid(id, status);
+        }
+        public int[] GetShiftsByDay(string date)
+        {
+            return database.checkshiftsinday(date);
+        }
+        public int CheckProposalNrShift(string shifttype, string date)
+        {
+            return database.checkproposalnrshift(shifttype, date);
+        }
+        public void ReadProposeByDay(string date, string shifttype)
+        {
+            this.proposed = database.ReadProposalByDay(date, shifttype);
+
+        }
+
+        public List<Schedule> GetLimSchedulesListByType(int limit)
+        {
+            int x = 0;
+            List<Schedule> sch = new List<Schedule>();
+            foreach (Schedule s in proposed)
+            {
+                sch.Add(s);
+                x++;
+                if (x == limit) return sch;
+            }
+            return sch;
+        }
+
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         public List<Person> GetAvailablePeopleByDay(string date)
         {
             List<Person> availablePeroplt = database.FindAvailablePeopleByDay(date);

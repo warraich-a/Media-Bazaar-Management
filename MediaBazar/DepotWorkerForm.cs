@@ -35,6 +35,20 @@ namespace MediaBazar
                 l.SubItems.Add(p.Quantity.ToString());
 
                 lvStock.Items.Add(l);
+<<<<<<< HEAD
+=======
+                if (p.Quantity < 100)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+                    
+                }
+                if (p.Quantity == 0)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                    lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                }
+                
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             }
 
             lvProductList.Items.Clear();
@@ -45,8 +59,15 @@ namespace MediaBazar
             {
                 ListViewItem l = new ListViewItem(p.ProductId.ToString());
                 l.SubItems.Add(mediaBazaar.GetDepartmentNameById(p.DapartmentId));
+<<<<<<< HEAD
                 l.SubItems.Add(p.ProductName);
                 l.SubItems.Add(p.Price.ToString());
+=======
+                
+                l.SubItems.Add(p.ProductName);
+                l.SubItems.Add(p.Price.ToString());
+                
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                 foreach (Stock s in mediaBazaar.GetStockList())
                 {
                     if (s.ProductId == p.ProductId)
@@ -58,7 +79,11 @@ namespace MediaBazar
 
                 lvProductList.Items.Add(l);
             }
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

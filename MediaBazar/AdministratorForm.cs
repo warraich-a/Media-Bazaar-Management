@@ -35,6 +35,7 @@ namespace MediaBazar
             }
         }
         
+<<<<<<< HEAD
 
         public AdministratorForm()
         {
@@ -117,6 +118,8 @@ namespace MediaBazar
                 }
             }
         }
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
 
         public void RefreshData()
         {
@@ -129,8 +132,19 @@ namespace MediaBazar
                 l.SubItems.Add(mediaBazaar.GetProductNameById(p.ProductId));
                 l.SubItems.Add(p.Quantity.ToString());
 
+<<<<<<< HEAD
                 lvStock.Items.Add(l);
             }
+=======
+            InitializeComponent();
+
+            RefreshData();
+            Departments();
+
+
+            // Add user name
+            lblUsername.Text = mediaBazaar.CurrentUser;
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
 
            
             mediaBazaar.ReadRequests();
@@ -174,10 +188,18 @@ namespace MediaBazar
                 {
                     foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
                     {
+<<<<<<< HEAD
                         if(item.Role == Roles.Manager)
                         {
                             cmbDepartment.Items.Add(item.FirstName);
                         } 
+=======
+                        ComboboxItem item = new ComboboxItem();
+                        item.Text = rdr.GetString("firstName") + " " + rdr.GetString("lastName") + " - " + rdr.GetString("role");
+                        item.Value = rdr.GetString("id");
+                        
+                        cbEmpShift.Items.Add(item);
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                     }
                 }
                 else if(radioButton5.Checked)
@@ -206,9 +228,47 @@ namespace MediaBazar
                 listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
                 listViewProducts.Items.Add(listOfProducts);
             }
+
+
+            // Generate departments in statistics
+            GenerateDepartments();
+            // get schedules
+            schedules = new List<Schedule>();
+            mediaBazaar.ReadSchedule();
+            schedules = mediaBazaar.GetSchedulesList();
+
+            RefreshTable();
         }
 
+<<<<<<< HEAD
         public void AddEmployeesToList()
+=======
+        public void RefreshTable()
+        {
+            lblTitle.Text = "Proposed shifts";
+
+            if (listView3.Columns.Count < 4)
+            {
+                listView3.Columns.Add("Date", 150);
+                listView3.Columns.Add("Shift Type", 150);
+            }
+
+            listView3.Items.Clear();
+            foreach (Schedule s in schedules)
+            {
+                if (s.Status == ShiftStatus.PROPOSED)
+                {
+                    list = new ListViewItem(s.SheduleId.ToString(), 0);
+                    list.SubItems.Add(mediaBazaar.GetPersonNameById(s.EmployeeId));
+                    list.SubItems.Add(s.DATETime.ToString("dd-MM-yyyy"));
+                    list.SubItems.Add(s.ShiftType.ToString());
+                    listView3.Items.Add(list);
+                }
+            }
+        }
+
+        public void RefreshData()
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         {
             listView1.Items.Clear();
             foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
@@ -226,7 +286,108 @@ namespace MediaBazar
                 list.SubItems.Add(Convert.ToString(item.Role));
                 listView1.Items.Add(list);
             }
+<<<<<<< HEAD
         }
+=======
+
+            mediaBazaar.ReadStocks();
+            mediaBazaar.ReadProducts();
+            lvStock.Items.Clear();
+            foreach (Stock p in mediaBazaar.GetStockList())
+            {
+                ListViewItem l = new ListViewItem(p.ProductId.ToString());
+                l.SubItems.Add(mediaBazaar.GetProductNameById(p.ProductId));
+                l.SubItems.Add(p.Quantity.ToString());
+
+                lvStock.Items.Add(l);
+                if (p.Quantity < 100)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+
+                }
+                if (p.Quantity == 0)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                    lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                }
+            }
+
+            listViewProducts.Items.Clear();
+            foreach (Product p in mediaBazaar.GetProducts())
+            {
+                listOfProducts = new ListViewItem(p.ProductId.ToString());
+                foreach (Department item in mediaBazaar.GetAllDepartments())
+                {
+                    if (p.DapartmentId == item.Id)
+                    {
+                        listOfProducts.SubItems.Add(Convert.ToString(item.Name));
+                    }
+                }
+                listOfProducts.SubItems.Add(p.Name);
+                listOfProducts.SubItems.Add(Convert.ToString(p.Price));
+                listOfProducts.SubItems.Add(Convert.ToString(p.SellingPrice));
+                listViewProducts.Items.Add(listOfProducts);
+            }
+            mediaBazaar.ReadRequests();
+            lvRequests.Items.Clear();
+            foreach (Request item in mediaBazaar.GetRequestsList())
+            {
+                list = new ListViewItem(Convert.ToString(item.Id));
+                list.SubItems.Add(mediaBazaar.GetProductNameById(item.ProductId));
+                list.SubItems.Add(item.Quantity.ToString());
+                list.SubItems.Add(item.Status);
+                list.SubItems.Add(item.RequestedBy);
+                list.SubItems.Add(item.DatE.Substring(0, 11));
+                lvRequests.Items.Add(list);
+            }
+            lvDepartments.Items.Clear();
+            mediaBazaar.ReadDepartment();
+            foreach (Department item in mediaBazaar.GetDepartmentsList())
+            {
+                list = new ListViewItem(Convert.ToString(item.Id));
+                list.SubItems.Add(item.Name);
+                list.SubItems.Add(mediaBazaar.GetPersonNameById(item.PersonId));
+                list.SubItems.Add(item.MinEmp.ToString());
+                list.SubItems.Add(mediaBazaar.GetCountOfEmpDep(item.Id).ToString());
+                
+                lvDepartments.Items.Add(list);
+                if (mediaBazaar.GetCountOfEmpDep(item.Id) < item.MinEmp)
+                {
+                    lvDepartments.Items[lvDepartments.Items.Count - 1].UseItemStyleForSubItems = false;
+                    lvDepartments.Items[lvDepartments.Items.Count - 1].SubItems[4].BackColor = Color.Red;
+
+                }
+            }
+        }
+        public void Departments()
+        {
+            cmbDepartmentStack.Items.Clear();
+            cmbDepartment.Items.Clear();
+            cmbSearchByDepartmentProduct.Items.Clear();
+            foreach (Department d in mediaBazaar.GetAllDepartments())
+            {
+                cmbDepartmentStack.Items.Add(d.Name);
+
+                cmbSearchByDepartmentProduct.Items.Add(d.Name);
+
+                cmbDepartment.Items.Add(d.Name);
+                /*if (radioButton4.Checked)
+                {
+                    foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+                    {
+                        if(item.Role == Roles.Manager)
+                        {
+                            cmbDepartment.Items.Add(item.FirstName);
+                        } 
+                    }
+                }
+                else if(radioButton5.Checked)
+                {*/
+
+                //}
+            }
+        }
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         // To remove an employee from the system
         private void btnRemoveEmp_Click(object sender, EventArgs e)
         {
@@ -365,11 +526,14 @@ namespace MediaBazar
             {
                 GenerateStatisticsNumberEmployeesPerDep(type, department);
             }
+<<<<<<< HEAD
             // Top Selling Products
             else if(type == "Top Selling Products")
             {
                 GenerateStatisticsTopSellingProducts(type, department);
             }
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
 
         /* GENERATE STATISTICS */
@@ -466,6 +630,7 @@ namespace MediaBazar
                     chartEmployeeStatistics.Series["Morning"].Points[indexMorning].ToolTip = $"{employees}";
 
                     indexMorning++;
+<<<<<<< HEAD
                 }
                 else if (statistic[2].ToString() == "Afternoon")
                 {
@@ -490,6 +655,32 @@ namespace MediaBazar
 
                     indexEvening++;
                 }
+=======
+                }
+                else if (statistic[2].ToString() == "Afternoon")
+                {
+                    chartEmployeeStatistics.Series["Afternoon"].Points.AddXY(statistic[1], Convert.ToInt32(statistic[0]));
+
+                    string employees = mediaBazaar.GetEmployeesPerShift(Convert.ToDateTime(statistic[1]), "Afternoon", department).ToString();
+
+                    // Add tooltip, Employees working that day that shift
+                    chartEmployeeStatistics.Series["Afternoon"].Points[indexAfternoon].ToolTip = $"{employees}";
+
+                    indexAfternoon++;
+                }
+                else if (statistic[2].ToString() == "Evening")
+                {
+                    chartEmployeeStatistics.Series["Evening"].Points.AddXY(statistic[1], Convert.ToInt32(statistic[0]));
+
+
+                    string employees = mediaBazaar.GetEmployeesPerShift(Convert.ToDateTime(statistic[1]), "Evening", department).ToString();
+
+                    // Add tooltip, Employees working that day that shift
+                    chartEmployeeStatistics.Series["Evening"].Points[indexEvening].ToolTip = $"{employees}";
+
+                    indexEvening++;
+                }
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
 
                 // Displays one employee at a time
                 Refresh();
@@ -520,6 +711,7 @@ namespace MediaBazar
                 chartEmployeeStatistics.Series["Restocked Items"].Points.AddXY(statistic[0].ToString(), statistic[1]);
                 // Displays one employee at a time
                 Refresh();
+<<<<<<< HEAD
             }
         }
 
@@ -558,6 +750,46 @@ namespace MediaBazar
             }
         }
 
+=======
+            }
+        }
+
+        private void GenerateStatisticsMostRestockedItems(string type, string department)
+        {
+            string dateFrom;
+            string dateTo;
+
+            // Select dates
+            dateFrom = dtpFrom.Value.ToString("yyyy/MM/dd");
+            dateTo = dtpTo.Value.ToString("yyyy/MM/dd");
+
+            // Series
+            chartEmployeeStatistics.Series.Add("FamousItems");
+
+
+            chartEmployeeStatistics.Series[0].ChartType = SeriesChartType.Pie;
+
+            // Title
+            chartEmployeeStatistics.Titles.Add($"Most restocked items between {dateFrom} and {dateTo} in department '{department}'");
+
+
+            // Made it fit all data
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+            ArrayList statistics = mediaBazaar.GetStatistics(dateFrom, dateTo, type, department);
+
+            foreach (object[] statistic in statistics)
+            {
+                chartEmployeeStatistics.Series["FamousItems"].Points.AddXY(statistic[1].ToString(), statistic[2]);
+                chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
+                chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
+
+                // Displays one employee at a time
+                Refresh();
+            }
+        }
+
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         private void GenerateStatisticsYearlyStockRequests(string type, string department)
         {
             chartEmployeeStatistics.Series.Add("Total stock requests");
@@ -641,6 +873,7 @@ namespace MediaBazar
             }
         }
 
+<<<<<<< HEAD
         // Top Selling Products
         private void GenerateStatisticsTopSellingProducts(string type, string department)
         {
@@ -678,6 +911,8 @@ namespace MediaBazar
         }
 
 
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         /* CHOSEN STATISTICS */
         private void cbxCategoryStatistics_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -687,6 +922,7 @@ namespace MediaBazar
 
             // Restocked Items On Date
             if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Restocked Items On Date")
+<<<<<<< HEAD
             {
                 // Enable from date picking and disable to date picking
                 dtpFrom.Enabled = true;
@@ -697,6 +933,18 @@ namespace MediaBazar
                 cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly stock requests" ||
                 cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly profit")
             {
+=======
+            {
+                // Enable from date picking and disable to date picking
+                dtpFrom.Enabled = true;
+                dtpTo.Enabled = false;
+            }
+            // Hourly wage per employee OR Yearly profit
+            else if (cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Hourly wage per employee" ||
+                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly stock requests" ||
+                cbxCategoryStatistics.GetItemText(cbxCategoryStatistics.SelectedItem) == "Yearly profit")
+            {
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                 // Disable date picking
                 dtpFrom.Enabled = false;
                 dtpTo.Enabled = false;
@@ -761,6 +1009,7 @@ namespace MediaBazar
                         employeedId = Convert.ToInt32((cbEmpShift.SelectedItem as ComboboxItem).Value.ToString());
                         date = dtpTimeForShift.Value.Date;
                         if (radioButton1.Checked)
+<<<<<<< HEAD
                         {
                             Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
                             shifttype = "Morning";
@@ -772,6 +1021,19 @@ namespace MediaBazar
                         }
                         if (radioButton3.Checked)
                         {
+=======
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.MORNING, date);
+                            shifttype = "Morning";
+                        }
+                        if (radioButton2.Checked)
+                        {
+                            Schedule schedule = new Schedule(employeedId, Shift.AFTERNOON, date);
+                            shifttype = "Afternoon";
+                        }
+                        if (radioButton3.Checked)
+                        {
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                             Schedule schedule = new Schedule(employeedId, Shift.EVENING, date);
                             shifttype = "Evening";
                         }
@@ -1073,7 +1335,11 @@ namespace MediaBazar
                     if (MessageBox.Show("Are you very rich????", "Remove Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
+<<<<<<< HEAD
                         GetProducts();
+=======
+                        RefreshData();
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                         tbProductName.Text = "";
                         tbProductPrice.Text = "";
                         tbSellingPrice.Text = "";
@@ -1083,7 +1349,11 @@ namespace MediaBazar
                 else
                 {
                     mediaBazaar.AddProduct(departmentId, productName, productPrice, sellingPrice);
+<<<<<<< HEAD
                     GetProducts();
+=======
+                    RefreshData();
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                     tbProductName.Text = "";
                     tbProductPrice.Text = "";
                     tbSellingPrice.Text = "";
@@ -1144,7 +1414,11 @@ namespace MediaBazar
         {
             List<ListViewItem> items = new List<ListViewItem>();
             string productName = tbProductToSearch.Text;
+<<<<<<< HEAD
             GetProducts();
+=======
+            RefreshData();
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             for (int i = 0; i < listViewProducts.Items.Count; i++)
             {
                 if (listViewProducts.Items[i].SubItems[2].Text.Contains(productName.ToLower()) || listViewProducts.Items[i].SubItems[2].Text.Contains(productName.ToUpper()))
@@ -1160,7 +1434,11 @@ namespace MediaBazar
 
             if (tbProductToSearch.Text == "")
             {
+<<<<<<< HEAD
                 GetProducts();
+=======
+                RefreshData();
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             }
         }
 
@@ -1278,7 +1556,11 @@ namespace MediaBazar
             cbManagers.Items.Clear();
             foreach (Person p in mediaBazaar.GetManagersList())
             {
+<<<<<<< HEAD
                 if (p.DepartmentId <= 1)
+=======
+                if (p.DepartmentId == 0 )
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                 {
                     cbManagers.Items.Add(p.GetFullName());
                 }
@@ -1288,9 +1570,14 @@ namespace MediaBazar
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = cmbDepartment.SelectedIndex + 1;
+<<<<<<< HEAD
 
             listView1.Items.Clear();
             foreach (Person item in mediaBazaar.GetPeople())
+=======
+            listView1.Items.Clear();
+            foreach (Person item in mediaBazaar.ReturnPeopleFromDB())
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             {
                 if (item.DepartmentId == departmentId)
                 {
@@ -1308,16 +1595,23 @@ namespace MediaBazar
                     listView1.Items.Add(list);
                 }
             }
+<<<<<<< HEAD
             if(cmbDepartment.Text == "All")
             {
                 AddEmployeesToList();
             }
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
 
         private void cmbSearchByDepartmentProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             int departmentId = cmbSearchByDepartmentProduct.SelectedIndex + 1;
+<<<<<<< HEAD
       
+=======
+            listViewProducts.Items.Clear();
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             listViewProducts.Items.Clear();
             foreach (Product p in mediaBazaar.GetProducts())
             {
@@ -1337,10 +1631,13 @@ namespace MediaBazar
                     listViewProducts.Items.Add(listOfProducts);
                 }
             }
+<<<<<<< HEAD
             if(cmbSearchByDepartmentProduct.Text == "All")
             {
                 GetProducts();
             }
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
 
         private void btnAssignShift_Click(object sender, EventArgs e)
@@ -1515,5 +1812,31 @@ namespace MediaBazar
             //    listView3.Items.Add(list);
             //}
         }
+<<<<<<< HEAD
+=======
+
+        private void lvDepartments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvDepartments_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void lvDepartments_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void btnListOfEmp_Click(object sender, EventArgs e)
+        {
+            if(lvDepartments.SelectedItems.Count > 0)
+            {
+                MessageBox.Show(mediaBazaar.GetPeopleByDep(Convert.ToInt32(lvDepartments.SelectedItems[0].SubItems[0].Text)));
+            }
+        }
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
     }
 }

@@ -115,7 +115,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModifyProduct);
             this.Name = "ModifyProduct";
+<<<<<<< HEAD
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             this.Text = "ModifyProduct";
             this.Load += new System.EventHandler(this.ModifyProduct_Load);
             this.ResumeLayout(false);

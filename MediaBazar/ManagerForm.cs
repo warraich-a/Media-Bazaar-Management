@@ -152,11 +152,14 @@ namespace MediaBazar
             {
                 GenerateStatisticsYearlyProfit(type, department);
             }
+<<<<<<< HEAD
             // Top Selling Products
             else if (type == "Top Selling Products")
             {
                 GenerateStatisticsTopSellingProducts(type, department);
             }
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
 
         /* GENERATE STATISTICS */
@@ -339,6 +342,7 @@ namespace MediaBazar
 
                 // Displays one employee at a time
                 Refresh();
+<<<<<<< HEAD
             }
         }
 
@@ -427,6 +431,60 @@ namespace MediaBazar
                 chartEmployeeStatistics.Series["FamousItems"].Points.AddXY(statistic[1].ToString(), statistic[2]);
                 chartEmployeeStatistics.Series["FamousItems"].Label = "#PERCENT{P1}";
                 chartEmployeeStatistics.Series["FamousItems"].LegendText = "#AXISLABEL";
+=======
+            }
+        }
+
+        private void GenerateStatisticsYearlyStockRequests(string type, string department)
+        {
+            chartEmployeeStatistics.Series.Add("Total stock requests");
+
+            chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
+
+            // Make line thicker
+            chartEmployeeStatistics.Series[0].BorderWidth = 3;
+
+            // Title
+            chartEmployeeStatistics.Titles.Add($"Total restock requests per year");
+
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+            ArrayList statistics = mediaBazaar.GetStatistics(type, department);
+
+            foreach (object[] statistic in statistics)
+            {
+                chartEmployeeStatistics.Series["Total stock requests"].Points.AddXY(statistic[0].ToString(), statistic[1]);
+
+                // Displays one employee at a time
+                Refresh();
+            }
+        }
+
+        private void GenerateStatisticsYearlyProfit(string type, string department)
+        {
+            chartEmployeeStatistics.Series.Add("Total profit");
+
+
+            chartEmployeeStatistics.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
+
+            // Make line thicker
+            chartEmployeeStatistics.Series[0].BorderWidth = 3;
+
+            // Title
+            chartEmployeeStatistics.Titles.Add($"Total profit per year in department '{department}'");
+
+            chartEmployeeStatistics.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+            ArrayList statistics = mediaBazaar.GetStatistics(type, department);
+
+            foreach (object[] statistic in statistics)
+            {
+                chartEmployeeStatistics.Series["Total profit"].Points.AddXY(statistic[0].ToString(), statistic[1]);
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
 
                 // Displays one employee at a time
                 Refresh();
@@ -483,6 +541,37 @@ namespace MediaBazar
                     l.SubItems.Add(p.Quantity.ToString());
 
                     lvStock.Items.Add(l);
+<<<<<<< HEAD
+=======
+                    if (p.Quantity < 100)
+                    {
+                        lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+
+                    }
+                    if (p.Quantity == 0)
+                    {
+                        lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                        lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                    }
+                }
+            }
+            mediaBazaar.ReadRequests();
+            lvRequests.Items.Clear();
+            foreach (Request item in mediaBazaar.GetRequestsList())
+            {
+                if (mediaBazaar.GetProductById(item.ProductId).DapartmentId == departmentId)
+                {
+                    if (item.RequestedBy == "Manager")
+                    {
+                        ListViewItem list = new ListViewItem(Convert.ToString(item.Id));
+                        list.SubItems.Add(mediaBazaar.GetProductNameById(item.ProductId));
+                        list.SubItems.Add(item.Quantity.ToString());
+                        list.SubItems.Add(item.Status);
+                        list.SubItems.Add(item.RequestedBy);
+                        list.SubItems.Add(item.DatE.Substring(0, 11));
+                        lvRequests.Items.Add(list);
+                    }
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                 }
             }
 
@@ -888,7 +977,11 @@ namespace MediaBazar
 
         private void lvStock_SelectedIndexChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
         }
     }
 }

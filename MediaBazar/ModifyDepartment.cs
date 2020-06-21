@@ -67,7 +67,11 @@ namespace MediaBazar
                 foreach (Person p in mediaBazaar.GetManagersList())
                 {
 
+<<<<<<< HEAD
                     if (p.DepartmentId <= 1)
+=======
+                    if (p.DepartmentId == 0 || p.DepartmentId ==id)
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
                     {
 
                         cbManager.Items.Add(p.GetFullName());
@@ -80,5 +84,13 @@ namespace MediaBazar
                 MessageBox.Show(ex.Message);
             }
         }
+<<<<<<< HEAD
+=======
+
+        private void cbManager_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
     }
 }

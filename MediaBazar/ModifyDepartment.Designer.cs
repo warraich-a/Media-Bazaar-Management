@@ -44,6 +44,10 @@
             this.cbManager.Name = "cbManager";
             this.cbManager.Size = new System.Drawing.Size(281, 21);
             this.cbManager.TabIndex = 118;
+<<<<<<< HEAD
+=======
+            this.cbManager.SelectedIndexChanged += new System.EventHandler(this.cbManager_SelectedIndexChanged);
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             // 
             // tbMinEmp
             // 
@@ -116,7 +120,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModifyProduct);
             this.Name = "ModifyDepartment";
+<<<<<<< HEAD
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+=======
+>>>>>>> 1ac4d3490445500c48242a9b383f998c4b7db1f6
             this.Text = "ModifyDepartment";
             this.ResumeLayout(false);
             this.PerformLayout();
