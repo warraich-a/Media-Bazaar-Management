@@ -65,11 +65,6 @@ namespace MediaBazar
 
         }
 
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void metroTabPage2_Click(object sender, EventArgs e)
         {
 
@@ -77,8 +72,6 @@ namespace MediaBazar
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            //AdministratorForm a = new AdministratorForm();
-            //a.Show();
             mediaBazaar.LogOut();
             MessageBox.Show("Logged out successfully");
             this.Hide();
