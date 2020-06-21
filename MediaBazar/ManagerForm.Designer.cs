@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mtbManager = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,6 +49,29 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
+            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvStock = new System.Windows.Forms.ListView();
+            this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label11 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lvProductList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbProductName = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbProductQuantity = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -76,40 +99,22 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pnlSchedule = new System.Windows.Forms.Panel();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lvStock = new System.Windows.Forms.ListView();
-            this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label11 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lvProductList = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label22 = new System.Windows.Forms.Label();
-            this.tbProductName = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tbProductQuantity = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lvRequests = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mtbManager.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.metroTabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
-            this.metroTabPage4.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -117,21 +122,25 @@
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.metroTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
+            this.metroTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // mtbManager
             // 
             this.mtbManager.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mtbManager.Controls.Add(this.metroTabPage2);
+            this.mtbManager.Controls.Add(this.metroTabPage4);
             this.mtbManager.Controls.Add(this.metroTabPage3);
             this.mtbManager.Controls.Add(this.metroTabPage5);
-            this.mtbManager.Controls.Add(this.metroTabPage4);
             this.mtbManager.ItemSize = new System.Drawing.Size(287, 50);
             this.mtbManager.Location = new System.Drawing.Point(1, 104);
             this.mtbManager.Name = "mtbManager";
-            this.mtbManager.SelectedIndex = 3;
+            this.mtbManager.SelectedIndex = 1;
             this.mtbManager.Size = new System.Drawing.Size(1158, 832);
             this.mtbManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mtbManager.Style = MetroFramework.MetroColorStyle.Silver;
@@ -281,6 +290,235 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Find employee by name";
             // 
+            // metroTabPage3
+            // 
+            this.metroTabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.metroTabPage3.Controls.Add(this.tabControl1);
+            this.metroTabPage3.CustomBackground = true;
+            this.metroTabPage3.HorizontalScrollbarBarColor = true;
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 54);
+            this.metroTabPage3.Name = "metroTabPage3";
+            this.metroTabPage3.Size = new System.Drawing.Size(1150, 774);
+            this.metroTabPage3.TabIndex = 2;
+            this.metroTabPage3.Text = "Stock Info";
+            this.metroTabPage3.VerticalScrollbarBarColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.ItemSize = new System.Drawing.Size(573, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 10);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1150, 768);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.tabControl1.TabIndex = 52;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1142, 730);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Stock";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lvStock);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox2.Location = new System.Drawing.Point(17, 38);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1107, 663);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Products In Stock";
+            // 
+            // lvStock
+            // 
+            this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.col1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.lvStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvStock.GridLines = true;
+            this.lvStock.HideSelection = false;
+            this.lvStock.Location = new System.Drawing.Point(24, 51);
+            this.lvStock.Name = "lvStock";
+            this.lvStock.Size = new System.Drawing.Size(1060, 594);
+            this.lvStock.TabIndex = 21;
+            this.lvStock.UseCompatibleStateImageBehavior = false;
+            this.lvStock.View = System.Windows.Forms.View.Details;
+            this.lvStock.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvStock_ColumnClick);
+            // 
+            // col1
+            // 
+            this.col1.Text = "Product Id";
+            this.col1.Width = 129;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Product Name";
+            this.columnHeader2.Width = 184;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Quantity";
+            this.columnHeader3.Width = 143;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(26, 503);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 20);
+            this.label11.TabIndex = 23;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1142, 730);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Product";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lvProductList);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.tbProductName);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox3.Location = new System.Drawing.Point(24, 46);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(729, 650);
+            this.groupBox3.TabIndex = 80;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Products Overview";
+            // 
+            // lvProductList
+            // 
+            this.lvProductList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader26,
+            this.columnHeader27,
+            this.columnHeader29,
+            this.columnHeader4});
+            this.lvProductList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvProductList.GridLines = true;
+            this.lvProductList.HideSelection = false;
+            this.lvProductList.Location = new System.Drawing.Point(21, 125);
+            this.lvProductList.Name = "lvProductList";
+            this.lvProductList.Size = new System.Drawing.Size(687, 491);
+            this.lvProductList.TabIndex = 79;
+            this.lvProductList.UseCompatibleStateImageBehavior = false;
+            this.lvProductList.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
+            // columnHeader26
+            // 
+            this.columnHeader26.Text = "Category";
+            this.columnHeader26.Width = 129;
+            // 
+            // columnHeader27
+            // 
+            this.columnHeader27.Text = "Product Name";
+            this.columnHeader27.Width = 184;
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Price";
+            this.columnHeader29.Width = 115;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Quantity";
+            this.columnHeader4.Width = 138;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.SystemColors.Control;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label22.Location = new System.Drawing.Point(17, 58);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(182, 20);
+            this.label22.TabIndex = 78;
+            this.label22.Text = "Search product by name";
+            // 
+            // tbProductName
+            // 
+            this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductName.Location = new System.Drawing.Point(264, 55);
+            this.tbProductName.Name = "tbProductName";
+            this.tbProductName.Size = new System.Drawing.Size(444, 26);
+            this.tbProductName.TabIndex = 77;
+            this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.tbProductQuantity);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox4.Location = new System.Drawing.Point(771, 46);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(343, 311);
+            this.groupBox4.TabIndex = 79;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Restock Request";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.label14.Location = new System.Drawing.Point(35, 61);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(68, 20);
+            this.label14.TabIndex = 71;
+            this.label14.Text = "Quantity";
+            // 
+            // tbProductQuantity
+            // 
+            this.tbProductQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductQuantity.Location = new System.Drawing.Point(39, 112);
+            this.tbProductQuantity.Name = "tbProductQuantity";
+            this.tbProductQuantity.Size = new System.Drawing.Size(277, 26);
+            this.tbProductQuantity.TabIndex = 70;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(39, 200);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(277, 45);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Send Restock Request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // metroTabPage5
             // 
             this.metroTabPage5.BackColor = System.Drawing.SystemColors.Control;
@@ -330,20 +568,20 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea3.Area3DStyle.Enable3D = true;
-            chartArea3.Area3DStyle.IsClustered = true;
-            chartArea3.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea3.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend3);
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.Area3DStyle.IsClustered = true;
+            chartArea1.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea1.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend1);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(68, 205);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series1);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(1008, 518);
             this.chartEmployeeStatistics.TabIndex = 60;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -648,234 +886,6 @@
             this.pnlSchedule.Size = new System.Drawing.Size(1085, 526);
             this.pnlSchedule.TabIndex = 118;
             // 
-            // metroTabPage3
-            // 
-            this.metroTabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.metroTabPage3.Controls.Add(this.tabControl1);
-            this.metroTabPage3.CustomBackground = true;
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 54);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1150, 774);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "Stock Info";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.ItemSize = new System.Drawing.Size(573, 30);
-            this.tabControl1.Location = new System.Drawing.Point(0, 10);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1150, 768);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 52;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1142, 730);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Stock";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lvStock);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox2.Location = new System.Drawing.Point(17, 38);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1107, 663);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Products In Stock";
-            // 
-            // lvStock
-            // 
-            this.lvStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.lvStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvStock.GridLines = true;
-            this.lvStock.HideSelection = false;
-            this.lvStock.Location = new System.Drawing.Point(24, 51);
-            this.lvStock.Name = "lvStock";
-            this.lvStock.Size = new System.Drawing.Size(1060, 594);
-            this.lvStock.TabIndex = 21;
-            this.lvStock.UseCompatibleStateImageBehavior = false;
-            this.lvStock.View = System.Windows.Forms.View.Details;
-            this.lvStock.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvStock_ColumnClick);
-            // 
-            // col1
-            // 
-            this.col1.Text = "Product Id";
-            this.col1.Width = 129;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Product Name";
-            this.columnHeader2.Width = 184;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Quantity";
-            this.columnHeader3.Width = 143;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(26, 503);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 20);
-            this.label11.TabIndex = 23;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1142, 730);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Product";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lvProductList);
-            this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Controls.Add(this.tbProductName);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox3.Location = new System.Drawing.Point(24, 46);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(729, 650);
-            this.groupBox3.TabIndex = 80;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Products Overview";
-            // 
-            // lvProductList
-            // 
-            this.lvProductList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader26,
-            this.columnHeader27,
-            this.columnHeader29,
-            this.columnHeader4});
-            this.lvProductList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvProductList.GridLines = true;
-            this.lvProductList.HideSelection = false;
-            this.lvProductList.Location = new System.Drawing.Point(21, 125);
-            this.lvProductList.Name = "lvProductList";
-            this.lvProductList.Size = new System.Drawing.Size(687, 491);
-            this.lvProductList.TabIndex = 79;
-            this.lvProductList.UseCompatibleStateImageBehavior = false;
-            this.lvProductList.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            // 
-            // columnHeader26
-            // 
-            this.columnHeader26.Text = "Category";
-            this.columnHeader26.Width = 129;
-            // 
-            // columnHeader27
-            // 
-            this.columnHeader27.Text = "Product Name";
-            this.columnHeader27.Width = 184;
-            // 
-            // columnHeader29
-            // 
-            this.columnHeader29.Text = "Price";
-            this.columnHeader29.Width = 115;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Quantity";
-            this.columnHeader4.Width = 138;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.SystemColors.Control;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label22.Location = new System.Drawing.Point(17, 58);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(182, 20);
-            this.label22.TabIndex = 78;
-            this.label22.Text = "Search product by name";
-            // 
-            // tbProductName
-            // 
-            this.tbProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductName.Location = new System.Drawing.Point(264, 55);
-            this.tbProductName.Name = "tbProductName";
-            this.tbProductName.Size = new System.Drawing.Size(444, 26);
-            this.tbProductName.TabIndex = 77;
-            this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.tbProductQuantity);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
-            this.groupBox4.Location = new System.Drawing.Point(771, 46);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(343, 311);
-            this.groupBox4.TabIndex = 79;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Restock Request";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.label14.Location = new System.Drawing.Point(35, 61);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(68, 20);
-            this.label14.TabIndex = 71;
-            this.label14.Text = "Quantity";
-            // 
-            // tbProductQuantity
-            // 
-            this.tbProductQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductQuantity.Location = new System.Drawing.Point(39, 112);
-            this.tbProductQuantity.Name = "tbProductQuantity";
-            this.tbProductQuantity.Size = new System.Drawing.Size(277, 26);
-            this.tbProductQuantity.TabIndex = 70;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(60)))), ((int)(((byte)(77)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(39, 200);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(277, 45);
-            this.button1.TabIndex = 69;
-            this.button1.Text = "Send Restock Request";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -933,6 +943,66 @@
             this.pictureBox4.TabIndex = 25;
             this.pictureBox4.TabStop = false;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.lvRequests);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1142, 730);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Stock Request History";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lvRequests
+            // 
+            this.lvRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader10,
+            this.columnHeader25,
+            this.columnHeader28,
+            this.columnHeader11});
+            this.lvRequests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvRequests.GridLines = true;
+            this.lvRequests.HideSelection = false;
+            this.lvRequests.Location = new System.Drawing.Point(86, 52);
+            this.lvRequests.Name = "lvRequests";
+            this.lvRequests.Size = new System.Drawing.Size(960, 603);
+            this.lvRequests.TabIndex = 23;
+            this.lvRequests.UseCompatibleStateImageBehavior = false;
+            this.lvRequests.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Id";
+            this.columnHeader5.Width = 104;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Product Name";
+            this.columnHeader6.Width = 184;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Quantity";
+            this.columnHeader10.Width = 143;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Status";
+            this.columnHeader25.Width = 138;
+            // 
+            // columnHeader28
+            // 
+            this.columnHeader28.Text = "Requested by";
+            this.columnHeader28.Width = 166;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Date";
+            this.columnHeader11.Width = 135;
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -953,11 +1023,6 @@
             this.metroTabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.metroTabPage5.ResumeLayout(false);
-            this.metroTabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
-            this.metroTabPage4.ResumeLayout(false);
-            this.metroTabPage4.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -968,8 +1033,14 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.metroTabPage5.ResumeLayout(false);
+            this.metroTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
+            this.metroTabPage4.ResumeLayout(false);
+            this.metroTabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1049,5 +1120,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbProductName;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListView lvRequests;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader25;
+        private System.Windows.Forms.ColumnHeader columnHeader28;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
     }
 }

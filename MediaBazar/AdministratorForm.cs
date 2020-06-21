@@ -106,6 +106,16 @@ namespace MediaBazar
                 l.SubItems.Add(p.Quantity.ToString());
 
                 lvStock.Items.Add(l);
+                if (p.Quantity < 100)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+
+                }
+                if (p.Quantity == 0)
+                {
+                    lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                    lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                }
             }
 
            
@@ -129,7 +139,15 @@ namespace MediaBazar
                 list.SubItems.Add(item.Name);
                 list.SubItems.Add(mediaBazaar.GetPersonNameById(item.PersonId));
                 list.SubItems.Add(item.MinEmp.ToString());
+                list.SubItems.Add(mediaBazaar.GetCountOfEmpDep(item.Id).ToString());
+
                 lvDepartments.Items.Add(list);
+                if (mediaBazaar.GetCountOfEmpDep(item.Id) < item.MinEmp)
+                {
+                    lvDepartments.Items[lvDepartments.Items.Count - 1].UseItemStyleForSubItems = false;
+                    lvDepartments.Items[lvDepartments.Items.Count - 1].SubItems[4].BackColor = Color.Red;
+
+                }
             }
         }
         public void Departments()

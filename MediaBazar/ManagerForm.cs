@@ -475,6 +475,35 @@ namespace MediaBazar
                     l.SubItems.Add(p.Quantity.ToString());
 
                     lvStock.Items.Add(l);
+                    if (p.Quantity < 100)
+                    {
+                        lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Orange;
+
+                    }
+                    if (p.Quantity == 0)
+                    {
+                        lvStock.Items[lvStock.Items.Count - 1].BackColor = Color.Red;
+                        lvStock.Items[lvStock.Items.Count - 1].ForeColor = Color.White;
+                    }
+                }
+            }
+
+            mediaBazaar.ReadRequests();
+            lvRequests.Items.Clear();
+            foreach (Request item in mediaBazaar.GetRequestsList())
+            {
+                if (mediaBazaar.GetProductById(item.ProductId).DapartmentId == departmentId)
+                {
+                    if (item.RequestedBy == "Manager")
+                    {
+                        ListViewItem list = new ListViewItem(Convert.ToString(item.Id));
+                        list.SubItems.Add(mediaBazaar.GetProductNameById(item.ProductId));
+                        list.SubItems.Add(item.Quantity.ToString());
+                        list.SubItems.Add(item.Status);
+                        list.SubItems.Add(item.RequestedBy);
+                        list.SubItems.Add(item.DatE.Substring(0, 11));
+                        lvRequests.Items.Add(list);
+                    }
                 }
             }
 

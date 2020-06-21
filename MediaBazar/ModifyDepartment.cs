@@ -64,10 +64,20 @@ namespace MediaBazar
                 tbDName.Text = dep.Name;
                 tbMinEmp.Text = dep.MinEmp.ToString();
 
+                mediaBazaar.ReadPersons();
                 foreach (Person p in mediaBazaar.GetManagersList())
                 {
 
                     if (p.DepartmentId <= 1)
+                    {
+
+                        cbManager.Items.Add(p.GetFullName());
+                    }
+                }
+                foreach (Person p in mediaBazaar.GetManagersList())
+                {
+
+                    if (p.DepartmentId == id)
                     {
 
                         cbManager.Items.Add(p.GetFullName());

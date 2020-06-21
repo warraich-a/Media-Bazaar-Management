@@ -622,6 +622,31 @@ namespace MediaBazar
             }
             return sch;
         }
+
+        public int GetCountOfEmpDep(int id)
+        {
+            int count = 0;
+            foreach (Person p in ReturnPeopleFromDB())
+            {
+                if (p.DepartmentId == id)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public string GetPeopleByDep(int id)
+        {
+            string count = "";
+            foreach (Person p in ReturnPeopleFromDB())
+            {
+                if (p.DepartmentId == id)
+                {
+                    count = $"{count}{p.GetFullName()} ({p.Role.ToString()})\n\r";
+                }
+            }
+            return count;
+        }
     }
 
 
