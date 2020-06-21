@@ -199,11 +199,19 @@ namespace MediaBazar
                 list.SubItems.Add(item.FirstName);
                 list.SubItems.Add(item.LastName);
                 list.SubItems.Add(item.GetEmail);
-                foreach (Department d in mediaBazaar.GetAllDepartments())
+                if (item.DepartmentId == 0)
                 {
-                    if (item.DepartmentId == d.Id)
+                    list.SubItems.Add("Null");
+                }
+                else
+                {
+                    foreach (Department d in mediaBazaar.GetAllDepartments())
                     {
-                        list.SubItems.Add(Convert.ToString(d.Name));
+                        if (item.DepartmentId == d.Id)
+                        {
+                            list.SubItems.Add(Convert.ToString(d.Name));
+                        }
+
                     }
                 }
                 list.SubItems.Add(item.StreetName);

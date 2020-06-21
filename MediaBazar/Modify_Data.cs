@@ -48,7 +48,7 @@ namespace MediaBazar
         {
             try
             {
-                //mediaBazaar.AddPerson("Aqib", "Butt", dtpBirthDateEmp.Value, "Jannismunnestraat", 28, "5731HJ", "Geldrop", 8, cbxRole.SelectedItem.ToString());
+               
                 string firstName = tbFirstName.Text;
                 string lastName = tbLastName.Text;
                 DateTime dateOfBirth = dtpBirthDateEmp.Value;
@@ -57,16 +57,28 @@ namespace MediaBazar
                 string zipcode = tbZipcode.Text;
                 string city = tbCity.Text;
                 double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
-
+                string role = cbxRole.SelectedItem.ToString();
+                
+                
                 if (btnAddNewEmployee.Text == "Add")
                 {
                     if (MessageBox.Show("Do you want to Add this person?", "Add Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
-                        this.Close();
-                        form.AddEmployeesToList();
-                        form.RefreshData();
-                        
+                        if(role == "Manager")
+                        {
+                            mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, role, "");
+                            this.Close();
+                            form.AddEmployeesToList();
+                            form.RefreshData();
+                        }
+                        else
+                        {
+                            mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, role, cmbDepartment.SelectedItem.ToString());
+                            this.Close();
+                            form.AddEmployeesToList();
+                            form.RefreshData();
+
+                        }
                     }
                     else
                     {
