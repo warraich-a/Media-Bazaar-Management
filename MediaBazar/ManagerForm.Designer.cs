@@ -91,6 +91,7 @@
             this.tbProductQuantity = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lvRequests = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -112,7 +113,6 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.mtbManager.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -125,24 +125,24 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.metroTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // mtbManager
             // 
             this.mtbManager.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mtbManager.Controls.Add(this.metroTabPage2);
-            this.mtbManager.Controls.Add(this.metroTabPage4);
             this.mtbManager.Controls.Add(this.metroTabPage3);
+            this.mtbManager.Controls.Add(this.metroTabPage4);
             this.mtbManager.Controls.Add(this.metroTabPage5);
             this.mtbManager.ItemSize = new System.Drawing.Size(287, 50);
             this.mtbManager.Location = new System.Drawing.Point(1, 104);
             this.mtbManager.Name = "mtbManager";
-            this.mtbManager.SelectedIndex = 3;
+            this.mtbManager.SelectedIndex = 0;
             this.mtbManager.Size = new System.Drawing.Size(1158, 832);
             this.mtbManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mtbManager.Style = MetroFramework.MetroColorStyle.Silver;
@@ -203,6 +203,7 @@
             this.tbEmpNameToFind.Name = "tbEmpNameToFind";
             this.tbEmpNameToFind.Size = new System.Drawing.Size(255, 26);
             this.tbEmpNameToFind.TabIndex = 46;
+          
             // 
             // LV2
             // 
@@ -771,6 +772,18 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Request History";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.lvRequests);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
+            this.groupBox5.Location = new System.Drawing.Point(29, 50);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1076, 655);
+            this.groupBox5.TabIndex = 24;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "My Stock Request History";
+            // 
             // lvRequests
             // 
             this.lvRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1052,12 +1065,12 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.metroTabPage5.ResumeLayout(false);
             this.metroTabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartEmployeeStatistics)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,9 +13,9 @@ namespace MediaBazar
         private int quantity;
         private string status;
         private string requestedBy;
-        private string Date;
+        private DateTime Date;
 
-        public Request(int givenId, int givenPId, int givenquantity, string givenStatus, string givenRBy, string givenDate)
+        public Request(int givenId, int givenPId, int givenquantity, string givenStatus, string givenRBy, DateTime givenDate)
         {
             Id = givenId;
             ProductId = givenPId;
@@ -80,7 +80,7 @@ namespace MediaBazar
                 this.status = value;
             }
         }
-        public string DatE
+        public DateTime DatE
         {
             get
             {

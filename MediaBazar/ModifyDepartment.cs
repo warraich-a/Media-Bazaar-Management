@@ -26,26 +26,35 @@ namespace MediaBazar
 
         private void btnModifyProduct_Click(object sender, EventArgs e)
         {
-            try
+            if (cbManager.SelectedIndex != -1)
             {
-                if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                try
                 {
-                    string depName = tbDName.Text;
-                    int minEmp = Convert.ToInt32(tbMinEmp.Text);
-                    mediaBazaar.ModifyDepartment(id, depName, mediaBazaar.GetPersonIdByName(cbManager.SelectedItem.ToString()), minEmp);
-                    this.Close();
-                    form.Show();
-                    form.RefreshData();
-                }
-                else
-                {
-                    MessageBox.Show("Information is not updated");
-                }
-            }
-            catch (Exception)
-            {
+                    if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
 
-                MessageBox.Show("Have you added everything?");
+                        string depName = tbDName.Text;
+                        int minEmp = Convert.ToInt32(tbMinEmp.Text);
+                        mediaBazaar.ModifyDepartment(id, depName, mediaBazaar.GetPersonIdByName(cbManager.SelectedItem.ToString()), minEmp);
+                        this.Close();
+                        form.Show();
+                        form.RefreshData();
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Information is not updated");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Have you added everything?");
+                }
+            } else
+            {
+                MessageBox.Show("Select a manager first");
             }
         }
         public void FoundDepartment(int id)

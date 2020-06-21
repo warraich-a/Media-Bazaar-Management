@@ -27,9 +27,7 @@ namespace MediaBazar
             this.mediaBazaar = mediaBazaar;
             FoundPerson(id);
             btnAddNewEmployee.Text = "Update";
-            this.Name = "Update";
-           // cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
-            Departments();
+            cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
         }
         // a new constructor add a new employee
         public Modify_data(MediaBazaar mediaBazaar, AdministratorForm f)
@@ -37,17 +35,15 @@ namespace MediaBazar
             form = f;
             InitializeComponent();
             this.mediaBazaar = mediaBazaar;
-           // cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
+            cbxRole.DataSource = Enum.GetValues(typeof(Roles)); //casting the enum class to combobox
             btnAddNewEmployee.Text = "Add";
-            this.Name = "Add";
-            Departments();
 
         }
         // To add a new employee in the system
         private void btnAddNewEmployee_Click(object sender, EventArgs e)
         {
-            try
-            {
+            /*try
+            {*/
                 //mediaBazaar.AddPerson("Aqib", "Butt", dtpBirthDateEmp.Value, "Jannismunnestraat", 28, "5731HJ", "Geldrop", 8, cbxRole.SelectedItem.ToString());
                 string firstName = tbFirstName.Text;
                 string lastName = tbLastName.Text;
@@ -57,15 +53,13 @@ namespace MediaBazar
                 string zipcode = tbZipcode.Text;
                 string city = tbCity.Text;
                 double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
-
                 if (btnAddNewEmployee.Text == "Add")
                 {
                     if (MessageBox.Show("Do you want to Add this person?", "Add Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
+                        mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
                         this.Close();
                         form.AddEmployeesToList();
-                        form.RefreshData();
                         
                     }
                     else
@@ -78,21 +72,20 @@ namespace MediaBazar
                     if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                       
-                        mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), cmbDepartment.SelectedItem.ToString());
+                        mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString());
                         this.Close();
                         form.AddEmployeesToList();
-                        form.RefreshData();
                     }
                     else
                     {
                         MessageBox.Show("Information is not updated");
                     }
                 }
-            }
+            /*}
             catch (Exception)
             {
                 MessageBox.Show("Have you added everything?");
-            }
+            }*/
         }
 
         // getting a person's data by specific ID
@@ -106,32 +99,15 @@ namespace MediaBazar
                 dtpBirthDateEmp.Text = foundPerson.DateOfBirth.ToString();
                 tbxStreetName.Text = foundPerson.StreetName;
                 tbxHouseNr.Text = foundPerson.HouseNr.ToString();
-                tbCity.Text = foundPerson.Zipcode;
-                tbZipcode.Text = foundPerson.City;
+                tbCity.Text = foundPerson.City;
+                tbZipcode.Text = foundPerson.Zipcode;
                 tbxHourlyWage.Text = foundPerson.HourlyWage.ToString();
                 cbxRole.Text = foundPerson.Role.ToString();
-                foreach (Department item in mediaBazaar.GetAllDepartments())
-                {
-                    if (foundPerson.DepartmentId == item.Id)
-                    {
-                        cmbDepartment.Text = item.Name;
-                    }
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        public void Departments()
-        {
-            cmbDepartment.Items.Clear();
-            foreach (Department d in mediaBazaar.GetAllDepartments())
-            {
-                cmbDepartment.Items.Add(d.Name);
-            }
-
         }
     }
 }

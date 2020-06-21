@@ -216,9 +216,9 @@ namespace MediaBazar
         }
 
         // to add a person in a database
-        public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void AddPerson(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)
         {
-            database.AddPersonToDatabase(givenFirstName, givenSecondName, givenDOB, givenStreetName, givenHouseNr, givenZipcode, givenCity, givenHourlyWage, roles);
+            database.AddPersonToDatabase(givenFirstName, givenSecondName, givenDOB, givenStreetName, givenHouseNr, givenZipcode, givenCity, givenHourlyWage, roles, department);
         }
 
         // to remove a person
@@ -247,9 +247,9 @@ namespace MediaBazar
         }
 
         // to modify the data of an existing employee
-        public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void UpdateData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)
         {
-            database.ModifyData(id, givenFirstName, givenSecondName, givenDOB, givenStreetName, givenHouseNr, givenZipcode, givenCity, givenHourlyWage, roles);
+            database.ModifyData(id, givenFirstName, givenSecondName, givenDOB, givenStreetName, givenHouseNr, givenZipcode, givenCity, givenHourlyWage, roles, department);
         }
 
         // to get the existing data of an existing employee to modify
@@ -277,7 +277,9 @@ namespace MediaBazar
             {
                 if (s.ShiftType == givenShift)
                 {
-                    newSchedule.Add(s);
+                    if (s.Status == ShiftStatus.ACCEPTED || s.Status == ShiftStatus.AUTOASSIGNED) {
+                        newSchedule.Add(s);
+                    }
                 }
             }
             return newSchedule;
@@ -289,7 +291,10 @@ namespace MediaBazar
             {
                 if (s.EmployeeId == GetPersonIdByName(name))
                 {
-                    newSchedule.Add(s);
+                    if (s.Status == ShiftStatus.ACCEPTED || s.Status == ShiftStatus.AUTOASSIGNED)
+                    {
+                        newSchedule.Add(s);
+                    }
                 }
             }
             return newSchedule;
@@ -302,7 +307,10 @@ namespace MediaBazar
             {
                 if (s.EmployeeId == GetPersonIdByName(name) && s.ShiftType == givenShift)
                 {
-                    newSchedule.Add(s);
+                    if (s.Status == ShiftStatus.ACCEPTED || s.Status == ShiftStatus.AUTOASSIGNED)
+                    {
+                        newSchedule.Add(s);
+                    }
                 }
             }
             return newSchedule;

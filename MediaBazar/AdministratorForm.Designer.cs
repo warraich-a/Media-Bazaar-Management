@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -214,7 +214,7 @@
             this.metroTabControl1.ItemSize = new System.Drawing.Size(230, 50);
             this.metroTabControl1.Location = new System.Drawing.Point(-1, 102);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 4;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1159, 839);
             this.metroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Silver;
@@ -323,7 +323,7 @@
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Date Of Birth";
+            this.columnHeader8.Text = "Department";
             this.columnHeader8.Width = 120;
             // 
             // columnHeader20
@@ -1482,11 +1482,6 @@
             this.columnHeader24.Text = "Min Employees";
             this.columnHeader24.Width = 121;
             // 
-            // columnHeader32
-            // 
-            this.columnHeader32.Text = "Emp Num";
-            this.columnHeader32.Width = 85;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.btnModifyDep);
@@ -1724,29 +1719,29 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Area3DStyle.IsClustered = true;
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 11;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea1.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea1.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend1);
+            chartArea2.Area3DStyle.Enable3D = true;
+            chartArea2.Area3DStyle.IsClustered = true;
+            chartArea2.AxisX.LabelAutoFitMaxFontSize = 11;
+            chartArea2.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea2.AxisX.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Horizontal;
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea2.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend2);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(98, 237);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            series1.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series1.ChartArea = "ChartArea1";
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series1.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series1);
+            series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series2.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series2.ChartArea = "ChartArea1";
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Legend = "Legend1";
+            series2.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series2.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series2);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(947, 466);
             this.chartEmployeeStatistics.TabIndex = 52;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -1842,8 +1837,6 @@
             this.metroTabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.metroTabPage4.ResumeLayout(false);
-            this.metroTabPage4.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
             this.groupBox9.ResumeLayout(false);

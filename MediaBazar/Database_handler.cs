@@ -71,6 +71,10 @@ namespace MediaBazar
                     {
                         b = ShiftStatus.REJECTED;
                     }
+                    if (dr[4].ToString() == "AutoAssigned")
+                    {
+                        b = ShiftStatus.AUTOASSIGNED;
+                    }
 
 
 
@@ -218,7 +222,7 @@ namespace MediaBazar
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]), Convert.ToString(dr[5]));
+                    Request request = new Request(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToString(dr[3]), Convert.ToString(dr[4]), Convert.ToDateTime(dr[5]));
                     requests.Add(request);
                 }
             }
@@ -475,10 +479,11 @@ namespace MediaBazar
         }
 
         /* EMPLOYEE MANAGEMENT */
-        public void AddPersonToDatabase(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void AddPersonToDatabase(string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)
         {
             string givenEmail;
             string newPassword;
+            int departmentId = 0;
             bool personExist = false;
             try
             {
@@ -489,12 +494,19 @@ namespace MediaBazar
                         personExist = true;
                     }
                 }
+                foreach (Department item in Departments)
+                {
+                    if(item.Name == department)
+                    {
+                        departmentId = item.Id;
+                    }
+                }
 
                 if (personExist == false)
                 {
                     givenEmail = person.Email(givenFirstName, givenSecondName);
                     newPassword = person.SetPassword();
-                    string sql = "INSERT INTO person(firstName, lastName, email, dateOfBirth, streetName, houseNr,zipcode, city, hourlyWage, password, role) VALUES(@firstName, @lastName, @email, @DOB, @streetName, @houseNr, @zipcode, @city, @hourlyWage, @password, @role)";
+                    string sql = "INSERT INTO person(firstName, lastName, email, department_id, dateOfBirth, streetName, houseNr,zipcode, city, hourlyWage, password, role) VALUES(@firstName, @lastName, @email, @department, @DOB, @streetName, @houseNr, @zipcode, @city, @hourlyWage, @password, @role)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     if (givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0)
                     {
@@ -511,6 +523,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
                         cmd.Parameters.AddWithValue("@city", givenCity);
                         cmd.Parameters.AddWithValue("@role", roles);
+                        cmd.Parameters.AddWithValue("@department", departmentId);
                         cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
                         cmd.Parameters.AddWithValue("@password", newPassword);
                         conn.Open();
@@ -564,9 +577,10 @@ namespace MediaBazar
         public Person foundedPersonFromDatabase(string givenName)
         {
             Person g = null;
+            int dpId = 0;
             try
             {
-                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
+                string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person WHERE firstName = @name"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@name", givenName);
                 conn.Open();
@@ -586,7 +600,10 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-
+                    if (dr[3] != DBNull.Value)
+                    {
+                        dpId = Convert.ToInt32(dr[3]);
+                    }
                     g = new Person(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToInt32(dr[3]), Convert.ToDateTime(dr[4]), dr[5].ToString(), Convert.ToInt32(dr[6]), dr[7].ToString(), dr[8].ToString(), Convert.ToDouble(dr[9]), r); // has to specify the order like this
                 }
                 return g;
@@ -601,6 +618,7 @@ namespace MediaBazar
         public List<Person> ReturnPeopleFromDB()
         {
            people = new List<Person>();
+            int dpId = 0;
             try
             {
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
@@ -623,7 +641,7 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-                    int dpId = 0;
+                    
                     if (dr[3] != DBNull.Value)
                     {
                         dpId = Convert.ToInt32(dr[3]);
@@ -644,6 +662,7 @@ namespace MediaBazar
             people = new List<Person>();
             try
             {
+                int dpId = 0;
                 string sql = "SELECT id, firstName, lastName, department_id, dateOfBirth, streetName, houseNr, city, zipcode, hourlyWage, role FROM person"; // a query of what we want
                 MySqlCommand cmd = new MySqlCommand(sql, conn);  // first parameter has to be the query and the second one should be the connection
 
@@ -664,7 +683,7 @@ namespace MediaBazar
                     {
                         r = Roles.DepotWorker;
                     }
-                    int dpId = 0;
+                   
                     if (dr[3] != DBNull.Value)
                     {
                         dpId = Convert.ToInt32(dr[3]);
@@ -681,9 +700,10 @@ namespace MediaBazar
         }
 
         // a method to modify the data
-        public void ModifyData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles)
+        public void ModifyData(int id, string givenFirstName, string givenSecondName, DateTime givenDOB, string givenStreetName, int givenHouseNr, string givenZipcode, string givenCity, double givenHourlyWage, string roles, string department)
         {
             bool personExist = false;
+            int departmentId = 0;
             try
             {
                 foreach (Person item in people) // to check if the Person with the same name already exists
@@ -693,9 +713,16 @@ namespace MediaBazar
                         personExist = true;
                     }
                 }
+                foreach (Department item in Departments)
+                {
+                    if (item.Name == department)
+                    {
+                        departmentId = item.Id;
+                    }
+                }
                 if (!personExist)
                 {
-                    string sql = "UPDATE person SET firstName = @firstName, lastName = @lastName, dateOfBirth = @DOB, streetName = @streetName, houseNr = @houseNr, city = @city, zipcode = @zipcode, hourlyWage = @hourlyWage, role = @role WHERE id ='" + id + "';";
+                    string sql = "UPDATE person SET firstName = @firstName, lastName = @lastName, department_id = @department, dateOfBirth = @DOB, streetName = @streetName, houseNr = @houseNr, city = @city, zipcode = @zipcode, hourlyWage = @hourlyWage, role = @role WHERE id ='" + id + "';";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     if (givenFirstName == "" || givenSecondName == "" || givenStreetName == "" || givenZipcode == "" || givenCity == "" || givenHourlyWage == 0 || givenHouseNr == 0)
                     {
@@ -711,6 +738,7 @@ namespace MediaBazar
                         cmd.Parameters.AddWithValue("@zipcode", givenZipcode);
                         cmd.Parameters.AddWithValue("@city", givenCity);
                         cmd.Parameters.AddWithValue("@role", roles);
+                        cmd.Parameters.AddWithValue("@department", departmentId);
                         cmd.Parameters.AddWithValue("@hourlyWage", givenHourlyWage);
                         conn.Open();
                         cmd.ExecuteNonQuery();
