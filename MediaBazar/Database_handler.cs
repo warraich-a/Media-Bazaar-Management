@@ -942,8 +942,8 @@ namespace MediaBazar
                             sql = "SELECT COUNT(*) AS nrEmployees, date, shiftType FROM (schedule AS s " +
                            "INNER JOIN person p ON s.employeeId = p.id) " +
                            "INNER JOIN department d ON d.id = p.department_id " +
-                           "WHERE (d.name = @department) AND " +
-                           "(date BETWEEN @dateFrom AND @dateTo) " +
+                           "WHERE (d.name = @department) && " +
+                           "date BETWEEN @dateFrom AND @dateTo " +
                            "GROUP BY date, shiftType ORDER BY date;";
                         }
 

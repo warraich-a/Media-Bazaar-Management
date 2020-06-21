@@ -450,7 +450,6 @@ namespace MediaBazar
             {
                 if (statistic[2].ToString() == "Morning")
                 {
-                    // MessageBox.Show(String.Format("{0:MM/dd/yyyy}", statistic[1])); 
                     chartEmployeeStatistics.Series["Morning"].Points.AddXY(statistic[1], Convert.ToInt32(statistic[0]));
 
                     string employees = mediaBazaar.GetEmployeesPerShift(Convert.ToDateTime(statistic[1]), "Morning", department);
