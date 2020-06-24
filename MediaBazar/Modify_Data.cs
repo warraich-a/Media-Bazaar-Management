@@ -112,7 +112,7 @@ namespace MediaBazar
             }
             catch (Exception)
             {
-                MessageBox.Show("Have you added everything?");
+                MessageBox.Show("Employee/Depot Worker cannot be added without a department");
             }
         }
 
