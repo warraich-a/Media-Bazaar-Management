@@ -64,19 +64,21 @@ namespace MediaBazar
                 {
                     if (MessageBox.Show("Do you want to Add this person?", "Add Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if(role == "Manager")
+                        if(role == "Manager" || role == "Administrator")
                         {
                             mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, role, "");
-                            this.Close();
+                            
                             form.AddEmployeesToList();
                             form.RefreshData();
+                            this.Close();
                         }
                         else
                         {
                             mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, role, cmbDepartment.SelectedItem.ToString());
-                            this.Close();
+                           
                             form.AddEmployeesToList();
                             form.RefreshData();
+                            this.Close();
 
                         }
                     }
@@ -89,7 +91,7 @@ namespace MediaBazar
                 {
                     if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (role == "Manager")
+                        if (role == "Manager" || role == "Administrator")
                         {
                             mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), "");
                             this.Close();
