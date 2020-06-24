@@ -528,16 +528,7 @@ namespace MediaBazar
                     listB.SubItems.Add(item.FirstName);
                     listB.SubItems.Add(item.LastName);
                     listB.SubItems.Add(item.GetEmail);
-                   
-                   
-                    foreach (Department d in mediaBazaar.GetAllDepartments())
-                    {
-                        if (item.DepartmentId == d.Id)
-                        {
-                            listB.SubItems.Add(Convert.ToString(d.Name));
-                        }
-                    }
-                   
+                    listB.SubItems.Add(Convert.ToDateTime(item.DateOfBirth).ToShortDateString());
                     listB.SubItems.Add(item.StreetName);
                     listB.SubItems.Add(Convert.ToString(item.HouseNr));
                     listB.SubItems.Add(item.Zipcode);
