@@ -58,13 +58,22 @@ namespace MediaBazar
                 string city = tbCity.Text;
                 double hourlyWage = Convert.ToDouble(tbxHourlyWage.Text);
                 string role = cbxRole.SelectedItem.ToString();
-                
+
+              
                 
                 if (btnAddNewEmployee.Text == "Add")
                 {
+                    if (cbxRole.SelectedItem.ToString() == "Manager" || cbxRole.SelectedItem.ToString() == "Administrator")
+                    {
+                        cmbDepartment.Enabled = false;
+                    }
+                    else
+                    {
+                        cmbDepartment.Enabled = true;
+                    }
                     if (MessageBox.Show("Do you want to Add this person?", "Add Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if(role == "Manager")
+                        if(role == "Manager" || role == "Administrator")
                         {
                             mediaBazaar.AddPerson(firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, role, "");
                             this.Close();
@@ -87,9 +96,17 @@ namespace MediaBazar
                 }
                 else
                 {
+                    if (cbxRole.SelectedItem.ToString() == "Manager" || cbxRole.SelectedItem.ToString() == "Administrator")
+                    {
+                        cmbDepartment.Enabled = false;
+                    }
+                    else
+                    {
+                        cmbDepartment.Enabled = true;
+                    }
                     if (MessageBox.Show("Are you sure", "Update Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (role == "Manager")
+                        if (role == "Manager" || role == "Administrator")
                         {
                             mediaBazaar.UpdateData(this.id, firstName, lastName, dateOfBirth, streetName, houseNr, zipcode, city, hourlyWage, cbxRole.SelectedItem.ToString(), "");
                             this.Close();
