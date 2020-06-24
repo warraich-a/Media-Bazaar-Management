@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mtbManager = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -140,10 +140,10 @@
             this.mtbManager.Controls.Add(this.metroTabPage5);
             this.mtbManager.Controls.Add(this.metroTabPage3);
             this.mtbManager.ItemSize = new System.Drawing.Size(287, 50);
-            this.mtbManager.Location = new System.Drawing.Point(1, 181);
+            this.mtbManager.Location = new System.Drawing.Point(1, 104);
             this.mtbManager.Name = "mtbManager";
             this.mtbManager.SelectedIndex = 0;
-            this.mtbManager.Size = new System.Drawing.Size(1158, 854);
+            this.mtbManager.Size = new System.Drawing.Size(1158, 879);
             this.mtbManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mtbManager.Style = MetroFramework.MetroColorStyle.Silver;
             this.mtbManager.TabIndex = 3;
@@ -161,7 +161,7 @@
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 54);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1150, 796);
+            this.metroTabPage2.Size = new System.Drawing.Size(1150, 821);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Employees";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -310,7 +310,7 @@
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 54);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1150, 796);
+            this.metroTabPage5.Size = new System.Drawing.Size(1150, 821);
             this.metroTabPage5.TabIndex = 4;
             this.metroTabPage5.Text = "Statistics";
             this.metroTabPage5.VerticalScrollbarBarColor = true;
@@ -319,25 +319,25 @@
             // 
             this.chartEmployeeStatistics.BackColor = System.Drawing.SystemColors.Control;
             this.chartEmployeeStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            chartArea6.Area3DStyle.Enable3D = true;
-            chartArea6.Area3DStyle.IsClustered = true;
-            chartArea6.AxisX.LabelAutoFitMinFontSize = 7;
-            chartArea6.AxisX2.LabelAutoFitMinFontSize = 8;
-            chartArea6.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea6.Name = "ChartArea1";
-            this.chartEmployeeStatistics.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartEmployeeStatistics.Legends.Add(legend6);
+            chartArea8.Area3DStyle.Enable3D = true;
+            chartArea8.Area3DStyle.IsClustered = true;
+            chartArea8.AxisX.LabelAutoFitMinFontSize = 7;
+            chartArea8.AxisX2.LabelAutoFitMinFontSize = 8;
+            chartArea8.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea8.Name = "ChartArea1";
+            this.chartEmployeeStatistics.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartEmployeeStatistics.Legends.Add(legend8);
             this.chartEmployeeStatistics.Location = new System.Drawing.Point(68, 238);
             this.chartEmployeeStatistics.Name = "chartEmployeeStatistics";
             this.chartEmployeeStatistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series6.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            series6.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series6.Name = "Series1";
-            this.chartEmployeeStatistics.Series.Add(series6);
+            series8.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            series8.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series8.Name = "Series1";
+            this.chartEmployeeStatistics.Series.Add(series8);
             this.chartEmployeeStatistics.Size = new System.Drawing.Size(947, 466);
             this.chartEmployeeStatistics.TabIndex = 63;
             this.chartEmployeeStatistics.Text = "chartEmployeeStatistics";
@@ -435,7 +435,7 @@
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 54);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1150, 796);
+            this.metroTabPage3.Size = new System.Drawing.Size(1150, 821);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Stock Info";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
@@ -473,7 +473,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(71)))), ((int)(((byte)(32)))));
             this.groupBox2.Location = new System.Drawing.Point(17, 38);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1107, 663);
+            this.groupBox2.Size = new System.Drawing.Size(1107, 741);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products In Stock";
@@ -756,7 +756,7 @@
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 54);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1150, 796);
+            this.metroTabPage4.Size = new System.Drawing.Size(1150, 821);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Schedule";
             this.metroTabPage4.VerticalScrollbar = true;
@@ -1028,7 +1028,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(213)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(1156, 1033);
+            this.ClientSize = new System.Drawing.Size(1156, 981);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pictureBox1);
