@@ -249,7 +249,6 @@
             this.Controls.Add(this.btnAddNewEmployee);
             this.Controls.Add(this.label3);
             this.Name = "Modify_data";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modify_Data";
             this.ResumeLayout(false);
             this.PerformLayout();
